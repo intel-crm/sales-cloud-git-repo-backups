@@ -1,0 +1,69 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "e80ed5f4-b95c-440d-ab22-8cfe30ee75d1",
+  "label" : "All computers internal",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "1158c71e-2a10-4191-b335-ff79755ef95d",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "776b4f9b-f2ec-48ef-af5f-fb2f12734444",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "All",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_Host__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "a302e418-2cae-4519-ab2c-cac4d65b33fa",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d746cf6c-2f0b-443c-be16-c29b66e26631",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "83fa5bc0-84a3-48d7-ae52-82fcc2091f89",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "All computers internal"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1f41d879-6334-4afd-885e-e6dcb4ffdb40",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b152fa8f-63a2-47d7-b793-707eac4d5ca8",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-all-computers-internal"
+}

@@ -1,0 +1,46 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "c:PSGPatnerLayout",
+  "dataProviders" : [ ],
+  "id" : "4aae0ded-3403-4b2d-8132-07d26a968866",
+  "label" : "PSG Access Denied",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:psg_IntelAccessDenied",
+      "id" : "a1c6bfbb-209e-4b51-a095-b4fc2443d420",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f2c649ff-1611-4b34-a3af-0f036b6f3f47",
+    "regionName" : "Header",
+    "type" : "region"
+  }, {
+    "id" : "908ebfa4-0e5f-47f4-8b24-1e95c3742b26",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "4ec89cfa-6270-4d72-a136-5779fb4693f6",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "PSG Access Denied"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "92bb4d63-cf2a-405e-a1cf-9e80fecb6964",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "635d3a03-c68d-4707-8132-7dd10e0423ec",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-psg-access-denied"
+}

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "26ceaaf3-b5a6-4b03-b704-b04b11491c71",
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "configurationTags" : [ ],
+  "devName" : "create_new_admin__c",
+  "id" : "606d1bbb-395e-4458-b3cf-68c466ed7405",
+  "label" : "Create new admin",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-create-new-admin",
+  "type" : "route",
+  "urlPrefix" : "create-new-admin"
+}

@@ -1,0 +1,15 @@
+{
+  "componentVariants" : [ {
+    "id" : "120b82ed-2373-416a-a5aa-46f71cf0f03e",
+    "propertyOverrides" : {
+      "componentAttributes" : {
+        "NavigationMenuEditorRefresh" : "Intel_FPGA_Self_service_Licensing_Center"
+      }
+    },
+    "targetId" : "24b01f2a-3375-45fb-9a93-d3749608f345",
+    "type" : "componentVariant"
+  } ],
+  "developerName" : "Default_Navigation_Menu_2_Component_Properties",
+  "id" : "05503b1a-428e-4334-a915-7467c604ae26",
+  "type" : "experienceVariation"
+}

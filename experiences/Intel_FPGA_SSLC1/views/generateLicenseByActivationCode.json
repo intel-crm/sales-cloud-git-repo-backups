@@ -1,0 +1,46 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "c78eed14-72bb-4799-a8ad-3e2ad1f61fc2",
+  "label" : "generate license by activation code",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_GenerateLicenseByActivationCode",
+      "id" : "8a9fa2c3-a7ed-4c9f-a276-ecad65a8ece1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "09a0068a-ec9d-4c1a-a701-1b35e5d73874",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "1dc0bca6-6510-47b1-8c75-4bb7377d88f0",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "c07ae5fd-216c-4474-af48-fb853a1277dc",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "generate license by activation code"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "489a0dbc-e671-4d47-be70-d5cf524662b1",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "4c8441fd-821e-43c6-8ec1-fdc6e5bb63e1",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-generate-license-by-activation-code"
+}

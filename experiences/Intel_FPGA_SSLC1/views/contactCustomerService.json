@@ -1,0 +1,70 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "ccc8b855-fe5b-40cb-9a0b-17f6faac907b",
+  "label" : "Contact Customer Service",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "ed6e4d67-805a-4ecd-bbf5-723f06c85423",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "99003ef1-9d70-45f5-abce-db5df56a1388",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "2f82336c-a8a1-43f5-8eaa-12213644e907",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_ContactCustomerService_HomePage",
+      "id" : "833762c4-325e-40b4-96d3-09bbdc077052",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "693dbbd7-1ec1-4950-a01b-b25ff8fa331a",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Contact Customer Service"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "29563d7f-1aef-44e6-b48c-783806ef6584",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e0b8e2aa-af94-4ede-bf0a-9daa528ab647",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_ContactCustomerService_HomePage",
+      "id" : "6907e7f3-fedc-488a-9663-f2d64a5a89b0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d6bc9e0a-15c4-40b7-874b-f5ddae444c08",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "39ae1997-c1b7-44d7-9d2b-d3603dbf36ef",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-contact-customer-service"
+}

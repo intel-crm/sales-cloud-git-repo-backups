@@ -1,0 +1,50 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "c:PSGPatnerLayout",
+  "dataProviders" : [ ],
+  "id" : "f55daab5-2bb1-4e4c-8fb6-da9b409a5760",
+  "label" : "NAVIGATIONPAGE",
+  "regions" : [ {
+    "id" : "17776eee-c583-4188-a163-23191e7f2385",
+    "regionName" : "Header",
+    "type" : "region"
+  }, {
+    "id" : "6d3643e6-a493-4290-8a68-17c6f74eaf59",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "fb6b93eb-419d-46e9-aed1-68559846ad02",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "NAVIGATIONPAGE"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "25541ab9-b961-4ad2-b76e-bfab394954cd",
+      "renditionMap" : {
+        "zh_cn" : "2980268f-62f7-41ac-90a9-e57c58b127b1"
+      },
+      "renditions" : [ {
+        "id" : "2980268f-62f7-41ac-90a9-e57c58b127b1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "市场推广基金",
+            "title" : "NAVIGATIONPAGE"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "5033fc41-6983-40fc-a43a-bcdbc1a8a374",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-navigationpage"
+}

@@ -1,0 +1,73 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "c:PSGPatnerLayout",
+  "dataProviders" : [ ],
+  "id" : "c988931f-3161-4d28-a9cd-b138416ef57f",
+  "label" : "License Report Page",
+  "regions" : [ {
+    "id" : "b8109f78-98be-4729-af22-f50836f20528",
+    "regionName" : "Header",
+    "type" : "region"
+  }, {
+    "id" : "4ee2b1e6-65eb-4472-9f05-e9f088ed8649",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "",
+        "reportId" : "00O2D000000WgIj",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "f0071aa2-aec0-4563-acc5-c1d0912f2b84",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "bc83c952-d887-49f3-8610-a122058d595d"
+      },
+      "renditions" : [ {
+        "id" : "bc83c952-d887-49f3-8610-a122058d595d",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "60e24983-a7cf-4410-8aac-3d14e1e81741",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "License Report Page"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ad031fd7-b59f-4b9f-b3e7-62a4dc3aaacc",
+      "renditionMap" : {
+        "zh_cn" : "331f0378-01c1-4a7d-86ef-043c7836d6e1"
+      },
+      "renditions" : [ {
+        "id" : "331f0378-01c1-4a7d-86ef-043c7836d6e1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "市场推广基金",
+            "title" : "License Report Page"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "55174a6d-0a6d-44b6-99ae-87f0e5280497",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-license-report-page"
+}

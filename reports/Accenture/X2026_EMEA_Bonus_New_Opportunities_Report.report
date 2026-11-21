@@ -33,14 +33,13 @@
     <columns>
         <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
+    <columns>
+        <field>Opportunity.CRM_Audit_Status__c</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
     <filter>
-        <criteriaItems>
-            <column>Opportunity.CRM_Audit_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>pass</value>
-        </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
             <columnToColumn>false</columnToColumn>
@@ -49,23 +48,16 @@
             <value>Yes</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Geo_EMEA__c</column>
+            <column>DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Team_Geo_EMEA__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
+            <operator>contains</operator>
+            <value>EMEA Winback,EMEA Bonus Winback,EMEA Bonus Win back,EMEA Win back,EMEA Sovereignty,EMEA Edge AI</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>2026 EMEA Bonus New Opportunities Report</name>
+    <name>2026 EMEA Bonus Desc-All Tags Opp</name>
     <params>
         <name>terr</name>
         <value>all</value>

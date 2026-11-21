@@ -1,0 +1,62 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsTwoCol84Layout",
+  "dataProviders" : [ ],
+  "id" : "34acfede-8358-4712-800a-d110d34e11ec",
+  "label" : "Home For Public User",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_LoginPage",
+      "id" : "fc91c05d-b1cb-4d1e-8855-ec213323396b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6f9029a9-bab4-4f45-91b0-34fcca67c676",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "5af10c8e-3849-4798-867e-8cbdd93442b0",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "b18ffa2e-3c6a-468d-a53c-04e81efa1402",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d8e3ef53-c3b5-447f-93ae-44a240a60ea0",
+      "renditionMap" : {
+        "zh_cn" : "cb079bfb-0b80-444b-adbf-c4cdb6740ed0"
+      },
+      "renditions" : [ {
+        "id" : "cb079bfb-0b80-444b-adbf-c4cdb6740ed0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "市场推广基金",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "3e7c7fd0-ed0f-40c7-8f64-59f07066159d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "1c36ae62-c6a4-4357-b8af-fe94067a7c32",
+    "regionName" : "sidebar",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "home"
+}

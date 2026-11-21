@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "cbb8f645-f5e7-4326-9b23-46c22be98fd8",
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "configurationTags" : [ ],
+  "devName" : "maintenance_expired_licenses__c",
+  "id" : "5458fb84-a1c8-4761-be26-cbfb21c348d7",
+  "label" : "Maintenance expired licenses",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-maintenance-expired-licenses",
+  "type" : "route",
+  "urlPrefix" : "maintenance-expired-licenses"
+}

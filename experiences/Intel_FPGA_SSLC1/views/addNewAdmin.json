@@ -1,0 +1,46 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "442c01ed-50d5-44b1-9a31-e43f8ef36698",
+  "label" : "Add new admin",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_AddNewLicenseAdmin",
+      "id" : "0224e1d4-edc9-41db-9e63-581c43685a0c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8380c3e3-d7b5-4456-b387-241935b97f64",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "eba9c99d-fb75-49ae-97df-490a0e8399c0",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "4ea097f5-b2ab-402e-88ff-68ac88c22a8a",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Add new admin"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "4b8ac39a-8d40-4536-8f73-968724e9d34b",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "080fc231-be77-4bfb-8ce4-94528df286f2",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-add-new-admin"
+}

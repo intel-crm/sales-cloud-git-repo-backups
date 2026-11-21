@@ -1,0 +1,69 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "36eb1107-269b-4b66-bc4d-51091f364140",
+  "label" : "All licenses",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "ee2875cc-b63c-4f73-b0df-73e4342f1719",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "37acf934-d7a0-4ed1-805e-1426a78425c8",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "All_Licenses_Ext",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_License__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "7036df72-2c5f-419b-bc80-c1b3cad0aad3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "bfd8ada2-b282-45b0-8f85-745588a6c21f",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "540bceda-165c-4cc4-902f-b1b9f9929f88",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "All licenses"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "be74e6e4-cb60-4294-83e1-bd1b9c68b537",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7a3fae73-502e-45e3-a281-45d9406a1efa",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-all-licenses"
+}

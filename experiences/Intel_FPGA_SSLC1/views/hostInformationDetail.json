@@ -1,0 +1,123 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "dc1d5e14-1fe4-4c5d-ba71-ea65df07ed98",
+  "label" : "Host Information Detail",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "dcf07068-3b4f-4ba3-ae00-d3be26f07304",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fdbd29bc-7033-4cf9-bbbe-90d4f89dc604",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "cce39351-4594-403b-aec5-322fa16f29b8",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "98b7b575-3f11-405d-ba4d-8af021825303",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "12483c43-5cea-4639-83cc-9dc4062a8eb4",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Detail"
+          }, {
+            "UUID" : "9da25560-746d-4646-9380-805f4c849250",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "2",
+            "tabName" : "Entitlements"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "98b7b575-3f11-405d-ba4d-8af021825303",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "recordId" : "{!recordId}"
+          },
+          "componentName" : "forceCommunity:recordDetail",
+          "id" : "370a0cc5-c725-457a-b972-6b63992ff232",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "12483c43-5cea-4639-83cc-9dc4062a8eb4",
+        "regionLabel" : "Detail",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:sales_RelatedLicenseHost",
+          "id" : "14e99535-b4e1-4a69-aab4-750e7bf166a2",
+          "renditionMap" : { },
+          "type" : "component"
+        }, {
+          "componentAttributes" : {
+            "relatedListApiName" : "License_Generation_Req_Logs__r",
+            "relatedListComponentOverride" : "GRID",
+            "width" : "MEDIUM"
+          },
+          "componentName" : "forceCommunity:responsiveRelatedListSingle",
+          "id" : "285ae915-afe6-4cc9-b656-57aaab8cb8cd",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "9da25560-746d-4646-9380-805f4c849250",
+        "regionLabel" : "Entitlements",
+        "regionName" : "2",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "61ea4c41-9ae0-472c-870f-beb36483faf0",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "2bdebffb-b8cc-49a0-ab28-fd13414cfefb",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "6095a8aa-9f76-4dbe-bc67-aff2d9d52a92",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "554733d5-bbc4-4a63-b650-7641b6cb12f5",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-aBp"
+}

@@ -1,0 +1,97 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "bf9e23f3-0e0e-4506-b47e-45be406514c6",
+  "label" : "Topic Catalog",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "bannerText" : "",
+        "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+        "pageType" : "",
+        "showSubTopics" : true,
+        "title" : "Topics",
+        "uniqueNameOrId" : ""
+      },
+      "componentName" : "forceCommunity:headline",
+      "id" : "189506de-480a-4059-886f-ed5edbdb7260",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "c6ac8911-89a8-4a13-b109-892df0ade38b"
+      },
+      "renditions" : [ {
+        "id" : "c6ac8911-89a8-4a13-b109-892df0ade38b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "bannerText" : "市场推广基金",
+            "bannerTextWithKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineArticles\">articles</a> and <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+            "bannerTextWithoutKnowledge" : "Explore other <a href=\"javascript:void(0)\" class=\"headlineDiscussions\">discussions</a> on this topic.",
+            "title" : "Topics"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "70e343f0-51c6-4e46-bd11-9187861d90b5",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "forceCommunity:topicCatalog",
+      "id" : "8dfe5338-910f-4e54-9122-d7afd2025c68",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "2226fd5d-3cd6-4b90-b7c4-5d13fe56fae9"
+      },
+      "renditions" : [ {
+        "id" : "2226fd5d-3cd6-4b90-b7c4-5d13fe56fae9",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "ebd67f88-b80e-4225-982d-e17be6bc5046",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "6dc7ca91-1998-4354-a107-a9992f6274b0",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Topic Catalog"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ce7b7d6c-dd59-437f-b1f4-290d5873318d",
+      "renditionMap" : {
+        "zh_cn" : "8128c6a0-4f52-42cc-91b2-6a164490b0d3"
+      },
+      "renditions" : [ {
+        "id" : "8128c6a0-4f52-42cc-91b2-6a164490b0d3",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "市场推广基金",
+            "title" : "Topic Catalog"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "16e023d9-26a1-44e8-ac2a-385ca6ebe4dc",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "topic-catalog"
+}

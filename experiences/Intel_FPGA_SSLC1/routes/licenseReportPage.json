@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "c988931f-3161-4d28-a9cd-b138416ef57f",
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "configurationTags" : [ ],
+  "devName" : "license_report_page__c",
+  "id" : "c324b5ad-cf7b-46eb-9bb1-d2551740504e",
+  "label" : "License Report Page",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-license-report-page",
+  "type" : "route",
+  "urlPrefix" : "license-report-page"
+}

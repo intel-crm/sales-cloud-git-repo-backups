@@ -1,0 +1,69 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "30df1c40-148c-42f0-9b5d-ad2994c3e5cb",
+  "label" : "Employee and Evaluation License Internal",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "9a5a86cf-b15d-473b-980f-de1c75e56436",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "27f17dcb-b406-4954-8acc-f5d53b5adf57",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "Employee_and_Evaluation_Licenses",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_License__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "18b05a74-fdf2-4f5f-83fe-1c8372a8d328",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f19cf558-71e3-4d77-8bfb-0aa71480b9f5",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "21709522-afa3-4dbe-9274-6311e2e76fa5",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Employee and Evaluation License Internal"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "78d8ef06-0a27-4119-b8f0-9f673bacaae1",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2f2b66e2-93a1-4faa-9f29-f4e6462133d0",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-employee-and-evaluation-license-internal"
+}

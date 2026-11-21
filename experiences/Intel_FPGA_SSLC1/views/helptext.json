@@ -1,0 +1,50 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "c:PSGPatnerLayout",
+  "dataProviders" : [ ],
+  "id" : "c22dad42-2252-498c-b5fa-73a8a0324085",
+  "label" : "helptext",
+  "regions" : [ {
+    "id" : "74b27e05-9f46-4436-8196-973964c9bfad",
+    "regionName" : "Header",
+    "type" : "region"
+  }, {
+    "id" : "1ac9d9a5-c8df-44e4-9fc6-35a31551d030",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "c94faab1-b589-45b7-a3f4-eb801578c584",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "helptext"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "6053d3a2-49e6-4730-9b53-3d83630e7a37",
+      "renditionMap" : {
+        "zh_cn" : "0b6a782b-58b0-4e3e-90a6-4130159ffbac"
+      },
+      "renditions" : [ {
+        "id" : "0b6a782b-58b0-4e3e-90a6-4130159ffbac",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "市场推广基金",
+            "title" : "helptext"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "5b8a16fd-6e80-4300-86e6-b22325b52d87",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-helppage"
+}

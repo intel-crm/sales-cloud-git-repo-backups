@@ -41,6 +41,9 @@
     <columns>
         <field>Opportunity$CRM_Audit_Status__c</field>
     </columns>
+    <columns>
+        <field>Opportunity$Core_Commissionable__c</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Taggings__r$UniTag__Tag__c</column>

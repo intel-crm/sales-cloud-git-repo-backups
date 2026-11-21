@@ -1,0 +1,79 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "7729d97e-d30f-4630-bfd1-9ac2d359cee1",
+  "label" : "Group Detail",
+  "regions" : [ {
+    "id" : "37ca8880-6b53-4f4c-8b8d-ef47fa45aa04",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "engagementManagersOnly" : false,
+        "engagementTabLabel" : "Engagement",
+        "feedTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related"
+      },
+      "componentName" : "forceCommunity:groupRecordHomeTabs",
+      "id" : "e5ba46b3-486c-42d2-83bd-fd78782d57d5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "c3b06797-6eb2-4447-bda4-0fde25572f0a"
+      },
+      "renditions" : [ {
+        "id" : "c3b06797-6eb2-4447-bda4-0fde25572f0a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "detailsTabLabel" : "Details",
+            "engagementTabLabel" : "Engagement",
+            "feedTabLabel" : "Feed",
+            "relatedTabLabel" : "Related"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "0b220559-4479-4f53-9458-9e03787ce877",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "eea74620-8af2-4c69-9cbd-a027d8265471",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "265d6ca0-5e17-4ac3-9558-3f8dfd1a13e6",
+      "renditionMap" : {
+        "zh_cn" : "7fd4478a-377d-43bc-829b-1e88a2350f33"
+      },
+      "renditions" : [ {
+        "id" : "7fd4478a-377d-43bc-829b-1e88a2350f33",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "市场推广基金",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "4ef2aca3-24c0-480e-b76d-439757fed84e",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-0F9"
+}

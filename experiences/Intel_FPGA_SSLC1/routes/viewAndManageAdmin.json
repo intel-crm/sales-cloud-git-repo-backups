@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "068148de-4752-4961-9fcd-6c394dbf1844",
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "configurationTags" : [ ],
+  "devName" : "view_and_manage_admin__c",
+  "id" : "79a5901e-b3a1-49bc-a17b-95ed5089b628",
+  "label" : "View and Manage Admin",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-view-and-manage-admin",
+  "type" : "route",
+  "urlPrefix" : "view-and-manage-admin"
+}

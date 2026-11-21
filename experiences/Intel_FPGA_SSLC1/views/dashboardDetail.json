@@ -1,0 +1,70 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "54f32a7e-e793-4cc0-8e54-b84848497f44",
+  "label" : "Dashboard Detail",
+  "regions" : [ {
+    "id" : "2660d6dd-e7ec-4b07-862d-566a9644fbd2",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "1065",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "cd0c95e7-fc4b-416d-bec3-fea166d12cfc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "302276e5-7ca1-48a2-88b3-c92f64b7959f"
+      },
+      "renditions" : [ {
+        "id" : "302276e5-7ca1-48a2-88b3-c92f64b7959f",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "bc4bcfef-e504-4d75-a90f-e2972cc2e1b3",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "02ffd06b-a669-454c-a4a8-f32ec9b17d19",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "5d355726-40ac-4322-83ff-898fac39d9a9",
+      "renditionMap" : {
+        "zh_cn" : "30cdde35-e608-4ed9-bb58-ba6c11133791"
+      },
+      "renditions" : [ {
+        "id" : "30cdde35-e608-4ed9-bb58-ba6c11133791",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "市场推广基金",
+            "title" : "{!Record._Object}: {!Record._Title}"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "5e83b845-7cdc-414e-888f-aca41c5696be",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-01Z"
+}

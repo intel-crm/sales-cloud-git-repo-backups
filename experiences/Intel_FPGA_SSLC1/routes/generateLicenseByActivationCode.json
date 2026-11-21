@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "c78eed14-72bb-4799-a8ad-3e2ad1f61fc2",
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "configurationTags" : [ ],
+  "devName" : "generate_license_by_activation_code__c",
+  "id" : "d7b5d923-9b32-4908-bc60-0bebcf54b344",
+  "label" : "generate license by activation code",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-generate-license-by-activation-code",
+  "type" : "route",
+  "urlPrefix" : "generate-license-by-activation-code"
+}

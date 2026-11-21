@@ -1,0 +1,69 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "068148de-4752-4961-9fcd-6c394dbf1844",
+  "label" : "View and Manage Admin",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "d991848a-9037-4a48-b1cd-7eba18377511",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "82704fc3-76b7-434e-be20-fd056f64a910",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "My_Active_Delegate_Admins",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_License_Admin_Delegate__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "761dcd31-f033-4a7b-bb92-94fb1e661c39",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b50ad38e-33fb-47d5-ac36-318c796d7dac",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "025efac2-aeb6-4db2-8500-1e6cfd5cafe7",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "View and Manage Admin"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "6f3bdd40-8f96-4e78-8c40-e9206c7c6d70",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c5a4b9c1-1fbd-4385-ab5a-e60c6a7e1a99",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-view-and-manage-admin"
+}

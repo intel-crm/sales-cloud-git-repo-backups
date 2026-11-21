@@ -1,0 +1,69 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "c2f7fcbf-795b-4b16-9941-1b7a1d5ab04d",
+  "label" : "Renewals Applied",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "8b9ecc31-db67-4f7d-be6e-6c72634371fa",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "1caf2c0e-fa67-4389-b25a-a413339050b2",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "Renewals_Applied",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_License__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "8964a41a-e833-4611-b273-485615bf5b58",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "72d8de4b-f445-4ae2-99e0-913ceb20c757",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "fba14c6b-77f1-47c0-a2e1-0fde60af80d7",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Renewals Applied"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "649cd0ae-5020-4890-9e19-d9991d9f5fb8",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8805ea98-1087-45c3-b400-230dc1f4943b",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-renewals-applied"
+}

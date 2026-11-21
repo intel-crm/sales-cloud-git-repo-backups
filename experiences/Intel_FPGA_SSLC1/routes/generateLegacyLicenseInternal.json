@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "a76e72b9-7240-4e3c-9341-2ba29f43dd98",
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "configurationTags" : [ ],
+  "devName" : "Generate_legacy_license_internal__c",
+  "id" : "bb6232ce-d5c0-465c-872a-93ea3fdd5587",
+  "label" : "Generate legacy license internal",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-generate-legacy-license-internal",
+  "type" : "route",
+  "urlPrefix" : "generate-legacy-license-internal"
+}

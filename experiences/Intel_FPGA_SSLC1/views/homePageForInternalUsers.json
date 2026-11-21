@@ -1,0 +1,70 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsTwoCol66Layout",
+  "dataProviders" : [ ],
+  "id" : "d57903f6-9ff2-4b85-bf23-e890b76e4051",
+  "label" : "Home page for Internal Users",
+  "regions" : [ {
+    "id" : "600bc5b0-53ed-42d8-b0f6-f3d2a49c853e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_SSLCHomePageHeading",
+      "id" : "44b746af-2a0e-4bac-b193-baa2826d68a5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "462f7a16-972d-4320-8e50-10a96e6f7171",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_SSLCHomePageGIF",
+      "id" : "869192c7-96e5-422b-a91e-00e892a94cde",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6a4d698c-2bea-4b2c-8ed2-301e7642f77c",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "26c0d7ab-0e0a-4247-a33a-3b4078933a08",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "b935e997-bec2-49fb-a482-26c25934eee1",
+      "renditionMap" : {
+        "zh_cn" : "c117814d-0a57-42b9-8089-ef9c04c1656e"
+      },
+      "renditions" : [ {
+        "id" : "c117814d-0a57-42b9-8089-ef9c04c1656e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "市场推广基金",
+            "title" : "Home"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "3f32eff7-9c07-4917-94fd-184201f19903",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "home"
+}

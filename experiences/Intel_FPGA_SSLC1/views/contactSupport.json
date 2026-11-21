@@ -1,0 +1,137 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsTwoCol66Layout",
+  "dataProviders" : [ ],
+  "id" : "55eee116-bb46-4458-9c82-9973a01b0ed5",
+  "label" : "Contact Support",
+  "regions" : [ {
+    "id" : "9c3ead90-0783-4ada-870d-d2081e8f83fd",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allowAttachments" : true,
+        "attachmentLabel" : "Upload File",
+        "buttonAlignment" : "center",
+        "buttonBgColor" : "",
+        "buttonBgHoverColor" : "",
+        "buttonBorderColor" : "",
+        "buttonMaxWidth" : "",
+        "buttonRadius" : 0,
+        "buttonTextColor" : "",
+        "buttonTextHoverColor" : "",
+        "callToAction" : false,
+        "callToActionButtonText" : "",
+        "callToActionText" : "",
+        "callToActionUrl" : "",
+        "confirmationSubtext" : "We’ll get back to you soon.",
+        "confirmationText" : "Your case was created.",
+        "guestQuickActionName" : "Select or configure a global action",
+        "headerSubtitle" : "Tell us how we can help.",
+        "headerTitle" : "Contact Customer Support",
+        "quickActionName" : "",
+        "requestSummaryText" : "Case summary"
+      },
+      "componentName" : "forceCommunity:contactSupportForm",
+      "id" : "3d5fba49-3d14-4bf8-9da2-a549c7616642",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "0aac3994-b663-43fb-96c5-843f5de761ed"
+      },
+      "renditions" : [ {
+        "id" : "0aac3994-b663-43fb-96c5-843f5de761ed",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "callToActionButtonText" : "市场推广基金",
+            "callToActionText" : "市场推广基金",
+            "confirmationSubtext" : "We’ll get back to you soon.",
+            "confirmationText" : "Your case was created.",
+            "headerSubtitle" : "Tell us how we can help.",
+            "headerTitle" : "Contact Customer Support",
+            "requestSummaryText" : "Case summary"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "bf2c28b1-ccfb-4241-ab11-79298d18fdfe",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "askConfirmationQuestion" : true,
+        "confirmationMessageLabel" : "Got it!",
+        "deflectionSubtitle" : "Find what you need here.",
+        "deflectionTitle" : "Need Answers Fast?",
+        "firstQuestion" : "Did this content solve your issue?",
+        "maxResults" : 6,
+        "measureDeflection" : true,
+        "redirectUrl" : "",
+        "secondQuestion" : "Stop creating your case?",
+        "showArticles" : true,
+        "showDiscussions" : false,
+        "topicId" : ""
+      },
+      "componentName" : "forceCommunity:caseDeflection",
+      "id" : "80b82a8d-4960-4211-a942-eb595fe87a63",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "zh_cn" : "f4139c18-c37a-42fc-9941-76a157c896fd"
+      },
+      "renditions" : [ {
+        "id" : "f4139c18-c37a-42fc-9941-76a157c896fd",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "confirmationMessageLabel" : "Got it!",
+            "deflectionSubtitle" : "Find what you need here.",
+            "deflectionTitle" : "Need Answers Fast?",
+            "firstQuestion" : "Did this content solve your issue?",
+            "secondQuestion" : "Stop creating your case?"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "c5dad4ac-2fc6-47dd-b410-a28a850c640d",
+    "regionName" : "sidebar",
+    "type" : "region"
+  }, {
+    "id" : "beb84ff4-de36-49a2-8be4-7789b8780d9c",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Contact Support"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "65666a2c-76a8-4a5b-975d-70290905152b",
+      "renditionMap" : {
+        "zh_cn" : "b44509b9-443d-45a4-8bcf-c11a892ea261"
+      },
+      "renditions" : [ {
+        "id" : "b44509b9-443d-45a4-8bcf-c11a892ea261",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "description" : "市场推广基金",
+            "title" : "Contact Support"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
+    "id" : "a8c21f5a-5549-428c-82ad-b452956f8dbd",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "contactsupport"
+}

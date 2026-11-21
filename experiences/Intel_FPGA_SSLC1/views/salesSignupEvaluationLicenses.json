@@ -1,0 +1,54 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "75fd060a-4261-4317-abaf-897706b20156",
+  "label" : "Sales_signup_evaluationLicenses",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "65e0c306-880f-4363-b9fb-e0e995a6b027",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c48c48ed-cc00-4ef4-a50a-f8ffecff35f1",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_FreeLicenseParent",
+      "id" : "b6cf4341-537d-4011-935c-1fbf8e3a9894",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "27dc0967-17e2-49f4-82a9-0ada4931ab2d",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "8076fb4f-e668-44d1-aa71-62da90f803cf",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Sales_signup_evaluationLicenses"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "7d392252-653a-4310-b40a-ec84f49d5543",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7c7ba559-11c6-4fad-b122-4dae983a8c49",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-sales-signup-evaluationlicenses"
+}

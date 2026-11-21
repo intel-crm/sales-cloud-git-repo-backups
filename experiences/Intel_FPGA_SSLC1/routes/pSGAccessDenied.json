@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "4aae0ded-3403-4b2d-8132-07d26a968866",
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "configurationTags" : [ ],
+  "devName" : "psg_access_denied__c",
+  "id" : "4ad943aa-e2ad-4ee6-aec2-1da9e177f4f1",
+  "label" : "PSG Access Denied",
+  "pageAccess" : "Public",
+  "routeType" : "custom-psg-access-denied",
+  "type" : "route",
+  "urlPrefix" : "psg-access-denied"
+}

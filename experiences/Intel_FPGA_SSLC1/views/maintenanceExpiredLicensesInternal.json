@@ -1,0 +1,69 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "b063c9b6-65c0-4308-a0ce-a7bcad9a8bea",
+  "label" : "Maintenance expired licenses internal",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "67c13b31-85fe-4273-89b9-33a7d0d20d2a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "77bc87db-3a5e-4091-8436-054369457edb",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "Sales_Inactive_License_Expiration_External",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_License__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "969bf605-1f58-4ab2-a479-ddc0ac22aced",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c3eea81e-4ad3-46ca-8f5e-e072bcff9735",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "50330246-eef4-4685-89a2-4f1b848db02e",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Maintenance expired licenses internal"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "20c242d9-ffb6-4f9f-a67e-a87faec906cd",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e058cd79-94a9-4db8-812c-1393ef1007e4",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-maintenance-expired-licenses-internal"
+}

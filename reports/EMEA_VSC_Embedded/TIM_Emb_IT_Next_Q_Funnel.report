@@ -105,8 +105,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-20</endDate>
+        <endDate>2026-11-21</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-20</startDate>
+        <startDate>2026-11-21</startDate>
     </timeFrameFilter>
 </Report>

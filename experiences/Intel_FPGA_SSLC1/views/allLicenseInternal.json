@@ -1,0 +1,69 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "f6cc1729-aec8-4f8e-b3b4-81c6bd37d5dd",
+  "label" : "All license internal",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "6b223868-81a6-4808-91b5-353e5da5d242",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a074f127-94b8-4ab5-965b-db5e460e424e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "All_Licenses_Ext",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_License__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "c831251b-b15f-4270-b6c6-cae2c9c86e79",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8901a2df-1bcd-444c-9cd0-1a75d37f6ad6",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "c9c3fed9-1f74-4a94-9e80-6ae2dfd21ac0",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "All license internal"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1b3b9b94-a6db-4fa0-9684-2056869c5e2b",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8ad9a37e-6d2c-4c5a-b6b1-a94e0af73474",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-all-license-internal"
+}

@@ -1,0 +1,69 @@
+{
+  "appPageId" : "6b36c665-0609-49d0-9746-033feed642b2",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "1781d2c4-2c3e-44ca-b4b2-4541e2d7cc55",
+  "label" : "Active maintenance licenses internal",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:sales_NonEventFeedback",
+      "id" : "b4efe0b3-2eef-453f-b8bb-12c27edddcb5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6d2c74b8-a900-4667-82a6-cca969515ad3",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "Active_Maintenance_External",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "Sales_License__c",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "8f0f5d10-4fbb-4eaf-a349-a6848472264e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "707cd98f-1d97-4e9c-94e9-c7ba08f1ece9",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "d034333b-9f71-4da8-9da3-bf756ed80a84",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Active maintenance licenses internal"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "a3873365-228d-4f32-8cf6-d21ac30b9e85",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8a4c5fa3-e54d-416f-957e-1c3e801c33bb",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-active-maintenance-licenses-internal"
+}
