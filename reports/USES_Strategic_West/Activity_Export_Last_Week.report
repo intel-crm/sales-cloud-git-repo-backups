@@ -139,6 +139,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_YESTERDAY</interval>
+        <interval>THIS_FISCALWEEK</interval>
     </timeFrameFilter>
 </Report>

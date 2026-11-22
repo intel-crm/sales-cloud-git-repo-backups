@@ -154,6 +154,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>NEXT_FISCALPERIOD</interval>
+        <endDate>2026-11-22</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-22</startDate>
     </timeFrameFilter>
 </Report>
