@@ -5,10 +5,6 @@
     <deployed>true</deployed>
     <description>Enables reports for Cvent event nominations for Contacts (not for Leads)</description>
     <join>
-        <join>
-            <outerJoin>false</outerJoin>
-            <relationship>CventEvents__Nominations__r</relationship>
-        </join>
         <outerJoin>false</outerJoin>
         <relationship>Contacts</relationship>
     </join>
@@ -1499,11 +1495,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__ContactStub__c</field>
-            <table>Account.Contacts</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Jigsaw</field>
             <table>Account.Contacts</table>
         </columns>
@@ -2083,113 +2074,5 @@
             <table>Account.Contacts</table>
         </columns>
         <masterLabel>Contacts</masterLabel>
-    </sections>
-    <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__ApproverComment__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Attendee__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__AttendeeName__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedDate</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__CurrentApproverName__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__CurrentApprover__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__EventTitle__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Event__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__InvitationConfigurationStub__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__InvitationConfigurationName__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedBy</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedDate</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Lead__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <field>Name</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Requester__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Comment__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__SendInviteOnApprove__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__SendInviteOnBehalfOfRequester__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Status__c</field>
-            <table>Account.Contacts.CventEvents__Nominations__r</table>
-        </columns>
-        <masterLabel>Nominations</masterLabel>
     </sections>
 </ReportType>

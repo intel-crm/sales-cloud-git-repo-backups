@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
-    <clientCredentialsFlowUser>integration.varicentcommissions@intel.com.crm</clientCredentialsFlowUser>
+    <clientCredentialsFlowUser>integration.varicentcommissions@intel.com.crm.crmstage9</clientCredentialsFlowUser>
     <externalClientApplication>Symon_AI</externalClientApplication>
     <ipRelaxationPolicyType>Enforce</ipRelaxationPolicyType>
     <isClientCredentialsFlowEnabled>true</isClientCredentialsFlowEnabled>
@@ -12,5 +12,5 @@
     <refreshTokenValidityPeriod>365</refreshTokenValidityPeriod>
     <refreshTokenValidityUnit>Days</refreshTokenValidityUnit>
     <requiredSessionLevel>STANDARD</requiredSessionLevel>
-    <startUrl>https://intel.lightning.force.com/</startUrl>
+    <startUrl>https://intel--crmstage9.sandbox.lightning.force.com</startUrl>
 </ExtlClntAppOauthConfigurablePolicies>

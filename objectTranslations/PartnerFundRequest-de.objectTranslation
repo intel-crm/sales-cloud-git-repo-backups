@@ -1617,7 +1617,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
-        <label>Client</label>
+        <label>Client-Co-Marketing-Fonds</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>
@@ -1632,7 +1632,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- DCF Program Record Type --></description>
-        <label>Datacenter</label>
+        <label>Datacenter-Co-Marketing-Fonds</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>

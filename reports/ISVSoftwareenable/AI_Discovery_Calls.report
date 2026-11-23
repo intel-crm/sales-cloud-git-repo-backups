@@ -60,12 +60,6 @@
     <columns>
         <field>ACCOWNER</field>
     </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_ID</field>
-    </columns>
     <customDetailFormulas>
         <calculatedFormula>IF(ASSIGNED = CREATED_BY,&quot;Unique&quot;, &quot;&quot;)</calculatedFormula>
         <dataType>Text</dataType>
@@ -86,7 +80,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Mario DiSanza,Umair Tariq,Ashton Porter,Christel Thompson,Derek Gaines,Jorge Gomez Oliveros,Sameera Kandewatte,Rodney Dahleen,Matthew House,Mark Wier,Ajaysinh Mansinh,Alfredo Diez,Chloe Hui,Chris Smart,Colby Dumas,Eddie Wong,Ellen Farber,George Kondos,Gresa Heta,Jackson Hubbard,Justin Manker,Kelly Maw,Khondoker Mujtaba,Kristian Boyadzhiev,Kristiyan Kolev,Maneesh Durgaiah,Monica Rangelova,Nailesh Chikkamath,Naveen Kumar,Nischitha TS,Rakshan Kunjar,Robert McLoughlin,Russell Cheng,Samanth R,Shantanu Priyadarshi,Sonali Singh,Syed Amir Ali,Vladimir Isikiyski,XIN FAN</value>
+            <value>Ashton Porter,Christel Thompson,Derek Gaines,Jorge Gomez Oliveros,Sameera Kandewatte,Rodney Dahleen,Matthew House,Mark Wier,Ajaysinh Mansinh,Alfredo Diez,Chloe Hui,Chris Smart,Colby Dumas,Eddie Wong,Ellen Farber,George Kondos,Gresa Heta,Jackson Hubbard,Justin Manker,Kelly Maw,Khondoker Mujtaba,Kristian Boyadzhiev,Kristiyan Kolev,Maneesh Durgaiah,Monica Rangelova,Nailesh Chikkamath,Naveen Kumar,Nischitha TS,Rakshan Kunjar,Robert McLoughlin,Russell Cheng,Samanth R,Shantanu Priyadarshi,Sonali Singh,Syed Amir Ali,Vladimir Isikiyski,XIN FAN</value>
         </criteriaItems>
         <criteriaItems>
             <column>Activity.Core_Subtype_of_Activity__c</column>
@@ -120,7 +114,7 @@
         <field>CREATED_BY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>!!AI Discovery Calls</name>
+    <name>AI Discovery Calls</name>
     <params>
         <name>closed</name>
         <value>all</value>

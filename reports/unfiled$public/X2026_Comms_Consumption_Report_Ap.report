@@ -116,7 +116,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>includes</operator>
-            <value>Comm Service Provider (CoSP),Telco/Service Provider,Service Provider,Solution Integration (SI/ITO/bVAR),Independent Software Vendor (ISV)</value>
+            <value>Comm Service Provider (CoSP),Telco/Service Provider,Service Provider,Solution Integration (SI/ITO/bVAR)</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approval_Status__c</column>
@@ -144,7 +144,28 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>America Movil,AT&amp;T,BCE,CenturyLink,Charter Communications,Comcast,Dish Network,Lumen,Telecom Italia,Telefonica,Rogers Communication,SHAW COMMUNICATIONS,T-Mobile,Telus,Verizon</value>
+            <value>America Movil,AT&amp;T,BCE,CenturyLink,Charter Communications,Comcast,Dish Network,Lumen,Telecom Italia,Telefonica,Rogers Communication,SHAW COMMUNICATIONS,T-Mobile,Telus,Verizon,Tech Mahindra,KGPCo,Mavenir</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
@@ -161,7 +182,7 @@
         <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2026-Comms Consumption Report</name>
+    <name>2026-Comms Consumption Report Ap</name>
     <params>
         <name>terr</name>
         <value>all</value>

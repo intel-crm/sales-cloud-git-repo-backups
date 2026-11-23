@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <commaSeparatedOauthScopes>Api, Web, RefreshToken</commaSeparatedOauthScopes>
+    <externalClientApplication>SFDX_Stage9_Deployment_Actions</externalClientApplication>
+    <isFirstPartyAppEnabled>false</isFirstPartyAppEnabled>
+    <label>SFDX_Stage9_Deployment_Actions_oauth</label>
+    <oauthLink>00DRL00000KHFn7:888RL000000fXHl</oauthLink>
+</ExtlClntAppOauthSettings>

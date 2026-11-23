@@ -453,7 +453,7 @@ Modification Log :
                         }
                     	/*End of code by Tejaswini */ 
 
-                    }
+                    }//   mapUserIdGroupId.put(user.Id, groupId);
                 }
                 
             }

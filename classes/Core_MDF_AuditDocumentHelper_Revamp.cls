@@ -227,7 +227,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
                                             Core_MDF_Manaul_Audit_Staging_Ind__c,Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c, 
                                             Core_MDF_Criteria_Hold_Ind__c, Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c, 
                                             Core_MDF_VAT_Hold_Ind__c,Core_MDF_Claim_Previous_Status__c, Core_MDF_Bank_Doc_Hold_Ind__c, Core_MDF_Eligible_for_PIC__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Program__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
-                                            Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c, Core_MDF_Activity_Types__c, CreatedDate,Request.Core_MDF_Is_Outcome_Based_Ind__c
+                                            Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c, Core_MDF_Activity_Types__c, CreatedDate,Request.Core_MDF_Is_Outcome_Based_Ind__c, Request.Core_MDF_Activity_Description__c, Request.Core_MDF_POP_Requirements_txt__c, Request.Core_MDF_Attribution_Requirements_txt__c, Amount
                                             FROM PartnerFundClaim 
                                             WHERE Id =:recId];//query updated for AI PIC
                 }//ATHR Fix- Deeply nested if                    
@@ -531,7 +531,7 @@ public without sharing class Core_MDF_AuditDocumentHelper_Revamp {
         try {
             pfc = [select Id, Core_MDF_Status__c, Core_MDF_Budget_Type_Nm__c, Core_MDF_Budget_Type_Options_Nm__c, Core_MDF_Program__c, Core_MDF_OutcomeBased_Ind__c, Core_MDF_3rd_Party_POP_Doc_Required_Ind__c,
                     Core_MDF_Ad_Run_Start_Date__c, Core_MDF_Ad_Run_End_Date__c, Core_MDF_Reimbursable_TransactionAmt_Loc__c, Core_MDF_Total_Invoice_Amount_Local__c, Core_MDF_Currency__c,
-                    Core_MDF_Activity_Types__c,createdDate, Request.Core_MDF_Is_Outcome_Based_Ind__c from PartnerFundClaim where Id =: claimId limit 1];//query updated for AI PIC
+                    Core_MDF_Activity_Types__c,createdDate, Request.Core_MDF_Is_Outcome_Based_Ind__c, request.Core_MDF_Activity_Description__c, request.Core_MDF_POP_Requirements_txt__c, request.Core_MDF_Attribution_Requirements_txt__c, Amount from PartnerFundClaim where Id =: claimId limit 1];//query updated for AI PIC
 
             if(pfc.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_Resubmission_Required || pfc.Core_MDF_Status__c == Label.Core_MDF_Claim_Status_Pending_Documents || pfc.Core_MDF_Status__c == Core_MDF_CCP_ConstantClass.PENDING_ACCOUNT_MANAGER_CLARIFICATION) {
 

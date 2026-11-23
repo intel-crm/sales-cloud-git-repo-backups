@@ -545,6 +545,7 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
         <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>{000000}</displayFormat>
@@ -999,6 +1000,137 @@ IF ( INCLUDES ( Core_MDF_Payment_Nature_nm__c  , &quot;Contra Vistex&quot; ), &q
             <values>
                 <fullName>CoGTM</fullName>
                 <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Status_Txt__c</picklist>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scheduled</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Subgeo_Txt__c</picklist>
+            <values>
+                <fullName>LAR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NAR</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Core_MDF_Channel_MDF</fullName>
+        <active>true</active>
+        <label>Channel MDF</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Txt__c</picklist>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
+            <values>
+                <fullName>Client Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Geo_Txt__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Nature_nm__c</picklist>
+            <values>
+                <fullName>Contra Revenue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Expense</fullName>
+                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>

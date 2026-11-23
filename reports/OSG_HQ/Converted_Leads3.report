@@ -7,9 +7,6 @@
         <field>Lead.Core_Lead_State__c</field>
     </columns>
     <columns>
-        <field>OPP_NAME</field>
-    </columns>
-    <columns>
         <field>RECORDTYPE</field>
     </columns>
     <columns>
@@ -61,6 +58,9 @@
     </columns>
     <columns>
         <field>CONVERTED_DATE</field>
+    </columns>
+    <columns>
+        <field>OPP_NAME</field>
     </columns>
     <columns>
         <field>OPP_ACCT_NAME</field>

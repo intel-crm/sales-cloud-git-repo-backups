@@ -10,7 +10,7 @@
         </sharedTo>
         <criteriaItems>
             <field>Core_MDF_Group_Name__c</field>
-            <operation>notEqual</operation>
+            <operation>equals</operation>
             <value></value>
         </criteriaItems>
         <criteriaItems>

@@ -296,6 +296,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Claim Cancellation Reason --></label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>Nota de texto relacionada à solicitação</help>
         <label>Comentários sobre a solicitação</label>
         <name>Core_MDF_Claim_Comments__c</name>
@@ -1491,8 +1495,18 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
     <gender>Feminine</gender>
     <recordTypes>
         <description><!-- Channel MDF Program Record Type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Channel MDF Program Record Type --></description>
         <label>Canal MDF baseado em conta</label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record is used for Channel MDF Proposal Based claims --></description>
+        <label>Canal MDF baseado em proposta</label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
@@ -1580,11 +1594,11 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
         <name>Core_MDF_EndDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Insira uma data de término de execução que esteja no intervalo de datas estimado da campanha baseada em resultados.</errorMessage>
+        <errorMessage><!-- Please enter an Execution End Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
         <name>Core_MDF_EndDateValidation_OutcomeBased</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Você não pode usar esta Campanha baseada em resultados, pois a conta sobre a campanha baseada em resultados é inativa</errorMessage>
+        <errorMessage><!-- You cannot use this Outcome-Based Campaign as the account over the Outcome-Based Campaign is inactive --></errorMessage>
         <name>Core_MDF_InactiveAccountValidation_Outco</name>
     </validationRules>
     <validationRules>
@@ -1616,7 +1630,7 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
         <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Não é possível ser criada uma solicitação em uma campanha baseada em resultados com status fechado/cancelado.</errorMessage>
+        <errorMessage><!-- Claim cannot be created on an Outcome-Based Campaign in Closed/Cancelled status. --></errorMessage>
         <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
     </validationRules>
     <validationRules>
@@ -1632,7 +1646,7 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
         <name>Core_MDF_Restrict_Claim_Creation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>A criação de solicitações está bloqueada devido à campanha baseada em resultados &quot;Em andamento&quot; que precisa de aprovação.</errorMessage>
+        <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Outcome-Based Campaign needing approval. --></errorMessage>
         <name>Core_MDF_Restrict_Claim_Creation_Outcome</name>
     </validationRules>
     <validationRules>
@@ -1664,7 +1678,7 @@ Liquide e, então, seja pago — Melhor para minimizar a recuperação pós-paga
         <name>Core_MDF_StartDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Insira uma data de início de execução que esteja no intervalo de datas estimado da campanha baseada em resultados.</errorMessage>
+        <errorMessage><!-- Please enter an Execution Start Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
         <name>Core_MDF_StartDateValidation_Outcome</name>
     </validationRules>
     <validationRules>

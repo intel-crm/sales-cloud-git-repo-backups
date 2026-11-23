@@ -19,6 +19,9 @@
         <field>FK_NAME</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Concatenated_Application_workload__c</field>
+    </columns>
+    <columns>
         <field>Opportunity_Solution_Area__c.Core_Application_Workload__c</field>
     </columns>
     <columns>
@@ -70,7 +73,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>India</value>
+            <value>APJ,India</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
@@ -84,7 +87,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Sell-to</value>
+            <value>Deal: Partner Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -113,8 +116,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

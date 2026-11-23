@@ -17,10 +17,6 @@
         <name>Groove_New_Opportunity</name>
     </fieldSets>
     <fieldSets>
-        <label><!-- Mass Assign to Partner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
-    </fieldSets>
-    <fieldSets>
         <label><!-- Opportunity VBS Field Set --></label>
         <name>OPTY_VBS_FieldSet</name>
     </fieldSets>
@@ -10450,20 +10446,6 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <name>Core_vPro__c</name>
     </fields>
     <fields>
-        <label><!-- Attendee --></label>
-        <name>CventEvents__Attendee__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Cvent Event --></label>
-        <name>CventEvents__EventTitle__c</name>
-    </fields>
-    <fields>
-        <label><!-- Cvent Event Number --></label>
-        <name>CventEvents__Event__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Decision Date --></label>
         <name>Decision_Date__c</name>
     </fields>
@@ -10481,48 +10463,6 @@ SOAR4 Contract Not Signed- Customer does not agree to deal. --></help>
         <help><!-- The First Article of Deployment (FAD) is an operational deployment of a solution in a working environment that has a higher implementation value than a lab-based experiment which is indicative of a POC. --></help>
         <label><!-- FAD Start Date --></label>
         <name>FAD_Start_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Date Assigned to Partner --></label>
-        <name>ImpartnerPRM__DateAssignedToPartner__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Deal Registration --></label>
-        <name>ImpartnerPRM__IsDealRegistration__c</name>
-    </fields>
-    <fields>
-        <label><!-- Notify Partner --></label>
-        <name>ImpartnerPRM__NotifyPartner__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Account --></label>
-        <name>ImpartnerPRM__PartnerAccount__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Contact --></label>
-        <name>ImpartnerPRM__PartnerContact__c</name>
-        <relationshipLabel><!-- Opportunities --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Last Modified Date --></label>
-        <name>ImpartnerPRM__PartnerLastModifiedDate__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Opportunity Acceptance --></label>
-        <name>ImpartnerPRM__PartnerOpportunityAcceptance__c</name>
-        <picklistValues>
-            <masterLabel>Accepted</masterLabel>
-            <translation><!-- Accepted --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending</masterLabel>
-            <translation><!-- Pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Rejected</masterLabel>
-            <translation><!-- Rejected --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <help><!-- • Core: Ecosystem-led Transactional selling motions (e.g. Ecosystem-led end-customer engagement, Run-rate or Repeat silicon and accelerator business)
@@ -11136,10 +11076,6 @@ This is triggered by Click on &quot;Submit for PW Approval&quot;. --></errorMess
     <webLinks>
         <label><!-- Core_Sales_Support --></label>
         <name>Core_Sales_Support</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- MassAssignToPartner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
     </webLinks>
     <webLinks>
         <label>Vermögenswerte ändern</label>

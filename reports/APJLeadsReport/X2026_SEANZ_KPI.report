@@ -30,9 +30,6 @@
         <field>FK_OPP_OWNER_MANAGER</field>
     </columns>
     <columns>
-        <field>FK_$Account.Core_Account_Owner_Preview__c</field>
-    </columns>
-    <columns>
         <field>FK_$Account.Core_Account_Owner__c</field>
     </columns>
     <columns>
@@ -63,10 +60,6 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Oppty_KPI_New__c.Core_KPI_Volume__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Oppty_KPI_New__c.Core_KPI_Quantity__c</field>
     </columns>
     <columns>
@@ -93,18 +86,6 @@
     </columns>
     <columns>
         <field>FK_ACC_ADDR1_COUNTRY_CODE</field>
-    </columns>
-    <columns>
-        <field>FK_$Account.Core_Account_Level_Preview__c</field>
-    </columns>
-    <columns>
-        <field>Core_Oppty_KPI_New__c.Core_Opp_KPI_Type__c</field>
-    </columns>
-    <columns>
-        <field>Core_Oppty_KPI_New__c.Core_Opp_KPI_Product__c</field>
-    </columns>
-    <columns>
-        <field>FK_$Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <filter>
         <criteriaItems>

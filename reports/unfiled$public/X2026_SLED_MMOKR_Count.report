@@ -29,34 +29,13 @@
     </columns>
     <description>This shows the activities that track activities of o	#CustomerOKR and #ExecutiveOKR combined.  Being in front of customers and partners will still be critical</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+        <booleanFilter>1</booleanFilter>
         <criteriaItems>
             <column>SUBJECT</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>#MMOKR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/1/2026 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>lessThan</operator>
-            <value>4/1/2026 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ASSIGNED</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>John Haag IV,Alastair Duncan,Alan Rose,David Minnaar,Hugues Morin,Michael OBrien,Katherine Heidelman,Rick Lisa,Burnie Legette,David Richard,Darren Pulsipher,John Haag,Ricardo Dutton Jr.,Jason Dunn-Potter,Christina Daubeneck</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

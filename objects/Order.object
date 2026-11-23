@@ -240,7 +240,7 @@
     <fields>
         <fullName>AccountId</fullName>
         <lookupFilter>
-            <active>false</active>
+            <active>true</active>
             <errorMessage>On Account Field on Order, For Partner/Evaluation License Order, you can use only an Active Intel Account &amp; For other order types, Please check if the Sold To(Stocking) / End Customer(Non-Stocking) Account&apos;s Parent Account is an Active Intel Account.</errorMessage>
             <filterItems>
                 <field>Account.RecordTypeId</field>
@@ -697,7 +697,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <label>End Customer Account</label>
         <lookupFilter>
-            <active>false</active>
+            <active>true</active>
             <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
             <errorMessage>Please select a valid End Customer Account.</errorMessage>
             <filterItems>
@@ -1267,7 +1267,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Ship To Account</label>
         <lookupFilter>
-            <active>false</active>
+            <active>true</active>
             <errorMessage>Please select a valid Ship To Account.</errorMessage>
             <filterItems>
                 <field>Account.RecordTypeId</field>
@@ -1437,7 +1437,7 @@
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Sold To Account</label>
         <lookupFilter>
-            <active>false</active>
+            <active>true</active>
             <errorMessage>Please select a valid Sold To Account.</errorMessage>
             <filterItems>
                 <field>Account.RecordTypeId</field>
@@ -1616,105 +1616,6 @@
         <columns>CREATEDBY_USER.ALIAS</columns>
         <filterScope>Everything</filterScope>
         <label>All Orders</label>
-    </listViews>
-    <listViews>
-        <fullName>All_Commercial_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Licensed Tool Order</value>
-        </filters>
-        <label>All Commercial Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All_Non_commercial_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Non Commercial Order</value>
-        </filters>
-        <label>All Non-commercial Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All_Sample_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>ORDERS.TYPE</field>
-            <operation>equals</operation>
-            <value>Sample Order</value>
-        </filters>
-        <label>All Sample Orders</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>My_Orders</fullName>
-        <columns>ORDERS.ORDER_NUMBER</columns>
-        <columns>ORDERS.STATUS</columns>
-        <columns>Sales_Sold_To_Account__c</columns>
-        <columns>Sales_Ship_To_Account__c</columns>
-        <columns>Sales_End_Customer_Account__c</columns>
-        <columns>ORDERS.TYPE</columns>
-        <columns>Sales_PO_Number_Txt__c</columns>
-        <columns>Sales_Req_Ship_Date_Dt__c</columns>
-        <columns>ORDERS.TOTAL_AMOUNT</columns>
-        <columns>Sales_ERP_SO_Txt__c</columns>
-        <columns>Sales_Order_Reason__c</columns>
-        <columns>SBQQ__Quote__c</columns>
-        <columns>Sales_Corporate_Order__c</columns>
-        <columns>ORDERS.CREATED_DATE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <filterScope>Mine</filterScope>
-        <label>My Orders</label>
-        <language>en_US</language>
     </listViews>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
     <recordTypes>
@@ -4294,7 +4195,7 @@ OR(NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)),Sales_Is_Verified__
     </validationRules>
     <validationRules>
         <fullName>Core_PSG_Valid_Req_Ship_Date_On_Order</fullName>
-        <active>false</active>
+        <active>true</active>
         <errorConditionFormula>AND(Sales_Req_Ship_Date_Dt__c    &lt;   TODAY(),
 NOT( ISPICKVAL(Sales_status__c	, &apos;Order Cancelled&apos;) ),
 OR( Not( Sales_Is_Verified__c ) , NOT( ISPICKVAL( PRIORVALUE( Status ) , &apos;Activated&apos;) )),
@@ -4433,7 +4334,7 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
     </validationRules>
     <validationRules>
         <fullName>Sales_Amend_Non_Commercial_Order_SubType</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>User can set  the Amend non Commercial order sub type only if the order has quote and Quotes&apos;s type is amendment.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
 	AND(
@@ -4513,7 +4414,7 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;))
     </validationRules>
     <validationRules>
         <fullName>Sales_EC_Validation_Internal_Account</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>If the sold to account is an internal account (Disti Channel 04) and order reason is non-stocking, you can use only Internal Ship to accounts as an end customer account</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
 ISPICKVAL( Sales_Order_Reason__c , &apos;Non Stocking Order&apos;),
@@ -4530,7 +4431,7 @@ OR(ISPICKVAL(Status,&apos;Draft&apos;),Sales_Is_Verified__c=true,NOT(ISPICKVAL( 
     </validationRules>
     <validationRules>
         <fullName>Sales_Mandatory_Accounts_For_Order</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>For License ,Sample , Non-commercial(FPGA University, Corporate) all 3 accounts (sold to ,ship to , end customer ) are mandatory.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
 AND(
@@ -4615,7 +4516,7 @@ CONTAINS(Sales_PO_Number_Txt__c, &apos;&amp;&apos;)
     </validationRules>
     <validationRules>
         <fullName>Sales_PSG_Order_Reason</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>You cannot have Stocking Order Reason for Non Commercial order type.</description>
         <errorConditionFormula>IF( $Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, false, IF( ISPICKVAL(Type,&quot;Non Commercial Order&quot;) 
 &amp;&amp; ISPICKVAL( Sales_Order_Reason__c , &quot;Stocking Order&quot;), true, false))</errorConditionFormula>
@@ -4624,7 +4525,7 @@ CONTAINS(Sales_PO_Number_Txt__c, &apos;&amp;&apos;)
     </validationRules>
     <validationRules>
         <fullName>Sales_Quote_Mandatory</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Quote is mandatory for corporate orders.</description>
         <errorConditionFormula>IF( $Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False,
 AND(
@@ -4644,7 +4545,7 @@ ISBLANK(Sales_Cancelled_Quote_No__c )
     </validationRules>
     <validationRules>
         <fullName>Sales_RestrictFields_Validation</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Cannot edit Stage, Order start date, Account and also cannot edit Order Products on Orders that are Cancelled And in SAP Resubmission In Progress.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, False, AND(
 OR( AND(ISPICKVAL( PRIORVALUE(Sales_status__c) , &apos;SAP Resubmission In Progress&apos;),Sales_Is_Verified__c = False), ISPICKVAL( PRIORVALUE(Sales_status__c) , &apos;Order Cancelled&apos;) ),
@@ -4688,7 +4589,7 @@ NOT(ISPICKVAL( PRIORVALUE(Status),&apos;Activated&apos;)))
     </validationRules>
     <validationRules>
         <fullName>Sales_Validation_Shipping_Instruction</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>The Shipping instruction of sample order should be defaulted from the ship to account but should be editable.</description>
         <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.Skip_ValidationRule_Order_Status__c, FALSE,
 AND(
@@ -4711,7 +4612,7 @@ NOT(ISPICKVAL( Status,&apos;Activated&apos;))
     </validationRules>
     <validationRules>
         <fullName>Sales_cancelled_reason</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Cannot add Cancelled reason if order is not cancelled.</description>
         <errorConditionFormula>AND(
 ISPICKVAL(  Status  , &apos;Draft&apos;),

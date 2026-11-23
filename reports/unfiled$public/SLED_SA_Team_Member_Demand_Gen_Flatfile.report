@@ -61,7 +61,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Team Member (100%),Team member (100% commitment over the lifetime of the opportunity),Contributor (50%),Contributor (33.3%),Viewer (0%)</value>
+            <value>Team Member (100%),Contributor (50%),Contributor (33.3%),Viewer (0%)</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

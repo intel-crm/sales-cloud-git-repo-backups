@@ -306,7 +306,7 @@ public class PRM_VXData_Report_Utility_Test {
         PRM_Value_Exchange_Data__c vxDataToAssertBeforeInsert = [Select id,PRM_Training_Credit_Points_Report_Nbr__c,
                                                                  PRM_Training_Credit_Points_Count_Nbr__c 
                                                                  from PRM_Value_Exchange_Data__c where Name='vx3' Limit 1];
-        //System.assertEquals((vxDataToAssertBeforeInsert.PRM_Training_Credit_Points_Count_Nbr__c/3), vxDataToAssertBeforeInsert.PRM_Training_Credit_Points_Report_Nbr__c);
+        System.assertEquals((vxDataToAssertBeforeInsert.PRM_Training_Credit_Points_Count_Nbr__c/3), vxDataToAssertBeforeInsert.PRM_Training_Credit_Points_Report_Nbr__c);
         
         Test.startTest();
         insert vxData;
@@ -315,7 +315,7 @@ public class PRM_VXData_Report_Utility_Test {
                                                                 PRM_Training_Credit_Points_Count_Nbr__c 
                                                                 from PRM_Value_Exchange_Data__c 
                                                                 where Name='New Inserted0' Limit 1];
-        //System.assertEquals((vxDataToAssertAfterInsert.PRM_Training_Credit_Points_Count_Nbr__c/4), vxDataToAssertAfterInsert.PRM_Training_Credit_Points_Report_Nbr__c);
+        System.assertEquals((vxDataToAssertAfterInsert.PRM_Training_Credit_Points_Count_Nbr__c/4), vxDataToAssertAfterInsert.PRM_Training_Credit_Points_Report_Nbr__c);
     }
     
     @isTest
@@ -323,7 +323,7 @@ public class PRM_VXData_Report_Utility_Test {
         PRM_Value_Exchange_Data__c vxData = getVxDataRecord(1)[0];
         insert vxData;
         PRM_Value_Exchange_Data__c vxDataToUpdate = [Select id,PRM_Sales_Calculation_Group_Txt__c,PRM_Sales_Amount_Report_Nbr__c,PRM_Sales_Amount_Nbr__c from PRM_Value_Exchange_Data__c where Name='New Inserted0' Limit 1];
-        //System.assertEquals((vxDataToUpdate.PRM_Sales_Amount_Nbr__c/4), vxDataToUpdate.PRM_Sales_Amount_Report_Nbr__c);
+        System.assertEquals((vxDataToUpdate.PRM_Sales_Amount_Nbr__c/4), vxDataToUpdate.PRM_Sales_Amount_Report_Nbr__c);
         vxDataToUpdate.PRM_Sales_Calculation_Group_Txt__c='Branded';
         Test.startTest();
         update vxDataToUpdate;
@@ -331,7 +331,7 @@ public class PRM_VXData_Report_Utility_Test {
         PRM_Value_Exchange_Data__c vxDataToAssertAfterUpdate = [Select PRM_Sales_Amount_Report_Nbr__c,
                                                                 PRM_Sales_Amount_Nbr__c from PRM_Value_Exchange_Data__c 
                                                                 where Name='New Inserted0' Limit 1];
-        //System.assertEquals((vxDataToAssertAfterUpdate.PRM_Sales_Amount_Nbr__c/1), vxDataToAssertAfterUpdate.PRM_Sales_Amount_Report_Nbr__c);
+        System.assertEquals((vxDataToAssertAfterUpdate.PRM_Sales_Amount_Nbr__c/1), vxDataToAssertAfterUpdate.PRM_Sales_Amount_Report_Nbr__c);
     }
     
     @isTest
@@ -346,7 +346,7 @@ public class PRM_VXData_Report_Utility_Test {
                                                                    PRM_Sales_Amount_Report_Nbr__c 
                                                                    from PRM_Value_Exchange_Data__c 
                                                                    where Name='vx5' Limit 1];
-       // System.assertEquals((vxDataToAssertBeforeDeletion.PRM_Sales_Amount_Nbr__c/4), vxDataToAssertBeforeDeletion.PRM_Sales_Amount_Report_Nbr__c);
+        System.assertEquals((vxDataToAssertBeforeDeletion.PRM_Sales_Amount_Nbr__c/4), vxDataToAssertBeforeDeletion.PRM_Sales_Amount_Report_Nbr__c);
         Test.startTest();
         delete vxDataToDelete;
         Test.stopTest();
@@ -354,7 +354,7 @@ public class PRM_VXData_Report_Utility_Test {
                                                                   PRM_Sales_Amount_Report_Nbr__c 
                                                                   from PRM_Value_Exchange_Data__c 
                                                                   where Name='vx5' Limit 1];
-        //System.assertEquals((vxDataToAssertAfterDeletion.PRM_Sales_Amount_Nbr__c/3), vxDataToAssertAfterDeletion.PRM_Sales_Amount_Report_Nbr__c);
+        System.assertEquals((vxDataToAssertAfterDeletion.PRM_Sales_Amount_Nbr__c/3), vxDataToAssertAfterDeletion.PRM_Sales_Amount_Report_Nbr__c);
     }
     
     @isTest
@@ -367,7 +367,7 @@ public class PRM_VXData_Report_Utility_Test {
                                                                 PRM_Training_Credit_Points_Count_Nbr__c 
                                                                 from PRM_Value_Exchange_Data__c 
                                                                 where Name='New Inserted0' Limit 1];
-       // System.assertEquals((vxDataToAssertAfterInsert.PRM_Training_Credit_Points_Count_Nbr__c/203), vxDataToAssertAfterInsert.PRM_Training_Credit_Points_Report_Nbr__c);
+        System.assertEquals((vxDataToAssertAfterInsert.PRM_Training_Credit_Points_Count_Nbr__c/203), vxDataToAssertAfterInsert.PRM_Training_Credit_Points_Report_Nbr__c);
     
     }
     @isTest 
@@ -382,7 +382,7 @@ public class PRM_VXData_Report_Utility_Test {
                                                                 PRM_Training_credits_tier_report_Nbr__c 
                                                                 from PRM_Value_Exchange_Data__c 
                                                                 where Name='New Inserted without OPID0' Limit 1];
-        //System.assertEquals((vxDataToAssertAfterInsert.PRM_Sales_To_Next_Tier_Nbr__c/200), vxDataToAssertAfterInsert.PRM_Sales_To_Next_Tier_Report_Nbr__c);
+        System.assertEquals((vxDataToAssertAfterInsert.PRM_Sales_To_Next_Tier_Nbr__c/200), vxDataToAssertAfterInsert.PRM_Sales_To_Next_Tier_Report_Nbr__c);
     	System.assertEquals((vxDataToAssertAfterInsert.PRM_Training_Credits_to_Next_Tier_Nbr__c/200), vxDataToAssertAfterInsert.PRM_Training_credits_tier_report_Nbr__c);
     }
 }

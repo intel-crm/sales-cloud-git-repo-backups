@@ -7,7 +7,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Opportunity Management</label>
-    <logo>SharedDocuments/Intel_Logo_with_asterisk.png</logo>
     <tabs>Core_Opportunity_Review</tabs>
     <tabs>Core_Opportunity_Stages</tabs>
     <tabs>Core_Opportunity_Products</tabs>

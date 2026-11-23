@@ -2232,6 +2232,10 @@ this method can be reused.
                     setallcontactsunderopid.add(acr.PRM_Contact_Id__c);
                 }				
                 // Fetch Companies
+                system.debug('accIdCompInfoMap--'+accIdCompInfoMap);
+                system.debug('intelAccCompInfoMap---'+intelAccCompInfoMap);
+                system.debug('intelAccountIds--'+intelAccountIds);
+                system.debug('setallcontactsunderopid==='+setallcontactsunderopid);
                 
                 if (!setCompaniesForWelcomeEmail.isEmpty()) {
                     System.debug('setCompaniesForWelcomeEmail: ' + setCompaniesForWelcomeEmail);
@@ -2280,6 +2284,7 @@ userIds.add(pa.AssigneeId);
 }
 }*/
             //this might be having working copy id - so on the top when filtering with published copy id , existing email logs not coming
+            system.debug('userCompanyMap---'+userCompanyMap);
             if(!userCompanyMap.isempty())
             PMP_Utility.sendEmailAndLogData('PMP_CompanyInfoDraftEmail_Profile', userCompanyMap);  
             /* if (!lstCompaniesForWelcomeEmail.isEmpty() && existingEmailLogs.isEmpty()) {

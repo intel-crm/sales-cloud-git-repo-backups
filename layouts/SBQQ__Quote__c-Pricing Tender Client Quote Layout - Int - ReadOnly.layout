@@ -247,15 +247,11 @@
         <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>SBQQ__Version__c</fields>
         <fields>CREATED_DATE</fields>
         <fields>Pricing_View_Download__c</fields>
         <relatedList>SBQQ__QuoteDocument__c.SBQQ__Quote__c</relatedList>
-        <sortField>CREATED_DATE</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

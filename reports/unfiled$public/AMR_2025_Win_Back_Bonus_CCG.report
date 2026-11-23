@@ -50,15 +50,6 @@
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
     </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_OpportunityTeamMembers__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Commissionable__c</field>
-    </columns>
     <description>Report to track bonus 1 (CCG Win-backs against ARM, Apple, or AMD) by Account</description>
     <filter>
         <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6 OR 7) AND 8 AND 9</booleanFilter>

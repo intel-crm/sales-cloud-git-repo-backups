@@ -4,9 +4,9 @@
     <label>PCC Test ASMO CC</label>
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6gAwWTrJA1KyljZsbGO9uQ4YcOQPtbgMH4vqDupjcUosUanXAELMH96RyjBP</consumerKey>
+        <consumerKey>3MVG9BWMiHkoluZE0qiUtAc6UxfdEC1u0tPu1JDZJdDIA2cYoDHdfaEWwBw6EqmCmS5LVE.HVM2ZSLGkMg.OB</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>true</isClientCredentialEnabled>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
@@ -22,7 +22,6 @@
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>pccintegrationtestuser@intel.com.crm</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>RefreshToken</scopes>
     </oauthConfig>

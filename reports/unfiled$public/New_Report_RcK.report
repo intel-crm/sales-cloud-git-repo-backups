@@ -1,34 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>RowCount</column>
-        </chartSummaries>
-        <chartType>HorizontalBar</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>Account.AccountEmailMessages$CreatedDate</groupingColumn>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>true</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
-    <columns>
-        <field>Account.AccountEmailMessages$Subject</field>
-    </columns>
     <columns>
         <field>Account$Name</field>
+    </columns>
+    <columns>
+        <field>Account.AccountEmailMessages$Subject</field>
     </columns>
     <columns>
         <field>Account.AccountEmailMessages$FromAddress</field>
@@ -40,31 +16,17 @@
         <field>Account.AccountEmailMessages$CcAddress</field>
     </columns>
     <columns>
-        <field>Account.AccountEmailMessages$TextBody</field>
+        <field>Account$CreatedDate</field>
     </columns>
     <description>Accounts with Email Messages EAC</description>
-    <filter>
-        <criteriaItems>
-            <column>Account.AccountEmailMessages$Source</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <field>Account.AccountEmailMessages$CreatedDate</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Accounts with Email Messages EAC</name>
     <params>
         <name>co</name>
         <value>1</value>
     </params>
     <reportType>Accounts_with_Email_Messages_EAC__c</reportType>
-    <scope>accountteamteam</scope>
+    <scope>user</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

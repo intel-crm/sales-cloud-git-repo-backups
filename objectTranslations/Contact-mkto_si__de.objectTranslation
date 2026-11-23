@@ -2636,10 +2636,6 @@
         <name>Core_isEmailBounced_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Cvent Contact Stub --></label>
-        <name>CventEvents__ContactStub__c</name>
-    </fields>
-    <fields>
         <label><!-- External User State Change Date/Time --></label>
         <name>External_User_State_Change_Date_Times__c</name>
     </fields>
@@ -2956,22 +2952,6 @@ Please ensure that all of these fields are filled in. --></errorMessage>
     <webLinks>
         <label><!-- Create_new_Contact --></label>
         <name>Create_new_Contact</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- InviteContactToEvent --></label>
-        <name>CventEvents__InviteContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelContactToEvent --></label>
-        <name>CventEvents__ModifyCancelContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateContactToEvent --></label>
-        <name>CventEvents__NominateContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterContactToEvent --></label>
-        <name>CventEvents__RegisterContactToEvent</name>
     </webLinks>
     <webLinks>
         <label><!-- GoogleMaps --></label>

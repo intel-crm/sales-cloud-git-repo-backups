@@ -221,33 +221,8 @@ Description : This method takes list MAP line items and inserts.
             }
         }
         
-        // Venrublity Fix - Refering query to service class
-        // Map<Id,Core_IPS_MAP_PAR__c> mapRecords=new Map<Id,Core_IPS_MAP_PAR__c>([
-        //     SELECT 
-        //     Id, 
-        //     RecordType.Name,
-        //     Core_Product_Organization__c,
-        //     (
-        //         SELECT          
-        //         Id, 
-        //         Core_MAP_Supported_Product__c,
-        //         Core_MAP_Supported_Product__r.Core_Supported_Product_Name__c,
-        //         Core_MAP_Supported_Product__r.Id, 
-        //         Core_MAP_Supported_Product__r.Core_Product__c,
-        //         Core_MAP_PAR__c,Core_MAP_PAR__r.RecordType.Name 
-        //         FROM MAP_Supported_Products__r
-        //     ), 
-        //     (
-        //         SELECT 
-        //         Id, 
-        //         Core_Account__c, 
-        //         Core_MAP_PAR__c, 
-        //         Core_MAP_PAR__r.RecordType.Name 
-        //         FROM MAP_Accounts__r
-        //     ) 
-        //     FROM Core_IPS_MAP_PAR__c 
-        //     WHERE Id IN : mapIds
-        // ]);
+		
+	// Tushar garg----- Vanuability changes
         Map<Id,Core_IPS_MAP_PAR__c> mapRecords = new Map<Id,Core_IPS_MAP_PAR__c>(
             (List<Core_IPS_MAP_PAR__c>) Core_IPS_QueryService.queryRecords(
                 'SELECT Id, RecordType.Name, Core_Product_Organization__c, (SELECT Id, Core_MAP_Supported_Product__c, Core_MAP_Supported_Product__r.Core_Supported_Product_Name__c, Core_MAP_Supported_Product__r.Id, Core_MAP_Supported_Product__r.Core_Product__c, Core_MAP_PAR__c,Core_MAP_PAR__r.RecordType.Name FROM MAP_Supported_Products__r), (SELECT Id, Core_Account__c, Core_MAP_PAR__c, Core_MAP_PAR__r.RecordType.Name FROM MAP_Accounts__r) FROM Core_IPS_MAP_PAR__c WHERE Id IN :mapIds',
@@ -283,24 +258,8 @@ Description : This method takes list MAP line items and inserts.
                }
            }
         
-        // Venrublity Fix - Refering query to service class
-        // for(Core_IPS_Map_Par_Line_Item__c lineItem : [
-        //     SELECT 
-        //     Id, 
-        //     Name,
-        //     Core_Account__c, 
-        //     Core_Supported_Product_EOIS__c, 
-        //     RecordTypeId, 
-        //     RecordType.Name, 
-        //     Core_Supported_Product__c,
-        //     Core_Status__c 
-        //     FROM Core_IPS_Map_Par_Line_Item__c 
-        //     WHERE (Core_Status__c = 'INACTIVE'
-        //            OR Core_Status__c = 'ACTIVE' )
-        //     AND Core_MAP_PAR__c IN: mapIds
-        //     AND Core_Supported_Product__c IN: draftLineItemProductIdSet  
-        //     AND Core_Account__c IN: draftLineItemAccountIdSet 
-        // ]) {
+	// Tushar garg----- Vanuability changes
+
         for(Core_IPS_Map_Par_Line_Item__c lineItem : (List<Core_IPS_Map_Par_Line_Item__c>) Core_IPS_QueryService.queryRecords(
             'SELECT Id, Name, Core_Account__c, Core_Supported_Product_EOIS__c, RecordTypeId, RecordType.Name, Core_Supported_Product__c, Core_Status__c FROM Core_IPS_Map_Par_Line_Item__c WHERE (Core_Status__c = \'INACTIVE\' OR Core_Status__c = \'ACTIVE\') AND Core_MAP_PAR__c IN :mapIds AND Core_Supported_Product__c IN :draftLineItemProductIdSet AND Core_Account__c IN :draftLineItemAccountIdSet',
             new Map<String, Object>{
@@ -426,22 +385,8 @@ Description : This method takes the support org Id and return a true ot false ba
                 return true;
             }
         }
-        // Venrublity Fix - Refering query to service class
-        // Core_IPS_Product_Organization__c supportOrg = [
-        //     SELECT 
-        //     Id,
-        //     OwnerId,
-        //     Owner.Type, 
-        //     (
-        //         SELECT 
-        //         Id,
-        //         Core_Product_Organization__c,
-        //         Core_Admin__c 
-        //         From Product_Organization_Admins__r
-        //     ) 
-        //     FROM Core_IPS_Product_Organization__c 
-        //     WHERE Id = :supportOrgId
-        // ];
+   
+	// Tushar garg----- Vanuability changes
         List<Core_IPS_Product_Organization__c> supportOrgList = (List<Core_IPS_Product_Organization__c>) Core_IPS_QueryService.queryRecords(
             'SELECT Id, OwnerId, Owner.Type, (SELECT Id, Core_Product_Organization__c, Core_Admin__c From Product_Organization_Admins__r) FROM Core_IPS_Product_Organization__c WHERE Id = :supportOrgId',
             new Map<String, Object>{ 'supportOrgId' => supportOrgId }
@@ -529,12 +474,8 @@ Description : This method takes the Queue or Public Group Id and return set of u
     public static Set<Id> getUserIdsFromQPB(Id queueId) {
         Set<Id> userIds = new Set<Id>();
         // Venrublity Fix - Refering query to service class
-        // for(GroupMember grpMem : [
-        //     SELECT 
-        //     UserOrGroupId 
-        //     FROM GroupMember 
-        //     WHERE GroupId = :queueId
-        // ]) {
+	// Tushar garg----- Vanuability changes
+
         for(GroupMember grpMem : (List<GroupMember>) Core_IPS_QueryService.queryRecords(
             'SELECT UserOrGroupId FROM GroupMember WHERE GroupId = :queueId',
             new Map<String, Object>{ 'queueId' => queueId }
@@ -658,14 +599,7 @@ Description : This method maps API name and value with a map
     @AuraEnabled(cacheable=true)
     public static List<Core_IPS_Case_Interested_Party__c> getInterestedParties(Id caseId) {
         // Venrublity Fix - Refering query to service class
-        // return [
-        //     SELECT Id, Name, First_Name__c, Last_Name__c, 
-        //     User__r.FirstName, User__r.LastName, Active__c
-        //     FROM Core_IPS_Case_Interested_Party__c
-        //     WHERE Case__c = :caseId
-        //     WITH USER_MODE
-        //     LIMIT 49999
-        // ];
+
         return (List<Core_IPS_Case_Interested_Party__c>) Core_IPS_QueryService.queryRecords(
             'SELECT Id, Name, First_Name__c, Last_Name__c, User__r.FirstName, User__r.LastName, Active__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c = :caseId WITH USER_MODE LIMIT 49999',
             new Map<String, Object>{ 'caseId' => caseId }
@@ -677,14 +611,7 @@ Description : This method maps API name and value with a map
     public static List<Core_IPS_Account__c> getProjectsForOpportunity(String recordId, String projStatus) {
         Id oppId = (Id) recordId; // type-safe cast prevents injection via Id format validation
         // Venrublity Fix - Refering query to service class
-        // List<Core_IPS_Account__c> results = [
-        //     SELECT Core_IPS_Project__r.Name, Core_IPS_Project__r.Id, Core_IPS_Project__r.CreatedDate
-        //     FROM Core_IPS_Account__c
-        //     WHERE Core_IPS_Project__r.Core_Status__c = :projStatus
-        //     AND Core_Account__c IN (SELECT AccountId FROM Opportunity WHERE Id = :oppId)
-        //     WITH USER_MODE
-        //     ORDER BY Core_IPS_Project__r.CreatedDate DESC
-        // ];
+
         List<Core_IPS_Account__c> results = (List<Core_IPS_Account__c>) Core_IPS_QueryService.queryRecords(
             'SELECT Core_IPS_Project__r.Name, Core_IPS_Project__r.Id, Core_IPS_Project__r.CreatedDate FROM Core_IPS_Account__c WHERE Core_IPS_Project__r.Core_Status__c = :projStatus AND Core_Account__c IN (SELECT AccountId FROM Opportunity WHERE Id = :oppId) ORDER BY Core_IPS_Project__r.CreatedDate DESC',
             new Map<String, Object>{ 'projStatus' => projStatus, 'oppId' => oppId }

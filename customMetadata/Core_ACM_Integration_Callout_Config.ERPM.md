@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Content_Type__c</field>
-        <value xsi:type="xsd:string">application/json</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Endpoint__c</field>
@@ -20,6 +20,6 @@
     </values>
     <values>
         <field>Timeout_Ms__c</field>
-        <value xsi:type="xsd:double">30000.0</value>
+        <value xsi:type="xsd:double">120000.0</value>
     </values>
 </CustomMetadata>

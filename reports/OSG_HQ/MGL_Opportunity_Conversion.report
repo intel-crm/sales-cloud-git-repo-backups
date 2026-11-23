@@ -109,6 +109,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <endDate>2026-12-26</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2023-12-31</startDate>
     </timeFrameFilter>
 </Report>

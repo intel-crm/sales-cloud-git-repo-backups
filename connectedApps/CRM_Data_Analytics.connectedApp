@@ -5,9 +5,9 @@
     <label>CRM Data Analytics</label>
     <oauthConfig>
         <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6hBMcXJBD78UChAdoQAZ84F5vrBc6MdoEezknoEOOzbOjmvAhqBKo25qYJDs</consumerKey>
+        <consumerKey>3MVG9BWMiHkoluZE0qiUtAc6UxWGUS2BLev8MAyJGxUAjXIPVnEiMvbhxFX3Hkgxtn8ICu5IxOiTXOW_QhfaA</consumerKey>
         <isAdminApproved>true</isAdminApproved>
-        <isClientCredentialEnabled>true</isClientCredentialEnabled>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
@@ -18,12 +18,11 @@
         <isIpBindingEnabled>false</isIpBindingEnabled>
         <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
-        <isPkceRequired>true</isPkceRequired>
+        <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>azure@intel.com.crm</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>RefreshToken</scopes>
         <scopes>Wave</scopes>

@@ -34,10 +34,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CUST_CREATED_DATE</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <dateColumn>Core_MDF_Exception__c.Core_MDF_Exception_End_Date_dt__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

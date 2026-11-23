@@ -403,11 +403,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Linked_Opportunity__c.CventEvents__Attendee__c</field>
-            <table>CRM_Linked_Opportunities__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Linked_Opportunity__c.Core_Battery_Life_Target__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -679,16 +674,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Linked_Opportunity__c.Core_Customer_Project_Name__c</field>
-            <table>CRM_Linked_Opportunities__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Linked_Opportunity__c.CventEvents__EventTitle__c</field>
-            <table>CRM_Linked_Opportunities__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Linked_Opportunity__c.CventEvents__Event__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
         <columns>
@@ -2653,11 +2638,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Primary_Opportunity__c.CventEvents__Attendee__c</field>
-            <table>CRM_Linked_Opportunities__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>CRM_Primary_Opportunity__c.Core_Battery_Life_Target__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
@@ -2929,16 +2909,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>CRM_Primary_Opportunity__c.Core_Customer_Project_Name__c</field>
-            <table>CRM_Linked_Opportunities__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Primary_Opportunity__c.CventEvents__EventTitle__c</field>
-            <table>CRM_Linked_Opportunities__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Primary_Opportunity__c.CventEvents__Event__c</field>
             <table>CRM_Linked_Opportunities__c</table>
         </columns>
         <columns>

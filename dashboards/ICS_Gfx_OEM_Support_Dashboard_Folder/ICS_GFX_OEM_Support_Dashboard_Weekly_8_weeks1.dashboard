@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <description>ICS Gfx OEM Support Charts for Weekly Reports (60 days)</description>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Bar</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
+            <header>Weekly Issue Volume</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>ICS_Gfx_OEM_Support_Report_Folder/ICS_OEM_Gfx_Weekly_Closed_by_Level</report>
+            <showPercentage>false</showPercentage>
+            <showPicturesOnCharts>false</showPicturesOnCharts>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Weekly Issue Volume</title>
+            <useReportChart>true</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Bar</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
+            <header>Currently Open - by Sub-Status</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>ICS_Gfx_OEM_Support_Report_Folder/ICS_OEM_Gfx_Open_Cases_by_Severity</report>
+            <showPercentage>false</showPercentage>
+            <showPicturesOnCharts>false</showPicturesOnCharts>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Currently Open - by Sub-Status</title>
+            <useReportChart>true</useReportChart>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Bar</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
+            <header>Weekly Issue Volume - w Current Status</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>ICS_Gfx_OEM_Support_Report_Folder/ICS_OEM_Gfx_Weekly_by_Status</report>
+            <showPercentage>false</showPercentage>
+            <showPicturesOnCharts>false</showPicturesOnCharts>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Weekly Issue Volume - w Current Status</title>
+            <useReportChart>true</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Bar</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
+            <header>Issue Resolution - by Support level</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>ICS_Gfx_OEM_Support_Report_Folder/ICS_OEM_Gfx_Weekly_by_Customer</report>
+            <showPercentage>false</showPercentage>
+            <showPicturesOnCharts>false</showPicturesOnCharts>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Issue Resolution - by Support level</title>
+            <useReportChart>true</useReportChart>
+        </components>
+    </middleSection>
+    <owner>11282117@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Bar</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
+            <header>Weekly Issue Volume - by Product</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>ICS_Gfx_OEM_Support_Report_Folder/ICS_OEM_Gfx_Weekly_by_Product</report>
+            <showPercentage>false</showPercentage>
+            <showPicturesOnCharts>false</showPicturesOnCharts>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Weekly Issue Volume - by Product</title>
+            <useReportChart>true</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <componentType>Bar</componentType>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingSortProperties/>
+            <header>Closed Issues by Time &amp; Severity</header>
+            <legendPosition>Bottom</legendPosition>
+            <report>ICS_Gfx_OEM_Support_Report_Folder/ICS_OEM_Gfx_Weekly_Resolution_Targets</report>
+            <showPercentage>false</showPercentage>
+            <showPicturesOnCharts>false</showPicturesOnCharts>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Closed Issues by Time &amp; Severity</title>
+            <useReportChart>true</useReportChart>
+        </components>
+    </rightSection>
+    <runningUser>11282117@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>ICS GFX OEM Support Dashboard Weekly (8 weeks)</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

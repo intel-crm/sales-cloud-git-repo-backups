@@ -85,7 +85,7 @@
         <field>COUNTRY_CODE</field>
     </columns>
     <filter>
-        <booleanFilter>(1 OR 7 OR 8 OR 9) AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
         <criteriaItems>
             <column>Lead.Core_Lead_Conversion_Point__c</column>
             <columnToColumn>false</columnToColumn>
@@ -128,27 +128,6 @@
             <operator>notContain</operator>
             <value>Intel</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Lead.Core_Lead_Conversion_Point__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>CPTechtargets</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Lead.Core_Lead_Conversion_Point__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>TechTragetLunarLake</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Lead.Core_Lead_Conversion_Point__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>TTLNL</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -171,7 +150,7 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <endDate>2026-02-13</endDate>
+        <endDate>2026-01-02</endDate>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

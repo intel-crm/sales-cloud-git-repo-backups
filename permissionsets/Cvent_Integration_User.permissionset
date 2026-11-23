@@ -2,28 +2,13 @@
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Permission set created by Intel to provide necessary OLS/FLS to the Cvent Integration user. This user syncs the data between Salesforce and Cvent.</description>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Campaign.CventEvents__EventStub__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Contact.Core_Account_Primary_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Contact.CventEvents__ContactStub__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Contact.Email</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Lead.CventEvents__ContactStub__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

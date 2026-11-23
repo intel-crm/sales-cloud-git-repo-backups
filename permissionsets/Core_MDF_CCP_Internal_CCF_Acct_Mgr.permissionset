@@ -4285,6 +4285,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Claim_Cancellation_Reason_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Claim_Comments__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -5273,7 +5278,7 @@
     </objectPermissions>
     <objectPermissions>
         <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
+        <allowDelete>false</allowDelete>
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>

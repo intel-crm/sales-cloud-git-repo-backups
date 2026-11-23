@@ -136,9 +136,11 @@ public without sharing class Core_OppProductsAtRisk_Ctrl {
         boolean flag;
         for(OppProductWrapper oppProdWrap : oppProductList){
             flag = false;
+            //FIX: Safe database lookup check
             OpportunityLineItem dbOppProd = productMap.get(oppProdWrap.oppLineItemId);
             
             if(dbOppProd != null) {
+                // All comparisons are now 100% null-safe
                 if(oppProdWrap.atRisk != dbOppProd.Core_At_Risk__c){
                     flag = true;
                 }else if(oppProdWrap.riskReason1 != dbOppProd.Core_Risk_Reason1__c){

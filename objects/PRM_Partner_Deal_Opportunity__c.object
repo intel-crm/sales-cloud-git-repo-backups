@@ -823,20 +823,6 @@
         </valueSet>
     </fields>
     <label>Partner Deal Opportunity</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Opportunity_Name__c</columns>
-        <columns>PRM_Stage__c</columns>
-        <columns>PRM_Estimated_Decision_Date__c</columns>
-        <columns>PRM_Partner_Account__c</columns>
-        <columns>PRM_Partner_Contact__c</columns>
-        <columns>PRM_BU_Segment__c</columns>
-        <columns>PRM_End_Customer_Account__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <label>Name</label>
         <trackHistory>false</trackHistory>

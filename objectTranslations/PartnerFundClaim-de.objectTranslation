@@ -370,6 +370,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Claim Cancellation Reason --></label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>Wahlfreier Text für den Knoten, auf den sich der Antrag bezieht</help>
         <label>Kommentare zum Antrag</label>
         <name>Core_MDF_Claim_Comments__c</name>
@@ -1565,8 +1569,18 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
     <gender>Feminine</gender>
     <recordTypes>
         <description><!-- Channel MDF Program Record Type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Channel MDF Program Record Type --></description>
         <label>Kanal MDF Kontobasiert</label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record is used for Channel MDF Proposal Based claims --></description>
+        <label>Kanal MDF-Vorschlag Basierend</label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
@@ -1654,11 +1668,11 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_EndDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Bitte geben Sie ein Enddatum für die Ausführung ein, das in den geschätzten Datumsbereich der Ergebnisbasierten Werbekampagne fällt.</errorMessage>
+        <errorMessage><!-- Please enter an Execution End Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
         <name>Core_MDF_EndDateValidation_OutcomeBased</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Sie können diese Ergebnisbasierte Werbekampagne nicht verwenden, da das zugehörige Account inaktiv ist</errorMessage>
+        <errorMessage><!-- You cannot use this Outcome-Based Campaign as the account over the Outcome-Based Campaign is inactive --></errorMessage>
         <name>Core_MDF_InactiveAccountValidation_Outco</name>
     </validationRules>
     <validationRules>
@@ -1690,7 +1704,7 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Ein Antrag kann nicht für eine Ergebnisbasierte Werbekampagne mit dem Status Abgeschlossen/Abgebrochen gestellt werden.</errorMessage>
+        <errorMessage><!-- Claim cannot be created on an Outcome-Based Campaign in Closed/Cancelled status. --></errorMessage>
         <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
     </validationRules>
     <validationRules>
@@ -1706,7 +1720,7 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_Restrict_Claim_Creation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Die Antragserstellung ist blockiert, da die Ergebnisbasierte Werbekampagne &apos;In Bearbeitung&apos; genehmigt werden muss.</errorMessage>
+        <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Outcome-Based Campaign needing approval. --></errorMessage>
         <name>Core_MDF_Restrict_Claim_Creation_Outcome</name>
     </validationRules>
     <validationRules>
@@ -1738,7 +1752,7 @@ Begleichen, dann bezahlt werden – Am besten zur Minimierung der Rückforderung
         <name>Core_MDF_StartDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Bitte geben Sie ein Startdatum für die Ausführung ein, das in den geschätzten Datumsbereich der Ergebnisbasierten Werbekampagne fällt.</errorMessage>
+        <errorMessage><!-- Please enter an Execution Start Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
         <name>Core_MDF_StartDateValidation_Outcome</name>
     </validationRules>
     <validationRules>

@@ -41,8 +41,5 @@
     <tabs>standard-DataGovernance</tabs>
     <tabs>standard-DataCleanRoom</tabs>
     <tabs>standard-DataQuickAttribute</tabs>
-    <tabs>standard-Agents</tabs>
-    <tabs>standard-SemanticContext</tabs>
-    <tabs>standard-KnowledgeSpace</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

@@ -391,6 +391,15 @@ $Label.Core_MDF_Intel_System_User
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>Core_MDF_VAT_Comments_txt__c</fullName>
+        <description>Captures the VAT comments.</description>
+        <label>VAT Cancellation Comment</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>Core_MDF_VAT_CreatedBy_Nm__c</fullName>
         <externalId>false</externalId>
         <formula>IF(ISPICKVAL(CreatedBy.Profile.UserType,&apos;PowerPartner&apos;), 

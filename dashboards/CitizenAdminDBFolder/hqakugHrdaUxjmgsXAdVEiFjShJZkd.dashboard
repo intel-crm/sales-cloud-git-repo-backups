@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <chartTheme>light</chartTheme>
+    <colorPalette>unity</colorPalette>
+    <dashboardChartTheme>light</dashboardChartTheme>
+    <dashboardColorPalette>unity</dashboardColorPalette>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Global Accounts Sales Group,Americas US Sales Group,Americas Brazil Sales Group,Americas Mexico Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group,Americas Hosted Sales Group,APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Taiwan Sales Group,APJ Southeast Asia Sales Group,APJ Australia &amp; New Zealand Sales Group,APJ Hosted Sales Group,EMEA Sales Group,EMEA Hosted Sales Group,PRC Hosted Sales Group,PRC Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Partner Holding,EMEA Partner Holding,APJ Partner Holding,PRC Partner Holding</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas US Sales Group,Americas Brazil Sales Group,Americas Mexico Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group,Americas Hosted Sales Group,Americas Partner Holding</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Taiwan Sales Group,APJ Southeast Asia Sales Group,APJ Australia &amp; New Zealand Sales Group,APJ Hosted Sales Group,APJ Partner Holding</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Sales Group,EMEA Hosted Sales Group,EMEA Partner Holding</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Hosted Sales Group,PRC Sales Group,PRC Partner Holding</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Global Accounts Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas US Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Brazil Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Mexico Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Canada Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas ELAR Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ India Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Japan Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Korea Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Taiwan Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Southeast Asia Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Australia &amp; New Zealand Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Partner Holding</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Partner Holding</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Partner Holding</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Partner Holding</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Undefined</values>
+        </dashboardFilterOptions>
+        <name>Sales Group</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Deal: Partner Scale-enable,Deal: Sell-through,Deal: Sell-to</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Design: Original,Design: Secondary,Design: Software-enable</values>
+        </dashboardFilterOptions>
+        <name>Opportunity Type</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Qualify,Define,Develop,Design,Group,Group Open</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Design Win,Production Win,Production Lost,Production Cancelled,Group Cancelled</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Lost,Group Cancelled</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Cancelled</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Qualify</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Define</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Design Win</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Production Win</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Lost</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Production Lost</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Production Cancelled</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Group Open</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Group Cancelled</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Group Closed</values>
+        </dashboardFilterOptions>
+        <name>Stage</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>THIS_QUARTER</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>NEXT_QUARTER</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>NEXT_N_QUARTERS:4</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>THIS_YEAR</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>NEXT_YEAR</values>
+        </dashboardFilterOptions>
+        <name>Decision Date</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Client Computing</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Comms Infra. / Networking</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Data Center Computing</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Embedded / IOT</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Automotive</values>
+        </dashboardFilterOptions>
+        <name>Product Segment</name>
+    </dashboardFilters>
+    <dashboardGridLayout>
+        <dashboardGridComponents>
+            <colSpan>12</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <componentType>FlexTable</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>STAGE_NAME</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Decision_Date__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <flexComponentProperties>
+                    <decimalPrecision>-1</decimalPrecision>
+                    <flexTableColumn>
+                        <reportColumn>FULL_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>ACCOUNT_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>OPPORTUNITY_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>CLOSE_DATE</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>STAGE_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>AMOUNT</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Opportunity.Core_Descriptive_Feature__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>true</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableSortInfo>
+                        <sortColumn>ACCOUNT_NAME</sortColumn>
+                        <sortOrder>1</sortOrder>
+                    </flexTableSortInfo>
+                    <hideChatterPhotos>true</hideChatterPhotos>
+                    <useReportTableSetting>false</useReportTableSetting>
+                </flexComponentProperties>
+                <groupingSortProperties/>
+                <header>Opportunities with Descriptive Features</header>
+                <report>Citizen_Admin_Working_Folder/Opptys_with_Descriptive_Features_Count_DIV</report>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>28</rowSpan>
+        </dashboardGridComponents>
+        <numberOfColumns>12</numberOfColumns>
+        <rowHeight>36</rowHeight>
+    </dashboardGridLayout>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>true</isGridLayout>
+    <owner>12050776@intel.com.crm</owner>
+    <runningUser>11490009@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>Opportunities and Descriptive Features Dashboard</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

@@ -52,10 +52,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>CDF1</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>User.User_Unique__c</field>
-    </columns>
     <customDetailFormulas>
         <calculatedFormula>1</calculatedFormula>
         <dataType>Double</dataType>

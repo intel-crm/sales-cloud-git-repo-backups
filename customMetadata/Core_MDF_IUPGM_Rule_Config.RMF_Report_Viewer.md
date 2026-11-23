@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Core_MDF_AGS_Role_Name__c</field>
-        <value xsi:type="xsd:string">Co-Marketing - Power BI - Production - CCP Reports - Viewer</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Account_Required__c</field>
@@ -76,7 +76,7 @@
     </values>
     <values>
         <field>Core_MDF_Role_Purpose__c</field>
-        <value xsi:type="xsd:string">Power BI Report Role Access</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Skip_PS_Check__c</field>
@@ -84,7 +84,7 @@
     </values>
     <values>
         <field>Core_MDF_Use_Cases__c</field>
-        <value xsi:type="xsd:string">Use when:reports</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_WW_Only__c</field>

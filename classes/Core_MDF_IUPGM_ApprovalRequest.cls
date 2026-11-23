@@ -743,7 +743,7 @@ Added By    :   Shiva
 ******************************************************************************************************/
     Public static ApprovalWrapper getBudgetApprovers(set<string> programNameSet, set<string> approvalStageSet, string objName){string MDFPLUS_BUDGET_TYPE = Core_MDF_CCP_ConstantClass.MDFPLUS_BUDGET_TYPE;
         string MDF_BUDGET_TYPE = Core_MDF_CCP_ConstantClass.MDF_BUDGET_TYPE;
-        string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;string Co_GTM_PROG = Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM;
+        string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;string Co_GTM_PROG = Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM;string Co_Inv_PROG = Core_MDF_CCP_ConstantClass.Co_Inv_PROGRAM;
         
         List<PartnerMarketingBudget> budgetObjRecordList = new List<PartnerMarketingBudget>();
         List<PartnerMarketingBudget> budgetToApproveList = new List<PartnerMarketingBudget>();
@@ -817,7 +817,7 @@ Added By    :   Shiva
                     
                 } 
                 else if(obj.Core_MDF_Budget_Type_Txt__c == MDF_BUDGET_TYPE || obj.Core_MDF_Budget_Type_Txt__c == MDFPLUS_BUDGET_TYPE 
-                        || obj.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM || obj.Core_MDF_Program_Nm__c == Co_GTM_PROG){
+                        || obj.Core_MDF_Program_Nm__c == Core_MDF_CCP_ConstantClass.EEF_PROGRAM || obj.Core_MDF_Program_Nm__c == Co_GTM_PROG || obj.Core_MDF_Program_Nm__c == Co_Inv_PROG){
                     string region = 'WW';
                     
                     if(string.isNotBlank(region)){
@@ -2056,6 +2056,7 @@ Description :   to get the Budget records for approvals
         string IPA_PROG = Core_MDF_CCP_ConstantClass.IPA_PROGRAM;
         string EEF_PROGRAM = Core_MDF_CCP_ConstantClass.EEF_PROGRAM;
         string Co_GTM_PROG = Core_MDF_CCP_ConstantClass.Co_GTM_PROGRAM;
+        string Co_Inv_PROG = Core_MDF_CCP_ConstantClass.Co_Inv_PROGRAM;
         
       
         List<PartnerMarketingBudget> budgetObjRecordList = new List<PartnerMarketingBudget>();
@@ -2126,7 +2127,7 @@ Description :   to get the Budget records for approvals
               }
               //Added EEF check to show record count for budget
               else if(obj.Core_MDF_Budget_Type_Txt__c == MDF_BUDGET_TYPE || obj.Core_MDF_Budget_Type_Txt__c == MDFPLUS_BUDGET_TYPE 
-                      || obj.Core_MDF_Program_Nm__c == EEF_PROGRAM || obj.Core_MDF_Program_Nm__c == Co_GTM_PROG){ string region = 'WW';
+                      || obj.Core_MDF_Program_Nm__c == EEF_PROGRAM || obj.Core_MDF_Program_Nm__c == Co_GTM_PROG || obj.Core_MDF_Program_Nm__c == Co_Inv_PROG){ string region = 'WW';
                   
                   if(string.isNotBlank(region)){
                       WW_allAccAllBTSetKey = region +'->'+ progId + '_' + approvalStage;

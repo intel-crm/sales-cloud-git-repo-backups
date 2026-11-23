@@ -8,7 +8,7 @@
             <recipient>PMP_All_Intel_Admin_Users</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Submit_Template_for_Admin</template>
     </alerts>
@@ -19,7 +19,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Edit_Template_for_Owner</template>
     </alerts>
@@ -31,7 +31,7 @@
             <field>PMP_Partner_Submitter_UserId__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel-partner-alliance@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_CompanyUpdateReqFirstNotification</template>
     </alerts>
@@ -43,7 +43,7 @@
             <field>PMP_Partner_Submitter_UserId__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel-partner-alliance@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_CompanyUpdateReqSecondNotification</template>
     </alerts>
@@ -54,7 +54,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Reject_Template_for_Owner</template>
     </alerts>
@@ -65,7 +65,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Resubmit_Template_for_Owner</template>
     </alerts>
@@ -77,7 +77,7 @@
             <field>PMP_Intel_Admin_Id__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Resubmit_Template_for_Admin</template>
     </alerts>
@@ -89,7 +89,7 @@
             <recipient>PMP_All_Intel_Admin_Users</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Resubmit_Template_for_Admin</template>
     </alerts>
@@ -100,7 +100,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Submit_Template_for_Owner</template>
     </alerts>
@@ -112,7 +112,7 @@
             <recipient>PMP_All_Intel_Admin_Users</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Under_Review_Template_for_Admin</template>
     </alerts>

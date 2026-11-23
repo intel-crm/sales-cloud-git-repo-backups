@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Create_ACR</name>
         <label>Create ACR</label>
-        <locationX>50</locationX>
-        <locationY>924</locationY>
+        <locationX>143</locationX>
+        <locationY>816</locationY>
         <actionName>UCD_ACM_DZPCreateIPAEntitlement</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -25,8 +25,8 @@
     <decisions>
         <name>check_acm_exists</name>
         <label>check acm exists</label>
-        <locationX>446</locationX>
-        <locationY>816</locationY>
+        <locationX>275</locationX>
+        <locationY>708</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>exists</name>
@@ -45,31 +45,9 @@
         </rules>
     </decisions>
     <decisions>
-        <name>DataLoad_record_exits</name>
-        <label>DataLoad record exits</label>
-        <locationX>776</locationX>
-        <locationY>492</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Data_Load_available</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>get_Data_Load_Object</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>partner_Relationship</targetReference>
-            </connector>
-            <label>Data Load available</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Verify_Status_and_entitlement_details1</name>
         <label>verify Status and entitlement details</label>
-        <locationX>1073</locationX>
+        <locationX>473</locationX>
         <locationY>276</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -148,54 +126,13 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
-        <name>Core_log_entry</name>
-        <label>Core log entry</label>
-        <locationX>578</locationX>
-        <locationY>1248</locationY>
-        <inputAssignments>
-            <field>Core_Details__c</field>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Origin__c</field>
-            <value>
-                <stringValue>UCD_ACM_CreateIPAentitlementsForDZP</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Project__c</field>
-            <value>
-                <stringValue>ACM</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>Error</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordCreates>
         <name>Create_Entitlement</name>
         <label>Create Entitlement</label>
-        <locationX>50</locationX>
-        <locationY>1140</locationY>
+        <locationX>143</locationX>
+        <locationY>1032</locationY>
         <connector>
             <targetReference>Get_Subscription_record</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Core_log_entry</targetReference>
-        </faultConnector>
         <inputAssignments>
             <field>Core_Contact_Id__c</field>
             <value>
@@ -238,12 +175,8 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
     <recordCreates>
         <name>subscription_addition</name>
         <label>subscription addition</label>
-        <locationX>50</locationX>
-        <locationY>1356</locationY>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Core_log_entry</targetReference>
-        </faultConnector>
+        <locationX>143</locationX>
+        <locationY>1248</locationY>
         <inputAssignments>
             <field>PRM_Contact_Id__c</field>
             <value>
@@ -274,11 +207,11 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
     <recordLookups>
         <name>get_Data_Load_Object</name>
         <label>get Data Load Object</label>
-        <locationX>776</locationX>
+        <locationX>275</locationX>
         <locationY>384</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>DataLoad_record_exits</targetReference>
+            <targetReference>partner_Relationship</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -309,8 +242,8 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
     <recordLookups>
         <name>get_Existing_acr</name>
         <label>get Existing acr</label>
-        <locationX>446</locationX>
-        <locationY>708</locationY>
+        <locationX>275</locationX>
+        <locationY>600</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>check_acm_exists</targetReference>
@@ -358,8 +291,8 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
     <recordLookups>
         <name>get_IPA_Employee_entitlement</name>
         <label>get IPA Employee entitlement</label>
-        <locationX>50</locationX>
-        <locationY>1032</locationY>
+        <locationX>143</locationX>
+        <locationY>924</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Create_Entitlement</targetReference>
@@ -386,8 +319,8 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
     <recordLookups>
         <name>Get_Subscription_record</name>
         <label>Get Subscription record</label>
-        <locationX>50</locationX>
-        <locationY>1248</locationY>
+        <locationX>143</locationX>
+        <locationY>1140</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>subscription_addition</targetReference>
@@ -414,8 +347,8 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
     <recordLookups>
         <name>partner_Relationship</name>
         <label>partner Relationship</label>
-        <locationX>446</locationX>
-        <locationY>600</locationY>
+        <locationX>275</locationX>
+        <locationY>492</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>get_Existing_acr</targetReference>
@@ -440,7 +373,7 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>303</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterLogic>and</filterLogic>

@@ -170,13 +170,6 @@
             <operator>greaterOrEqual</operator>
             <value>10/1/2025</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$Pricing_ShipmentStDate_Dt__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>3/1/2026</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>

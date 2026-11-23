@@ -73,6 +73,9 @@
         <field>Account.Core_Account_BU_Focus__c</field>
     </columns>
     <columns>
+        <field>OWNERSHIP</field>
+    </columns>
+    <columns>
         <field>Contact.Core_LS_Job_Function__c</field>
     </columns>
     <columns>
@@ -80,13 +83,6 @@
     </columns>
     <columns>
         <field>Contact.Core_LS_Title__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Level__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Opportunity_Count__c</field>
     </columns>
     <filter>
         <criteriaItems>

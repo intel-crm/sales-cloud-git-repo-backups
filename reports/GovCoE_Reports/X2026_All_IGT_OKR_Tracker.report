@@ -53,7 +53,14 @@
     </columns>
     <description>This shows all IGT activities / OKRs that we have with executives of customers and partners and market influence etc.</description>
     <filter>
-        <booleanFilter>1</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>OPPORTUNITY</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>#AIEDOKR,#EVOKR,#MMOKR,#STRATOKR,#1.5OKR</value>
+        </criteriaItems>
         <criteriaItems>
             <column>SUBJECT</column>
             <columnToColumn>false</columnToColumn>
@@ -95,8 +102,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
-        <endDate>2026-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2025-08-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -12,21 +12,6 @@
 public class Core_IPS_AddCommentController_Test{
     list<string> selectedVisibilityOption = new list<string>();
     static List<User> ListOfUser = new List<User>();
-
-    private static void insertUserWithValidationBypass(User testUser) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert testUser;
-        }
-    }
-
-    private static void insertUsersWithValidationBypass(List<User> testUsers) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert testUsers;
-        }
-    }
-
     @testSetup 
     static void setup() { 
         Account accountRecord = new Account();
@@ -98,7 +83,7 @@ public class Core_IPS_AddCommentController_Test{
         /*ListOfUser[2].ProfileID =  profiles.get('Partner');
 		ListOfUser[3].ProfileID =  profiles.get('IPS Agent-Partner');*/
         // }
-        insertUsersWithValidationBypass(ListOfUser);
+        insert ListOfUser;
     }
     public static testmethod void Core_IPS_AddCommentControllerTest(){
         createusers();
@@ -435,8 +420,7 @@ public class Core_IPS_AddCommentController_Test{
                 LocaleSidKey='en_US',
                 TimeZoneSidKey='America/Chicago'
             );
-            insertUserWithValidationBypass(portalAccountOwner1);
-           
+            Database.insert(portalAccountOwner1);
             //****************************************//
             
             testAccount1=TestUtilities.getAccount(); 
@@ -463,9 +447,8 @@ public class Core_IPS_AddCommentController_Test{
             userRecord.UserName = 'newuser' + String.valueOf(DateTime.Now().getTime()) + '@intel.com.' + UserInfo.getOrganizationId();
             userRecord.isActive = true;
             
-            userRecord.ProfileID =  profiles.get('Partner');
-            insertUserWithValidationBypass(userRecord);
-            
+            userRecord.ProfileID =  profiles.get('Partner');           
+            insert userRecord;
             
             PermissionSet ps = [SELECT Id,name FROM PermissionSet WHERE Name = 'Core_IPS_Permission_Set']; 
             PermissionSetAssignment psa = new PermissionSetAssignment();
@@ -659,8 +642,7 @@ public class Core_IPS_AddCommentController_Test{
                 LocaleSidKey='en_US',
                 TimeZoneSidKey='America/Chicago'
             );
-            insertUserWithValidationBypass(portalAccountOwner1);
-           
+            Database.insert(portalAccountOwner1);
             
             UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
             insert ur;
@@ -985,8 +967,7 @@ public class Core_IPS_AddCommentController_Test{
             Firstname='Bruce',   
             lastname='lastname1'
         );
-        insertUserWithValidationBypass(portalAccountOwner1);
-       
+        Database.insert(portalAccountOwner1);
         System.assertEquals(portalAccountOwner1!=null, true, 'portalAccountOwner1 Inserted');
         System.runAs ( portalAccountOwner1 ) {
             Core_IPS_Labels__c labels = new Core_IPS_Labels__c ();
@@ -1102,8 +1083,7 @@ public class Core_IPS_AddCommentController_Test{
                 Firstname='BruceS',   
                 lastname='lastname2'
             );
-            insertUserWithValidationBypass(user1);
-            
+            Database.insert(user1);
             system.runAs(user1){
                 Test.startTest();
                 Case caseList =  TestUtilities.getCase(); 
@@ -1912,9 +1892,8 @@ Modification Log :
                                  emailencodingkey='UTF-8', lastname='Testing', languagelocalekey='en_US',LocaleSidKey='en_US',TimeZoneSidKey='America/Los_Angeles',ProfileId=profileList[0].id,
                                  IsActive =true,
                                  ContactId = contact2.Id, username='tester@inteltest.com',PortalRole = 'Manager');
-          insertUserWithValidationBypass(userTest);
-		
-       // System.assertEquals(userTest!=null, true, 'User Inserted');
+        insert userTest;
+        System.assertEquals(userTest!=null, true, 'User Inserted');
        /* System.runAs(userTest){
             PermissionSet ps = [select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set'];
             insert new PermissionSetAssignment(AssigneeId = userTest.id, PermissionSetId = ps.Id );

@@ -33,38 +33,11 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>Core_MDF_Check_for_SubGeo</targetReference>
-            </connector>
             <label>If GeoBased Sharing Required</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>Core_MDF_SubGeo_Check</name>
-        <label>SubGeo Check</label>
-        <locationX>1422</locationX>
-        <locationY>134</locationY>
-        <defaultConnector>
-            <targetReference>Core_MDF_Fetch_the_PGM_records</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>If_SubGeo</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>ClaimActivityAllocationRecordtypeMappingRecord.Core_MDF_Region_cd__c</leftValueReference>
-                <operator>Contains</operator>
-                <rightValue>
-                    <elementReference>vRegionv</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_PGM_Records</targetReference>
-            </connector>
-            <label>If SubGeo</label>
-        </rules>
-    </decisions>
     <description>To Share Account with Account Managers, if Geo is populated, then share with geo group and ww group for the account else share with all geo and ww groups  for that account</description>
+    <environments>Default</environments>
     <interviewLabel>Core_MDF_CreateAccountShareForInternalAccountManagers {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core_MDF_CreateAccountShareForInternalAccountManagers</label>
     <processMetadataValues>
@@ -81,32 +54,10 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
-        <name>Core_MDF_Check_for_SubGeo</name>
-        <label>Check for SubGeo</label>
-        <locationX>1149</locationX>
-        <locationY>134</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Core_MDF_SubGeo_Check</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_MDF_Channel_Program_Name_txt__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Core_MDF_ProgramName</elementReference>
-            </value>
-        </filters>
-        <object>Core_MDF_ClaimActAllocRecTypeMapping__mdt</object>
-        <outputReference>ClaimActivityAllocationRecordtypeMappingRecord</outputReference>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Core_MDF_Region_cd__c</queriedFields>
-    </recordLookups>
-    <recordLookups>
         <name>Core_MDF_Fetch_the_PGM_record</name>
         <label>Fetch the PGM record</label>
-        <locationX>793</locationX>
-        <locationY>652</locationY>
+        <locationX>794</locationX>
+        <locationY>377</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Core_MDF_PGMIterater</targetReference>
@@ -146,56 +97,6 @@
         <queriedFields>Core_MDF_Group_Id__c</queriedFields>
     </recordLookups>
     <recordLookups>
-        <name>Core_MDF_Fetch_the_PGM_records</name>
-        <label>Fetch the PGM records</label>
-        <locationX>1569</locationX>
-        <locationY>372</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Iterator</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_MDF_Account__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vCoMarketingUltimateAccount</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Channel_Program__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vProgram</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Group_Id__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Region_cd__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vRegionv</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Type_of_Access__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Internal</stringValue>
-            </value>
-        </filters>
-        <object>Core_MDF_Partner_Group_Mapping__c</object>
-        <outputReference>PGMList</outputReference>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Core_MDF_Group_Id__c</queriedFields>
-    </recordLookups>
-    <recordLookups>
         <name>Core_MDF_GetMetadataRecords</name>
         <label>GetMetadataRecords</label>
         <locationX>794</locationX>
@@ -218,63 +119,6 @@
             <field>Geo_Based_Sharing_Required__c</field>
         </outputAssignments>
     </recordLookups>
-    <recordLookups>
-        <name>Get_PGM_Records</name>
-        <label>Get PGM Records</label>
-        <locationX>1310</locationX>
-        <locationY>379</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>PGMIteration</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_MDF_Account__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vCoMarketingUltimateAccount</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Channel_Program__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vProgram</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Group_Id__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Region_cd__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vRegionv</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Sub_Region_cd__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>vSubRegion</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_MDF_Type_of_Access__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Internal</stringValue>
-            </value>
-        </filters>
-        <object>Core_MDF_Partner_Group_Mapping__c</object>
-        <outputReference>sPGMCollList</outputReference>
-        <queriedFields>Id</queriedFields>
-        <queriedFields>Core_MDF_Group_Id__c</queriedFields>
-    </recordLookups>
     <start>
         <locationX>341</locationX>
         <locationY>48</locationY>
@@ -282,12 +126,12 @@
             <targetReference>Core_MDF_GetMetadataRecords</targetReference>
         </connector>
     </start>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <subflows>
         <name>Core_MDF_PGMIterater</name>
         <label>PGMIterater</label>
-        <locationX>794</locationX>
-        <locationY>934</locationY>
+        <locationX>795</locationX>
+        <locationY>540</locationY>
         <flowName>Core_MDF_PGMIteration</flowName>
         <inputAssignments>
             <name>Core_MDF_AccId</name>
@@ -302,52 +146,6 @@
             </value>
         </inputAssignments>
     </subflows>
-    <subflows>
-        <name>Iterator</name>
-        <label>Iterator</label>
-        <locationX>1570</locationX>
-        <locationY>628</locationY>
-        <flowName>Core_MDF_PGMIteration</flowName>
-        <inputAssignments>
-            <name>Core_MDF_AccId</name>
-            <value>
-                <elementReference>vAccountId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>Core_MDF_PGMList</name>
-            <value>
-                <elementReference>PGMList</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
-    <subflows>
-        <name>PGMIteration</name>
-        <label>PGMIteration</label>
-        <locationX>1309</locationX>
-        <locationY>628</locationY>
-        <flowName>Core_MDF_PGMIteration</flowName>
-        <inputAssignments>
-            <name>Core_MDF_AccId</name>
-            <value>
-                <elementReference>vAccountId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>Core_MDF_PGMList</name>
-            <value>
-                <elementReference>sPGMCollList</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
-    <variables>
-        <name>ClaimActivityAllocationRecordtypeMappingRecord</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_ClaimActAllocRecTypeMapping__mdt</objectType>
-    </variables>
     <variables>
         <name>Core_MDF_FlagForSubRegion</name>
         <dataType>Boolean</dataType>

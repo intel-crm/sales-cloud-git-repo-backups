@@ -3,14 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>MGL LDR APJ</name>
-    <queueMembers>
-        <users>
-            <user>10166818@intel.com.crm</user>
-            <user>11501136@intel.com.crm</user>
-            <user>12349470@intel.com.crm</user>
-            <user>11509766@intel.com.crm</user>
-        </users>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Lead</sobjectType>
     </queueSobject>

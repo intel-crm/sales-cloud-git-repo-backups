@@ -1544,7 +1544,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
-        <label>Client</label>
+        <label>客户联合市场推广基金</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>
@@ -1559,7 +1559,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- DCF Program Record Type --></description>
-        <label>Datacenter</label>
+        <label>数据中心联合市场推广基金</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>

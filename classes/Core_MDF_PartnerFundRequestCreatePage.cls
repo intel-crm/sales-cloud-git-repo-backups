@@ -784,8 +784,8 @@ Modified By :                      Date:07/25/2018                    Changes:No
             }else{
                 PartnerMarketingBudget pmb = [SELECT Id, Title, Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c FROM PartnerMarketingBudget WHERE Id =: budgetId];
                 //(Title=titleName, Budget = pmbRecord, BudgetId=pmbRecord.Id, ChannelPartnerId=cp.Id, Amount=allocationAmount);
-                if(pmb != NULL){ Core_MDF_ClaimActAllocRecTypeMapping__mdt recTypeMetaData = [Select Id,Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Allocation_RecordType_txt__c 
-                                                                           from Core_MDF_ClaimActAllocRecTypeMapping__mdt 
+                if(pmb != NULL){ Core_MDF_ObjRecType_Budget_FieldSetMap__mdt recTypeMetaData = [Select Id,Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Allocation_RecordType_txt__c 
+                                                                           from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt 
                                                                              where Core_MDF_Channel_Program_Name_txt__c =:pmb.Core_MDF_Program__r.Core_MDF_Technical_Program_Name__c limit 1];Id recordtypeId = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get(recTypeMetaData.Core_MDF_Allocation_RecordType_txt__c).getRecordTypeId();
                 // Setting record type for PFA
                     PartnerFundAllocation partnerFndAllocation = new PartnerFundAllocation(Title = pmb.Title,RecordTypeId = recordtypeId,
@@ -1489,7 +1489,7 @@ public static Boolean shouldShowIPAProposalEditWarning(String recordId) {if (Str
         }
         return matches.isEmpty() ? null : matches[0];
     }
-    
+    /*Ramapriya - Commented as part of TWC702-16422
     @AuraEnabled
     //Added by Ramapriya for Partner Contact field to fetch domain mapping for respective account
     public static List<Core_MDF_Partner_Group_Domain_Mapping__c> getDomainsForAccount(String accountId) {
@@ -1510,5 +1510,5 @@ public static Boolean shouldShowIPAProposalEditWarning(String recordId) {if (Str
                     WHERE Core_MDF_Partner_Group_Mapping_Id__r.Core_MDF_Virtual_Corp_nm__c = :accountId
                     AND Core_MDF_Active_Ind__c = true];
         }
-    }
+    }*/
 }

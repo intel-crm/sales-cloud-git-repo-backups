@@ -889,7 +889,6 @@ Core_Partner__r.RecordType.DeveloperName != &apos;Mastered_Account&apos;,
 Core_Partner__r.RecordType.DeveloperName != &apos;Core_Partner_Account_Group&apos;
 )
 )</errorConditionFormula>
-        <errorDisplayField>Core_3rd_Party__c</errorDisplayField>
         <errorMessage>The account you are attempting to relate this Opportunity Partner to is not an Intel or Partner Account. Please choose an Intel or Partner Account</errorMessage>
     </validationRules>
     <validationRules>

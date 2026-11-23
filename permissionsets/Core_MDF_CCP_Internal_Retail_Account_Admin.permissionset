@@ -1012,6 +1012,10 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <recordType>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Channel_MDF</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <recordType>Core_MDF_Int_Users_Partner_Geo_Mapping__c.Core_MDF_Client_Co_Marketing_Fund</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>

@@ -1,5 +1,7 @@
-import {LightningElement, api} from "lwc";
 import {parseXML} from 'c/quanticUtils';
+import {LightningElement, api} from 'lwc';
+
+const MIN_MAX_NUMBER_OF_PARTS = 3;
 
 /** @typedef {import("coveo").Result} Result */
 
@@ -7,11 +9,17 @@ import {parseXML} from 'c/quanticUtils';
  * The `QuanticResultPrintableUri` component displays the URI, or path, to access a result.
  * @category Result Template
  * @example
- * <c-quantic-result-printable-uri result={result} max-number-of-parts="3"></c-quantic-result-printable-uri>
+ * <c-quantic-result-printable-uri engine-id={engineId} result={result} max-number-of-parts="3"></c-quantic-result-printable-uri>
  */
 export default class QuanticResultPrintableUri extends LightningElement {
   /**
-   * The [result item](https://docs.coveo.com/en/headless/latest/reference/search/controllers/result-list/#result).
+   * The ID of the engine instance the component registers to.
+   * @api
+   * @type {string}
+   */
+  @api engineId;
+  /**
+   * The [result item](https://docs.coveo.com/en/headless/latest/reference/interfaces/Search.Result.html).
    * @api
    * @type {Result}
    */
@@ -24,7 +32,7 @@ export default class QuanticResultPrintableUri extends LightningElement {
    */
   @api maxNumberOfParts = 5;
   /**
-   * Where to display the linked URL, as the name for a browsing context (a tab, window, or <iframe>).
+   * Where to display the linked URL, as the name for a browsing context (a tab, window, or `<iframe>`).
    * The following keywords have special meanings for where to load the URL:
    *   - `_self`: the current browsing context. (Default)
    *   - `_blank`: usually a new tab, but users can configure their browsers to open a new window instead.
@@ -36,18 +44,22 @@ export default class QuanticResultPrintableUri extends LightningElement {
    */
   @api target = '_self';
 
-  /** @type {number} */
-  MIN_MAX_NUMBER_OF_PARTS = 3;
   /** @type {boolean} */
   isExpanded = false;
   /** @type {string} */
   error;
 
   renderedCallback() {
-    if (this.maxNumberOfParts < this.MIN_MAX_NUMBER_OF_PARTS) {
-      console.error(`The provided value of ${this.maxNumberOfParts} for the maxNumberOfParts option is inadequate. The provided value must be at least ${this.MIN_MAX_NUMBER_OF_PARTS}.`);
+    if (this.maxNumberOfParts < MIN_MAX_NUMBER_OF_PARTS) {
+      console.error(
+        `The provided value of ${this.maxNumberOfParts} for the maxNumberOfParts option is inadequate. The provided value must be at least ${MIN_MAX_NUMBER_OF_PARTS}.`
+      );
       this.error = `${this.template.host.localName} Error`;
     }
+  }
+
+  expandParents() {
+    this.isExpanded = true;
   }
 
   get allParents() {
@@ -58,7 +70,7 @@ export default class QuanticResultPrintableUri extends LightningElement {
       name: parent.getAttribute('name'),
       uri: parent.getAttribute('uri'),
       isFolded: false,
-      classes: index === parents.length - 1 ? 'slds-truncate' : ''
+      classes: index === parents.length - 1 ? 'slds-truncate' : '',
     }));
   }
 
@@ -67,13 +79,13 @@ export default class QuanticResultPrintableUri extends LightningElement {
       return this.allParents;
     }
     return [
-      ...this.allParents.slice(0, 2),
-      { id: 'separator', name: '...', isFolded: true },
-      this.allParents.slice(-1)[0]
+      ...this.allParents.slice(0, this.maxNumberOfParts - 1),
+      {id: 'separator', name: '...', isFolded: true},
+      this.allParents.slice(-1)[0],
     ];
   }
 
-  expandParents() {
-    this.isExpanded = true;
+  get shouldDisplayPrintableUriLink() {
+    return this.allParents.length === 0;
   }
 }

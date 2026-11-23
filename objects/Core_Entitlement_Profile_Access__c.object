@@ -1065,6 +1065,11 @@
                     <label>EPS Verified Company</label>
                 </value>
                 <value>
+                    <fullName>RPS Retailer</fullName>
+                    <default>false</default>
+                    <label>RPS Retailer</label>
+                </value>
+                <value>
                     <fullName>Intel Developer Cloud Enterprise</fullName>
                     <default>false</default>
                     <label>Intel Developer Cloud Enterprise</label>
@@ -1163,16 +1168,6 @@
                     <fullName>Co-Engineering Project Submitter</fullName>
                     <default>false</default>
                     <label>Co-Engineering Project Submitter</label>
-                </value>
-                <value>
-                    <fullName>Platform Diagnostics External Upload</fullName>
-                    <default>false</default>
-                    <label>Platform Diagnostics External Upload</label>
-                </value>
-                <value>
-                    <fullName>Deal Incentive User</fullName>
-                    <default>false</default>
-                    <label>Deal Incentive User</label>
                 </value>
                 <value>
                     <fullName>CCF Account Budget Administrator</fullName>
@@ -1395,12 +1390,6 @@
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>QDMS-Test</label>
-                </value>
-                <value>
-                    <fullName>RPS Retailer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>RPS Retailer</label>
                 </value>
                 <value>
                     <fullName>SEP for External DFAEs</fullName>

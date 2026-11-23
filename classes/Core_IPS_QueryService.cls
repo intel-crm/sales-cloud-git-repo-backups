@@ -24,7 +24,7 @@ public without sharing class Core_IPS_QueryService {
         try {
             return Database.query(queryString, AccessLevel.SYSTEM_MODE);
         } catch (Exception e) {
-            System.debug('ERROR: ' + e.getMessage());
+          
             return new List<SObject>();
         }
     }

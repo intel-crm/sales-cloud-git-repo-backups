@@ -151,6 +151,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

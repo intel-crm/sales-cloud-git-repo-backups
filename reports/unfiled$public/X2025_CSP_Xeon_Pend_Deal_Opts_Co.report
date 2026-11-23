@@ -221,6 +221,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVY</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

@@ -192,7 +192,7 @@ public class Core_OpportunityHandler_2_Test {
                 
         User usr = [select id from User where Email='OSOTOwner@apttus.com' limit 1];
         User usr1 = [select id from User where Email='OSOOwner@apttus.com' limit 1];
-        User partUsr = [select Id,UserRoleId from User where Profile.Name='Partner' AND IsActive=true LIMIT 1];
+        User partUsr = [select Id,UserRoleId from User where Profile.Name='Sales Rep-BB' AND IsActive=true LIMIT 1];
        
         usr.UserRoleId = role.Id;
         usr1.UserRoleId = role.Id;

@@ -522,7 +522,7 @@
         <dataType>Numeric</dataType>
         <decimalPlaces>2</decimalPlaces>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_EMEA_CCG_Quantity_GT_5000_and_LTE_20000</lookupName>
+        <lookupName>Pricing_Route_Rules_EMEA_CCG_Covered_Uncovered</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Overall_Quote_Quantity_Nbr__c</name>
         <output>false</output>
@@ -532,7 +532,7 @@
         <collection>false</collection>
         <dataType>Text</dataType>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_EMEA_CCG_Change_Request</lookupName>
+        <lookupName>Pricing_Route_Rules_ASMO_EMEA_CCG_Retail</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Program_Type_Nm__c</name>
         <output>false</output>
@@ -542,7 +542,7 @@
         <collection>false</collection>
         <dataType>Text</dataType>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_ASMO_EMEA_CCG_Retail</lookupName>
+        <lookupName>Pricing_Route_Rules_EMEA_CCG_Change_Request</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_Region_Nm__c</name>
         <output>false</output>

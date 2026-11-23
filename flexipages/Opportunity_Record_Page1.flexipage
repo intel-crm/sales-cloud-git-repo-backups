@@ -512,7 +512,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Core_Design_Type__c</fieldItem>
                 <identifier>RecordCore_Design_Type_cField</identifier>
@@ -4889,10 +4889,6 @@
                     <name>accordionSections</name>
                     <value>Facet-fc7332dc-f956-465a-b0a0-c654fa045993</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>allowMultipleSectionsOpen</name>
-                    <value>false</value>
-                </componentInstanceProperties>
                 <componentName>flexipage:accordion</componentName>
                 <identifier>flexipage_accordion</identifier>
                 <visibilityRule>
@@ -4926,10 +4922,6 @@
                     <name>accordionSections</name>
                     <value>Facet-96f14385-0b48-4f4e-80bf-86a7c6f71824</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>allowMultipleSectionsOpen</name>
-                    <value>false</value>
-                </componentInstanceProperties>
                 <componentName>flexipage:accordion</componentName>
                 <identifier>flexipage_accordion2</identifier>
                 <visibilityRule>
@@ -4952,10 +4944,6 @@
                 <componentInstanceProperties>
                     <name>accordionSections</name>
                     <value>Facet-44d0b4bc-bd71-48d5-b076-85b769e4acd8</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>allowMultipleSectionsOpen</name>
-                    <value>false</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:accordion</componentName>
                 <identifier>flexipage_accordion3</identifier>

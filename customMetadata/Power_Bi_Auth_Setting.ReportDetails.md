@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>partner-assist</label>
+    <label>ReportDetails</label>
     <protected>false</protected>
     <values>
         <field>ApexClass__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>ClientSecret__c</field>
-        <value xsi:type="xsd:string">Znf8Q~adNIwQ9FoeSeELqYuFJLWsgPVoA7y9NcBj</value>
+        <value xsi:type="xsd:string">Mxf8Q~nVnAdbySZ4IpKsB8~lFx4o4txP6RSF2aKK</value>
     </values>
     <values>
         <field>Column_Name__c</field>
@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>ReportId__c</field>
-        <value xsi:type="xsd:string">d20c78b2-3071-4cf3-8fb1-731f4a7f9a66</value>
+        <value xsi:type="xsd:string">304fcaa4-a4f2-4ba8-8add-630aa73c5b5d</value>
     </values>
     <values>
         <field>Table_Name__c</field>

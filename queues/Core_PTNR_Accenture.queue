@@ -3,11 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>PTNR - Accenture</name>
-    <queueMembers>
-        <users>
-            <user>susie@inteliotsolutionsalliance.com.crm</user>
-        </users>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Lead</sobjectType>
     </queueSobject>

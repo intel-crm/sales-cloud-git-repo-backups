@@ -5,6 +5,6 @@
     <destinationName>type</destinationName>
     <isFromSourceObject>true</isFromSourceObject>
     <isIdentifier>false</isIdentifier>
-    <isRequired>false</isRequired>
+    <isRequired>true</isRequired>
     <masterLabel>Event type</masterLabel>
 </ActivationPlatformActvAttr>

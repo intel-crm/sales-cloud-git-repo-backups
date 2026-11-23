@@ -14,18 +14,10 @@
     closeModel: function(component, event, helper) {
         var isOutcome = component.get("v.isOutcomeBased");
         var recordId = component.get("v.recordId");
-        var communityBaseUrl = $A.get("$Label.c.Core_MDF_PFRCommunityLink");
-        var path = window.location.pathname;
+        
         if (isOutcome) {
-            var isCommunity = path.includes('/s/');
-            if (isCommunity) {
-                window.location.href =
-                    communityBaseUrl + 's/outcome-based-campaign-details?recordId=' + recordId;
-            } else {
-                window.location.href =
-                    '/lightning/n/Core_MDF_Outcome_Based_Campaign_Detail?c__recordId=' + recordId;
-            }
-        }
+            window.location.href = '/lightning/n/Core_MDF_Outcome_Based_Campaign_Detail?c__recordId=' + recordId;
+        } 
         else {
             var navEvt = $A.get("e.force:navigateToSObject");
             if (navEvt) {

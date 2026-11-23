@@ -82,7 +82,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled,Production Lost</value>
+            <value>Lost,Production Lost</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>

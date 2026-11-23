@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">https://partner-admin.intel.com/s/</value>
+        <value xsi:type="xsd:string">https://intel--crmqa7.sandbox.my.site.com/partneradmin/s/core-design-registration/</value>
     </values>
 </CustomMetadata>

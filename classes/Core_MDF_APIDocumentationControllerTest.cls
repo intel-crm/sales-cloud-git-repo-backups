@@ -32,6 +32,8 @@ private class Core_MDF_APIDocumentationControllerTest {
         Test.stopTest();
         
         System.assertNotEquals(null, communityUrl, 'Community URL should not be null');
+        System.assert(communityUrl.contains('Partnercenter'), 'URL should contain community name');
+        System.assert(communityUrl.contains('API_Documentation'), 'URL should contain page path');
     }
     
     @isTest

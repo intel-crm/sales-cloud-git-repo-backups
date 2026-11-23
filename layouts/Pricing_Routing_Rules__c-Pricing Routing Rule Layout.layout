@@ -45,10 +45,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Pricing_EndCustomer_CSP_List_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Pricing_Routing_Output_Criteria_Nm__c</field>
             </layoutItems>
         </layoutColumns>
@@ -64,6 +60,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Pricing_Market_Segment_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Pricing_AI_Host_Node_Ind__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -84,10 +84,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Pricing_EndCust_Exclusion_List_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Pricing_Is_Routing_Rule_Active_Ind__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

@@ -698,36 +698,6 @@
         <label>New Opportunity</label>
     </fieldSets>
     <fieldSets>
-        <fullName>ImpartnerPRM__MassAssignToPartner</fullName>
-        <availableFields>
-            <field>ImpartnerPRM__DateAssignedToPartner__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <availableFields>
-            <field>ImpartnerPRM__NotifyPartner__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <availableFields>
-            <field>ImpartnerPRM__PartnerOpportunityAcceptance__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <description>Mass Assign Opportunities to Partner Page</description>
-        <displayedFields>
-            <field>ImpartnerPRM__PartnerContact__c</field>
-            <isFieldManaged>true</isFieldManaged>
-            <isRequired>true</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>ImpartnerPRM__PartnerAccount__c</field>
-            <isFieldManaged>true</isFieldManaged>
-            <isRequired>true</isRequired>
-        </displayedFields>
-        <label>Mass Assign to Partner</label>
-    </fieldSets>
-    <fieldSets>
         <fullName>OPTY_VBS_FieldSet</fullName>
         <description>Core_Opportunity_Clone_Controller</description>
         <displayedFields>
@@ -26466,43 +26436,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>CventEvents__Attendee__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Attendee</label>
-        <referenceTo>CventEvents__Attendee__c</referenceTo>
-        <relationshipLabel>Opportunities</relationshipLabel>
-        <relationshipName>Opportunities</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>CventEvents__EventTitle__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>HYPERLINK(&quot;/&quot; &amp; CventEvents__Event__r.CventEvents__pkg_Title__c, &quot;&quot;) &amp; HYPERLINK(&quot;/&quot; &amp; CventEvents__Event__c, CventEvents__Event__r.CventEvents__pkg_Title__c)</formula>
-        <label>Cvent Event</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>CventEvents__Event__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Cvent Event Number</label>
-        <referenceTo>CventEvents__Event__c</referenceTo>
-        <relationshipLabel>Opportunities</relationshipLabel>
-        <relationshipName>Opportunities</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Decision_Date__c</fullName>
         <formula>CloseDate</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -26549,113 +26482,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__DateAssignedToPartner__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Date Assigned to Partner</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__IsDealRegistration__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Is Deal Registration</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__NotifyPartner__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Notify Partner</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerAccount__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Account</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Opportunities</relationshipLabel>
-        <relationshipName>Opportunities</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerContact__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Contact</label>
-        <lookupFilter>
-            <active>true</active>
-            <booleanFilter>1 OR 2</booleanFilter>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <valueField>Contact.AccountId</valueField>
-            </filterItems>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <value></value>
-            </filterItems>
-            <isOptional>true</isOptional>
-        </lookupFilter>
-        <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Opportunities</relationshipLabel>
-        <relationshipName>Opportunities</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerLastModifiedDate__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Partner Last Modified Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerOpportunityAcceptance__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Partner Opportunity Acceptance</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Pending</fullName>
-                    <default>false</default>
-                    <label>Pending</label>
-                </value>
-                <value>
-                    <fullName>Accepted</fullName>
-                    <default>false</default>
-                    <label>Accepted</label>
-                </value>
-                <value>
-                    <fullName>Rejected</fullName>
-                    <default>false</default>
-                    <label>Rejected</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>IqScore</fullName>
@@ -36521,21 +36347,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>LeadSource</picklist>
             <values>
                 <fullName>Eloqua Scoring Model</fullName>
@@ -45481,21 +45292,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>LeadSource</picklist>
             <values>
                 <fullName>Eloqua Scoring Model</fullName>
@@ -54345,21 +54141,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>LeadSource</picklist>
             <values>
                 <fullName>Eloqua Scoring Model</fullName>
@@ -59401,21 +59182,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
             <values>
                 <fullName>Pipeline</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -68196,21 +67962,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>LeadSource</picklist>
             <values>
                 <fullName>Eloqua Scoring Model</fullName>
@@ -73228,21 +72979,6 @@ The value of this field is 1 when Opportunity Stage is &quot;Design Win&quot;; o
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerOpportunityAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>LeadSource</picklist>
             <values>
                 <fullName>Eloqua Scoring Model</fullName>
@@ -75179,18 +74915,6 @@ NOT( ISCHANGED(Push_Reason_Details__c) ), NOT(ISNEW())
         <openType>sidebar</openType>
         <protected>false</protected>
         <url>/apex/Core_SalesSupportHome?{!$Label.Core_OpportunityID}={!CASESAFEID(Opportunity.Id)}&amp;{!$Label.Core_OpportunityName}={!Opportunity.Name}&amp;{!$Label.Core_CIMID}={!Account.Core_CIM_ID__c}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>ImpartnerPRM__MassAssignToPartner</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Assign to Partner</masterLabel>
-        <openType>sidebar</openType>
-        <page>ImpartnerPRM__MassAssignOpportunitiesToPartner</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
     </webLinks>
     <webLinks>
         <fullName>SBQQ__Amend_Assets</fullName>

@@ -110,7 +110,7 @@ private class Core_IPS_Questions_Utility_Test {
             System.assert(EnvironmentalDetailsList[0].Id != null, 'Record not created');
             
             List<Core_IPS_Response__c> lstResponse = new List<Core_IPS_Response__c>();
-            for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c LIMIT 999]) {//ATHR Query limit fix
+            for(Core_IPS_Question__c objQues : [SELECT Id,Core_IPS_Datatype__c,(SELECT Id, Core_IPS_Answer__c FROM Core_Answers__r LIMIT 1) FROM Core_IPS_Question__c]) {
                 for(Core_IPS_Answer__c objAns : objQues.Core_Answers__r) {
                     Core_IPS_Response__c objResponse = new Core_IPS_Response__c();
                     objResponse.Core_IPS_Case__c = CaseRecord.Id;

@@ -307,7 +307,6 @@
         <fields>Core_Business_Party_Id__c</fields>
         <fields>Core_Customer_Aggregation_Type__c</fields>
         <fields>Core_Data_Country_Nm__c</fields>
-        <fields>OwnerId</fields>
         <label>UCD ACM Layout</label>
     </compactLayouts>
     <enableEnhancedLookup>true</enableEnhancedLookup>
@@ -1016,11 +1015,6 @@ For the accounts which won’t be mapped to the values (BU hosted or uncovered a
                     <isActive>false</isActive>
                     <label>Security COE</label>
                 </value>
-                <value>
-                    <fullName>Sovereign Cloud</fullName>
-                    <default>false</default>
-                    <label>Sovereign Cloud</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
@@ -1070,7 +1064,7 @@ For the accounts which won’t be mapped to the values (BU hosted or uncovered a
         <label>Account Category Preview</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
@@ -1125,11 +1119,6 @@ For the accounts which won’t be mapped to the values (BU hosted or uncovered a
                     <fullName>Device Builder - MNC</fullName>
                     <default>false</default>
                     <label>Device Builder - MNC</label>
-                </value>
-                <value>
-                    <fullName>Extended Sales Force</fullName>
-                    <default>false</default>
-                    <label>Extended Sales Force</label>
                 </value>
                 <value>
                     <fullName>Distributors</fullName>
@@ -1251,11 +1240,6 @@ For the accounts which won’t be mapped to the values (BU hosted or uncovered a
                     <default>false</default>
                     <label>Solution Enabler (SI, ISV, CSP, MSP)</label>
                 </value>
-                <value>
-                    <fullName>Extended Sales Force</fullName>
-                    <default>false</default>
-                    <label>Extended Sales Force</label>
-                </value>
             </valueSetDefinition>
             <valueSettings>
                 <controllingFieldValue>Intel Covered</controllingFieldValue>
@@ -1316,12 +1300,6 @@ For the accounts which won’t be mapped to the values (BU hosted or uncovered a
                 <controllingFieldValue>Indirect Covered</controllingFieldValue>
                 <controllingFieldValue>Not Covered</controllingFieldValue>
                 <valueName>Solution Enabler (SI, ISV, CSP, MSP)</valueName>
-            </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Intel Covered</controllingFieldValue>
-                <controllingFieldValue>Indirect Covered</controllingFieldValue>
-                <controllingFieldValue>Not Covered</controllingFieldValue>
-                <valueName>Extended Sales Force</valueName>
             </valueSettings>
         </valueSet>
     </fields>
@@ -3147,11 +3125,6 @@ HYPERLINK(&quot;/&quot;+Id+&quot;/a?retURL=&quot;+Id+&quot;&amp;keepTeam=1&amp;k
                     <fullName>Not Covered</fullName>
                     <default>true</default>
                     <label>Not Covered</label>
-                </value>
-                <value>
-                    <fullName>Other-led Account</fullName>
-                    <default>false</default>
-                    <label>Other-led Account</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -8795,6 +8768,8 @@ This field is used to calculate the Sales Group value.</description>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>APJ</controllingFieldValue>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <controllingFieldValue>EMEA</controllingFieldValue>
                 <controllingFieldValue>PRC</controllingFieldValue>
                 <valueName>Army</valueName>
             </valueSettings>
@@ -8808,6 +8783,8 @@ This field is used to calculate the Sales Group value.</description>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>APJ</controllingFieldValue>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <controllingFieldValue>EMEA</controllingFieldValue>
                 <controllingFieldValue>PRC</controllingFieldValue>
                 <valueName>Defense</valueName>
             </valueSettings>
@@ -8841,6 +8818,7 @@ This field is used to calculate the Sales Group value.</description>
             <valueSettings>
                 <controllingFieldValue>APJ</controllingFieldValue>
                 <controllingFieldValue>ASMO</controllingFieldValue>
+                <controllingFieldValue>EMEA</controllingFieldValue>
                 <controllingFieldValue>PRC</controllingFieldValue>
                 <valueName>Military</valueName>
             </valueSettings>
@@ -9241,7 +9219,19 @@ This field is used to calculate the Sales Group value.</description>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>ASMO</controllingFieldValue>
+                <valueName>US Defense Advanced Research Projects Agency</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ASMO</controllingFieldValue>
                 <valueName>US DEFENSE AGENCIES</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <valueName>US DEFENSE INFORMATION SYSTEMS AGENCY</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <valueName>US DEFENSE LOGISTICS AGENCY (DLA)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>ASMO</controllingFieldValue>
@@ -9282,6 +9272,10 @@ This field is used to calculate the Sales Group value.</description>
             <valueSettings>
                 <controllingFieldValue>ASMO</controllingFieldValue>
                 <valueName>US DEPARTMENT OF STATE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <valueName>US DEPARTMENT OF TRANSPORTATION</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>ASMO</controllingFieldValue>
@@ -9970,7 +9964,7 @@ REQ: AM-15</description>
         <length>100</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -11185,7 +11179,7 @@ REQ: AM-15</description>
         <length>20</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
     </fields>
@@ -15004,6 +14998,10 @@ $User.Core_IPS_AccountId__c= Id
         <columns>Core_Account_Record_Type__c</columns>
         <columns>Core_Business_Party_Id__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_1H_2023_Sales_Group__c</field>
+            <operation>equals</operation>
+        </filters>
         <label>All Accounts</label>
     </listViews>
     <listViews>
@@ -15458,6 +15456,7 @@ $User.Core_IPS_AccountId__c= Id
         <fullName>MyAccounts2</fullName>
         <columns>ACCOUNT.NAME</columns>
         <columns>Core_Prime_Account_Name__c</columns>
+        <columns>Core_Sales_Assist_Count__c</columns>
         <columns>CORE.USERS.FIRST_NAME</columns>
         <columns>CORE.USERS.LAST_NAME</columns>
         <columns>Core_Account_Country__c</columns>
@@ -15785,10 +15784,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Salesforce</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Scoring Model</fullName>
                 <default>false</default>
             </values>
@@ -16073,10 +16068,6 @@ $User.Core_IPS_AccountId__c= Id
                 <fullName>PSG-DISTI</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Sovereign Cloud</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Account_CCG_Tier__c</picklist>
@@ -16120,10 +16111,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Extended Sales Force</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hyperscaler %28AWS%2C Azure%2C GCP%29</fullName>
                 <default>false</default>
             </values>
@@ -16164,10 +16151,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>End Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Extended Sales Force</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -17378,10 +17361,6 @@ $User.Core_IPS_AccountId__c= Id
             <values>
                 <fullName>Not Covered</fullName>
                 <default>true</default>
-            </values>
-            <values>
-                <fullName>Other-led Account</fullName>
-                <default>false</default>
             </values>
         </picklistValues>
         <picklistValues>
@@ -20971,10 +20950,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Bahrain Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Baker Hughes</fullName>
                 <default>false</default>
             </values>
@@ -20992,10 +20967,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>Belgium Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Benin Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21020,10 +20991,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>Brookhaven National Laboratory</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Bulgaria Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21079,15 +21046,7 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Czechia Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Defense</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Dem%2E Rep%2E Congo Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21112,10 +21071,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>Estonia Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ethiopia Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21167,23 +21122,11 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Georgia Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Germany Government</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Germany Govt - Research</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Ghana Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Gibraltar Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21235,10 +21178,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Greece Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Guizhou Government</fullName>
                 <default>false</default>
             </values>
@@ -21267,10 +21206,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Iraq Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Ireland Government</fullName>
                 <default>false</default>
             </values>
@@ -21292,10 +21227,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>Jefferson Lab</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Jordan Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21323,19 +21254,11 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Latvia Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Lawerence Berkeley National Laboratory</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Lawerence Livermore National Laboratory</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lebanon Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21347,27 +21270,11 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Libya Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Liechtenstein Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Lithuania Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Lockheed Martin</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Los Alamos National Laboratories</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Luxembourg Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21419,10 +21326,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Malta Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Mercury Systems</fullName>
                 <default>false</default>
             </values>
@@ -21452,10 +21355,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>Moh</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Morocco Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21623,10 +21522,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Rwanda Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SAIC</fullName>
                 <default>false</default>
             </values>
@@ -21688,10 +21583,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>Sinopharm %28国药集团%EF%BC%89</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Slovakia Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -21759,10 +21650,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Tanzania Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Thailand Government</fullName>
                 <default>false</default>
             </values>
@@ -21775,10 +21662,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Togo Government</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Tongcheng Network Technology</fullName>
                 <default>false</default>
             </values>
@@ -21788,10 +21671,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>Tsinghua University</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Tunisia Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -22016,10 +21895,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>USGS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Uganda Government</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -24049,10 +23924,6 @@ $User.Core_IPS_AccountId__c= Id
                 <fullName>PSG</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Sovereign Cloud</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Account_CCG_Tier__c</picklist>
@@ -24096,10 +23967,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Extended Sales Force</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hyperscaler %28AWS%2C Azure%2C GCP%29</fullName>
                 <default>false</default>
             </values>
@@ -24140,10 +24007,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>End Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Extended Sales Force</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -30953,10 +30816,6 @@ $User.Core_IPS_AccountId__c= Id
                 <fullName>PSG</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Sovereign Cloud</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Account_CCG_Tier__c</picklist>
@@ -31000,10 +30859,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Extended Sales Force</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hyperscaler %28AWS%2C Azure%2C GCP%29</fullName>
                 <default>false</default>
             </values>
@@ -31044,10 +30899,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>End Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Extended Sales Force</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -38632,10 +38483,6 @@ $User.Core_IPS_AccountId__c= Id
                 <fullName>PSG</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Sovereign Cloud</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Account_CCG_Tier__c</picklist>
@@ -38679,10 +38526,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Extended Sales Force</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hyperscaler %28AWS%2C Azure%2C GCP%29</fullName>
                 <default>false</default>
             </values>
@@ -38723,10 +38566,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>End Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Extended Sales Force</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -45639,10 +45478,6 @@ $User.Core_IPS_AccountId__c= Id
                 <fullName>PSG</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Sovereign Cloud</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Account_CCG_Tier__c</picklist>
@@ -45686,10 +45521,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Extended Sales Force</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hyperscaler %28AWS%2C Azure%2C GCP%29</fullName>
                 <default>false</default>
             </values>
@@ -45730,10 +45561,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>End Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Extended Sales Force</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -52769,10 +52596,6 @@ $User.Core_IPS_AccountId__c= Id
                 <fullName>PSG-DISTI</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Sovereign Cloud</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Account_CCG_Tier__c</picklist>
@@ -52816,10 +52639,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Extended Sales Force</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hyperscaler %28AWS%2C Azure%2C GCP%29</fullName>
                 <default>false</default>
             </values>
@@ -52860,10 +52679,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>End Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Extended Sales Force</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -60471,10 +60286,6 @@ $User.Core_IPS_AccountId__c= Id
                 <fullName>PSG-DISTI</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Sovereign Cloud</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Account_CCG_Tier__c</picklist>
@@ -60518,10 +60329,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Extended Sales Force</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hyperscaler %28AWS%2C Azure%2C GCP%29</fullName>
                 <default>false</default>
             </values>
@@ -60562,10 +60369,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>End Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Extended Sales Force</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -67699,10 +67502,6 @@ $User.Core_IPS_AccountId__c= Id
                 <fullName>PSG-DISTI</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Sovereign Cloud</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Account_CCG_Tier__c</picklist>
@@ -67746,10 +67545,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Extended Sales Force</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hyperscaler %28AWS%2C Azure%2C GCP%29</fullName>
                 <default>false</default>
             </values>
@@ -67790,10 +67585,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>End Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Extended Sales Force</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -75069,10 +74860,6 @@ $User.Core_IPS_AccountId__c= Id
                 <fullName>PSG-DISTI</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Sovereign Cloud</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Account_CCG_Tier__c</picklist>
@@ -75116,10 +74903,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Extended Sales Force</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hyperscaler %28AWS%2C Azure%2C GCP%29</fullName>
                 <default>false</default>
             </values>
@@ -75160,10 +74943,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>End Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Extended Sales Force</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -82596,10 +82375,6 @@ $User.Core_IPS_AccountId__c= Id
                 <fullName>PSG-DISTI</fullName>
                 <default>false</default>
             </values>
-            <values>
-                <fullName>Sovereign Cloud</fullName>
-                <default>false</default>
-            </values>
         </picklistValues>
         <picklistValues>
             <picklist>Core_Account_CCG_Tier__c</picklist>
@@ -82643,10 +82418,6 @@ $User.Core_IPS_AccountId__c= Id
                 <default>false</default>
             </values>
             <values>
-                <fullName>Extended Sales Force</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Hyperscaler %28AWS%2C Azure%2C GCP%29</fullName>
                 <default>false</default>
             </values>
@@ -82687,10 +82458,6 @@ $User.Core_IPS_AccountId__c= Id
             </values>
             <values>
                 <fullName>End Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Extended Sales Force</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -90526,6 +90293,7 @@ CONTAINS($Label.Core_MDF_APJ_SubGeo, TEXT(Core_Sub_Geo__c))),FALSE,
 IF(ISPICKVAL(Core_Geo__c, &apos;EMEA&apos;) &amp;&amp; (ISBLANK(TEXT(Core_Sub_Geo__c)) ||
 CONTAINS($Label.Core_MDF_EMEA_SubGeo, TEXT(Core_Sub_Geo__c))),FALSE,TRUE))))))),
 FALSE)</errorConditionFormula>
+        <errorDisplayField>Core_1H_2023_Sales_Group__c</errorDisplayField>
         <errorMessage>Please select region. Region and sub region values selected should be the same as that on the parent account. Once selected, region and sub region values cannot be changed.</errorMessage>
     </validationRules>
     <validationRules>
@@ -90988,78 +90756,6 @@ else{
         <protected>false</protected>
         <url>/apex/Core_SalesSupportHome?{!$Label.Core_CIMID}={!Account.Core_CIM_ID__c}&amp;UCDID={!Account.Core_Business_Party_Id__c}
 &amp;{!$Label.Core_AccountName}={!Account.Name}&amp;{!$Label.Core_AccountID}={!Account.Id}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__InviteAccountToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Invite</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__AccountInviteExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__ModifyCancelAccountToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Modify/Cancel</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__AccountModifyCancelExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__NominateAccountToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Nominate</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__AccountNominateExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__RegisterAccountToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Register</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__AccountRegisterExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
     </webLinks>
     <webLinks>
         <fullName>GoogleMaps</fullName>

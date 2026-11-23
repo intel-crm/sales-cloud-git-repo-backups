@@ -10767,14 +10767,9 @@ $User.Username = Core_Accepted_By_Id__r.Username
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CREATED_DATE</field>
-            <operation>greaterThan</operation>
-            <value>10/10/2025 12:00 AM</value>
-        </filters>
-        <filters>
-            <field>RECORDTYPE</field>
+            <field>PCC_Registration_Type__c</field>
             <operation>equals</operation>
-            <value>Core_Design_Registration__c.PCC_Deal_Registration_Partner,Core_Design_Registration__c.Deal_Registration_Locked,Core_Design_Registration__c.Deal_Registration_Draft</value>
+            <value>Deal Registration</value>
         </filters>
         <label>All Deals</label>
         <sharedTo>
@@ -11984,7 +11979,7 @@ $User.Username = Core_Accepted_By_Id__r.Username
     </listViews>
     <listViews>
         <fullName>DDR_Pending_Distributor_ASMO</fullName>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6) AND 7</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6)</booleanFilter>
         <columns>NAME</columns>
         <columns>Core_Design_Registration_Nm__c</columns>
         <columns>Core_Partner_Account_Id__c</columns>
@@ -12029,11 +12024,6 @@ $User.Username = Core_Accepted_By_Id__r.Username
             <field>Core_Pending_Product_Cnt__c</field>
             <operation>greaterThan</operation>
             <value>0</value>
-        </filters>
-        <filters>
-            <field>Core_End_Customer_Country_Subdivision_Nm__c</field>
-            <operation>notEqual</operation>
-            <value>Israel</value>
         </filters>
         <label>DDR Pending Distributor - ASMO</label>
         <sharedTo>
@@ -48565,13 +48555,13 @@ NOT(ISPICKVAL(Core_Submission_Type__c, &apos;M2M&apos;)))</errorConditionFormula
         <active>false</active>
         <description>Disabling creation of FPGA design registrations and blocking the addition of products on approved Designs by partners</description>
         <errorConditionFormula>AND(
-    PCC_Registration_Type__c = &apos;Design Registration&apos;,
+PCC_Registration_Type__c = &apos;Design Registration&apos;,
     NOT( $Permission.PCC_Bypass_Automation ),
-    ISPICKVAL(Core_Product_Group_Nm__c, &apos;FPGA/Power&apos;),
+ISPICKVAL(Core_Product_Group_Nm__c, &apos;FPGA/Power&apos;),
     OR(
         Core_Pending_Product_Cnt__c &gt; 0,
         Core_Approved_Product_Cnt__c &gt; 0,
-        ISPICKVAL(Core_Design_Registration_Status_Nm__c, &apos;Approved&apos;)
+ISPICKVAL(Core_Design_Registration_Status_Nm__c, &apos;Approved&apos;)
     )
 )</errorConditionFormula>
         <errorMessage>Registrations for FPGA product group has been disabled. Please refer to the message on Portal for more details</errorMessage>

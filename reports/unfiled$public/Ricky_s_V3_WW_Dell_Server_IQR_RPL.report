@@ -127,8 +127,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
-        <endDate>2026-05-05</endDate>
+        <endDate>2025-11-05</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2011-03-01</startDate>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

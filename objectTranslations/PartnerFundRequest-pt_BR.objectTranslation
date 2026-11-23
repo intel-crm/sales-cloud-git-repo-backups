@@ -1544,7 +1544,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
-        <label>Client</label>
+        <label>Fundo de Marketing Conjunto do Cliente</label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>
@@ -1559,7 +1559,7 @@
     </recordTypes>
     <recordTypes>
         <description><!-- DCF Program Record Type --></description>
-        <label>Datacenter</label>
+        <label>Fundo de Marketing Conjunto da Central de Dados (DCF)</label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
     </recordTypes>
     <recordTypes>

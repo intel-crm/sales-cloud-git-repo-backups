@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>Core_MDF_Payment_Admin_Queue_Id__c</field>
-        <value xsi:type="xsd:string">00GHo000003mIcZMAU</value>
+        <value xsi:type="xsd:string">00GDy0000032TWmMAM</value>
     </values>
     <values>
         <field>Core_MDF_Program__c</field>

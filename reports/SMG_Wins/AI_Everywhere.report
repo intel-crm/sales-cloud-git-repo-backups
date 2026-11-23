@@ -58,10 +58,6 @@
         <field>OpportunityLineItem.Core_Vendor__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OPPORTUNITY_SCORE</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Coverage_Nm__c</field>
     </columns>
     <description>Hunting report for AI Everywhere customer story potential</description>

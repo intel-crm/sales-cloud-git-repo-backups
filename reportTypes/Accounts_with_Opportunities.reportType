@@ -2281,11 +2281,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Attendee__c</field>
-            <table>Account.Opportunities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Battery_Life_Target__c</field>
             <table>Account.Opportunities</table>
         </columns>
@@ -2532,16 +2527,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Customer_Project_Name__c</field>
-            <table>Account.Opportunities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__EventTitle__c</field>
-            <table>Account.Opportunities</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Event__c</field>
             <table>Account.Opportunities</table>
         </columns>
         <columns>

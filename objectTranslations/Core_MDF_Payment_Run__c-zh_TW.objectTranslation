@@ -165,6 +165,10 @@
         <name>Co_Engineering</name>
     </recordTypes>
     <recordTypes>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Intel Partner Alliance MDF --></label>
         <name>Core_MDF_Intel_Partner_Alliance_MDF</name>
     </recordTypes>

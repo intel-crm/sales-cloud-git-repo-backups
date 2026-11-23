@@ -8749,6 +8749,32 @@ NOT(ISPICKVAL(core_cpq_business_unit_nm__c,&apos;&apos; ))
         </sharedTo>
     </listViews>
     <listViews>
+        <fullName>All_PSG_Quotes_Contract_Pricing</fullName>
+        <columns>NAME</columns>
+        <columns>core_cpq_revision_nbr__c</columns>
+        <columns>core_cpq_quote_type_nm__c</columns>
+        <columns>SBQQ__Status__c</columns>
+        <columns>core_cpq_active_cb__c</columns>
+        <columns>core_cpq_sap_ecp_nm__c</columns>
+        <columns>core_cpq_business_unit_nm__c</columns>
+        <columns>SBQQ__Distributor__c</columns>
+        <columns>core_cpq_pricing_start_date_dt__c</columns>
+        <columns>core_cpq_pricing_end_date_dt__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>core_cpq_change_revision_requested__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>SBQQ__Quote__c.PSG_Quote_Contract_Pricing</value>
+        </filters>
+        <label>01 - PSG Contract Pricing Quotes</label>
+        <sharedTo>
+            <group>ags_internal_users</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
         <fullName>All_PSG_Quotes_Design_Win</fullName>
         <columns>NAME</columns>
         <columns>core_cpq_ultimate_quote_number_nbr__c</columns>

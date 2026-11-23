@@ -1,20 +1,32 @@
-import {LightningElement, api} from 'lwc';
+import navigateToRecord from '@salesforce/label/c.quantic_NavigateToRecord';
+import opensInBrowserTab from '@salesforce/label/c.quantic_OpensInBrowserTab';
 import {
   getHeadlessBundle,
   getHeadlessEnginePromise,
 } from 'c/quanticHeadlessLoader';
-import {ResultUtils} from 'c/quanticUtils';
+import {ResultUtils, unwrapLockerProxiedObject} from 'c/quanticUtils';
+import {NavigationMixin} from 'lightning/navigation';
+import {LightningElement, api} from 'lwc';
+
+/**
+ * Some document types cannot be opened directly in Salesforce, so we navigate to their parent record (e.g., CaseComment and FeedComment).
+ */
+const documentTypesRequiringParentRecord = ['CaseComment', 'FeedComment'];
 
 /** @typedef {import("coveo").Result} Result */
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
 
 /**
  * The `QuanticResultLink` component creates a clickable link from a result that points to the original item.
+ * If the result is a Salesforce record or a Salesforce Knowledge article it will open the link in a new Salesforce console subtab.
+ * Otherwise, it will open the link in the browser tab.
  * @category Result Template
  * @example
  * <c-quantic-result-link engine-id={engineId} result={result} target="_blank"></c-quantic-result-link>
  */
-export default class QuanticResultLink extends LightningElement {
+export default class QuanticResultLink extends NavigationMixin(
+  LightningElement
+) {
   /**
    * The ID of the engine instance the component registers to.
    * @api
@@ -22,13 +34,19 @@ export default class QuanticResultLink extends LightningElement {
    */
   @api engineId;
   /**
-   * The [result item](https://docs.coveo.com/en/headless/latest/reference/search/controllers/result-list/#result).
+   * The [result item](https://docs.coveo.com/en/headless/latest/reference/interfaces/Search.Result.html).
    * @api
    * @type {Result}
    */
-  @api result;
+  @api
+  get result() {
+    return this._result;
+  }
+  set result(result) {
+    this._result = unwrapLockerProxiedObject(result);
+  }
   /**
-   * Where to display the linked URL, as the name for a browsing context (a tab, window, or <iframe>).
+   * Where to display the linked URL, as the name for a browsing context (a tab, window, or `<iframe>`).
    * The following keywords have special meanings for where to load the URL:
    *   - `_self`: the current browsing context. (Default)
    *   - `_blank`: usually a new tab, but users can configure their browsers to open a new window instead.
@@ -38,16 +56,7 @@ export default class QuanticResultLink extends LightningElement {
    * @type {string}
    * @defaultValue `'_self'`
    */
-  @api target = '_blank';
-  /**
-   * Indicates the use case where this component is used.
-   * @api
-   * @type {'search'|'case-assist'}
-   * @deprecated The component uses the same Headless bundle as the interface it is bound to.
-   * @defaultValue `'search'`
-   */
-  @api useCase = 'search';
-
+  @api target = '_self';
   /**
    * A function used to set focus to the link.
    * @api
@@ -60,11 +69,27 @@ export default class QuanticResultLink extends LightningElement {
       focusTarget.focus();
     }
   }
+  /**
+   * Indicates the result field to display as the link text.
+   * @api
+   * @type {string}
+   * @defaultValue `'title'`
+   */
+  @api displayedField = 'title';
 
   /** @type {SearchEngine} */
   engine;
   /** @type {AnyHeadless} */
   headless;
+  /** @type {Result} */
+  _result;
+  /** @type {string} */
+  salesforceRecordUrl;
+
+  labels = {
+    navigateToRecord,
+    opensInBrowserTab,
+  };
 
   connectedCallback() {
     getHeadlessEnginePromise(this.engineId)
@@ -74,21 +99,18 @@ export default class QuanticResultLink extends LightningElement {
       .catch((error) => {
         console.error(error.message);
       });
-  }
 
-  newURL;
-  renderedCallback(){
-    
-
-    if(this.result.raw?.lightningclickuri === undefined){
-      this.newURL = this.result.clickUri;
+    if (this.isSalesforceLink) {
+      this[NavigationMixin.GenerateUrl]({
+        type: 'standard__recordPage',
+        attributes: {
+          recordId: this.recordIdAttribute,
+          actionName: 'view',
+        },
+      }).then((url) => {
+        this.salesforceRecordUrl = url;
+      });
     }
-    else{
-      this.newURL = this.result.raw?.lightningclickuri;
-    }
-
-    
-
   }
 
   /**
@@ -105,10 +127,79 @@ export default class QuanticResultLink extends LightningElement {
     );
   };
 
+  handleClick(event) {
+    if (this.shouldNavigateToSalesforceRecord) {
+      event.preventDefault();
+      this.navigateToSalesforceRecord(event);
+    }
+  }
+
+  navigateToSalesforceRecord(event) {
+    event.stopPropagation();
+    const targetPageRef = {
+      type: 'standard__recordPage',
+      attributes: {
+        recordId: this.recordIdAttribute,
+        actionName: 'view',
+      },
+    };
+    this[NavigationMixin.Navigate](targetPageRef);
+  }
+
+  get recordIdAttribute() {
+    // Knowledge article uses the knowledge article version id to navigate.
+    if (this.result?.raw?.sfkbid && this.result?.raw?.sfkavid) {
+      return this.result.raw.sfkavid;
+    }
+    if (this.shouldOpenParentRecord) {
+      return this.result?.raw?.sfparentid;
+    }
+    return this.result.raw.sfid;
+  }
+
+  get shouldOpenParentRecord() {
+    return (
+      documentTypesRequiringParentRecord.includes(
+        this.result?.raw?.documenttype
+      ) && this.result?.raw?.sfparentid
+    );
+  }
+
   /**
-   * Returns the title to display.
+   * Checks if the Result type is Salesforce.
    */
-  get displayedTitle() {
-    return this.result.title || this.result.clickUri;
+  get isSalesforceLink() {
+    return !!this.result?.raw?.sfid;
+  }
+
+  /**
+   * Returns the result field to display as the link title.
+   */
+  get fieldToDisplay() {
+    return this.result[this.displayedField] ||
+      this.result.raw?.[this.displayedField]
+      ? this.displayedField
+      : 'clickUri';
+  }
+
+  get shouldNavigateToSalesforceRecord() {
+    return this.isSalesforceLink && this.target === '_self';
+  }
+
+  /**
+   * Returns the aria label value for the link.
+   */
+  get ariaLabelValue() {
+    if (this.shouldNavigateToSalesforceRecord) {
+      return this.labels.navigateToRecord;
+    }
+    return this.labels.opensInBrowserTab;
+  }
+
+  get hrefValue() {
+    if (this.isSalesforceLink) {
+      return this.salesforceRecordUrl;
+    }
+    return this.result.clickUri;
   }
 }

@@ -38,7 +38,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Client</masterLabel>
-        <translation>Клиент</translation>
+        <translation><!-- Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud</masterLabel>
@@ -178,7 +178,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>Сеть/Ethernet</translation>
+        <translation><!-- Networking/Ethernet --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Notebook</masterLabel>
@@ -238,7 +238,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Telco</masterLabel>
-        <translation>Телекоммуникационная компания</translation>
+        <translation><!-- Telco --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>

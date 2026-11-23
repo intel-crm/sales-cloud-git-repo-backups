@@ -46,6 +46,11 @@ public without sharing class Core_MDF_IUPGM_ServiceHandler {
     
     public static Map<Id, Set<String>> existingIupgmUserIdRegionMap = new Map<Id, Set<String>>();
     public static Map<Id, Set<String>> existingIupgmUserIdBudgMap = new Map<Id, Set<String>>();
+
+    private static Boolean isCoInvBudgetRole(Core_MDF_Int_Users_Partner_Geo_Mapping__c iupgm){
+        return iupgm.Core_MDF_Program_nm__c == Core_MDF_CCP_ConstantClass.Co_Inv_TECHNICAL_PROGRAM &&
+            Core_MDF_CCP_ConstantClass.CO_INV_BUDGETTYPE_ROLES.split(';').contains(iupgm.Core_MDF_Role_nm__c);
+    }
     
     //Generic Method to prepare RO/ RW Group Ids based on key = Program or Program+Geo+SubGeo                               
     private static void populateprogramGeoSubGeoGroupSetMaps(){                             
@@ -325,7 +330,7 @@ Accenture - KS         05/1/2021    Add new MS Claim submitter Role
                                                                                        }
                                                                                    }
                                                                                    
-                                                                                   if((/*Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ChannelMDF_Program_Name').equals(iupgm.Core_MDF_Program_nm__c) ||*/  Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name').equals(iupgm.Core_MDF_Program_nm__c) || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_EEF_Program_Name || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_Co_GTM_Technical_program_name)  && iupgm.Core_MDF_All_Budget_Type_Access_Ind__c == true){ 
+                                                                                   if((/*Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ChannelMDF_Program_Name').equals(iupgm.Core_MDF_Program_nm__c) ||*/  Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name').equals(iupgm.Core_MDF_Program_nm__c) || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_EEF_Program_Name || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_Co_GTM_Technical_program_name || isCoInvBudgetRole(iupgm)) && iupgm.Core_MDF_All_Budget_Type_Access_Ind__c == true){
                                                                                        for(String geobt : iupgm.Core_MDF_Region_Sub_Region_nm__c.split(';')){                                
                                                                                            
                                                                                            
@@ -953,7 +958,7 @@ Modified By   :        Date:       Changes:
                                                                                             }
                                                                                             
                                                                                             //Making Core_MDF_All_Budget_Type_Access_Ind__c to False for CCF/DCF/RMF and IPA PriceReviewer role as Budget Type is not applicable for these
-                                                                                            if((!Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name').equals(iupgm.Core_MDF_Program_nm__c) && iupgm.Core_MDF_Program_nm__c != Label.Core_MDF_EEF_Program_Name && iupgm.Core_MDF_Program_nm__c != Label.Core_MDF_Co_GTM_Technical_program_name
+                                                                                            if((!Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name').equals(iupgm.Core_MDF_Program_nm__c) && iupgm.Core_MDF_Program_nm__c != Label.Core_MDF_EEF_Program_Name && iupgm.Core_MDF_Program_nm__c != Label.Core_MDF_Co_GTM_Technical_program_name && !isCoInvBudgetRole(iupgm)
                                                                                                 || ((Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name').equals(iupgm.Core_MDF_Program_nm__c) || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_EEF_Program_Name || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_Co_GTM_Technical_program_name
                                                                                                     ) && (iupgm.Core_MDF_Role_nm__c == 'Core_MDF_CCP_Internal_Price_Reviewer' || iupgm.Core_MDF_Role_nm__c == 'Core_MDF_Internal_Escalation_Reviewer_L1'))) 
                                                                                                && iupgm.Core_MDF_All_Budget_Type_Access_Ind__c == true){
@@ -970,6 +975,7 @@ Modified By   :        Date:       Changes:
                                                                                             else if(!Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_BudgetTypeRoles').contains(iupgm.Core_MDF_Role_nm__c) &&
                                                                                                     !EGF_BUDGETTYPE_ROLES.contains(iupgm.Core_MDF_Role_nm__c) &&
                                                                                                     !Co_GTM_BUDGETTYPE_ROLES.contains(iupgm.Core_MDF_Role_nm__c) &&
+                                                                                                    !isCoInvBudgetRole(iupgm) &&
                                                                                                     !singleAccAllBTCMDFRoleList.contains(iupgm.Core_MDF_Role_nm__c) && !singleAccSpecificBTCMDFRoleList.contains(iupgm.Core_MDF_Role_nm__c)){
                                                                                                         
                                                                                                        // iupgm.Core_MDF_Budget_Type_txt__c = NULL; 
@@ -981,7 +987,7 @@ Modified By   :        Date:       Changes:
                                                                                                && iupgm.Core_MDF_Role_nm__c == 'Core_MDF_CCP_Internal_Price_Reviewer')){
                                                                                                 iupgm.Core_MDF_Approval_Region_nm__c = null;
                                                                                             }
-                                                                                            if(iupgm.Core_MDF_Program_nm__c =='Channel MDF'|| iupgm.Core_MDF_Program_nm__c =='Intel Partner Alliance' || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_EEF_Program_Name || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_Co_GTM_Technical_program_name){
+                                                                                            if(iupgm.Core_MDF_Program_nm__c =='Channel MDF'|| iupgm.Core_MDF_Program_nm__c =='Intel Partner Alliance' || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_EEF_Program_Name || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_Co_GTM_Technical_program_name || isCoInvBudgetRole(iupgm)){
                                                                                                 
                                                                                                 if(iupgm.Core_MDF_All_Budget_Type_Access_Ind__c == true){
                                                                                                    // iupgm.Core_MDF_Budget_Type_txt__c = NULL; 
@@ -1021,7 +1027,7 @@ Modified By   :        Date:       Changes:
                                                                                         
                                                                                         if(( Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name').equals(iupgm.Core_MDF_Program_nm__c) && Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_BudgetTypeRoles').contains(iupgm.Core_MDF_Role_nm__c))  ||
                                                                                           /* (Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ChannelMDF_Program_Name').equals(iupgm.Core_MDF_Program_nm__c) &&  singleAccSpecificBTCMDFRoleList.contains(iupgm.Core_MDF_Role_nm__c))  ||*/
-                                                                                            iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_EEF_Program_Name || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_Co_GTM_Technical_program_name){
+                                                                                            iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_EEF_Program_Name || iupgm.Core_MDF_Program_nm__c == Label.Core_MDF_Co_GTM_Technical_program_name || isCoInvBudgetRole(iupgm)){
                                                                                                List<String> budgetTypeList= new List<String>();
                                                                                                if(iupgm.Core_MDF_GeoSubGeo_Budget_Type_nm__c != null){
                                                                                                    budgetTypeList = iupgm.Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';');
@@ -1229,7 +1235,7 @@ Accenture - VK         03/10/2019      Update the method to handle geo update on
                                                                  budgetList= oldBudgetTypeList;      
                                                                  
                                                                  if(((Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Program_Name').equals(oldMap.get(iupgmId).Core_MDF_Program_nm__c) || oldMap.get(iupgmId).Core_MDF_Program_nm__c == Label.Core_MDF_EEF_Program_Name ||
-                                                                     oldMap.get(iupgmId).Core_MDF_Program_nm__c == Label.Core_MDF_Co_GTM_Technical_program_name) && 
+                                                                     oldMap.get(iupgmId).Core_MDF_Program_nm__c == Label.Core_MDF_Co_GTM_Technical_program_name || isCoInvBudgetRole(oldMap.get(iupgmId))) &&
                                                                      oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c !=null && oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';') != NULL ) ||
                                                                     (/*Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_ChannelMDF_Program_Name').equals(oldMap.get(iupgmId).Core_MDF_Program_nm__c) && */
                                                                      ( /*(oldMap.get(iupgmId).Core_MDF_CMDF_GeoSubGeo_BudgetType_nm__c!=null && oldMap.get(iupgmId).Core_MDF_CMDF_GeoSubGeo_BudgetType_nm__c.split(';') != NULL) ||*/
@@ -1330,7 +1336,9 @@ Accenture - VK         03/10/2019      Update the method to handle geo update on
                                                                     (oldMap.get(iupgmId).Core_MDF_Program_nm__c == Label.Core_MDF_EEF_Program_Name && oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c !=null &&
                                                                      oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';') != NULL) ||
                                                                      (oldMap.get(iupgmId).Core_MDF_Program_nm__c == Label.Core_MDF_Co_GTM_Technical_program_name && oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c !=null &&
-                                                                     oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';') != NULL)
+                                                                     oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';') != NULL) ||
+                                                                    (isCoInvBudgetRole(oldMap.get(iupgmId)) &&
+                                                                     oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c != null)
                                                                    ) {                  //For IPA Prog Adm, L1, L2, RO          
                                                                          if(oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c!= null && oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';') !=null){
                                                                              budgetList = oldMap.get(iupgmId).Core_MDF_GeoSubGeo_Budget_Type_nm__c.split(';');

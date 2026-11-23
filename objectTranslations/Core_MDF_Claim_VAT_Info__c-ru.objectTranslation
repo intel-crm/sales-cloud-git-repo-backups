@@ -61,7 +61,7 @@
         <value>Платежные документы</value>
     </caseValues>
     <fields>
-        <label>Название счета</label>
+        <label><!-- Account Name --></label>
         <name>Core_MDF_Account_nm__c</name>
     </fields>
     <fields>
@@ -155,6 +155,10 @@
         <help>Сумма налога</help>
         <label>Сумма налога</label>
         <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Cancellation Comment --></label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
     </fields>
     <fields>
         <label><!-- Created By --></label>

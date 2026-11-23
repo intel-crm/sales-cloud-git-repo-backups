@@ -116,6 +116,9 @@
     </fields>
     <fields>
         <label><!-- End Customer Account --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please select a valid End Customer Account. --></errorMessage>
+        </lookupFilter>
         <name>Sales_End_Customer_Account__c</name>
         <relationshipLabel><!-- Orders (End Customer Account) --></relationshipLabel>
     </fields>
@@ -390,6 +393,9 @@
     </fields>
     <fields>
         <label><!-- Ship To Account --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please select a valid Ship To Account. --></errorMessage>
+        </lookupFilter>
         <name>Sales_Ship_To_Account__c</name>
         <relationshipLabel><!-- Orders (Ship To Account) --></relationshipLabel>
     </fields>
@@ -451,6 +457,9 @@
     </fields>
     <fields>
         <label><!-- Sold To Account --></label>
+        <lookupFilter>
+            <errorMessage><!-- Please select a valid Sold To Account. --></errorMessage>
+        </lookupFilter>
         <name>Sales_Sold_To_Account__c</name>
         <relationshipLabel><!-- Orders --></relationshipLabel>
     </fields>

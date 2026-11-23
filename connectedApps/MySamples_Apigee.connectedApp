@@ -5,9 +5,9 @@
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback
 https://oauth.pstmn.io/v1/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6oRat1McMi6tV8eXJoi8g5vK2PGY3nReltcPUrrKo2EpZcfIzC9SRpiv8PlV</consumerKey>
+        <consumerKey>3MVG9BWMiHkoluZE0qiUtAc6UxfdEC1u0tPu1xMiurJIxjYRf3VRt4IxAHn7Xgar7MfuoJU6p6afT_0PCMBvO</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>true</isClientCredentialEnabled>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
@@ -20,10 +20,9 @@ https://oauth.pstmn.io/v1/callback</callbackUrl>
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>integration.mysamples@intel.com.crm</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>Web</scopes>
         <scopes>RefreshToken</scopes>

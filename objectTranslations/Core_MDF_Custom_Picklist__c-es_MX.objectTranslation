@@ -962,6 +962,10 @@
         <name>Core_MDF_Channel_MDF_Account_Based</name>
     </recordTypes>
     <recordTypes>
+        <label><!-- Channel MDF - Proposal Based --></label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Client --></label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
     </recordTypes>

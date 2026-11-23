@@ -15,8 +15,8 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>Image</componentType>
                 <dashboardComponentContents>
-                    <additionalInfo>{&quot;contentDocumentId&quot;:&quot;069cv00000pHzHsAAK&quot;,&quot;fileAssetName&quot;:&quot;Screenshot_20260618_114732png&quot;,&quot;inlineWidgetStyle&quot;:{},&quot;namespacePrefix&quot;:&quot;&quot;}</additionalInfo>
-                    <fileName>Screenshot 2026-06-18 114732.png</fileName>
+                    <additionalInfo>{&quot;contentDocumentId&quot;:&quot;069Ho00000iWwrnIAC&quot;,&quot;fileAssetName&quot;:&quot;mtnspng&quot;,&quot;inlineWidgetStyle&quot;:{},&quot;namespacePrefix&quot;:&quot;&quot;}</additionalInfo>
+                    <fileName>mtns.png</fileName>
                     <fit>fitheight</fit>
                     <horizontalAlignment>center</horizontalAlignment>
                     <verticalAlignment>center</verticalAlignment>
@@ -25,6 +25,158 @@
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>15</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>2</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <column>TOTAL_PRICE</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>26 Pipeline</header>
+                <indicatorBreakpoint1>40.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>60.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
+                <report>USES_Strategic_West/AM_Opportunities_Accounts</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>15</rowIndex>
+            <rowSpan>5</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>2</colSpan>
+            <columnIndex>2</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>TOTAL_PRICE</column>
+                </chartSummary>
+                <componentType>ColumnStacked</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FULL_NAME</groupingColumn>
+                <groupingColumn>ACCOUNT_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!TOTAL_PRICE</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Pipeline</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>USES_Strategic_West/AM_Opportunities_Accounts</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>15</rowIndex>
+            <rowSpan>15</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>4</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>ColumnStacked</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>ACCOUNT.NAME</groupingColumn>
+                <groupingColumn>Activity.Core_Subtype_of_Activity__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>RowCount</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Client Activities - Who we are talking to</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>USES_Strategic_West/MTNS_Client_Activities</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>15</rowIndex>
+            <rowSpan>9</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>8</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>ColumnStacked</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>ACCOUNT.NAME</groupingColumn>
+                <groupingColumn>Activity.Core_Subtype_of_Activity__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>RowCount</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>DCAI Activities - Who we are talking to</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>USES_Strategic_West/MTNS_Data_Center_Activities</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>15</rowIndex>
+            <rowSpan>9</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
@@ -48,33 +200,8 @@
                 <report>USES_Strategic_West/AM_Won_Opportunities_Accounts</report>
                 <showRange>false</showRange>
             </dashboardComponent>
-            <rowIndex>15</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>2</colSpan>
-            <columnIndex>2</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <column>TOTAL_PRICE</column>
-                </chartSummary>
-                <componentType>Metric</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <groupingSortProperties/>
-                <header>26 Pipeline</header>
-                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
-                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#C23934</indicatorLowColor>
-                <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>USES_Strategic_West/AM_Opportunities_Accounts</report>
-                <showRange>false</showRange>
-            </dashboardComponent>
-            <rowIndex>15</rowIndex>
-            <rowSpan>4</rowSpan>
+            <rowIndex>20</rowIndex>
+            <rowSpan>5</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
@@ -83,112 +210,52 @@
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartSummary>
                     <aggregate>Sum</aggregate>
-                    <column>TOTAL_PRICE</column>
+                    <column>QUANTITY</column>
                 </chartSummary>
                 <componentType>Metric</componentType>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>26 Design Win Revenue</header>
+                <header>2025 CCG Units</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
-                <report>USES_Strategic_West/X26_AM_Won_Opportunities_Accounts</report>
+                <report>USES_Strategic_West/AM_CCG_Opportunities_Accounts</report>
                 <showRange>false</showRange>
             </dashboardComponent>
-            <rowIndex>15</rowIndex>
-            <rowSpan>4</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>6</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>TOTAL_PRICE</column>
-                </chartSummary>
-                <componentType>ColumnStacked</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!TOTAL_PRICE</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>27 Pipeline</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>USES_Strategic_West/X27_AM_Opportunities_Accounts</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>15</rowIndex>
-            <rowSpan>16</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>9</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <axisBinding>y</axisBinding>
-                    <column>RowCount</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>ACCOUNT.NAME</groupingColumn>
-                <groupingColumn>CDF2</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>RowCount</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Who we are talking to</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>USES_Strategic_West/AM_Activities_All_NAESS_Activities</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>15</rowIndex>
-            <rowSpan>16</rowSpan>
+            <rowIndex>24</rowIndex>
+            <rowSpan>6</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
-            <columnIndex>0</columnIndex>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <column>QUANTITY</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>2025 DCAI Units</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
+                <report>USES_Strategic_West/AM_DCAI_Opportunities_Accounts</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>24</rowIndex>
+            <rowSpan>6</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>2</colSpan>
+            <columnIndex>8</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -212,7 +279,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>25 OEM Share</header>
+                <header>2025 Wins by OEM</header>
                 <legendPosition>Right</legendPosition>
                 <maxValuesDisplayed>6</maxValuesDisplayed>
                 <report>USES_Strategic_West/AM_Opportunities_by_Vendor1</report>
@@ -223,100 +290,12 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>19</rowIndex>
+            <rowIndex>24</rowIndex>
             <rowSpan>6</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>2</colSpan>
-            <columnIndex>2</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>TOTAL_PRICE</column>
-                </chartSummary>
-                <componentType>ColumnStacked</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingColumn>ACCOUNT_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!TOTAL_PRICE</sortColumn>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortColumn>s!TOTAL_PRICE</sortColumn>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Pipeline</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>USES_Strategic_West/AM_Opportunities_Accounts</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>19</rowIndex>
-            <rowSpan>12</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>2</colSpan>
-            <columnIndex>4</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>TOTAL_PRICE</column>
-                </chartSummary>
-                <componentType>ColumnStacked</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingColumn>ACCOUNT_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!TOTAL_PRICE</sortColumn>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortColumn>s!TOTAL_PRICE</sortColumn>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>26 Revenue</header>
-                <legendPosition>Bottom</legendPosition>
-                <report>USES_Strategic_West/X26_AM_Won_Opportunities_Accounts</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>19</rowIndex>
-            <rowSpan>12</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>2</colSpan>
-            <columnIndex>0</columnIndex>
+            <columnIndex>10</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -340,7 +319,7 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>26 OEM Share</header>
+                <header>26 Pipeline by OEM</header>
                 <legendPosition>Right</legendPosition>
                 <report>USES_Strategic_West/AM_pipeline_Opportunities_by_Vendor</report>
                 <showPercentage>false</showPercentage>
@@ -350,8 +329,32 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>25</rowIndex>
+            <rowIndex>24</rowIndex>
             <rowSpan>6</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>2</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>Total Activties</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#CA8501</indicatorMiddleColor>
+                <report>USES_Strategic_West/AM_All_Activities</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>25</rowIndex>
+            <rowSpan>5</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>

@@ -4499,6 +4499,10 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <recordTypeVisibilities>
+        <recordType>Campaign.Core_MDF_Channel_MDF</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <recordType>Case.Core_MDF_Audit</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -4508,6 +4512,14 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Core_MDF_Custom_Picklist__c.Core_MDF_Channel_MDF_Account_Based</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Core_MDF_Custom_Picklist__c.Core_MDF_Channel_MDF_Proposal_Based</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundRequest.Core_MDF_Channel_MDF</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabSettings>

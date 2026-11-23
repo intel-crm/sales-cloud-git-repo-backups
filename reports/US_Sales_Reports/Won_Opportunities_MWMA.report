@@ -12,7 +12,7 @@
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>INDUSTRY</groupingColumn>
+        <groupingColumn>Opportunity.Core_Product_Segment__c</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -66,14 +66,16 @@
             <operator>equals</operator>
             <value>Deal: Sell-to</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>colin crawford</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>INDUSTRY</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
@@ -102,7 +104,7 @@
         <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
-    <scope>team</scope>
+    <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
@@ -110,7 +112,7 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2025-12-31</endDate>
+        <endDate>2025-06-30</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2025-01-01</startDate>
     </timeFrameFilter>

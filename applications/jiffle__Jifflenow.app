@@ -6,7 +6,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Jifflenow</label>
-    <logo>jiffle__Jifflenow_docs/jiffle__Jifflenow_logo.gif</logo>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>
     <tabs>standard-Opportunity</tabs>

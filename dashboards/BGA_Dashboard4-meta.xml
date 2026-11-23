@@ -5,5 +5,10 @@
         <sharedTo>12123557@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>12280911@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
     <name>BGA Dashboard</name>
 </DashboardFolder>

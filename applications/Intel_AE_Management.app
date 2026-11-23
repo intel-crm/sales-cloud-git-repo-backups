@@ -46,7 +46,6 @@
     </actionOverrides>
     <brand>
         <headerColor>#0070D2</headerColor>
-        <logo>intellogo1</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>

@@ -175,7 +175,6 @@
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <isServiceCloudConsole>true</isServiceCloudConsole>
     <label>Intel PreSales Support Console</label>
-    <logo>SharedDocuments/IPS_Console_Logo.png</logo>
     <preferences>
         <enableCustomizeMyTabs>false</enableCustomizeMyTabs>
         <enableKeyboardShortcuts>true</enableKeyboardShortcuts>

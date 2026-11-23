@@ -2458,21 +2458,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Attendee__c</field>
-            <table>Core_Design_Registration__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__EventTitle__c</field>
-            <table>Core_Design_Registration__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Event__c</field>
-            <table>Core_Design_Registration__c.Opportunities__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Opportunity_Created_Coverage_New__c</field>
             <table>Core_Design_Registration__c.Opportunities__r</table>
         </columns>

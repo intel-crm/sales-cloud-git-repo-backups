@@ -2,6 +2,6 @@
 <RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Mulesfot API site to create Identity in AGS from Sales Cloud</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
-    <isActive>true</isActive>
-    <url>https://eip-generic-proxy1.cloudhub.io</url>
+    <isActive>false</isActive>
+    <url>https://eip-generic-proxy1-dev.cloudhub.io</url>
 </RemoteSiteSetting>

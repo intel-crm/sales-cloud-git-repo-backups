@@ -254,7 +254,110 @@ public with sharing class Core_MDF_ActivitySegmentMapping {
 
         }catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e); return null;} 
     }
-	@auraEnabled
+
+    public static Map<Id, List<Object>> getIncentiveDetailsForRequests(
+        Set<Id> activityIds
+    ) {
+        Map<Id, List<Object>> detailsByActivityId =
+            new Map<Id, List<Object>>();
+        if (activityIds == null || activityIds.isEmpty()) {
+            return detailsByActivityId;
+        }
+
+        for (Id activityId : activityIds) {
+            detailsByActivityId.put(activityId, new List<Object>());
+        }
+
+        List<Core_MDF_Activity_Segment_Mapping__c> segments = [
+            SELECT Id, Core_MDF_Partner_Fund_Request_id__c,
+                Core_MDF_Segment_Name_nm__c,
+                Core_MDF_Estimated_Share_of_SPIF_amt__c,
+                Core_MDF_Minimum_Forecast_Volume_nbr__c,
+                Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c,
+                Core_MDF_Maximum_Bundled_Volume_nbr__c,
+                Core_MDF_Maximum_Cost_of_Bundle_nbr__c
+            FROM Core_MDF_Activity_Segment_Mapping__c
+            WHERE Core_MDF_Partner_Fund_Request_id__c IN :activityIds
+                AND Core_MDF_Active_ind__c = true
+        ];
+
+        Map<Id, Map<String, Object>> detailsBySegmentId =
+            new Map<Id, Map<String, Object>>();
+        for (Core_MDF_Activity_Segment_Mapping__c segment : segments) {
+            Map<String, Object> segmentDetails = new Map<String, Object>{
+                'Segment' => emptyIfNull(
+                    segment.Core_MDF_Segment_Name_nm__c
+                ),
+                'Estimated Share of Incentive' =>
+                    emptyIfNull(
+                        segment.Core_MDF_Estimated_Share_of_SPIF_amt__c
+                    ),
+                'Minimum Forecast Volume' =>
+                    emptyIfNull(
+                        segment.Core_MDF_Minimum_Forecast_Volume_nbr__c
+                    ),
+                'Incentive Amount $/U' =>
+                    emptyIfNull(
+                        segment.Core_MDF_SPIF_Amount_Dollar_Per_Unit_nbr__c
+                    ),
+                'Maximum Bundled Volume' =>
+                    emptyIfNull(
+                        segment.Core_MDF_Maximum_Bundled_Volume_nbr__c
+                    ),
+                'Maximum Cost of Bundle' =>
+                    emptyIfNull(
+                        segment.Core_MDF_Maximum_Cost_of_Bundle_nbr__c
+                    )
+            };
+            detailsBySegmentId.put(segment.Id, segmentDetails);
+            detailsByActivityId.get(
+                segment.Core_MDF_Partner_Fund_Request_id__c
+            ).add(segmentDetails);
+        }
+
+        if (detailsBySegmentId.isEmpty()) {
+            return detailsByActivityId;
+        }
+
+        Map<Id, List<Object>> productsBySegmentId =
+            new Map<Id, List<Object>>();
+        for (Core_MDF_Segment_Product_Mapping__c product : [
+            SELECT Core_MDF_Activity_Segment_Mapping_id__c,
+                Core_MDF_Product_Name_txt__c, Core_MDF_Product_Family__c
+            FROM Core_MDF_Segment_Product_Mapping__c
+            WHERE Core_MDF_Activity_Segment_Mapping_id__c
+                IN :detailsBySegmentId.keySet()
+                AND Core_MDF_Active_Ind__c = true
+        ]) {
+            Id segmentId = product.Core_MDF_Activity_Segment_Mapping_id__c;
+            if (!productsBySegmentId.containsKey(segmentId)) {
+                productsBySegmentId.put(segmentId, new List<Object>());
+            }
+            productsBySegmentId.get(segmentId).add(
+                new Map<String, Object>{
+                    'Products' =>
+                        emptyIfNull(product.Core_MDF_Product_Name_txt__c),
+                    'Product Family' =>
+                        emptyIfNull(product.Core_MDF_Product_Family__c)
+                }
+            );
+        }
+
+        for (Id segmentId : detailsBySegmentId.keySet()) {
+            detailsBySegmentId.get(segmentId).put(
+                'Products', productsBySegmentId.containsKey(segmentId)
+                    ? productsBySegmentId.get(segmentId)
+                    : new List<Object>()
+            );
+        }
+        return detailsByActivityId;
+    }
+
+    private static Object emptyIfNull(Object value) {
+        return value == null ? '' : value;
+    }
+
+    @auraEnabled
     public static string getRecordTypeLabelByName(String recTypeName){
         String recTypeLabel='';       
         try {          

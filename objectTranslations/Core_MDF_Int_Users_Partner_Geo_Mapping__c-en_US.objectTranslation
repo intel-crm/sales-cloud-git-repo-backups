@@ -86,6 +86,10 @@
             <translation><!-- APJ-&gt;Co-Engineering --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>APJ-&gt;Co-Investment</masterLabel>
+            <translation><!-- APJ-&gt;Co-Investment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>APJ-&gt;Data Centric Acceleration - MDF</masterLabel>
             <translation><!-- APJ-&gt;Data Centric Acceleration - MDF --></translation>
         </picklistValues>
@@ -136,6 +140,10 @@
         <picklistValues>
             <masterLabel>ASMO-&gt;Co-Engineering</masterLabel>
             <translation><!-- ASMO-&gt;Co-Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ASMO-&gt;Co-Investment</masterLabel>
+            <translation><!-- ASMO-&gt;Co-Investment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ASMO-&gt;Data Centric Acceleration - MDF</masterLabel>
@@ -190,6 +198,10 @@
             <translation><!-- EMEA-&gt;Co-Engineering --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>EMEA-&gt;Co-Investment</masterLabel>
+            <translation><!-- EMEA-&gt;Co-Investment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>EMEA-&gt;Data Centric Acceleration - MDF</masterLabel>
             <translation><!-- EMEA-&gt;Data Centric Acceleration - MDF --></translation>
         </picklistValues>
@@ -242,6 +254,10 @@
             <translation><!-- PRC-&gt;Co-Engineering --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>PRC-&gt;Co-Investment</masterLabel>
+            <translation><!-- PRC-&gt;Co-Investment --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>PRC-&gt;Data Centric Acceleration - MDF</masterLabel>
             <translation><!-- PRC-&gt;Data Centric Acceleration - MDF --></translation>
         </picklistValues>
@@ -292,6 +308,10 @@
         <picklistValues>
             <masterLabel>WW-&gt;Co-Engineering</masterLabel>
             <translation><!-- WW-&gt;Co-Engineering --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WW-&gt;Co-Investment</masterLabel>
+            <translation><!-- WW-&gt;Co-Investment --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>WW-&gt;Data Centric Acceleration - MDF</masterLabel>
@@ -396,6 +416,10 @@
         <name>Core_MDF_Co_GTM</name>
     </recordTypes>
     <recordTypes>
+        <label><!-- Co-Inv --></label>
+        <name>Core_MDF_Co_Inv</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Datacenter --></label>
         <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
     </recordTypes>
@@ -423,6 +447,10 @@
     <validationRules>
         <errorMessage><!-- For CCF/DCF Budget Loader and Approver, &apos;WW&apos; region has to be selected --></errorMessage>
         <name>Core_MDF_CCFDCF_Region_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please select only WW for this role. --></errorMessage>
+        <name>Core_MDF_COINV_Region_Validation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Cannot Update Account/Program/Role/User/All Accounts. Please deactivate and create new. --></errorMessage>

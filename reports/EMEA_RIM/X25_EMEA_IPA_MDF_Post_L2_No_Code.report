@@ -64,7 +64,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>1/1/2026</value>
+            <value>1/1/2025</value>
         </criteriaItems>
         <criteriaItems>
             <column>CAMPAIGN_STATUS</column>
@@ -112,7 +112,7 @@
         <field>Campaign.Core_MDF_Approval_Stage_nm__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2026 EMEA IPA MDF Post L2 No Code</name>
+    <name>25&apos;EMEA IPA MDF Post L2 No Code</name>
     <params>
         <name>scopeid</name>
         <value></value>

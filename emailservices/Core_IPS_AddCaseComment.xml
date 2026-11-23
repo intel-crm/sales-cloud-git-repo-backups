@@ -4,12 +4,6 @@
     <attachmentOption>All</attachmentOption>
     <authenticationFailureAction>Discard</authenticationFailureAction>
     <authorizationFailureAction>Discard</authorizationFailureAction>
-    <emailServicesAddresses>
-        <developerName>Core_IPS_AddCaseComment</developerName>
-        <isActive>true</isActive>
-        <localPart>core_ips_addcasecomment</localPart>
-        <runAsUser>salesforce.system.user@intel.com.crm</runAsUser>
-    </emailServicesAddresses>
     <errorRoutingAddress>sriranjini.narasimhan@intel.com</errorRoutingAddress>
     <functionInactiveAction>Discard</functionInactiveAction>
     <functionName>Core_IPS_AddCaseComment</functionName>

@@ -210,7 +210,7 @@ IF((ISPICKVAL(Status__c, &quot;Approved&quot;) || ISPICKVAL(Status__c, &quot;Rej
         <label>Account Category</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -267,11 +267,6 @@ IF((ISPICKVAL(Status__c, &quot;Approved&quot;) || ISPICKVAL(Status__c, &quot;Rej
                     <fullName>Solution Enabler (SI, ISV, CSP, MSP)</fullName>
                     <default>false</default>
                     <label>Solution Enabler (SI, ISV, CSP, MSP)</label>
-                </value>
-                <value>
-                    <fullName>Extended Sales Force</fullName>
-                    <default>false</default>
-                    <label>Extended Sales Force</label>
                 </value>
                 <value>
                     <fullName>Distributors</fullName>
@@ -368,10 +363,6 @@ IF((ISPICKVAL(Status__c, &quot;Approved&quot;) || ISPICKVAL(Status__c, &quot;Rej
                 <controllingFieldValue>Intel Covered</controllingFieldValue>
                 <valueName>Solution Enabler (SI, ISV, CSP, MSP)</valueName>
             </valueSettings>
-            <valueSettings>
-                <controllingFieldValue>Intel Covered</controllingFieldValue>
-                <valueName>Extended Sales Force</valueName>
-            </valueSettings>
         </valueSet>
     </fields>
     <fields>
@@ -420,7 +411,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present</inlineHelpText>
         <label>Account Primary Coverage</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -5883,6 +5874,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present</inlineHelpText>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>APJ</controllingFieldValue>
+                <controllingFieldValue>ASMO</controllingFieldValue>
                 <controllingFieldValue>EMEA</controllingFieldValue>
                 <controllingFieldValue>PRC</controllingFieldValue>
                 <valueName>Army</valueName>
@@ -5897,6 +5889,8 @@ No Level: Not Covered Accounts &amp; no Opportunities present</inlineHelpText>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>APJ</controllingFieldValue>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <controllingFieldValue>EMEA</controllingFieldValue>
                 <controllingFieldValue>PRC</controllingFieldValue>
                 <valueName>Defense</valueName>
             </valueSettings>
@@ -5926,6 +5920,7 @@ No Level: Not Covered Accounts &amp; no Opportunities present</inlineHelpText>
             <valueSettings>
                 <controllingFieldValue>APJ</controllingFieldValue>
                 <controllingFieldValue>ASMO</controllingFieldValue>
+                <controllingFieldValue>EMEA</controllingFieldValue>
                 <controllingFieldValue>PRC</controllingFieldValue>
                 <valueName>Military</valueName>
             </valueSettings>
@@ -6326,7 +6321,19 @@ No Level: Not Covered Accounts &amp; no Opportunities present</inlineHelpText>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>ASMO</controllingFieldValue>
+                <valueName>US Defense Advanced Research Projects Agency</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ASMO</controllingFieldValue>
                 <valueName>US DEFENSE AGENCIES</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <valueName>US DEFENSE INFORMATION SYSTEMS AGENCY</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <valueName>US DEFENSE LOGISTICS AGENCY (DLA)</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>ASMO</controllingFieldValue>
@@ -6367,6 +6374,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present</inlineHelpText>
             <valueSettings>
                 <controllingFieldValue>ASMO</controllingFieldValue>
                 <valueName>US DEPARTMENT OF STATE</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>ASMO</controllingFieldValue>
+                <valueName>US DEPARTMENT OF TRANSPORTATION</valueName>
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>ASMO</controllingFieldValue>
@@ -7672,11 +7683,6 @@ Floor(ccdo_Action_Time__c + Dataops_Action_Time__c), null ))</formula>
         <columns>Request_Owner__c</columns>
         <columns>Delegate_Approver__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Status__c</field>
-            <operation>equals</operation>
-            <value>Pending Approval</value>
-        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -7694,6 +7700,11 @@ Floor(ccdo_Action_Time__c + Dataops_Action_Time__c), null ))</formula>
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Geo__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Approved</value>
+        </filters>
         <label>Approved Requests</label>
     </listViews>
     <listViews>
@@ -7845,6 +7856,20 @@ ISPICKVAL(Address__CountryCode__s, &apos;--None--&apos;)</errorConditionFormula>
         <errorConditionFormula>ISPICKVAL(PRIORVALUE( Status__c ), &apos;Rejected&apos;) &amp;&amp; NOT(BEGINS($User.Username , &apos;crm.acm.system.user&apos;))</errorConditionFormula>
         <errorDisplayField>Core_Account_Category__c</errorDisplayField>
         <errorMessage>You cannot edit a record once rejected</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Umbrella_Group_Required_for_Industries</fullName>
+        <active>true</active>
+        <description>Umbrella Group is required when Industry is Defense and Space, Education, or Government</description>
+        <errorConditionFormula>AND(
+    OR(
+        ISPICKVAL(Industry__c,&apos;Defense and Space&apos;),
+        ISPICKVAL(Industry__c,&apos;Education&apos;),
+        ISPICKVAL(Industry__c,&apos;Government&apos;)
+    ),
+    ISBLANK(TEXT(Core_Umbrella_Group__c))
+)</errorConditionFormula>
+        <errorMessage>Umbrella Group is required when Industry is Defense and Space, Education, or Government</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>postal_code_should_be_Integer</fullName>

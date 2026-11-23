@@ -48,7 +48,6 @@ public class Core_SharingUtility{
             }
         try{
 
-// Tushar Garg as part of vulnerabilty change
             if (!shareRecords.isEmpty()) {
                 Core_IPS_QueryService.insertRecords(shareRecords);
             }
@@ -99,7 +98,6 @@ public class Core_SharingUtility{
                 share.put('RowCause', 'Manual');
                 shareRecords.add(share);
             }    
- // Tushar Garg as part of vulnerabilty change
             if (!shareRecords.isEmpty()) {
                 Core_IPS_QueryService.insertRecords(shareRecords);
             }

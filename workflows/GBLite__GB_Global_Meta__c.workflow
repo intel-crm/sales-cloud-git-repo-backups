@@ -16,7 +16,7 @@
             <name>GBLite__Stamp_Original_Record_Id</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>true</active>
+        <active>false</active>
         <formula>AND( NOT(ISBLANK(Id)), ISBLANK(GBLite__Original_Record_Id__c) )</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>

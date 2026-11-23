@@ -13,6 +13,12 @@
         <field>Opportunity.Core_Concatenated_Application_workload__c</field>
     </columns>
     <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_Vendor__c</field>
     </columns>
     <columns>
@@ -26,6 +32,10 @@
     </columns>
     <columns>
         <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
     </columns>
     <columns>
         <field>Opportunity.Competitor_Threat_Mitigation__c</field>
@@ -62,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
-            <value>1/30/2026</value>
+            <value>11/28/2025</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -87,7 +97,7 @@
     </params>
     <params>
         <name>co</name>
-        <value>1</value>
+        <value>0</value>
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>

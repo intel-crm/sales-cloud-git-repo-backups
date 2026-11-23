@@ -917,7 +917,7 @@ System.assertEquals(100, psd.Core_MDF_Recovered_Amt__c);
             FirstName = 'Test',
             LastName = 'UserEMAIL',
             Email = 'testuserEMAIL@example.com',
-            Username = 'testuserEMAIL11062025@example.com',
+            Username = 'testuserEMAIL@example.com',
             Alias = 'testE',
             TimeZoneSidKey = 'America/Los_Angeles',
             LocaleSidKey = 'en_US',

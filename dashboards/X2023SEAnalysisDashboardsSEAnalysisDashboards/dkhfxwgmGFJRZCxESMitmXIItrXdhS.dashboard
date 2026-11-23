@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <chartTheme>light</chartTheme>
+    <colorPalette>unity</colorPalette>
+    <dashboardChartTheme>light</dashboardChartTheme>
+    <dashboardColorPalette>unity</dashboardColorPalette>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>0</values>
+            <values>60</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>0</values>
+            <values>30</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>0</values>
+            <values>10</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>11</values>
+            <values>30</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>31</values>
+            <values>60</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>61</values>
+            <values>100</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>between</operator>
+            <values>101</values>
+            <values>300</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>greaterThan</operator>
+            <values>300</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>greaterThan</operator>
+            <values>60</values>
+        </dashboardFilterOptions>
+        <name>Age</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Global Accounts Sales Group,Americas US Sales Group,Americas Brazil Sales Group,Americas Mexico Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group,Americas Hosted Sales Group,APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Taiwan Sales Group,APJ Southeast Asia Sales Group,APJ Australia &amp; New Zealand Sales Group,APJ Hosted Sales Group,EMEA Sales Group,EMEA Hosted Sales Group,PRC Hosted Sales Group,PRC Sales Group,Americas Partner Holding,EMEA Partner Holding,APJ Partner Holding,PRC Partner Holding,Undefined</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Global Accounts Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas US Sales Group,Americas Brazil Sales Group,Americas Mexico Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group,Americas Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Taiwan Sales Group,APJ Southeast Asia Sales Group,APJ Australia &amp; New Zealand Sales Group,APJ Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Sales Group,EMEA Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Hosted Sales Group,PRC Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas US Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Brazil Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Mexico Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Canada Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas ELAR Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ India Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Japan Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Korea Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Taiwan Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Southeast Asia Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Australia &amp; New Zealand Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Undefined</values>
+        </dashboardFilterOptions>
+        <name>Sales Group</name>
+    </dashboardFilters>
+    <dashboardGridLayout>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Age__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Integer</displayUnits>
+                <groupingSortProperties/>
+                <header># of Opportunities with Activities</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X2023SEAnalysisSEAnalysis/X23Q1_Approved_Deal_SellTo_Activities_VWy</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <column>AMOUNT</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Age__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>$ of Opportunities with Activities</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X2023SEAnalysisSEAnalysis/X23Q1_Approved_Deal_SellTo_Activities_VWy</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Age__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>0</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header># of Opportunities without Activities</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X2023SEAnalysisSEAnalysis/X23Q1_Apprvd_Deal_SellTo_without_Activi_Y5C</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>4</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <column>AMOUNT</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Age__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>$ of Opportunities without Activities</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X2023SEAnalysisSEAnalysis/X23Q1_Apprvd_Deal_SellTo_without_Activi_Y5C</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>4</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>10</colSpan>
+            <columnIndex>1</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>Opportunity.Core_Opportunity_Count__c</column>
+                </chartSummary>
+                <componentType>Donut</componentType>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Age__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>true</expandOthers>
+                <groupingColumn>STATUS</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header># of Opportunities by Activity Status</header>
+                <legendPosition>Right</legendPosition>
+                <report>X2023SEAnalysisSEAnalysis/X23Q1_Approved_Activities_Detail_ud2</report>
+                <showPercentage>false</showPercentage>
+                <showTotal>true</showTotal>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <numberOfColumns>12</numberOfColumns>
+        <rowHeight>36</rowHeight>
+    </dashboardGridLayout>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>true</isGridLayout>
+    <owner>12050776@intel.com.crm</owner>
+    <runningUser>12050776@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>23&apos;Q1 Approved Deal Sell-To Activities Dashboard</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

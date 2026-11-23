@@ -28,9 +28,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>FK_OPP_CLOSE_DATE</field>
-    </columns>
-    <columns>
         <field>FK_NAME</field>
     </columns>
     <columns>
@@ -96,13 +93,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Partner-Led Opportunity</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Design_Registration__c.Core_Opportunity_Decision_Dt__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>11/30/2025</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

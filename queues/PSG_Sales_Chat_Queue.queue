@@ -3,11 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>PSG_Sales_Chat_Queue</name>
-    <queueMembers>
-        <users>
-            <user>11854361@intel.com.crm</user>
-        </users>
-    </queueMembers>
     <queueRoutingConfig>PSG_Sales_Chat_Queue</queueRoutingConfig>
     <queueSobject>
         <sobjectType>LiveChatTranscript</sobjectType>

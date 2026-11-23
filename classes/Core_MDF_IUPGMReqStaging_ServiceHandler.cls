@@ -189,10 +189,12 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
                 // REVOKE records are handled separately by processRevokeRequests() and
                 // never reach this loop (it only iterates grantRecords).
                 sanitizeInputs(rec, cfg);
-                
 
-              
-                List<String> validationErrors = validateInputs(rec, cfg);
+                // COPY requests never collect account/region/budget/approval-region
+                Boolean isCopyRequest = rec.Core_MDF_Request_Type_nm__c == 'COPY';
+                List<String> validationErrors = isCopyRequest
+                    ? new List<String>()
+                    : validateInputs(rec, cfg);
 
                 if (!validationErrors.isEmpty()) {
                     String errMsg = String.join(validationErrors, ' | ');
@@ -239,12 +241,15 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
                 }
 
                
-                if (!cfg.Core_MDF_IUPGM_Required__c) {
+                if (!cfg.Core_MDF_IUPGM_Required__c || isCopyRequest) {
                     rec.Core_MDF_Request_Status_nm__c  = 'Completed';
                     rec.Core_MDF_Is_IUPGM_Processed__c = true;
-                    rec.Core_MDF_Error_Message_txt__c  =
-                        'Access provisioned via Permission Set / AGS role. '
-                        + 'No IUPGM record required for this role.';
+                    rec.Core_MDF_Error_Message_txt__c  = isCopyRequest
+                        ? 'Access provisioned via Permission Set / AGS role as part of a '
+                            + 'Copy User Access request. Matching IUPGM combinations for this '
+                            + 'role are copied from the source user once the whole operation completes.'
+                        : 'Access provisioned via Permission Set / AGS role. '
+                            + 'No IUPGM record required for this role.';
                     stagingUpdates.add(rec);
                     continue;
                 }
@@ -485,6 +490,155 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
     }
 
 /******************************************************************************************************
+    Method Name:        submitPendingDependentRoles
+    Description:        Called by Core_MDF_IUPGMReqStaging_TriggerHandler.afterUpdate() whenever a
+                         Core-Access prerequisite staging record (see the chaining logic in
+                         Core_MDF_IUPGM_RequestAPI.createStagingFromSummary()) reaches Completed with a
+                         parked Core_MDF_Pending_Dependent_Role_txt__c JSON payload. Deserializes that
+                         payload and raises the real role the user originally asked for as its own,
+                         brand-new, independent staging record - it then runs through the entire normal
+                         GRANT pipeline from scratch, exactly like any other request. Only ever called
+                         for records that reached Completed; if the Core-Access record is rejected/errors
+                         out instead, this method is never invoked for it and the parked role is simply
+                         never requested. Uses Database.insert(allOrNone=false) so a malformed/legacy
+                         payload on one record never blocks the others in the same trigger batch.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    /** Raises the parked dependent role (if any) for each completed Core-Access staging record. */
+    public static void submitPendingDependentRoles(Set<Id> completedCoreAccessIds) {
+        if (completedCoreAccessIds == null || completedCoreAccessIds.isEmpty()) return;
+
+        List<Core_MDF_IUPGM_Request_Staging__c> coreAccessRows = [
+            SELECT Id, Core_MDF_IUPGM_User__c, Core_MDF_Requestor_Email__c,
+                   Core_MDF_Requested_By__c, Core_MDF_Pending_Dependent_Role_txt__c,
+                   Core_MDF_Copy_Operation_Id__c
+            FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Id IN :completedCoreAccessIds
+        ];
+        if (coreAccessRows.isEmpty()) return;
+
+        List<Core_MDF_IUPGM_Request_Staging__c> toInsert =
+            new List<Core_MDF_IUPGM_Request_Staging__c>();
+
+        for (Core_MDF_IUPGM_Request_Staging__c coreAccessRow : coreAccessRows) {
+            try {
+            if (String.isBlank(coreAccessRow.Core_MDF_Pending_Dependent_Role_txt__c)) continue;
+            Map<String, Object> pending;
+            try {
+                pending = (Map<String, Object>) JSON.deserializeUntyped(
+                    coreAccessRow.Core_MDF_Pending_Dependent_Role_txt__c);
+            } catch (Exception e) {
+                // Malformed/unexpected payload - skip this one, never block the rest.
+                System.debug('submitPendingDependentRoles: could not parse pending role JSON on '
+                    + coreAccessRow.Id + ': ' + e.getMessage());
+                continue;
+            }
+
+            // COPY-originated bootstrap: a list of eligible roles was parked (not a single role) when
+            // the COPY target had no active Salesforce account - see
+            // Core_MDF_IUPGM_RequestAPI.handleCopyTargetNeedsCreation(). Raise EVERY parked role as its
+            // own independent staging record, all sharing the Core Access row's
+            // Core_MDF_Copy_Operation_Id__c so the existing copy-completion email groups them exactly
+            // like an ordinary (non-bootstrap) Copy User Access operation.
+            Object eligibleRolesRaw = pending.get('eligibleRoles');
+            if (eligibleRolesRaw instanceof List<Object>) {
+                String copySourceUserName = (String) pending.get('sourceUserName');
+                for (Object roleObj : (List<Object>) eligibleRolesRaw) {
+                    try {
+                        Map<String, Object> role = (Map<String, Object>) roleObj;
+                        Core_MDF_IUPGM_Request_Staging__c copyDependent =
+                            new Core_MDF_IUPGM_Request_Staging__c();
+                        copyDependent.Core_MDF_IUPGM_User__c      = coreAccessRow.Core_MDF_IUPGM_User__c;
+                        copyDependent.Core_MDF_Requested_By__c    = coreAccessRow.Core_MDF_Requested_By__c;
+                        copyDependent.Core_MDF_Requestor_Email__c = coreAccessRow.Core_MDF_Requestor_Email__c;
+                        copyDependent.Core_MDF_Request_Type_nm__c = 'COPY';
+                        copyDependent.Core_MDF_IUPGM_Program__c   = (String) role.get('program');
+                        copyDependent.Core_MDF_IUPGM_Role_nm__c   = (String) role.get('permissionSetName');
+                        copyDependent.Core_MDF_AGS_Role_Name__c   = (String) role.get('agsRoleName');
+                        if (String.isNotBlank(coreAccessRow.Core_MDF_Copy_Operation_Id__c)) {
+                            copyDependent.Core_MDF_Copy_Operation_Id__c = coreAccessRow.Core_MDF_Copy_Operation_Id__c;
+                            copyDependent.Core_MDF_Copy_Source_User_txt__c = copySourceUserName;
+                        }
+
+                        Map<String, Object> existingCopyRole = Core_MDF_IUPGM_RequestAPI.findExistingRequest(
+                            String.valueOf(copyDependent.Core_MDF_IUPGM_User__c),
+                            copyDependent.Core_MDF_IUPGM_Role_nm__c,
+                            copyDependent.Core_MDF_IUPGM_Program__c,
+                            null, null, null, null, null, null
+                        );
+                        if (existingCopyRole != null) {
+                            System.debug('submitPendingDependentRoles: skipped duplicate copied role '
+                                + copyDependent.Core_MDF_IUPGM_Role_nm__c + ' for ' + coreAccessRow.Id);
+                            continue;
+                        }
+                        toInsert.add(copyDependent);
+                    } catch (Exception roleEx) {
+                        System.debug('submitPendingDependentRoles: could not build copied role for '
+                            + coreAccessRow.Id + ': ' + roleEx.getMessage());
+                    }
+                }
+                continue;
+            }
+
+            Core_MDF_IUPGM_Request_Staging__c dependent =
+                new Core_MDF_IUPGM_Request_Staging__c();
+            dependent.Core_MDF_IUPGM_User__c    = coreAccessRow.Core_MDF_IUPGM_User__c;
+            dependent.Core_MDF_Requested_By__c  = coreAccessRow.Core_MDF_Requested_By__c;
+            dependent.Core_MDF_Requestor_Email__c = coreAccessRow.Core_MDF_Requestor_Email__c;
+            dependent.Core_MDF_Request_Type_nm__c = 'GRANT';
+            dependent.Core_MDF_IUPGM_Program__c   = (String) pending.get('program');
+            dependent.Core_MDF_IUPGM_Role_nm__c   = (String) pending.get('permissionSetName');
+            dependent.Core_MDF_AGS_Role_Name__c   = (String) pending.get('agsRoleName');
+            Object accountIdVal = pending.get('accountId');
+            if (accountIdVal != null && String.isNotBlank((String) accountIdVal)) {
+                dependent.Core_MDF_IUPGM_Account__c = (Id) (String) accountIdVal;
+            }
+            if (pending.get('allAccountAccess') != null) {
+                dependent.Core_MDF_IUPGM_All_Account_Access__c =
+                    (Boolean) pending.get('allAccountAccess');
+            }
+            dependent.Core_MDF_IUPGM_Region_Sub_Region_nm__c = (String) pending.get('geo');
+            if (pending.get('allBudgetAccess') != null) {
+                dependent.Core_MDF_IUPGM_All_Budget_Type_Access__c =
+                    (Boolean) pending.get('allBudgetAccess');
+            }
+            dependent.Core_MDF_GeoSubGeo_Budget_Type_nm__c   = (String) pending.get('geoBudgetType');
+            dependent.Core_MDF_Approval_Region_nm__c         = (String) pending.get('approvalRegion');
+            dependent.Core_MDF_Activity_Classification_nm__c = (String) pending.get('activityClassification');
+
+            // Same duplicate guard the request API uses: skip if an open or completed
+            // GRANT for this user/role/program already exists.
+            Map<String, Object> existing = Core_MDF_IUPGM_RequestAPI.findExistingRequest(
+                String.valueOf(dependent.Core_MDF_IUPGM_User__c),
+                dependent.Core_MDF_IUPGM_Role_nm__c,
+                dependent.Core_MDF_IUPGM_Program__c,
+                (String) pending.get('accountId'),
+                dependent.Core_MDF_IUPGM_Region_Sub_Region_nm__c,
+                dependent.Core_MDF_GeoSubGeo_Budget_Type_nm__c,
+                dependent.Core_MDF_IUPGM_All_Account_Access__c,
+                dependent.Core_MDF_IUPGM_All_Budget_Type_Access__c,
+                null
+            );
+            if (existing != null) {
+                System.debug('submitPendingDependentRoles: skipped duplicate role '
+                    + dependent.Core_MDF_IUPGM_Role_nm__c + ' for ' + coreAccessRow.Id);
+                continue;
+            }
+
+            toInsert.add(dependent);
+            } catch (Exception e) {
+                // Bad payload value (e.g. malformed account Id) - skip only this row.
+                System.debug('submitPendingDependentRoles: could not build dependent role for '
+                    + coreAccessRow.Id + ': ' + e.getMessage());
+            }
+        }
+
+        if (!toInsert.isEmpty()) {
+            Database.insert(toInsert, false);
+        }
+    }
+
+/******************************************************************************************************
     Method Name:        process
     Description:        Completes IUPGM processing after permission-set approval and writes the final record state.
     Added By:           Ramapriya
@@ -587,15 +741,20 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
 
             sanitizeInputs(rec, cfg);
 
-            // AGS-only roles - mark complete without creating IUPGM record.
-            if (!cfg.Core_MDF_IUPGM_Required__c) {
+            // AGS-only roles, or any COPY request (never creates IUPGM - see note
+            // in process() above) - mark complete without creating IUPGM record.
+            Boolean isCopyRequest = rec.Core_MDF_Request_Type_nm__c == 'COPY';
+            if (!cfg.Core_MDF_IUPGM_Required__c || isCopyRequest) {
                 toUpdate.add(new Core_MDF_IUPGM_Request_Staging__c(
                     Id                             = rec.Id,
                     Core_MDF_Request_Status_nm__c  = Core_MDF_CCP_ConstantClass.IUPGM_STATUS_COMPLETED,
                     Core_MDF_Is_IUPGM_Processed__c = true,
-                    Core_MDF_Error_Message_txt__c  =
-                        'Access provisioned via Permission Set / AGS role. '
-                        + 'No IUPGM record required for this role.'
+                    Core_MDF_Error_Message_txt__c  = isCopyRequest
+                        ? 'Access provisioned via Permission Set / AGS role as part of a '
+                            + 'Copy User Access request. Matching IUPGM combinations for this '
+                            + 'role are copied from the source user once the whole operation completes.'
+                        : 'Access provisioned via Permission Set / AGS role. '
+                            + 'No IUPGM record required for this role.'
                 ));
                 continue;
             }
@@ -800,8 +959,13 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
     }
 
     private static Boolean isCoreAccessRequest(Core_MDF_IUPGM_Request_Staging__c rec) {
-        String role = String.valueOf(rec.Core_MDF_IUPGM_Role_nm__c).trim().toLowerCase();
-        String agsRole = String.valueOf(rec.Core_MDF_AGS_Role_Name__c).trim().toLowerCase();
+        // Null-guarded: roles with no mapped Permission Set (e.g. "CCF Operations Admin")
+        // leave Core_MDF_IUPGM_Role_nm__c blank, and String.valueOf(null) returns null,
+        // which previously crashed this bulk-processed method with a NullPointerException.
+        String role = rec.Core_MDF_IUPGM_Role_nm__c == null
+            ? '' : rec.Core_MDF_IUPGM_Role_nm__c.trim().toLowerCase();
+        String agsRole = rec.Core_MDF_AGS_Role_Name__c == null
+            ? '' : rec.Core_MDF_AGS_Role_Name__c.trim().toLowerCase();
         String coreRole = Core_MDF_CCP_ConstantClass.IUPGM_CORE_ACCESS_ROLE_LABEL.toLowerCase();
         return role == coreRole || agsRole == coreRole;
     }
@@ -1109,7 +1273,7 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
         String baseSelectClause = 'SELECT Id, Core_MDF_IUPGM_User__c, '
             + 'Core_MDF_IUPGM_Role_nm__c, Core_MDF_AGS_Request_Type__c, '
             + 'Core_MDF_Request_Status_nm__c, Core_MDF_AGS_Request_Id__c, '
-            + 'Core_MDF_Request_Type_nm__c, '
+            + 'Core_MDF_Request_Type_nm__c, Core_MDF_Pending_Dependent_Role_txt__c, '
             + 'Core_MDF_IUPGM_User__r.IsActive, '
             + 'Core_MDF_IUPGM_User__r.FederationIdentifier, '
             + 'Core_MDF_IUPGM_User__r.Email, Core_MDF_Error_Message_txt__c';
@@ -1152,7 +1316,7 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
         String baseSelectClause = 'SELECT Id, Core_MDF_IUPGM_User__c, '
             + 'Core_MDF_IUPGM_Role_nm__c, Core_MDF_AGS_Request_Type__c, '
             + 'Core_MDF_Request_Status_nm__c, Core_MDF_AGS_Request_Id__c, '
-            + 'Core_MDF_Request_Type_nm__c, '
+            + 'Core_MDF_Request_Type_nm__c, Core_MDF_Pending_Dependent_Role_txt__c, '
             + 'Core_MDF_IUPGM_User__r.IsActive, '
             + 'Core_MDF_IUPGM_User__r.FederationIdentifier, '
             + 'Core_MDF_IUPGM_User__r.Email, Core_MDF_Error_Message_txt__c';
@@ -1351,6 +1515,56 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
 
             } else if (rec.Core_MDF_Request_Status_nm__c
                        == 'AGS_User_Creation_Pending') {
+
+                Boolean rejectedOrFailed = false;
+
+                // Chained Core-Access rows only: ask AGS whether the request was
+                // rejected, so the parked dependent role is never raised. Other
+                // user-creation rows keep the existing existence-based check below.
+                if (String.isNotBlank(rec.Core_MDF_Pending_Dependent_Role_txt__c)
+                    && String.isNotBlank(rec.Core_MDF_AGS_Request_Id__c)
+                    && agsStatusCalloutsMade < maxAgsStatusCallouts) {
+
+                    agsStatusCalloutsMade++;
+                    Core_MDF_AGS_CalloutQueueable.AgsStatusResult status =
+                        agsClient.checkRequestStatus(rec.Core_MDF_AGS_Request_Id__c);
+
+                    if (status.success) {
+                        String approval     = status.approvalStatus;
+                        String provisioning = status.provisioningStatus;
+
+                        if (approval == 'Rejected' || approval == 'Denied') {
+                            rejectedOrFailed = true;
+                            toApprove.add(new Core_MDF_IUPGM_Request_Staging__c(
+                                Id                             = rec.Id,
+                                Core_MDF_AGS_Status_nm__c      = 'Rejected',
+                                Core_MDF_Request_Status_nm__c  = 'AGS_Rejected',
+                                Core_MDF_Error_Message_txt__c  =
+                                    'AGS rejected the user creation request. approvalStatus=' + approval
+                                    + (String.isNotBlank(provisioning)
+                                        ? ', provisioningStatus=' + provisioning : '')
+                            ));
+                        } else if (provisioning == 'Failed' || approval == 'Failed') {
+                            rejectedOrFailed = true;
+                            toApprove.add(new Core_MDF_IUPGM_Request_Staging__c(
+                                Id                             = rec.Id,
+                                Core_MDF_AGS_Status_nm__c      = 'Error',
+                                Core_MDF_Request_Status_nm__c  = 'Error',
+                                Core_MDF_Error_Message_txt__c  =
+                                    'AGS user creation failed. approvalStatus=' + approval
+                                    + ', provisioningStatus=' + provisioning
+                            ));
+                        }
+                        // else: still Pending/InProgress at AGS - fall through to
+                        // the existence-based check below, unchanged.
+                    } else {
+                        System.debug('AGS status check failed for staging '
+                            + rec.Id + ': ' + status.error);
+                    }
+                }
+
+                if (rejectedOrFailed) continue;
+
                 // User created by AGS should now exist and be active.
                 if (rec.Core_MDF_IUPGM_User__c != null
                     && rec.Core_MDF_IUPGM_User__r.IsActive == true) {
@@ -1460,25 +1674,7 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
             );
             System.debug('IUPGM_EMAIL [notifyRequestedUsers] SOQL returned ' + recs.size() + ' records.');
 
-            Map<String, String> roleLabelMap = new Map<String, String>();
-            for (Core_MDF_IUPGM_Rule_Config__mdt cfg : [
-                SELECT Core_MDF_Permission_Set_Name__c, Core_MDF_Role_Label__c,
-                       Core_MDF_Program__c, Core_MDF_AGS_Role_Name__c
-                FROM Core_MDF_IUPGM_Rule_Config__mdt
-                WHERE Core_MDF_Is_Active__c = true
-            ]) {
-                roleLabelMap.put(
-                    buildKey(cfg.Core_MDF_Permission_Set_Name__c, cfg.Core_MDF_Program__c),
-                    cfg.Core_MDF_Role_Label__c
-                );
-                if (String.isBlank(cfg.Core_MDF_Permission_Set_Name__c)
-                    && String.isNotBlank(cfg.Core_MDF_AGS_Role_Name__c)) {
-                    roleLabelMap.put(
-                        buildKey(cfg.Core_MDF_AGS_Role_Name__c, cfg.Core_MDF_Program__c),
-                        cfg.Core_MDF_Role_Label__c
-                    );
-                }
-            }
+            Map<String, String> roleLabelMap = buildActiveRoleLabelMap();
 
             List<Messaging.SingleEmailMessage> emails =
                 new List<Messaging.SingleEmailMessage>();
@@ -1515,13 +1711,15 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
                 String roleLabel = resolveNotificationRoleLabel(rec, roleLabelMap);
                 String programLine = buildNotificationProgramLine(rec, roleLabel);
                 Boolean isRevoke = rec.Core_MDF_Request_Type_nm__c == 'REVOKE';
+                Boolean isCopy   = rec.Core_MDF_Request_Type_nm__c == 'COPY';
+                String subjectPrefix = isCopy ? '[Copy User Access] ' : '';
 
                 String greeting  = 'Dear Intel employee,';
 
                 String subject;
                 String body;
                 if (isSuccess) {
-                    subject = (isRevoke ? 'Access Removed - ' : 'Access Granted - ') + roleLabel
+                    subject = subjectPrefix + (isRevoke ? 'Access Removed - ' : 'Access Granted - ') + roleLabel
                         + ' (' + rec.Name + ')';
                     body = greeting + '\n\n'
                         + 'The access request you submitted for ' + targetName
@@ -1535,7 +1733,7 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
                         + 'Status         : ' + status + '\n\n'
                         + 'Thank you,\nIntel® Partner Investment Center';
                 } else if (isSkipped) {
-                    subject = 'Access Request - ' + roleLabel
+                    subject = subjectPrefix + 'Access Request - ' + roleLabel
                         + ' (' + rec.Name + ')';
                     body = greeting + '\n\n'
                         + 'The access request you submitted for ' + targetName
@@ -1552,7 +1750,7 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
                                 : targetName + ' already has this access provisioned.')) + '\n\n'
                         + 'Thank you,\nIntel® Partner Investment Center';
                 } else {
-                    subject = (isRevoke ? 'Access Removal Failed - ' : 'Access Request Failed - ')
+                    subject = subjectPrefix + (isRevoke ? 'Access Removal Failed - ' : 'Access Request Failed - ')
                         + roleLabel + ' (' + rec.Name + ')';
                     body = greeting + '\n\n'
                         + 'The ' + (isRevoke ? 'access removal request' : 'access request')
@@ -1594,6 +1792,201 @@ public without sharing class Core_MDF_IUPGMReqStaging_ServiceHandler
         } catch (Exception e) {
             System.debug('IUPGM_EMAIL [notifyRequestedUsers] EXCEPTION: ' + e.getMessage()
                 + ' | stack: ' + e.getStackTraceString());
+        }
+    }
+
+/******************************************************************************************************
+    Method Name:        buildActiveRoleLabelMap
+    Description:        Builds the Core_MDF_Role_Label__c lookup map keyed by permissionSetName|program
+                         (and agsRoleName|program for AGS-only roles with no permission set), sourced
+                         from active Core_MDF_IUPGM_Rule_Config__mdt rows. Extracted unchanged from the
+                         inline block that used to live directly in notifyRequestedUsers(), so both that
+                         method and notifyCopyOperationIfComplete() share one identical implementation.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    private static Map<String, String> buildActiveRoleLabelMap() {
+        Map<String, String> roleLabelMap = new Map<String, String>();
+        for (Core_MDF_IUPGM_Rule_Config__mdt cfg : [
+            SELECT Core_MDF_Permission_Set_Name__c, Core_MDF_Role_Label__c,
+                   Core_MDF_Program__c, Core_MDF_AGS_Role_Name__c
+            FROM Core_MDF_IUPGM_Rule_Config__mdt
+            WHERE Core_MDF_Is_Active__c = true
+        ]) {
+            roleLabelMap.put(
+                buildKey(cfg.Core_MDF_Permission_Set_Name__c, cfg.Core_MDF_Program__c),
+                cfg.Core_MDF_Role_Label__c
+            );
+            if (String.isBlank(cfg.Core_MDF_Permission_Set_Name__c)
+                && String.isNotBlank(cfg.Core_MDF_AGS_Role_Name__c)) {
+                roleLabelMap.put(
+                    buildKey(cfg.Core_MDF_AGS_Role_Name__c, cfg.Core_MDF_Program__c),
+                    cfg.Core_MDF_Role_Label__c
+                );
+            }
+        }
+        return roleLabelMap;
+    }
+
+/******************************************************************************************************
+    Method Name:        notifyCopyOperationIfComplete
+    Description:        For each given Copy Operation Id, re-queries every staging record sharing it
+                         and, only once ALL of them have reached a terminal status, sends ONE
+                         consolidated completion email listing every role's outcome to the original
+                         requester. Operations where at least one role is still unresolved are skipped
+                         entirely (no partial email) - the next role to resolve re-triggers this check
+                         via Core_MDF_IUPGMReqStaging_TriggerHandler.afterUpdate(), which also guards
+                         against ever calling this for GRANT/REVOKE records.
+    Added By:           Ramapriya
+    *******************************************************************************************************/
+    public static void notifyCopyOperationIfComplete(Set<String> copyOperationIds) {
+        if (copyOperationIds == null || copyOperationIds.isEmpty()) return;
+
+        try {
+        List<Core_MDF_IUPGM_Request_Staging__c> allRows = [
+            SELECT Id, Name, Core_MDF_Copy_Operation_Id__c, Core_MDF_Request_Status_nm__c,
+                   Core_MDF_Error_Message_txt__c, Core_MDF_IUPGM_Role_nm__c, Core_MDF_IUPGM_Program__c,
+                   Core_MDF_AGS_Role_Name__c, Core_MDF_Requestor_Email__c,
+                   Core_MDF_Copy_Source_User_txt__c, Core_MDF_IUPGM_User__c, Core_MDF_IUPGM_User__r.Name
+            FROM Core_MDF_IUPGM_Request_Staging__c
+            WHERE Core_MDF_Copy_Operation_Id__c IN :copyOperationIds
+        ];
+        if (allRows.isEmpty()) return;
+
+        Map<String, List<Core_MDF_IUPGM_Request_Staging__c>> byOperation =
+            new Map<String, List<Core_MDF_IUPGM_Request_Staging__c>>();
+        for (Core_MDF_IUPGM_Request_Staging__c rec : allRows) {
+            String opId = rec.Core_MDF_Copy_Operation_Id__c;
+            if (!byOperation.containsKey(opId)) {
+                byOperation.put(opId, new List<Core_MDF_IUPGM_Request_Staging__c>());
+            }
+            byOperation.get(opId).add(rec);
+        }
+
+        Map<String, String> roleLabelMap = buildActiveRoleLabelMap();
+        List<Messaging.SingleEmailMessage> emails = new List<Messaging.SingleEmailMessage>();
+
+        for (String opId : byOperation.keySet()) {
+            List<Core_MDF_IUPGM_Request_Staging__c> rows = byOperation.get(opId);
+
+            Boolean allTerminal = true;
+            for (Core_MDF_IUPGM_Request_Staging__c r : rows) {
+                if (!Core_MDF_CCP_ConstantClass.IUPGM_TERMINAL_STATUSES.contains(
+                        r.Core_MDF_Request_Status_nm__c)) {
+                    allTerminal = false;
+                    break;
+                }
+            }
+            // At least one role in this copy operation is still unresolved - wait for
+            // it to complete before sending anything. The next role to reach a
+            // terminal status re-triggers this check for the whole operation.
+            if (!allTerminal) continue;
+
+            String toAddr = null;
+            String targetName = 'the requested user';
+            String sourceName = null;
+            Id targetUserId = null;
+            for (Core_MDF_IUPGM_Request_Staging__c r : rows) {
+                if (String.isBlank(toAddr) && String.isNotBlank(r.Core_MDF_Requestor_Email__c)) {
+                    toAddr = r.Core_MDF_Requestor_Email__c.trim();
+                }
+                if (String.isBlank(sourceName) && String.isNotBlank(r.Core_MDF_Copy_Source_User_txt__c)) {
+                    sourceName = r.Core_MDF_Copy_Source_User_txt__c;
+                }
+                if (r.Core_MDF_IUPGM_User__r != null && String.isNotBlank(r.Core_MDF_IUPGM_User__r.Name)) {
+                    targetName = r.Core_MDF_IUPGM_User__r.Name;
+                }
+                if (targetUserId == null) targetUserId = r.Core_MDF_IUPGM_User__c;
+            }
+            if (String.isBlank(toAddr)) continue;
+
+            // Replicate the source user's active IUPGM combinations onto the target now that every
+            // AGS role in this copy operation has reached a terminal status. This call only happens
+            // once per operation because this entire method only reaches here once per operation
+            // (see the allTerminal guard above), so no extra tracking field is required to avoid
+            // duplicate processing. The outcome is intentionally not surfaced in the completion
+            // email (kept exactly as before) - it is only available via debug logs.
+            Core_MDF_IUPGM_CopyService.CopyOutcome iupgmOutcome =
+                Core_MDF_IUPGM_CopyService.copyForOperation(targetUserId, sourceName);
+            System.debug('IUPGM_COPY [notifyCopyOperationIfComplete] op=' + opId
+                + ' identified=' + iupgmOutcome.sourceCount
+                + ' created=' + iupgmOutcome.createdCount
+                + ' skipped=' + iupgmOutcome.skippedCount
+                + ' failed=' + iupgmOutcome.failedCount
+                + ' note=' + iupgmOutcome.message);
+
+            Boolean anyFailed = false;
+            List<String> tableRows = new List<String>();
+            for (Core_MDF_IUPGM_Request_Staging__c r : rows) {
+                String roleLabel = resolveNotificationRoleLabel(r, roleLabelMap);
+                String status = r.Core_MDF_Request_Status_nm__c;
+                Boolean passed = SUCCESS_STATUSES.contains(status) || SKIPPED_STATUSES.contains(status);
+                if (!passed) anyFailed = true;
+                tableRows.add(roleLabel + ' | ' + (passed ? 'Pass' : 'Fail'));
+            }
+
+            // One subject for every outcome, per the copy completion email spec.
+            String subject = 'Sandbox: Access Request Completed - ' + targetName;
+            String tableHtml = '<table border="1" cellpadding="6" cellspacing="0">'
+                + '<tr><th align="left">Role</th><th align="left">Status</th></tr>';
+            String tableText = 'Role | Status\n';
+            for (String rowText : tableRows) {
+                List<String> cells = rowText.split(' \\| ');
+                tableHtml += '<tr><td>' + cells[0] + '</td><td>' + cells[1] + '</td></tr>';
+                tableText += rowText + '\n';
+            }
+            tableHtml += '</table>';
+
+            String supportLine = anyFailed
+                ? 'One or more roles could not be assigned. Please reach out to the support team '
+                    + 'for assistance with the failed roles.'
+                : '';
+
+            String sourceSentence = String.isNotBlank(sourceName)
+                ? 'Access was copied from ' + sourceName + '. ' : '';
+
+            String body = 'Dear Intel employee,\n\n'
+                + 'Your Copy User Access request for ' + targetName + ' has completed. '
+                + sourceSentence
+                + 'Summary of all requested roles:\n\n'
+                + tableText + '\n'
+                + supportLine + (anyFailed ? '\n\n' : '')
+                + 'Thank you,\nIntel\u00AE Partner Investment Center';
+
+            String htmlBody = '<p>Dear Intel employee,</p>'
+                + '<p>Your Copy User Access request for ' + targetName + ' has completed. '
+                + sourceSentence + 'Summary of all requested roles:</p>'
+                + tableHtml
+                + (anyFailed ? '<p>' + supportLine + '</p>' : '')
+                + '<p>Thank you,<br/>Intel&reg; Partner Investment Center</p>';
+
+            Messaging.SingleEmailMessage msg = new Messaging.SingleEmailMessage();
+            msg.setToAddresses(new List<String>{ toAddr });
+            msg.setSubject(subject);
+            msg.setPlainTextBody(body);
+            msg.setHtmlBody(htmlBody);
+            msg.setSaveAsActivity(false);
+            applyNotificationSender(msg);
+            emails.add(msg);
+        }
+
+        if (!emails.isEmpty()) {
+            System.debug('IUPGM_EMAIL [notifyCopyOperationIfComplete] sending '
+                + emails.size() + ' consolidated email(s) for operations: ' + byOperation.keySet());
+            List<Messaging.SendEmailResult> results = Messaging.sendEmail(emails, false);
+            for (Integer i = 0; i < results.size(); i++) {
+                System.debug('IUPGM_EMAIL [notifyCopyOperationIfComplete] email[' + i
+                    + '] isSuccess=' + results[i].isSuccess() + ' | errors=' + results[i].getErrors());
+            }
+        } else {
+            System.debug('IUPGM_EMAIL [notifyCopyOperationIfComplete] no operations fully '
+                + 'terminal yet among: ' + copyOperationIds);
+        }
+        } catch (Exception e) {
+            // Never let an email-sending failure roll back the staging record status
+            // updates that already succeeded as real business outcomes - same
+            // defensive pattern as notifyRequestedUsers().
+            System.debug('IUPGM_EMAIL [notifyCopyOperationIfComplete] EXCEPTION: '
+                + e.getMessage() + ' | stack: ' + e.getStackTraceString());
         }
     }
 

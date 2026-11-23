@@ -3,12 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>PSG Lead EMEA Covered Accts</name>
-    <queueMembers>
-        <users>
-            <user>11645521@intel.com.crm</user>
-            <user>serena@inteliotsolutionsalliance.com.crm</user>
-        </users>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Lead</sobjectType>
     </queueSobject>

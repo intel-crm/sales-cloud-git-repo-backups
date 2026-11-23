@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppGlobalOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <callbackUrl>https://test.salesforce.com/services/oauth2/callback</callbackUrl>
+    <certificate>MIIFiTCCBHGgAwIBAgIQC+2kzhF/9xhIh076n7xNdzANBgkqhkiG9w0BAQsFADB5
+MQswCQYDVQQGEwJVUzEfMB0GA1UEChMWSFAgR2xvYmFsIFBLSSBTZXJ2aWNlczEc
+MBoGA1UECxMTSFAgRGlnaXRhbEJhZGdlIFBLSTErMCkGA1UEAxMiSFAgSW5jIFBy
+aXZhdGUgU1NMIEludGVybWVkaWF0ZSBDQTAeFw0yNTEwMjQwMDAwMDBaFw0yNjEw
+MjQyMzU5NTlaMHkxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRIw
+EAYDVQQHEwlQYWxvIEFsdG8xDzANBgNVBAoTBkhQIEluYzEwMC4GA1UEAxMnbXVs
+ZXNvZnQtYW55cG9pbnQtcWExLmNvcnAuaHBpY2xvdWQubmV0MIIBIjANBgkqhkiG
+9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvGm3BrXjk3eXRMQpae6JIyRvuRO04A7s5I8f
+m+RPLKQZa/u5EaGEYvj+G5xmTErC09HC0A6E+BVF5ZN1fevpeqkbA5wfIkfIMIgu
+MH+qfvkm/6IpHXDoXeRiD5NAf6FlXNX9Z3ZxXi6vQx5/WwFNP8JGDJ9VxmdDhowA
+lW/2DzDewKdfh7iZUeiFEbCB1Sf+BrSinkEHDZsz/FzQiXmXG/+SurLhxh/fWjeL
+agjL9D6H/u0z+d8Z1OajZlqwj4dq83IGSAq5TejL1G1s/oW8unHn0O5ovnABGLAi
+NMrR+iuiep4XIhmkiA2dyUZ+PbuS7Kqly16N7qIPgNbtg5qrjQIDAQABo4ICCzCC
+AgcwHwYDVR0jBBgwFoAUyakIKX7kQr3s4r5LtOLoOYqTMe0wHQYDVR0OBBYEFC1Y
+Or0B438czz5UmviK9AEajm6QMDIGA1UdEQQrMCmCJ211bGVzb2Z0LWFueXBvaW50
+LXFhMS5jb3JwLmhwaWNsb3VkLm5ldDBBBgNVHSAEOjA4MDYGCWCGSAGG/WwBATAp
+MCcGCCsGAQUFBwIBFhtodHRwOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwDgYDVR0P
+AQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjCBjwYDVR0f
+BIGHMIGEMECgPqA8hjpodHRwOi8vY3JsMy5kaWdpY2VydC5jb20vSFBJbmNQcml2
+YXRlU1NMSW50ZXJtZWRpYXRlQ0EuY3JsMECgPqA8hjpodHRwOi8vY3JsNC5kaWdp
+Y2VydC5jb20vSFBJbmNQcml2YXRlU1NMSW50ZXJtZWRpYXRlQ0EuY3JsMH8GCCsG
+AQUFBwEBBHMwcTAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuZGlnaWNlcnQuY29t
+MEkGCCsGAQUFBzAChj1odHRwOi8vY2FjZXJ0cy5kaWdpY2VydC5jb20vSFBJbmNQ
+cml2YXRlU1NMSW50ZXJtZWRpYXRlQ0EuY3J0MAwGA1UdEwEB/wQCMAAwDQYJKoZI
+hvcNAQELBQADggEBAFR+nTZ/yp81jO3TsnN4MKnoT0qaywmrqlkA+Np6T4kS9F+K
+lQpM6iB0mksH0Hz97WA6sIwvXDHg5Uh1e5PwEErFZ7Yxq3SwfA3JiFe0/xZJFBnh
+j5qn0RaA6TZg/wtiLeQM0EdiSUQv2QNTOaceDG10lxiEvYk4rKJx83GYDegdbWSZ
+CG8cz1adsOOMI1sA9K83cmriinRc+qBIcpTus2+UmFIFUvG5FUqfuSTl5rSwX3My
+rTcf8keafLYMUJ4Mu4UOLke7WnlpsHFECt+JikDYf4v2+9g1pP5ZIsKDHad7vAI5
+QlWGmJhx7dSjygUjwatpaqMgnxv96xNCMX+JIX4=</certificate>
+    <consumerKey>3MVG9BWMiHkoluZEPDCHDle5eWaHMLKkw2Tv0afcalpHNfUNxGnV7ZiMg2Zs8uuluXvBJWRTbvnQ.m2B7FN6b</consumerKey>
+    <externalClientApplication>IPIC_HP_B2B</externalClientApplication>
+    <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>
+    <isCodeCredFlowEnabled>false</isCodeCredFlowEnabled>
+    <isCodeCredPostOnly>false</isCodeCredPostOnly>
+    <isConsumerSecretOptional>true</isConsumerSecretOptional>
+    <isDPopEnabled>false</isDPopEnabled>
+    <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+    <isEnforceRefreshTokenTTL>true</isEnforceRefreshTokenTTL>
+    <isIntrospectAllTokens>false</isIntrospectAllTokens>
+    <isMtlsEnabled>false</isMtlsEnabled>
+    <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+    <isPkceRequired>true</isPkceRequired>
+    <isRefreshTokenRotationEnabled>true</isRefreshTokenRotationEnabled>
+    <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+    <isSecretRequiredForTokenExchange>true</isSecretRequiredForTokenExchange>
+    <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+    <label>IPIC_HP_B2B_glbloauth</label>
+    <shouldRotateConsumerKey>false</shouldRotateConsumerKey>
+    <shouldRotateConsumerSecret>false</shouldRotateConsumerSecret>
+</ExtlClntAppGlobalOauthSettings>

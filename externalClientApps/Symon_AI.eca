@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExternalClientApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <contactEmail>commissions.dev.team@intel.com</contactEmail>
-    <description>External Client app for connecting Salesforce from ELT</description>
     <distributionState>Local</distributionState>
     <isProtected>false</isProtected>
     <label>Symon_AI</label>
-    <orgScopedExternalApp>00Do0000000aRcf:Symon_AI</orgScopedExternalApp>
+    <orgScopedExternalApp>00DRL00000KHFn7:Symon_AI</orgScopedExternalApp>
 </ExternalClientApplication>

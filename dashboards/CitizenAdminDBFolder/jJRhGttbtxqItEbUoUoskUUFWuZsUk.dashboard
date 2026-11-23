@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <chartTheme>light</chartTheme>
+    <colorPalette>unity</colorPalette>
+    <dashboardChartTheme>light</dashboardChartTheme>
+    <dashboardColorPalette>unity</dashboardColorPalette>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas US Sales Group,Americas Brazil Sales Group,Americas Mexico Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group,Americas Hosted Sales Group,Americas Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas US Sales Group,Americas Brazil Sales Group,Americas Mexico Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Taiwan Sales Group,APJ Southeast Asia Sales Group,APJ Australia &amp; New Zealand Sales Group,APJ Hosted Sales Group,APJ Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Taiwan Sales Group,APJ Southeast Asia Sales Group,APJ Australia &amp; New Zealand Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Sales Group,EMEA Hosted Sales Group,EMEA Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Hosted Sales Group,PRC Sales Group,PRC Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Global Solutions &amp; Services Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Undefined</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values></values>
+        </dashboardFilterOptions>
+        <name>Sales Group</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas US Sales Group,Americas Brazil Sales Group,Americas Mexico Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group,Americas Hosted Sales Group,Americas Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Americas US Sales Group,Americas Brazil Sales Group,Americas Mexico Sales Group,Americas Canada Sales Group,Americas ELAR Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Sales Group,EMEA Hosted Sales Group,EMEA Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>EMEA Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Taiwan Sales Group,APJ Southeast Asia Sales Group,APJ Australia &amp; New Zealand Sales Group,APJ Hosted Sales Group,APJ Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Taiwan Sales Group,APJ Southeast Asia Sales Group,APJ Australia &amp; New Zealand Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Hosted Sales Group,PRC Sales Group,PRC Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Hosted Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Partner Led</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Global Solutions &amp; Services Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Undefined</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values></values>
+        </dashboardFilterOptions>
+        <name>Sales Group Preview</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Intel-led Account</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Partner-led Account</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Other-led Account</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Not Covered Account</values>
+        </dashboardFilterOptions>
+        <name>Account Primary Coverage</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Intel-led Account</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Partner-led Account</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Other-led Account</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Not Covered Account</values>
+        </dashboardFilterOptions>
+        <name>Account Primary Coverage Preview</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>A&amp;E Account Owner</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Uncovered Account</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Account Consolidation SystemUser</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values></values>
+        </dashboardFilterOptions>
+        <name>Account Owner</name>
+    </dashboardFilters>
+    <dashboardGridLayout>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Group_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Owner__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>Americas SG --&gt;2H&apos;24</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X1H2024to2H2024ReportFolderH2024to2H2024ReportFolder/Americas_SG_2H_24</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>3</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Group_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Owner__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>APJ SG --&gt;2H&apos;24</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X1H2024to2H2024ReportFolderH2024to2H2024ReportFolder/APJ_SG_2H_24</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Group_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Owner__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>EMEA SG --&gt;2H&apos;24</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X1H2024to2H2024ReportFolderH2024to2H2024ReportFolder/EMEA_SG_2H_24</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>9</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Group_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Owner__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>PRC SG --&gt;2H&apos;24</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X1H2024to2H2024ReportFolderH2024to2H2024ReportFolder/PRC_SG_2H_24</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Group_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Owner__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>Global SG --&gt;2H&apos;24</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X1H2024to2H2024ReportFolderH2024to2H2024ReportFolder/Global_SG_2H_24</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>4</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Group_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Owner__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>Undefined SG --&gt;2H&apos;24</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X1H2024to2H2024ReportFolderH2024to2H2024ReportFolder/Undefined_SG_2H_24</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>8</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Group_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Primary_Coverage_Preview__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Account_Owner__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <groupingSortProperties/>
+                <header>Blank SG --&gt;2H&apos;24</header>
+                <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
+                <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>X1H2024to2H2024ReportFolderH2024to2H2024ReportFolder/Blank_SG_2H_24</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <numberOfColumns>12</numberOfColumns>
+        <rowHeight>36</rowHeight>
+    </dashboardGridLayout>
+    <dashboardType>LoggedInUser</dashboardType>
+    <isGridLayout>true</isGridLayout>
+    <owner>12018904@intel.com.crm</owner>
+    <runningUser>12018904@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>2H&apos;24 All Sales Groups</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

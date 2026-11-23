@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>OPPORTUNITY_ID</field>
+        <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Competitor__c</field>
@@ -135,16 +135,6 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Commissionable__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OPPORTUNITY_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>

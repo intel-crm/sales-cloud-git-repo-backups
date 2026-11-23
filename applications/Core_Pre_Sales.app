@@ -8,7 +8,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Pre-Sales</label>
-    <logo>SharedDocuments/Intel_Logo_with_asterisk.png</logo>
     <tabs>Core_IPS_Product_Organization__c</tabs>
     <tabs>Core_IPS_Project__c</tabs>
     <tabs>standard-Account</tabs>

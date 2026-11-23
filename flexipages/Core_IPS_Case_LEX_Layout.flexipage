@@ -96,10 +96,6 @@
                     <value>Facet-b8f1026d-cd1c-414e-9b50-26216d303e17</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>allowMultipleSectionsOpen</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>defaultSectionName</name>
                     <value>accordionSection1</value>
                 </componentInstanceProperties>
@@ -196,16 +192,6 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-08aceb9c-4b37-43c2-a088-a0bd94a8c7c5</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>ips_AgentLuncher</componentName>
-                <identifier>c_ips_AgentLuncher</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-dc4a3884-b6d6-4703-9234-b0f3ec359a4c</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -313,27 +299,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab1</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-dc4a3884-b6d6-4703-9234-b0f3ec359a4c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>IPS Agent</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab2</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.IPS_Agent_Tab_Visibility}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>Facet-4a34c583-d002-4428-baa6-3552414b8d7d</name>

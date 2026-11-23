@@ -110,37 +110,6 @@
     <columns>
         <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Status_Name__c</field>
     </columns>
-    <columns>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.SBQQ__Quote__c</field>
-    </columns>
-    <columns>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Deal_RFQ_Id__c</field>
-    </columns>
-    <columns>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Status_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_Approval_Response_Date_Quarter__c</field>
-    </columns>
-    <columns>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_User_Role__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_Last_Submission_to_Response_Time__c</field>
-    </columns>
-    <columns>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_EndCustomer_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_OEM_Account_Nm__c</field>
-    </columns>
-    <columns>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Manager__c</field>
-    </columns>
-    <columns>
-        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Current_QL_Approver__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Age__c</column>
@@ -157,11 +126,11 @@
             <value>Data Center Xeon® CPU,Small Volume Quotes - Data Center Xeon® CPU</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Region_Nm__c</column>
+            <column>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Current_QL_Approver__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ</value>
+            <value>Polly Yu,Sumitra Gamidi,Raghav Bhagat,Keerthy keerthy,Mohammed Ismail</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -176,6 +145,11 @@
         <field>Pricing_Quote_Line_Status_Age__c$Pricing_ApprovedRejectedQuarter__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Current_QL_Approver__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>TPT Lilian (Public)</name>
     <params>
         <name>co</name>
@@ -188,8 +162,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Pricing_Quote_Line_Status_Age__c$Pricing_TPT_Quote_Line_Number__c.Pricing_Last_Approved_Date_dt__c</dateColumn>
-        <endDate>2026-03-28</endDate>
+        <endDate>2026-12-26</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2025-12-28</startDate>
+        <startDate>2024-12-29</startDate>
     </timeFrameFilter>
 </Report>

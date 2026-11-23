@@ -95,7 +95,7 @@
         <description>This rule has been specially added to provide R/W Access to IPS Agent to Case as IPS Agent Role is no longer a subordinate to IPS Product Org Admin Role</description>
         <label>Core IPS Case RW to AllIPSAgents</label>
         <sharedTo>
-            <role>EMP_11298293_Kenta_Ueda</role>
+            <role>IPS_Agent</role>
         </sharedTo>
         <criteriaItems>
             <field>RecordTypeId</field>
@@ -207,7 +207,6 @@ a.	Rec Type GEC status = “Approved” and Case Status &lt;&gt; “Closed”.</
     <sharingCriteriaRules>
         <fullName>Core_MDF_Case_Sharing_for_CDB</fullName>
         <accessLevel>Edit</accessLevel>
-        <description>Share the case records with CDB Integration user</description>
         <label>Case Sharing for CDB</label>
         <sharedTo>
             <group>Core_AI_CDB_Integrations_Users</group>

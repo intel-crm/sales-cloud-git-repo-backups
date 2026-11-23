@@ -713,11 +713,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>GroupMember-User.User_Unique__c</field>
-            <table>GroupMember-QueuePublicGroupMembership</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>GroupMember-User.WirelessTrialExpirationDate</field>
             <table>GroupMember-QueuePublicGroupMembership</table>
         </columns>

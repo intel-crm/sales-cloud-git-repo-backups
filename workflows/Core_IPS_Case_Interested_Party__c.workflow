@@ -8,7 +8,7 @@
             <field>User__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External_Interested_Party_New_EA</template>
     </alerts>
@@ -20,7 +20,7 @@
             <field>User__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Interested_Party_New_EA</template>
     </alerts>

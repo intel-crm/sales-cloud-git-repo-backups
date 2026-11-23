@@ -15,14 +15,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Qwilt,Pindrop,Affirm,datadog,Elevenlabs,hubspot,shopify,tempus,Grammarly,Fireworks AI,Thinking Machines Lab,Klaviyo,Figma,Turboscale,OpenAI,reddit,pindrop,hippocratic AI,Roku,Samsara,Cursor,Discord,Docusign,Airtable,Kore.ai,SentinelOne,Turing,Vercel,Aisera,Chime,Duolingo,Observe.AI,Perplexity,Sharon AI,Smartling,Vertical Data,Anthropic,Character.AI,ReflectionAI,Cirrascale,Cognosphere,Dataminr,Netskope,Fluidstack,Adept,Airon,Alphasense,Aquant,hoyoverse,Faire,Gitlab,Global AI,Harvey,Jarvis,Mistral,Modal,Northflank,Openevidence,Palebluedot,Physical Intelligence,Project Prometheus,Qualified,Quid,Qumulus,Replicate,Safe Superintelligence,Sambanova,Seeweb,snyk,Superhuman,Thunder compute,Together AI,yellow.ai,reflection ai,Databricks,Palantir,Anduril,Deep Infra,Kavara,Code Willing,Runway,Midjourney,Ollama,FarmGPU,Advance Machine Intelligence,AMI labs,Decagon</value>
+            <value>Qwilt,Pindrop,Affirm,datadog,Elevenlabs,hubspot,shopify,tempus,Grammarly,Fireworks AI,Thinking Machines Lab,Klaviyo,Figma,Turboscale,OpenAI,reddit,pindrop,hippocratic AI,Roku,Samsara,Cursor,Discord,Docusign,Airtable,Kore.ai,SentinelOne,Turing,Vercel,Aisera,Chime,Duolingo,Observe.AI,Perplexity,Sharon AI,Smartling,Vertical Data,Anthropic,Character.AI,ReflectionAI,Cirrascale,Cognosphere,Dataminr,Netskope,Fluidstack,Adept,Airon,Alphasense,Aquant,hoyoverse,Faire,Gitlab,GlobalAI,Harvey,Jarvis,Mistral,Modal,Northflank,Openevidence,Palebluedot,Physical Intelligence,Project Prometheus,Qualified,Quid,Qumulus,Replicate,Safe Superintelligence,Sambanova,Seeweb,snyk,Superhuman,Thunder compute,Together AI,yellow.ai,reflection ai,Databricks,Palantir,Anduril,Deep Infra,Kavara,Code Willing,Runway,Midjourney,Ollama,FarmGPU,Advance Machine Intelligence,AMI labs</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account_Status__c.Core_Account_Status_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>,N/A</value>
+            <operator>notContain</operator>
+            <value>N/A</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

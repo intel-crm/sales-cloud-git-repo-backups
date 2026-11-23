@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Error_Message__c</field>
-        <value xsi:type="xsd:string">The total quantity across all quote lines must be between 50 and 250. Currently the total quantity is {value}.</value>
+        <value xsi:type="xsd:string">The total quantity across all quote lines must be between 16 and 100. Currently the total quantity is {value}.</value>
     </values>
 </CustomMetadata>

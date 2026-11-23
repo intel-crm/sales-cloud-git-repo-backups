@@ -58,7 +58,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Rami,Pasi,Jari,Sami,Jarmo</value>
+            <value>Rami,Pasi,Jari,Sami</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>

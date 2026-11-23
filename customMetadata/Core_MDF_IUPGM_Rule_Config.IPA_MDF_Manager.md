@@ -72,7 +72,7 @@
     </values>
     <values>
         <field>Core_MDF_Role_Label__c</field>
-        <value xsi:type="xsd:string">IPA-MDF Manager</value>
+        <value xsi:type="xsd:string">CCP Internal IPA-MDF Manager</value>
     </values>
     <values>
         <field>Core_MDF_Role_Purpose__c</field>

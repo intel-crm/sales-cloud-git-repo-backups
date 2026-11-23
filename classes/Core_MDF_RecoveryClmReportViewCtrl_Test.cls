@@ -681,6 +681,9 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
         }
         
         PermissionSet pSet = [SELECT Id,Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_External_Account_Budget_Administrator') LIMIT 1];
+        PermissionSet pSet2 = [SELECT Id,Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_Internal_CCF_Payment_Adm') LIMIT 1];
+        PermissionSet pSet3 = [SELECT Id,Name FROM PermissionSet WHERE Name IN ('Core_MDF_CCP_Internal_CCF_MDF_Payment_Admin') LIMIT 1];
+        
         
         User usrs = Core_MDF_CCP_TestDataUtility.createUser(false);
         usrs.Email = 'sysadmin@example.com';
@@ -717,14 +720,16 @@ private class Core_MDF_RecoveryClmReportViewCtrl_Test {
         system.runAs(usrs){
             
             Boolean result = Core_MDF_RecoveryClaimReportViewCtrl.checkRecoveryMode('Intel Partner Alliance');
-          Assert.areEqual(false, result);
+            Assert.areEqual(false, result);
             
-           insert new PermissionSetAssignment(AssigneeId = usr1.Id, PermissionSetId = pSet.Id);   
+            insert new PermissionSetAssignment(AssigneeId = usr1.Id, PermissionSetId = pSet.Id);
+            //insert new PermissionSetAssignment(AssigneeId = usr1.Id, PermissionSetId = pSet2.Id);
+            //insert new PermissionSetAssignment(AssigneeId = usr1.Id, PermissionSetId = pSet3.Id);
             
             List<Core_MDF_Payment_Run__c> paymentRunList = new List<Core_MDF_Payment_Run__c>();
             paymentRunList.add(new Core_MDF_Payment_Run__c(RecordTypeId = ccfMdfRecordType, Core_MDF_Program_Id__c = ccfCP.Id, Core_MDF_Program_Txt__c ='Client CoMarketing Fund', Core_MDF_Budget_Type_nm__c = 'MDF', Core_MDF_Run_For_All_Accounts__c = true, Core_MDF_Payment_run_for_Accounts__c = String.valueOf(acc1.Id), Core_MDF_Status_Txt__c = 'Scheduled', Core_MDF_Geo_Txt__c = 'ASMO', Core_MDF_ScheduleRun_Dtm__c = DateTime.Now() + 1));
             paymentRunList.add(new Core_MDF_Payment_Run__c(RecordTypeId = ccfRecordType, Core_MDF_Program_Id__c = ccfCP.Id, Core_MDF_Program_Txt__c ='Client CoMarketing Fund', Core_MDF_Budget_Type_nm__c = 'OEM CMP', Core_MDF_Status_Txt__c = 'Scheduled', Core_MDF_Geo_Txt__c = 'ASMO', Core_MDF_ScheduleRun_Dtm__c = DateTime.Now() + 1));
-            insert paymentRunList;
+            //insert paymentRunList;
             //List<Core_MDF_Payment_Run__c> prList =[select id,RecordType.name, Core_MDF_Account_Id__c, Core_MDF_ScheduleRun_Dtm__c,Core_MDF_Run_Now_Ind__c, Core_MDF_Run_For_All_Accounts__c from Core_MDF_Payment_Run__c where Core_MDF_Status_Txt__c in('Scheduled','In-progress') and Core_MDF_Program_Id__r.Core_MDF_Technical_Program_Name__c = 'Client CoMarketing Fund' and (Core_MDF_Run_Now_Ind__c =true or Core_MDF_ScheduleRun_Dtm__c = NEXT_N_DAYS:2)];
             String ccfMode = Core_MDF_RecoveryClaimReportViewCtrl.checkMode('Client CoMarketing Fund',acc1.Id);
             Assert.areEqual('read', ccfMode);

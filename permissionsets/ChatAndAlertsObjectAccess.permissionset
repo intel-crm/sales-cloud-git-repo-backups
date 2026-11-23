@@ -3833,16 +3833,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Campaign.CventEvents__EventStub__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Campaign.CventEvents__SessionStub__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Campaign.Description</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -6274,11 +6264,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Contact.Core_isEmailBounced_Ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Contact.CventEvents__ContactStub__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -9434,11 +9419,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_Commissionable_Transaction__c.Core_KPI_Id__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_Commissionable_Transaction__c.Core_Last_Approved_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -23853,11 +23833,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Lead.CventEvents__ContactStub__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Lead.Days__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -26189,21 +26164,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Opportunity.Core_vPro__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Opportunity.CventEvents__Attendee__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Opportunity.CventEvents__EventTitle__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Opportunity.CventEvents__Event__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

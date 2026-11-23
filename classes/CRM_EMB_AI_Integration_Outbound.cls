@@ -186,8 +186,10 @@ public class CRM_EMB_AI_Integration_Outbound {
                 if (accPulseValue != null) {
                     briefWrap.acc_pulse = accPulseValue;
                 }
+                system.debug('briefWrap-'+briefWrap);
                 // Add content version IDs for this brief
                 String jsonPayload = JSON.serialize(briefWrap);
+                system.debug('jsonPayload-->'+jsonPayload);
                 executiveBriefIdToJsonMap.put(briefRecord.Id,jsonPayload);
             }
             if(!executiveBriefIdToJsonMap.isEmpty()){

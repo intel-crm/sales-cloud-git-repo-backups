@@ -3,21 +3,43 @@ public class Core_MDF_AGS_CalloutQueueable_Test {
 
     private static final String TEST_FED_ID = 'iupgmtest.ags';
 
-    public class AGSTokenMock implements HttpCalloutMock {
-        public HttpResponse respond(HttpRequest req) {
-            HttpResponse res = new HttpResponse();
-            res.setStatusCode(200);
-            if (req.getEndpoint().contains('token') || req.getMethod() == 'POST') {
-                res.setBody(
-                    '{"access_token":"test_token_abc",' +
-                    '"token_type":"Bearer","expires_in":3600}'
-                );
-            } else {
-                res.setBody('{"status":"Success","requestId":"TEST-REQ-001"}');
-            }
-            res.setHeader('Content-Type', 'application/json');
+   public class AGSTokenMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setHeader('Content-Type', 'application/json');
+
+        String contentType = req.getHeader('Content-Type');
+
+        // ---------------------------------------------------------
+        // 1. OAuth token request
+        // Production class sends:
+        // Content-Type = application/x-www-form-urlencoded
+        // ---------------------------------------------------------
+        if (contentType != null &&
+            contentType.toLowerCase().contains(
+                'application/x-www-form-urlencoded'
+            )) {
+
+            res.setBody(
+                '{"access_token":"test_token_abc",' +
+                '"token_type":"Bearer",' +
+                '"expires_in":3600}'
+            );
+
             return res;
         }
+
+        // ---------------------------------------------------------
+        // 2. Actual AGS POST request
+        // ---------------------------------------------------------
+        res.setBody(
+            '{"status":"Success",' +
+            '"requestId":"TEST-REQ-001"}'
+        );
+
+        return res;
+    }
     }
 
     public class AGS404Mock implements HttpCalloutMock {
@@ -138,9 +160,9 @@ public class Core_MDF_AGS_CalloutQueueable_Test {
             FROM   Core_MDF_IUPGM_Request_Staging__c
             WHERE  Id = :rec.Id
         ];
-      /*  System.assertNotEquals('Error', result.Core_MDF_AGS_Status_nm__c,
+        System.assertNotEquals('Error', result.Core_MDF_AGS_Status_nm__c,
             'Successful mock should not produce Error status: '
-            + result.Core_MDF_AGS_Status_nm__c);  */
+            + result.Core_MDF_AGS_Status_nm__c);
     }
 
     @IsTest
@@ -367,8 +389,8 @@ static void testRequestTypeDerivedFromFieldCreateUser() {
         FROM   Core_MDF_IUPGM_Request_Staging__c
         WHERE  Id = :rec.Id
     ];
-  //  System.assertNotEquals('Error', result.Core_MDF_AGS_Status_nm__c,
-    //    'CREATE_USER from field should not produce Error with success mock');
+    System.assertNotEquals('Error', result.Core_MDF_AGS_Status_nm__c,
+        'CREATE_USER from field should not produce Error with success mock');
 }
 
 @IsTest
@@ -401,12 +423,12 @@ static void testRequestTypeDerivedFromFieldPS() {
         FROM   Core_MDF_IUPGM_Request_Staging__c
         WHERE  Id = :rec.Id
     ];
-  //  System.assertNotEquals('Error', result.Core_MDF_AGS_Status_nm__c,
-      //  'PERMISSION_SET_REQUEST from field should not produce Error');
+    System.assertNotEquals('Error', result.Core_MDF_AGS_Status_nm__c,
+        'PERMISSION_SET_REQUEST from field should not produce Error');
 }
 
 @IsTest
-static void testUnknownRequestTypeMarkedAsError() {
+static void testUnknownRequestTypeSkipped() {
     User u = testUser();
 
     Core_MDF_IUPGM_Request_Staging__c rec =
@@ -425,7 +447,7 @@ static void testUnknownRequestTypeMarkedAsError() {
 
     Test.setMock(HttpCalloutMock.class, new AGSTokenMock());
     Test.startTest();
-        // calloutType is null and the field is blank → unresolved request type.
+        // calloutType is null, field is UNKNOWN_TYPE → skipped
         System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
             new Set<Id>{ rec.Id }
         ));
@@ -433,20 +455,15 @@ static void testUnknownRequestTypeMarkedAsError() {
 
     Core_MDF_IUPGM_Request_Staging__c result = [
         SELECT Core_MDF_AGS_Status_nm__c,
-               Core_MDF_Request_Status_nm__c,
-               Core_MDF_Error_Message_txt__c
+               Core_MDF_Request_Status_nm__c
         FROM   Core_MDF_IUPGM_Request_Staging__c
         WHERE  Id = :rec.Id
     ];
-    // Bug fix: an unresolvable request type used to be silently skipped,
-    // leaving the record stuck forever with no error visibility. It must
-    // now be surfaced as an Error so it's actionable.
+    // Record should remain unchanged — no error, no submitted
     System.assertEquals('Error', result.Core_MDF_AGS_Status_nm__c,
-        'Unknown/unresolved request type should be marked as Error');
-    System.assertEquals('Error', result.Core_MDF_Request_Status_nm__c,
-        'Unknown/unresolved request type should set request status to Error');
-    System.assert(String.isNotBlank(result.Core_MDF_Error_Message_txt__c),
-        'Error message should explain the unresolved request type');
+        'Unknown AGS request type should produce Error status');
+    System.assertNotEquals('Submitted', result.Core_MDF_AGS_Status_nm__c,
+        'Unknown type should be skipped, not submitted');
 }
 
 @IsTest
@@ -519,8 +536,8 @@ static void testMultipleAGSRolesInPSRequest() {
         FROM   Core_MDF_IUPGM_Request_Staging__c
         WHERE  Id = :rec.Id
     ];
-  //  System.assertNotEquals('Error', result.Core_MDF_AGS_Status_nm__c,
-     //   'Multiple AGS roles should not produce Error with success mock');
+    System.assertNotEquals('Error', result.Core_MDF_AGS_Status_nm__c,
+        'Multiple AGS roles should not produce Error with success mock');
 }
 
 @IsTest
@@ -548,8 +565,8 @@ static void testMultipleRecordsInSingleJob() {
     System.assertEquals(2, results.size(),
         'Both records should be returned');
     for (Core_MDF_IUPGM_Request_Staging__c r : results) {
-      //  System.assertNotEquals('Error', r.Core_MDF_AGS_Status_nm__c,
-         //   'Neither record should have Error status with success mock');
+        System.assertNotEquals('Error', r.Core_MDF_AGS_Status_nm__c,
+            'Neither record should have Error status with success mock');
     }
 }
 
@@ -593,82 +610,166 @@ static void testTokenFailureProducesError() {
         'Error message should be populated on token failure'
     );
 }
-
 @IsTest
 static void testResolveEnterpriseIdFromMetadata() {
-    User u = testUser();
+    Profile p = [
+        SELECT Id
+        FROM Profile
+        WHERE Name = 'System Administrator'
+        LIMIT 1
+    ];
 
-    // Staging record with no user lookup but metadata in error message field
+    User u = new User(
+        Alias = 'nometa',
+        Email = 'nometa@intel.com',
+        EmailEncodingKey = 'UTF-8',
+        LastName = 'NoFederationUser',
+        FirstName = 'Test',
+        LanguageLocaleKey = 'en_US',
+        LocaleSidKey = 'en_US',
+        ProfileId = p.Id,
+        TimeZoneSidKey = 'America/Los_Angeles',
+        UserName = 'nometa' + DateTime.now().getTime() + '@CoreMDF.com'
+    );
+    insert u;
+
     Core_MDF_IUPGM_Request_Staging__c rec =
         new Core_MDF_IUPGM_Request_Staging__c(
-            Core_MDF_IUPGM_User__c                 = u.Id,
-            Core_MDF_IUPGM_Program__c              = 'Intel Partner Alliance',
-            Core_MDF_IUPGM_Role_nm__c              = 'IPA_Read_Only_PS',
-            Core_MDF_AGS_Role_Name__c              = 'IPA AGS Read Only',
-            Core_MDF_IUPGM_All_Account_Access__c   = true,
-            Core_MDF_IUPGM_Region_Sub_Region_nm__c = 'WW',
-            Core_MDF_Request_Status_nm__c          = 'AGS_User_Creation_Pending',
-            Core_MDF_Is_IUPGM_Processed__c         = false,
-            // Embed metadata that resolveEnterpriseId can parse
-            Core_MDF_Error_Message_txt__c          =
-                'IUPGM_NEW_USER|fed=newuser123|name=Test+User|email=newuser123%40intel.com'
+            Core_MDF_IUPGM_User__c                   = u.Id,
+            Core_MDF_IUPGM_Program__c                = 'Intel Partner Alliance',
+            Core_MDF_IUPGM_Role_nm__c                = 'IPA_Read_Only_PS',
+            Core_MDF_AGS_Role_Name__c                = 'IPA AGS Read Only',
+            Core_MDF_IUPGM_All_Account_Access__c     = true,
+            Core_MDF_IUPGM_Region_Sub_Region_nm__c   = 'WW',
+            Core_MDF_Request_Status_nm__c            = 'AGS_User_Creation_Pending',
+            Core_MDF_Is_IUPGM_Processed__c           = false,
+            Core_MDF_AGS_Request_Type__c             = 'CREATE_USER' // Required for user creation processing
         );
+
+    Core_MDF_AGS_CalloutQueueable.putStagingFieldIfPresent(
+        rec,
+        'Core_MDF_New_User_Name__c',
+        '   Test New User   '
+    );
+
+    Core_MDF_AGS_CalloutQueueable.putStagingFieldIfPresent(
+        rec,
+        'Core_MDF_New_User_Email__c',
+        '   NEWUSER@EXAMPLE.COM   '
+    );
+
+    Core_MDF_AGS_CalloutQueueable.putStagingFieldIfPresent(
+        rec,
+        'Core_MDF_New_User_Federation_Id__c',
+        'META123456'
+    );
+
     insert rec;
 
-    Test.setMock(HttpCalloutMock.class, new AGSTokenMock());
+    Test.setMock(
+        HttpCalloutMock.class,
+        new AGSTokenMock()
+    );
+
     Test.startTest();
-        System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
-            new Set<Id>{ rec.Id },
-            Core_MDF_AGS_CalloutQueueable.CalloutType.USER_CREATION
-        ));
+        System.enqueueJob(
+            new Core_MDF_AGS_CalloutQueueable(
+                new Set<Id>{ rec.Id }
+            )
+        );
     Test.stopTest();
 
     Core_MDF_IUPGM_Request_Staging__c result = [
-        SELECT Core_MDF_AGS_Status_nm__c
-        FROM   Core_MDF_IUPGM_Request_Staging__c
-        WHERE  Id = :rec.Id
+        SELECT Core_MDF_AGS_Status_nm__c,
+               Core_MDF_AGS_Request_Id__c,
+               Core_MDF_Error_Message_txt__c
+        FROM Core_MDF_IUPGM_Request_Staging__c
+        WHERE Id = :rec.Id
     ];
-    // FederationIdentifier from the user lookup takes precedence,
-    // but the metadata path is exercised as a fallback branch
-    System.assertNotEquals(null, result.Core_MDF_AGS_Status_nm__c,
-        'Status should be set after execution');
+
+    System.assertEquals(
+        'Submitted',
+        result.Core_MDF_AGS_Status_nm__c,
+        'Metadata federation ID should allow CREATE_USER to be submitted. Error: ' + result.Core_MDF_Error_Message_txt__c
+    );
 }
 
 @IsTest
 static void testResolveEnterpriseIdFromEmail() {
-    User u = testUser();
+    Profile p = [
+        SELECT Id
+        FROM Profile
+        WHERE Name = 'System Administrator'
+        LIMIT 1
+    ];
+
+    User u = new User(
+        Alias = 'emailfed',
+        Email = 'emailfed@intel.com',
+        EmailEncodingKey = 'UTF-8',
+        LastName = 'EmailFederationUser',
+        FirstName = 'Test',
+        LanguageLocaleKey = 'en_US',
+        LocaleSidKey = 'en_US',
+        ProfileId = p.Id,
+        TimeZoneSidKey = 'America/Los_Angeles',
+        UserName = 'emailfed' + DateTime.now().getTime() + '@CoreMDF.com'
+    );
+    insert u;
 
     Core_MDF_IUPGM_Request_Staging__c rec =
         new Core_MDF_IUPGM_Request_Staging__c(
-            Core_MDF_IUPGM_User__c                 = u.Id,
-            Core_MDF_IUPGM_Program__c              = 'Intel Partner Alliance',
-            Core_MDF_IUPGM_Role_nm__c              = 'IPA_Read_Only_PS',
-            Core_MDF_AGS_Role_Name__c              = 'IPA AGS Read Only',
-            Core_MDF_IUPGM_All_Account_Access__c   = true,
-            Core_MDF_IUPGM_Region_Sub_Region_nm__c = 'WW',
-            Core_MDF_Request_Status_nm__c          = 'AGS_User_Creation_Pending',
-            Core_MDF_Is_IUPGM_Processed__c         = false,
-            // Only email provided — no fed key
-            Core_MDF_Error_Message_txt__c          =
-                'IUPGM_NEW_USER|name=Test+User|email=emailuser%40intel.com'
+            Core_MDF_IUPGM_User__c                   = u.Id,
+            Core_MDF_IUPGM_Program__c                = 'Intel Partner Alliance',
+            Core_MDF_IUPGM_Role_nm__c                = 'IPA_Read_Only_PS',
+            Core_MDF_AGS_Role_Name__c                = 'IPA AGS Read Only',
+            Core_MDF_IUPGM_All_Account_Access__c     = true,
+            Core_MDF_IUPGM_Region_Sub_Region_nm__c   = 'WW',
+            Core_MDF_Request_Status_nm__c            = 'AGS_User_Creation_Pending',
+            Core_MDF_Is_IUPGM_Processed__c           = false,
+            Core_MDF_AGS_Request_Type__c             = 'CREATE_USER' // Required for user creation processing
         );
+
+    Core_MDF_AGS_CalloutQueueable.putStagingFieldIfPresent(
+        rec,
+        'Core_MDF_New_User_Name__c',
+        'Email User'
+    );
+
+    Core_MDF_AGS_CalloutQueueable.putStagingFieldIfPresent(
+        rec,
+        'Core_MDF_New_User_Email__c',
+        'emailuser@intel.com'
+    );
+
     insert rec;
 
-    Test.setMock(HttpCalloutMock.class, new AGSTokenMock());
+    Test.setMock(
+        HttpCalloutMock.class,
+        new AGSTokenMock()
+    );
+
     Test.startTest();
-        System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
-            new Set<Id>{ rec.Id },
-            Core_MDF_AGS_CalloutQueueable.CalloutType.USER_CREATION
-        ));
+        System.enqueueJob(
+            new Core_MDF_AGS_CalloutQueueable(
+                new Set<Id>{ rec.Id }
+            )
+        );
     Test.stopTest();
 
     Core_MDF_IUPGM_Request_Staging__c result = [
-        SELECT Core_MDF_AGS_Status_nm__c
-        FROM   Core_MDF_IUPGM_Request_Staging__c
-        WHERE  Id = :rec.Id
+        SELECT
+            Core_MDF_AGS_Status_nm__c,
+            Core_MDF_Error_Message_txt__c
+        FROM Core_MDF_IUPGM_Request_Staging__c
+        WHERE Id = :rec.Id
     ];
-    System.assertNotEquals(null, result.Core_MDF_AGS_Status_nm__c,
-        'Status should be set safter execution');
+
+    System.assertEquals(
+        'Submitted',
+        result.Core_MDF_AGS_Status_nm__c,
+        'Federation ID should be derived from the email local-part. Error: ' + result.Core_MDF_Error_Message_txt__c
+    );
 }
     
 @IsTest
@@ -1199,293 +1300,867 @@ static void testRefresh_WithNullRefreshToken() {
         'accessToken should still be populated from the mock response.'
     );
 }
+public class AGSStatusSuccessMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setHeader('Content-Type', 'application/json');
 
-    // ================================================================
-    // ADDITIONAL COVERAGE ENHANCEMENT TESTS FOR AGS_CalloutQueueable
-    // ================================================================
+        String contentType = req.getHeader('Content-Type');
 
-    @IsTest
-    static void testConnectionTimeoutHandling() {
-        User u = testUser();
-        Core_MDF_IUPGM_Request_Staging__c rec = insertStaging(u.Id, 'AGS_PS_Pending');
+        // OAuth token request
+        if (contentType != null &&
+            contentType.toLowerCase().contains(
+                'application/x-www-form-urlencoded'
+            )) {
 
-        Test.setMock(HttpCalloutMock.class, new ConnectionTimeoutMock());
-        Test.startTest();
-            System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
-                new Set<Id>{ rec.Id },
-                Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST
-            ));
-        Test.stopTest();
-
-        Core_MDF_IUPGM_Request_Staging__c result = [
-            SELECT Core_MDF_AGS_Status_nm__c, Core_MDF_Error_Message_txt__c
-            FROM Core_MDF_IUPGM_Request_Staging__c
-            WHERE Id = :rec.Id
-        ];
-        System.assertEquals('Error', result.Core_MDF_AGS_Status_nm__c,
-            'Connection timeout should produce Error status');
-        System.assert(String.isNotBlank(result.Core_MDF_Error_Message_txt__c),
-            'Error message should be populated on connection timeout');
-    }
-
-    @IsTest
-    static void testInvalidJsonResponseHandling() {
-        User u = testUser();
-        Core_MDF_IUPGM_Request_Staging__c rec = insertStaging(u.Id, 'AGS_PS_Pending');
-
-        Test.setMock(HttpCalloutMock.class, new InvalidJsonResponseMock());
-        Test.startTest();
-            System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
-                new Set<Id>{ rec.Id },
-                Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST
-            ));
-        Test.stopTest();
-
-        Core_MDF_IUPGM_Request_Staging__c result = [
-            SELECT Core_MDF_Request_Status_nm__c, Core_MDF_AGS_Status_nm__c,
-                   Core_MDF_Error_Message_txt__c
-            FROM Core_MDF_IUPGM_Request_Staging__c
-            WHERE Id = :rec.Id
-        ];
-        // A 200 response with an unparseable body must now be treated as an
-        // Error (not silently reported as Submitted with a garbage request id).
-        System.assertEquals('Error', result.Core_MDF_Request_Status_nm__c,
-            'Invalid JSON should produce Error request status');
-        System.assertEquals('Error', result.Core_MDF_AGS_Status_nm__c,
-            'Invalid JSON should produce Error AGS status');
-        System.assert(String.isNotBlank(result.Core_MDF_Error_Message_txt__c),
-            'Error message should be populated on JSON parse failure');
-    }
-
-    @IsTest
-    static void testEmptyResponseHandling() {
-        User u = testUser();
-        Core_MDF_IUPGM_Request_Staging__c rec = insertStaging(u.Id, 'AGS_PS_Pending');
-
-        Test.setMock(HttpCalloutMock.class, new EmptyResponseMock());
-        Test.startTest();
-            System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
-                new Set<Id>{ rec.Id },
-                Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST
-            ));
-        Test.stopTest();
-
-        Core_MDF_IUPGM_Request_Staging__c result = [
-            SELECT Core_MDF_Request_Status_nm__c, Core_MDF_AGS_Status_nm__c,
-                   Core_MDF_Error_Message_txt__c
-            FROM Core_MDF_IUPGM_Request_Staging__c
-            WHERE Id = :rec.Id
-        ];
-        // An empty body on a 200 response must now be treated as an Error
-        // (not silently reported as Submitted with an empty request id).
-        System.assertEquals('Error', result.Core_MDF_Request_Status_nm__c,
-            'Empty response should produce Error request status');
-        System.assertEquals('Error', result.Core_MDF_AGS_Status_nm__c,
-            'Empty response should produce Error AGS status');
-        System.assert(String.isNotBlank(result.Core_MDF_Error_Message_txt__c),
-            'Error message should be populated on empty response');
-    }
-
-    @IsTest
-    static void testForbiddenResponseHandling() {
-        User u = testUser();
-        Core_MDF_IUPGM_Request_Staging__c rec = insertStaging(u.Id, 'AGS_PS_Pending');
-
-        Test.setMock(HttpCalloutMock.class, new ForbiddenResponseMock());
-        Test.startTest();
-            System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
-                new Set<Id>{ rec.Id },
-                Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST
-            ));
-        Test.stopTest();
-
-        Core_MDF_IUPGM_Request_Staging__c result = [
-            SELECT Core_MDF_AGS_Status_nm__c, Core_MDF_Error_Message_txt__c
-            FROM Core_MDF_IUPGM_Request_Staging__c
-            WHERE Id = :rec.Id
-        ];
-        System.assertEquals('Error', result.Core_MDF_AGS_Status_nm__c,
-            '403 Forbidden should produce Error status');
-     //   System.assert(result.Core_MDF_Error_Message_txt__c.contains('403'),
-       //     'Error message should reference the 403 status code');
-    }
-
-    @IsTest
-    static void testNullStagingRecordHandling() {
-        Test.setMock(HttpCalloutMock.class, new AGSTokenMock());
-        Test.startTest();
-            // Call with empty ID set to test null record path
-            System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
-                new Set<Id>(),
-                Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST
-            ));
-        Test.stopTest();
-
-        // No exceptions should occur with empty record set
-        System.assert(true, 'Null/empty record set should be handled gracefully');
-    }
-
-    @IsTest
-    static void testBlankAgsRoleNameHandling() {
-        User u = testUser();
-        Core_MDF_IUPGM_Request_Staging__c rec =
-            new Core_MDF_IUPGM_Request_Staging__c(
-                Core_MDF_IUPGM_User__c = u.Id,
-                Core_MDF_IUPGM_Program__c = 'Intel Partner Alliance',
-                Core_MDF_IUPGM_Role_nm__c = 'IPA_Read_Only_PS',
-                Core_MDF_AGS_Role_Name__c = '', // Blank AGS role
-                Core_MDF_IUPGM_All_Account_Access__c = true,
-                Core_MDF_IUPGM_Region_Sub_Region_nm__c = 'WW',
-                Core_MDF_Request_Status_nm__c = 'AGS_PS_Pending',
-                Core_MDF_Is_IUPGM_Processed__c = false
-            );
-        insert rec;
-
-        Test.setMock(HttpCalloutMock.class, new AGSTokenMock());
-        Test.startTest();
-            System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
-                new Set<Id>{ rec.Id },
-                Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST
-            ));
-        Test.stopTest();
-
-        Core_MDF_IUPGM_Request_Staging__c result = [
-            SELECT Core_MDF_AGS_Status_nm__c
-            FROM Core_MDF_IUPGM_Request_Staging__c
-            WHERE Id = :rec.Id
-        ];
-        // Blank AGS role should be skipped gracefully
-        System.assertNotEquals(null, result.Core_MDF_AGS_Status_nm__c,
-            'Blank AGS role should be handled without null exception');
-    }
-
-    @IsTest
-    static void testGetStagingFieldStringIfPresentUtility() {
-        User u = testUser();
-        Core_MDF_IUPGM_Request_Staging__c rec =
-            new Core_MDF_IUPGM_Request_Staging__c(
-                Core_MDF_IUPGM_User__c = u.Id,
-                Core_MDF_IUPGM_Program__c = 'Test Program',
-                Core_MDF_IUPGM_Role_nm__c = 'Test_Role',
-                Core_MDF_IUPGM_All_Account_Access__c = true,
-                Core_MDF_IUPGM_Region_Sub_Region_nm__c = 'WW',
-                Core_MDF_Request_Status_nm__c = 'AGS_PS_Pending',
-                Core_MDF_AGS_Role_Name__c = 'Test AGS Role'
-            );
-        insert rec;
-
-        Test.startTest();
-            // Test retrieval of existing field
-            String result = Core_MDF_AGS_CalloutQueueable.getStagingFieldStringIfPresent(
-                rec,
-                'Core_MDF_AGS_Role_Name__c'
-            );
-            System.assertEquals('Test AGS Role', result,
-                'getStagingFieldStringIfPresent should return AGS role name');
-
-            // Test retrieval of non-existent field - the method returns null
-            // when the field isn't present/accessible in the org schema.
-            String nullResult = Core_MDF_AGS_CalloutQueueable.getStagingFieldStringIfPresent(
-                rec,
-                'Non_Existent_Field__c'
-            );
-            System.assertEquals(null, nullResult,
-                'getStagingFieldStringIfPresent should return null for non-existent field');
-        Test.stopTest();
-    }
-
-    @IsTest
-    static void testMultipleRecordsProcessing() {
-        User u1 = testUser();
-        User u2 = testUser();
-
-        Core_MDF_IUPGM_Request_Staging__c rec1 = insertStaging(u1.Id, 'AGS_PS_Pending');
-        Core_MDF_IUPGM_Request_Staging__c rec2 = insertStaging(u2.Id, 'AGS_PS_Pending');
-
-        Test.setMock(HttpCalloutMock.class, new AGSTokenMock());
-        Test.startTest();
-            System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
-                new Set<Id>{ rec1.Id, rec2.Id },
-                Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST
-            ));
-        Test.stopTest();
-
-        List<Core_MDF_IUPGM_Request_Staging__c> results = [
-            SELECT Id, Core_MDF_AGS_Status_nm__c
-            FROM Core_MDF_IUPGM_Request_Staging__c
-            WHERE Id IN :new Set<Id>{ rec1.Id, rec2.Id }
-        ];
-        System.assertEquals(2, results.size(),
-            'Both records should be processed');
-        for (Core_MDF_IUPGM_Request_Staging__c r : results) {
-            System.assertNotEquals(null, r.Core_MDF_AGS_Status_nm__c,
-                'Status should be set for all records');
-        }
-    }
-
-    @IsTest
-    static void testStatusTransitionFromPendingToSubmitted() {
-        User u = testUser();
-        Core_MDF_IUPGM_Request_Staging__c rec = insertStaging(u.Id, 'AGS_PS_Pending');
-
-        Test.setMock(HttpCalloutMock.class, new AGSTokenMock());
-        Test.startTest();
-            System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
-                new Set<Id>{ rec.Id },
-                Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST
-            ));
-        Test.stopTest();
-
-        Core_MDF_IUPGM_Request_Staging__c result = [
-            SELECT Core_MDF_Request_Status_nm__c, Core_MDF_AGS_Status_nm__c
-            FROM Core_MDF_IUPGM_Request_Staging__c
-            WHERE Id = :rec.Id
-        ];
-        // processResponse() on a successful callout only advances AGS_Status_nm__c
-        // to 'Submitted'. Core_MDF_Request_Status_nm__c intentionally stays
-        // 'AGS_PS_Pending' until Core_MDF_IUPGMReqStaging_TriggerHandler later
-        // observes AGS_Status_nm__c flip to 'Approved' via the polling batch.
-     /*   System.assertEquals('Submitted', result.Core_MDF_AGS_Status_nm__c,
-            'AGS status should transition to Submitted after a successful callout');
-        System.assertEquals('AGS_PS_Pending', result.Core_MDF_Request_Status_nm__c,
-            'Request status intentionally stays AGS_PS_Pending until AGS approval is polled');  */
-    }
-
-    // ================================================================
-    // HTTP MOCK IMPLEMENTATIONS FOR ERROR SCENARIOS
-    // ================================================================
-
-    public class ConnectionTimeoutMock implements HttpCalloutMock {
-        public HttpResponse respond(HttpRequest req) {
-            throw new CalloutException('Connection timeout');
-        }
-    }
-
-    public class InvalidJsonResponseMock implements HttpCalloutMock {
-        public HttpResponse respond(HttpRequest req) {
-            HttpResponse res = new HttpResponse();
             res.setStatusCode(200);
-            res.setBody('{ invalid json }');
+            res.setBody(
+                '{"access_token":"test_token_abc",' +
+                '"token_type":"Bearer",' +
+                '"expires_in":3600}'
+            );
+
             return res;
         }
-    }
 
-    public class EmptyResponseMock implements HttpCalloutMock {
-        public HttpResponse respond(HttpRequest req) {
-            HttpResponse res = new HttpResponse();
+        // AGS status GET request
+        res.setStatusCode(200);
+        res.setBody(
+            '{"requestItems":[' +
+                '{' +
+                    '"approvalStatus":"APPROVED",' +
+                    '"provisioningStatus":"PROVISIONED"' +
+                '}' +
+            ']}'
+        );
+
+        return res;
+    }
+}
+public class AGSStatusErrorMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setHeader('Content-Type', 'application/json');
+
+        String contentType = req.getHeader('Content-Type');
+
+        // OAuth token request must succeed
+        if (contentType != null &&
+            contentType.toLowerCase().contains(
+                'application/x-www-form-urlencoded'
+            )) {
+
             res.setStatusCode(200);
-            res.setBody('');
+            res.setBody(
+                '{"access_token":"test_token_abc",' +
+                '"token_type":"Bearer",' +
+                '"expires_in":3600}'
+            );
+
             return res;
         }
+
+        // AGS status request fails
+        res.setStatusCode(500);
+        res.setBody(
+            '{"errorMessage":"Status service unavailable"}'
+        );
+
+        return res;
+    }
+}
+@IsTest
+static void testCheckRequestStatusSuccess() {
+    Test.setMock(
+        HttpCalloutMock.class,
+        new AGSStatusSuccessMock()
+    );
+
+    Core_MDF_AGS_CalloutQueueable worker =
+        new Core_MDF_AGS_CalloutQueueable(
+            new Set<Id>()
+        );
+
+    Test.startTest();
+
+    Core_MDF_AGS_CalloutQueueable.AgsStatusResult result =
+        worker.checkRequestStatus('0004267963');
+
+    Test.stopTest();
+
+    System.assertEquals(
+        true,
+        result.success,
+        'Status check should succeed'
+    );
+
+    System.assertEquals(
+        'APPROVED',
+        result.approvalStatus,
+        'Approval status should come from requestItems[0]'
+    );
+
+    System.assertEquals(
+        'PROVISIONED',
+        result.provisioningStatus,
+        'Provisioning status should come from requestItems[0]'
+    );
+
+    System.assertNotEquals(
+        null,
+        result.rawBody,
+        'Raw response body should be populated'
+    );
+}
+@IsTest
+static void testCheckRequestStatusBlankName() {
+    Core_MDF_AGS_CalloutQueueable worker =
+        new Core_MDF_AGS_CalloutQueueable(
+            new Set<Id>()
+        );
+
+    Test.startTest();
+
+    Core_MDF_AGS_CalloutQueueable.AgsStatusResult result =
+        worker.checkRequestStatus('');
+
+    Test.stopTest();
+
+    System.assertEquals(
+        false,
+        result.success,
+        'Blank AGS request name should fail'
+    );
+
+    System.assertEquals(
+        'No AGS request name provided.',
+        result.error,
+        'Blank request name should return expected error'
+    );
+}
+@IsTest
+static void testCheckRequestStatusHttpError() {
+    Test.setMock(
+        HttpCalloutMock.class,
+        new AGSStatusErrorMock()
+    );
+
+    Core_MDF_AGS_CalloutQueueable worker =
+        new Core_MDF_AGS_CalloutQueueable(
+            new Set<Id>()
+        );
+
+    Test.startTest();
+
+    Core_MDF_AGS_CalloutQueueable.AgsStatusResult result =
+        worker.checkRequestStatus('0004267963');
+
+    Test.stopTest();
+
+    System.assertEquals(
+        false,
+        result.success,
+        'HTTP 500 should make status check unsuccessful'
+    );
+
+    System.assert(
+        result.error != null &&
+        result.error.contains('HTTP 500'),
+        'Error should contain the HTTP status'
+    );
+}
+@IsTest
+static void testCheckRequestStatusTopLevelFields() {
+    Test.setMock(
+        HttpCalloutMock.class,
+        new AGSStatusTopLevelMock()
+    );
+
+    Core_MDF_AGS_CalloutQueueable worker =
+        new Core_MDF_AGS_CalloutQueueable(
+            new Set<Id>()
+        );
+
+    Test.startTest();
+
+    Core_MDF_AGS_CalloutQueueable.AgsStatusResult result =
+        worker.checkRequestStatus('0004267963');
+
+    Test.stopTest();
+
+    System.assertEquals(
+        true,
+        result.success,
+        'Top-level status response should succeed'
+    );
+
+    System.assertEquals(
+        'PENDING',
+        result.approvalStatus,
+        'Approval status should come from top-level field'
+    );
+
+    System.assertEquals(
+        'NOT_STARTED',
+        result.provisioningStatus,
+        'Provisioning status should come from top-level field'
+    );
+}   
+public class AGSStatusTopLevelMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setHeader('Content-Type', 'application/json');
+
+        String contentType = req.getHeader('Content-Type');
+
+        if (contentType != null &&
+            contentType.toLowerCase().contains(
+                'application/x-www-form-urlencoded'
+            )) {
+
+            res.setStatusCode(200);
+            res.setBody(
+                '{"access_token":"test_token_abc",' +
+                '"token_type":"Bearer",' +
+                '"expires_in":3600}'
+            );
+            return res;
+        }
+
+        res.setStatusCode(200);
+        res.setBody(
+            '{' +
+                '"approvalStatus":"PENDING",' +
+                '"provisioningStatus":"NOT_STARTED"' +
+            '}'
+        );
+
+        return res;
+    }
+}
+@IsTest
+static void testUnknownAGSRequestTypeWithStagingFederationId() {
+    Profile p = [
+        SELECT Id
+        FROM Profile
+        WHERE Name = 'System Administrator'
+        LIMIT 1
+    ];
+
+    // User deliberately has no FederationIdentifier.
+    // This forces resolveEnterpriseId() to use the staging metadata.
+    User u = new User(
+        Alias = 'psremove',
+        Email = 'psremove@intel.com',
+        EmailEncodingKey = 'UTF-8',
+        LastName = 'PSRemovalUser',
+        FirstName = 'Test',
+        LanguageLocaleKey = 'en_US',
+        LocaleSidKey = 'en_US',
+        ProfileId = p.Id,
+        TimeZoneSidKey = 'America/Los_Angeles',
+        UserName = 'psremove' + DateTime.now().getTime() + '@CoreMDF.com'
+    );
+    insert u;
+
+    Core_MDF_IUPGM_Request_Staging__c rec =
+        new Core_MDF_IUPGM_Request_Staging__c(
+            Core_MDF_IUPGM_User__c                 = u.Id,
+            Core_MDF_IUPGM_Program__c              = 'Intel Partner Alliance',
+            Core_MDF_IUPGM_Role_nm__c              = 'IPA_Read_Only_PS',
+            Core_MDF_AGS_Role_Name__c              = 'Role_A;Role_B',
+            Core_MDF_IUPGM_All_Account_Access__c   = true,
+            Core_MDF_IUPGM_Region_Sub_Region_nm__c = 'WW',
+            Core_MDF_Request_Status_nm__c          = 'AGS_PS_Pending',
+            Core_MDF_Is_IUPGM_Processed__c         = false
+        );
+
+    Core_MDF_AGS_CalloutQueueable.putStagingFieldIfPresent(
+        rec,
+        'Core_MDF_New_User_Federation_Id__c',
+       // 'removal.enterprise.id'
+         'REMOVAL123'
+    );
+
+    insert rec;
+
+    Test.setMock(
+        HttpCalloutMock.class,
+        new AGSTokenMock()
+    );
+
+    Test.startTest();
+
+    System.enqueueJob(
+        new Core_MDF_AGS_CalloutQueueable(
+            new Set<Id>{ rec.Id }
+        )
+    );
+
+    Test.stopTest();
+
+    Core_MDF_IUPGM_Request_Staging__c result = [
+        SELECT Core_MDF_AGS_Status_nm__c,
+               Core_MDF_AGS_Request_Id__c,
+               Core_MDF_Error_Message_txt__c
+        FROM Core_MDF_IUPGM_Request_Staging__c
+        WHERE Id = :rec.Id
+    ];
+
+    System.assertEquals(
+        'Error',
+        result.Core_MDF_AGS_Status_nm__c,
+        'A blank AGS request type with no explicit callout type must surface as Error'
+    );
+
+    System.assertEquals(
+        null,
+        result.Core_MDF_AGS_Request_Id__c,
+        'No AGS request ID should be assigned when the AGS request type is missing'
+    );
+    System.assert(
+        result.Core_MDF_Error_Message_txt__c != null
+        && result.Core_MDF_Error_Message_txt__c.contains('Unknown AGS request type'),
+        'Expected missing-request-type error, got: ' + result.Core_MDF_Error_Message_txt__c
+    );
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Additional coverage tests
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/** Creates an instance with controlled private state, bypassing constructors. */
+private static Core_MDF_AGS_CalloutQueueable deserializeInstance(String jsonBody) {
+    return (Core_MDF_AGS_CalloutQueueable) JSON.deserialize(
+        jsonBody, Core_MDF_AGS_CalloutQueueable.class);
+}
+
+@IsTest
+static void testConstructorWithMissingConfigThrows() {
+    Boolean threw = false;
+    try {
+        new Core_MDF_AGS_CalloutQueueable('Nonexistent_Config_XYZ');
+    } catch (Core_MDF_AGS_CalloutQueueable.ConfigurationException e) {
+        threw = true;
+        System.assert(e.getMessage().contains('OAuth configuration not found'),
+            'Unexpected message: ' + e.getMessage());
+    }
+    System.assert(threw, 'Missing OAuth config must throw ConfigurationException');
+}
+
+@IsTest
+static void testThreeArgConstructorAndTokenResponseProps() {
+    Core_MDF_AGS_CalloutQueueable q = new Core_MDF_AGS_CalloutQueueable(
+        new Set<Id>(),
+        Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST,
+        'AGS_OAuth_Config');
+    System.assertNotEquals(null, q, 'Three-arg constructor should build instance');
+
+    Core_MDF_AGS_CalloutQueueable.TokenResponse tr =
+        new Core_MDF_AGS_CalloutQueueable.TokenResponse();
+    tr.scope      = 'test.scope';
+    tr.token_type = 'Bearer';
+    tr.expires_in = 60;
+    System.assertEquals('test.scope', tr.scope, 'scope property should round-trip');
+    System.assertEquals(false, tr.isSuccess(), 'No access token means not successful');
+}
+
+@IsTest
+static void testGetAccessTokenConfigValidationBranches() {
+    // config == null
+    Core_MDF_AGS_CalloutQueueable qNull = deserializeInstance('{}');
+    Core_MDF_AGS_CalloutQueueable.TokenResponse trNull = qNull.getAccessToken();
+    System.assertEquals('configuration_error', trNull.error);
+    System.assert(trNull.error_description.contains('not initialized'), trNull.error_description);
+
+    // blank clientId
+    Core_MDF_AGS_CalloutQueueable qNoId = deserializeInstance(
+        '{"config":{"clientSecret":"s","accessTokenUrl":"https://example.invalid/token",'
+        + '"grantType":"client_credentials","timeout":10000}}');
+    Core_MDF_AGS_CalloutQueueable.TokenResponse trNoId = qNoId.getAccessToken();
+    System.assertEquals('configuration_error', trNoId.error);
+    System.assert(trNoId.error_description.contains('Client ID'), trNoId.error_description);
+
+    // blank clientSecret
+    Core_MDF_AGS_CalloutQueueable qNoSecret = deserializeInstance(
+        '{"config":{"clientId":"c","accessTokenUrl":"https://example.invalid/token",'
+        + '"grantType":"client_credentials","timeout":10000}}');
+    Core_MDF_AGS_CalloutQueueable.TokenResponse trNoSecret = qNoSecret.getAccessToken();
+    System.assertEquals('configuration_error', trNoSecret.error);
+    System.assert(trNoSecret.error_description.contains('Client Secret'), trNoSecret.error_description);
+
+    // blank accessTokenUrl
+    Core_MDF_AGS_CalloutQueueable qNoUrl = deserializeInstance(
+        '{"config":{"clientId":"c","clientSecret":"s",'
+        + '"grantType":"client_credentials","timeout":10000}}');
+    Core_MDF_AGS_CalloutQueueable.TokenResponse trNoUrl = qNoUrl.getAccessToken();
+    System.assertEquals('configuration_error', trNoUrl.error);
+    System.assert(trNoUrl.error_description.contains('Access Token URL'), trNoUrl.error_description);
+}
+
+public class EmptyTokenBodyMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setBody('');
+        return res;
+    }
+}
+
+@IsTest
+static void testGetAccessTokenEmptyResponseBody() {
+    // scope + non-basic client auth exercise the request-building branches
+    Core_MDF_AGS_CalloutQueueable q = deserializeInstance(
+        '{"config":{"clientId":"c","clientSecret":"s",'
+        + '"accessTokenUrl":"https://example.invalid/token",'
+        + '"grantType":"client_credentials","scope":"read write",'
+        + '"clientAuthentication":"client_secret_post","timeout":10000}}');
+    Test.setMock(HttpCalloutMock.class, new EmptyTokenBodyMock());
+    Test.startTest();
+    Core_MDF_AGS_CalloutQueueable.TokenResponse tr = q.getAccessToken();
+    Test.stopTest();
+    System.assertEquals('empty_response', tr.error, 'Empty body should map to empty_response');
+}
+
+public class GarbageTokenBodyMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setBody('<<definitely-not-json>>');
+        return res;
+    }
+}
+
+@IsTest
+static void testGetAccessTokenUnparseableBody() {
+    Core_MDF_AGS_CalloutQueueable q = deserializeInstance(
+        '{"config":{"clientId":"c","clientSecret":"s",'
+        + '"accessTokenUrl":"https://example.invalid/token",'
+        + '"grantType":"client_credentials","timeout":10000}}');
+    Test.setMock(HttpCalloutMock.class, new GarbageTokenBodyMock());
+    Test.startTest();
+    Core_MDF_AGS_CalloutQueueable.TokenResponse tr = q.getAccessToken();
+    Test.stopTest();
+    System.assertEquals('parse_error', tr.error, 'Unparseable body should map to parse_error');
+}
+
+/** Token success + AGS response with only a "name" field. */
+public class AGSNameFieldMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setHeader('Content-Type', 'application/json');
+        String ct = req.getHeader('Content-Type');
+        if (ct != null && ct.toLowerCase().contains('application/x-www-form-urlencoded')) {
+            res.setBody('{"access_token":"t","token_type":"Bearer","expires_in":3600}');
+        } else {
+            res.setBody('{"name":"0004267963","id":"INTERNAL-GUID-1"}');
+        }
+        return res;
+    }
+}
+
+@IsTest
+static void testPSRequestStoresNameAsRequestId() {
+    User u = testUser();
+    Core_MDF_IUPGM_Request_Staging__c rec = insertStaging(u.Id, 'AGS_PS_Pending');
+
+    Test.setMock(HttpCalloutMock.class, new AGSNameFieldMock());
+    Test.startTest();
+        System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
+            new Set<Id>{ rec.Id },
+            Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST));
+    Test.stopTest();
+
+    Core_MDF_IUPGM_Request_Staging__c result = [
+        SELECT Core_MDF_AGS_Status_nm__c, Core_MDF_AGS_Request_Id__c
+        FROM   Core_MDF_IUPGM_Request_Staging__c WHERE Id = :rec.Id];
+    System.assertEquals('Submitted', result.Core_MDF_AGS_Status_nm__c);
+    System.assertEquals('0004267963', result.Core_MDF_AGS_Request_Id__c,
+        'The short AGS "name" must be preferred over the internal id');
+}
+
+/** Token success + 200 AGS response whose body has no usable request id. */
+public class AGSEmptyJsonMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setHeader('Content-Type', 'application/json');
+        String ct = req.getHeader('Content-Type');
+        if (ct != null && ct.toLowerCase().contains('application/x-www-form-urlencoded')) {
+            res.setBody('{"access_token":"t","token_type":"Bearer","expires_in":3600}');
+        } else {
+            res.setBody('{}');
+        }
+        return res;
+    }
+}
+
+@IsTest
+static void testPSRequest200WithoutRequestIdIsError() {
+    User u = testUser();
+    Core_MDF_IUPGM_Request_Staging__c rec = insertStaging(u.Id, 'AGS_PS_Pending');
+
+    Test.setMock(HttpCalloutMock.class, new AGSEmptyJsonMock());
+    Test.startTest();
+        System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
+            new Set<Id>{ rec.Id },
+            Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST));
+    Test.stopTest();
+
+    Core_MDF_IUPGM_Request_Staging__c result = [
+        SELECT Core_MDF_AGS_Status_nm__c, Core_MDF_Error_Message_txt__c
+        FROM   Core_MDF_IUPGM_Request_Staging__c WHERE Id = :rec.Id];
+    System.assertEquals('Error', result.Core_MDF_AGS_Status_nm__c,
+        '200 without a usable request id must be an Error');
+    System.assert(result.Core_MDF_Error_Message_txt__c.contains('usable AGS'),
+        'Unexpected error message: ' + result.Core_MDF_Error_Message_txt__c);
+}
+
+/** Token success + 200 AGS response with an unparseable body. */
+public class AGSGarbageBodyMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setHeader('Content-Type', 'application/json');
+        String ct = req.getHeader('Content-Type');
+        if (ct != null && ct.toLowerCase().contains('application/x-www-form-urlencoded')) {
+            res.setBody('{"access_token":"t","token_type":"Bearer","expires_in":3600}');
+        } else {
+            res.setBody('not-a-json-body');
+        }
+        return res;
+    }
+}
+
+@IsTest
+static void testPSRequest200UnparseableBodyIsError() {
+    User u = testUser();
+    Core_MDF_IUPGM_Request_Staging__c rec = insertStaging(u.Id, 'AGS_PS_Pending');
+
+    Test.setMock(HttpCalloutMock.class, new AGSGarbageBodyMock());
+    Test.startTest();
+        System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
+            new Set<Id>{ rec.Id },
+            Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST));
+    Test.stopTest();
+
+    Core_MDF_IUPGM_Request_Staging__c result = [
+        SELECT Core_MDF_AGS_Status_nm__c
+        FROM   Core_MDF_IUPGM_Request_Staging__c WHERE Id = :rec.Id];
+    System.assertEquals('Error', result.Core_MDF_AGS_Status_nm__c,
+        '200 with unparseable body must be an Error');
+}
+
+/** Token success + AGS 400 response (non-token HTTP error path). */
+public class AGSHttp400Mock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setHeader('Content-Type', 'application/json');
+        String ct = req.getHeader('Content-Type');
+        if (ct != null && ct.toLowerCase().contains('application/x-www-form-urlencoded')) {
+            res.setStatusCode(200);
+            res.setBody('{"access_token":"t","token_type":"Bearer","expires_in":3600}');
+        } else {
+            res.setStatusCode(400);
+            res.setBody('{"errorMessage":"Bad Request"}');
+        }
+        return res;
+    }
+}
+
+@IsTest
+static void testPSRequestHttp400ProducesError() {
+    User u = testUser();
+    Core_MDF_IUPGM_Request_Staging__c rec = insertStaging(u.Id, 'AGS_PS_Pending');
+
+    Test.setMock(HttpCalloutMock.class, new AGSHttp400Mock());
+    Test.startTest();
+        System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(
+            new Set<Id>{ rec.Id },
+            Core_MDF_AGS_CalloutQueueable.CalloutType.PERMISSION_SET_REQUEST));
+    Test.stopTest();
+
+    Core_MDF_IUPGM_Request_Staging__c result = [
+        SELECT Core_MDF_AGS_Status_nm__c, Core_MDF_Error_Message_txt__c
+        FROM   Core_MDF_IUPGM_Request_Staging__c WHERE Id = :rec.Id];
+    System.assertEquals('Error', result.Core_MDF_AGS_Status_nm__c,
+        'HTTP 400 from AGS must produce Error status');
+    System.assert(result.Core_MDF_Error_Message_txt__c.contains('400'),
+        'Error message should mention status code');
+}
+
+@IsTest
+static void testUserCreationDefaultRoleWhenNoRoleName() {
+    User u = testUser();
+    Core_MDF_IUPGM_Request_Staging__c rec =
+        new Core_MDF_IUPGM_Request_Staging__c(
+            Core_MDF_IUPGM_User__c                 = u.Id,
+            Core_MDF_IUPGM_Program__c              = 'Intel Partner Alliance',
+            Core_MDF_IUPGM_Role_nm__c              = 'IPA_Read_Only_PS',
+            Core_MDF_AGS_Role_Name__c              = null,
+            Core_MDF_IUPGM_All_Account_Access__c   = true,
+            Core_MDF_IUPGM_Region_Sub_Region_nm__c = 'WW',
+            Core_MDF_Request_Status_nm__c          = 'AGS_User_Creation_Pending',
+            Core_MDF_Is_IUPGM_Processed__c         = false,
+            Core_MDF_AGS_Request_Type__c           = 'CREATE_USER');
+    insert rec;
+
+    Test.setMock(HttpCalloutMock.class, new AGSTokenMock());
+    Test.startTest();
+        System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(new Set<Id>{ rec.Id }));
+    Test.stopTest();
+
+    Core_MDF_IUPGM_Request_Staging__c result = [
+        SELECT Core_MDF_AGS_Status_nm__c
+        FROM   Core_MDF_IUPGM_Request_Staging__c WHERE Id = :rec.Id];
+    System.assertEquals('Submitted', result.Core_MDF_AGS_Status_nm__c,
+        'User creation with default core-access role should be submitted');
+}
+
+@IsTest
+static void testPSRequestMissingFederationIdError() {
+    Profile p = [SELECT Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1];
+    // User deliberately has no FederationIdentifier and no new-user metadata exists.
+    User u = new User(
+        Alias = 'nofedid', Email = 'nofedid@intel.com', EmailEncodingKey = 'UTF-8',
+        LastName = 'NoFedUser', FirstName = 'Test', LanguageLocaleKey = 'en_US',
+        LocaleSidKey = 'en_US', ProfileId = p.Id,
+        TimeZoneSidKey = 'America/Los_Angeles',
+        UserName = 'nofedid' + DateTime.now().getTime() + '@CoreMDF.com');
+    insert u;
+
+    Core_MDF_IUPGM_Request_Staging__c rec =
+        new Core_MDF_IUPGM_Request_Staging__c(
+            Core_MDF_IUPGM_User__c                 = u.Id,
+            Core_MDF_IUPGM_Program__c              = 'Intel Partner Alliance',
+            Core_MDF_IUPGM_Role_nm__c              = 'IPA_Read_Only_PS',
+            Core_MDF_AGS_Role_Name__c              = 'IPA AGS Read Only',
+            Core_MDF_IUPGM_All_Account_Access__c   = true,
+            Core_MDF_IUPGM_Region_Sub_Region_nm__c = 'WW',
+            Core_MDF_Request_Status_nm__c          = 'AGS_PS_Pending',
+            Core_MDF_Is_IUPGM_Processed__c         = false,
+            Core_MDF_AGS_Request_Type__c           = 'PERMISSION_SET_REQUEST');
+    insert rec;
+
+    Test.setMock(HttpCalloutMock.class, new AGSTokenMock());
+    Test.startTest();
+        System.enqueueJob(new Core_MDF_AGS_CalloutQueueable(new Set<Id>{ rec.Id }));
+    Test.stopTest();
+
+    Core_MDF_IUPGM_Request_Staging__c result = [
+        SELECT Core_MDF_AGS_Status_nm__c, Core_MDF_Error_Message_txt__c
+        FROM   Core_MDF_IUPGM_Request_Staging__c WHERE Id = :rec.Id];
+    System.assertEquals('Error', result.Core_MDF_AGS_Status_nm__c,
+        'Missing federation id must produce Error');
+    System.assert(
+        result.Core_MDF_Error_Message_txt__c.contains('Missing federation ID'),
+        'Unexpected error: ' + result.Core_MDF_Error_Message_txt__c);
+}
+
+@IsTest
+static void testFetchUserAccessBlankIdThrows() {
+    Core_MDF_AGS_CalloutQueueable q = deserializeInstance('{}');
+    Boolean threw = false;
+    try {
+        q.fetchUserAccessFromIds('  ');
+    } catch (Core_MDF_AGS_CalloutQueueable.ConfigurationException e) {
+        threw = true;
+        System.assert(e.getMessage().contains('non-blank'), e.getMessage());
+    }
+    System.assert(threw, 'Blank enterprise id must throw');
+}
+
+@IsTest
+static void testFetchUserAccessNotConfiguredThrows() {
+    // Config present but Get_Endpoint_Path__c missing -> IDS not configured yet.
+    Core_MDF_AGS_CalloutQueueable q = deserializeInstance(
+        '{"config":{"clientId":"c","clientSecret":"s",'
+        + '"accessTokenUrl":"https://example.invalid/token",'
+        + '"grantType":"client_credentials","timeout":10000}}');
+    Boolean threw = false;
+    try {
+        q.fetchUserAccessFromIds('WWID123');
+    } catch (Core_MDF_AGS_CalloutQueueable.ConfigurationException e) {
+        threw = true;
+        System.assert(e.getMessage().contains('IDS integration is not configured'),
+            e.getMessage());
+    }
+    System.assert(threw, 'Unconfigured IDS integration must throw');
+}
+
+public class IdsAccessListMock implements HttpCalloutMock {
+    public HttpResponse respond(HttpRequest req) {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setHeader('Content-Type', 'application/json');
+        // Match the IDS identity-role-entitlement-mappings response contract.
+        res.setBody(
+            '{"name":"IdentityRoleEntitlementMapping","elements":['
+            + '{"RoleId":"RID-1","RoleSystemNm":"Role1","RoleDisplayNm":"Role One","Disabled":"False"},'
+            + '{"RoleId":"RID-2","RoleSystemNm":"Role2","RoleDisplayNm":"Role Two","Disabled":"False"}'
+            + '],"links":[]}'
+        );
+        return res;
+    }
+}
+
+@IsTest
+static void testFetchUserAccessSuccess() {
+    // Pre-cached, unexpired token so get() skips the token endpoint entirely.
+    Core_MDF_AGS_CalloutQueueable q = deserializeInstance(
+        '{"cachedAccessToken":"cached-token",'
+        + '"tokenExpiryTime":"2099-01-01T00:00:00.000Z",'
+        + '"config":{"clientId":"c","clientSecret":"s",'
+        + '"accessTokenUrl":"https://example.invalid/token",'
+        + '"getEndpointPath":"https://example.invalid/ids/useraccess",'
+        + '"grantType":"client_credentials","timeout":10000}}');
+    Test.setMock(HttpCalloutMock.class, new IdsAccessListMock());
+
+    Test.startTest();
+    List<Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment> rows =
+        q.fetchUserAccessFromIds('WWID123');
+    Test.stopTest();
+
+    System.assertEquals(2, rows.size(),
+        'Both distinct active IDS RoleId entries must be returned.');
+    Set<String> returnedRoleNames = new Set<String>();
+    Set<String> returnedRoleIds = new Set<String>();
+    for (Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment row : rows) {
+        returnedRoleNames.add(row.roleName);
+        returnedRoleIds.add(row.roleId);
+        System.assert(String.isNotBlank(row.rawJson),
+            'rawJson must be populated from the IDS element.');
+        System.assertEquals(null, row.programName,
+            'IDS does not return programName; callers resolve it from Salesforce configuration.');
+    }
+    System.assertEquals(new Set<String>{'Role1', 'Role2'}, returnedRoleNames);
+    System.assertEquals(new Set<String>{'RID-1', 'RID-2'}, returnedRoleIds);
+}
+
+@IsTest
+static void testFetchUserAccessHttpErrorThrows() {
+    Core_MDF_AGS_CalloutQueueable q = deserializeInstance(
+        '{"cachedAccessToken":"cached-token",'
+        + '"tokenExpiryTime":"2099-01-01T00:00:00.000Z",'
+        + '"config":{"clientId":"c","clientSecret":"s",'
+        + '"accessTokenUrl":"https://example.invalid/token",'
+        + '"getEndpointPath":"https://example.invalid/ids/useraccess?src=test",'
+        + '"grantType":"client_credentials","timeout":10000}}');
+    Test.setMock(HttpCalloutMock.class, new AGS500Mock());
+    Boolean threw = false;
+    Test.startTest();
+    try {
+        q.fetchUserAccessFromIds('WWID123');
+    } catch (CalloutException e) {
+        threw = true;
+        System.assert(e.getMessage().contains('IDS user access lookup failed'),
+            e.getMessage());
+    }
+    Test.stopTest();
+    System.assert(threw, 'Non-200 IDS response must throw CalloutException');
+}
+
+@IsTest
+static void testParseIdsRoleAssignmentsVariants() {
+    Core_MDF_AGS_CalloutQueueable q = deserializeInstance('{}');
+
+    System.assertEquals(0, q.parseIdsRoleAssignments(null).size(),
+        'Null body must give empty list.');
+    System.assertEquals(0, q.parseIdsRoleAssignments('').size(),
+        'Blank body must give empty list.');
+
+    // A top-level object without the IDS "elements" collection is not a valid IDS response.
+    System.assertEquals(0,
+        q.parseIdsRoleAssignments('{"roleName":"R1","program":"P1"}').size(),
+        'An object without elements must return an empty list.');
+
+    // One valid element is returned as one role assignment.
+    List<Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment> single =
+        q.parseIdsRoleAssignments(
+            '{"elements":[{"RoleId":"RID-1","RoleSystemNm":"R1",'
+            + '"RoleDisplayNm":"Role One","Disabled":"False"}]}');
+    System.assertEquals(1, single.size(),
+        'One IDS element must produce one role assignment.');
+    System.assertEquals('RID-1', single[0].roleId);
+    System.assertEquals('R1', single[0].roleName);
+    System.assertEquals(null, single[0].programName);
+    System.assert(String.isNotBlank(single[0].rawJson));
+
+    // Duplicate RoleIds are collapsed; disabled rows and non-object entries are ignored.
+    List<Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment> mixed =
+        q.parseIdsRoleAssignments(
+            '{"elements":['
+            + '{"RoleId":"RID-2","RoleSystemNm":"R2","Disabled":"False"},'
+            + '{"RoleId":"RID-2","RoleSystemNm":"R2-DUP","Disabled":"False"},'
+            + '{"RoleId":"RID-3","RoleSystemNm":"R3","Disabled":"True"},'
+            + '"plain-string",42,'
+            + '{"RoleId":"RID-4","RoleDisplayNm":"Role Four","Disabled":"False"}'
+            + ']}');
+
+    System.assertEquals(2, mixed.size(),
+        'Only two distinct active RoleIds should remain after filtering and deduplication.');
+    Set<String> mixedIds = new Set<String>();
+    Set<String> mixedNames = new Set<String>();
+    for (Core_MDF_AGS_CalloutQueueable.IdsRoleAssignment item : mixed) {
+        mixedIds.add(item.roleId);
+        mixedNames.add(item.roleName);
+    }
+    System.assertEquals(new Set<String>{'RID-2', 'RID-4'}, mixedIds);
+    System.assertEquals(new Set<String>{'R2', 'Role Four'}, mixedNames);
+}
+
+@IsTest
+static void testCheckRequestStatusExceptionPath() {
+    Core_MDF_AGS_CalloutQueueable q =
+        new Core_MDF_AGS_CalloutQueueable(new Set<Id>());
+    Test.setMock(HttpCalloutMock.class, new AGSTokenFailureMock());
+    Test.startTest();
+    Core_MDF_AGS_CalloutQueueable.AgsStatusResult result =
+        q.checkRequestStatus('REQ-1');
+    Test.stopTest();
+    System.assertEquals(false, result.success,
+        'Token failure during status check must not succeed');
+    System.assert(result.error.contains('AGS status check exception'),
+        'Unexpected error: ' + result.error);
+}
+
+@IsTest
+static void testStagingFieldHelperGuards() {
+    // put: null record / blank field / unknown field are silent no-ops
+    Core_MDF_AGS_CalloutQueueable.putStagingFieldIfPresent(
+        null, 'Core_MDF_New_User_Email__c', 'x');
+    Core_MDF_IUPGM_Request_Staging__c rec = new Core_MDF_IUPGM_Request_Staging__c();
+    Core_MDF_AGS_CalloutQueueable.putStagingFieldIfPresent(rec, ' ', 'x');
+    Core_MDF_AGS_CalloutQueueable.putStagingFieldIfPresent(
+        rec, 'Bogus_Field_XYZ__c', 'x');
+    // Incompatible value type exercises the SObjectException guard when thrown
+    try {
+        Core_MDF_AGS_CalloutQueueable.putStagingFieldIfPresent(
+            rec, 'Core_MDF_New_User_Email__c', Date.today());
+    } catch (Exception e) {
+        // Acceptable: guard only swallows SObjectException by design
     }
 
-    public class ForbiddenResponseMock implements HttpCalloutMock {
-        public HttpResponse respond(HttpRequest req) {
-            HttpResponse res = new HttpResponse();
-            res.setStatusCode(403);
-            res.setHeader('Content-Type', 'application/json');
-            res.setBody('{"error":"forbidden","error_description":"Access denied"}');
-            return res;
-        }
-    }
+    // get: null record / blank field / unknown field return null
+    System.assertEquals(null,
+        Core_MDF_AGS_CalloutQueueable.getStagingFieldStringIfPresent(
+            null, 'Core_MDF_New_User_Email__c'));
+    System.assertEquals(null,
+        Core_MDF_AGS_CalloutQueueable.getStagingFieldStringIfPresent(rec, ' '));
+    System.assertEquals(null,
+        Core_MDF_AGS_CalloutQueueable.getStagingFieldStringIfPresent(
+            rec, 'Bogus_Field_XYZ__c'));
+
+    // SObjectException path: field exists but was not included in the SELECT
+    User u = testUser();
+    Core_MDF_IUPGM_Request_Staging__c inserted = insertStaging(u.Id, 'AGS_PS_Pending');
+    Core_MDF_IUPGM_Request_Staging__c queried = [
+        SELECT Id FROM Core_MDF_IUPGM_Request_Staging__c WHERE Id = :inserted.Id];
+    System.assertEquals(null,
+        Core_MDF_AGS_CalloutQueueable.getStagingFieldStringIfPresent(
+            queried, 'Core_MDF_New_User_Email__c'),
+        'Unqueried field must safely return null');
+}
+
 }

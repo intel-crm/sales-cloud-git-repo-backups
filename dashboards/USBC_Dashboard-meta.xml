@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10667210@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>11625339@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10643157@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <name>USBC Dashboard</name>
+</DashboardFolder>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>23% of total quota</footer>
+            <gaugeMax>3.947272727E7</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>Red Hat</header>
+            <indicatorBreakpoint1>3.552545455E7</indicatorBreakpoint1>
+            <indicatorBreakpoint2>3.749909091E7</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#8BC254</indicatorMiddleColor>
+            <report>LAR_ISG_Operations/Q1_17_AMR_ISV_Red_Hat_Rev</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>Q1&apos;17 - Weighted vs Projected Revenue</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>23% of total quota</footer>
+            <gaugeMax>2.635454545E7</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>Red Hat</header>
+            <indicatorBreakpoint1>2.371909091E7</indicatorBreakpoint1>
+            <indicatorBreakpoint2>2.503681818E7</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#8BC254</indicatorMiddleColor>
+            <report>LAR_ISG_Operations/Q2_17_AMR_ISV_SAP_Rev</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>Q2&apos;17 - Weighted vs Projected Revenue</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>EXP_AMOUNT</column>
+            </chartSummary>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>24% of total quota</footer>
+            <gaugeMax>2.811151515E7</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>Red Hat</header>
+            <indicatorBreakpoint1>2.530036364E7</indicatorBreakpoint1>
+            <indicatorBreakpoint2>2.670593939E7</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#8BC254</indicatorMiddleColor>
+            <report>LAR_ISG_Operations/Q3_17_AMR_ISV_SAP_Rev</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>Q3&apos;17 - Weighted vs Projected Revenue</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>EXP_AMOUNT</column>
+            </chartSummary>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>30% of total quota</footer>
+            <gaugeMax>3.513939394E7</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>Red Hat</header>
+            <indicatorBreakpoint1>3.162545455E7</indicatorBreakpoint1>
+            <indicatorBreakpoint2>3.338242424E7</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#8BC254</indicatorMiddleColor>
+            <report>LAR_ISG_Operations/Q4_17_AMR_ISV_SAP_Rev</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>Q4&apos;17 - Weighted vs Projected Revenue</title>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Wide</columnSize>
+    </middleSection>
+    <owner>11631632@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+    </rightSection>
+    <runningUser>11631632@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>2017 AMR ISV Red Hat Revenue</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

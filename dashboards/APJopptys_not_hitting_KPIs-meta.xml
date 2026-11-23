@@ -5,5 +5,15 @@
         <sharedTo>AllInternalUsers</sharedTo>
         <sharedToType>Organization</sharedToType>
     </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10689819@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>12089106@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
     <name>APJ RBM</name>
 </DashboardFolder>

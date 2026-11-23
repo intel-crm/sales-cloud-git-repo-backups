@@ -58,9 +58,6 @@
     <columns>
         <field>OpportunityLineItem.Core_Vendor__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Status_Update__c</field>
-    </columns>
     <description>Deals with vPRO products and solution</description>
     <filter>
         <criteriaItems>
@@ -97,6 +94,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURNEXTY</interval>
+        <interval>INTERVAL_CURFY</interval>
     </timeFrameFilter>
 </Report>

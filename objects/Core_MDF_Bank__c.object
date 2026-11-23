@@ -1209,11 +1209,6 @@
         <columns>UPDATEDBY_USER</columns>
         <columns>OWNER.ALIAS</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Account__c</field>
-            <operation>equals</operation>
-            <value>UNISTOP</value>
-        </filters>
         <label>Co-Marketing Bank</label>
     </listViews>
     <nameField>
@@ -3118,7 +3113,7 @@
     </sharingReasons>
     <validationRules>
         <fullName>Core_MDF_Bank_Account_Not_Editable</fullName>
-        <active>true</active>
+        <active>false</active>
         <description>Account should not be editable after initial Draft Stage.</description>
         <errorConditionFormula>AND(ISCHANGED(Core_MDF_Account__c),
     Core_MDF_ESD_Update__c 

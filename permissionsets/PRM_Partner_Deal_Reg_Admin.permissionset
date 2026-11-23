@@ -36,6 +36,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>PRM_Partner_Deal_Opportunity__c.PRM_Opportunity_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>PRM_Partner_Deal_Opportunity__c.PRM_Sales_Opportunity__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -73,10 +78,6 @@
     </objectPermissions>
     <recordTypeVisibilities>
         <recordType>Account.Core_Partner_Account_Group</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Account.End_Customer_Deal_Account</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

@@ -235,35 +235,35 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Comms Infra. / Networking,Embedded / IOT</value>
+            <value>Comms Infra. / Networking</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled</value>
+            <operator>equals</operator>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
+            <value>Design: Original,Design: Secondary,Design: Software-enable</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Technical_Owner_Manager_Email__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com,charlie.hu@intel.com,yixin.fu@intel.com</value>
+            <value>jing.wu@intel.com,yang.y.chen@intel.com,yan.chang@intel.com</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>NTG</value>
+            <value>ECG,NTG,CCG</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Manager_Email__c</column>

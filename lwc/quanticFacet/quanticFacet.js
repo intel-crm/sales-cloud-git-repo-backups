@@ -1,30 +1,37 @@
-import {LightningElement, track, api} from 'lwc';
+import clearFilter from '@salesforce/label/c.quantic_ClearFilter';
+import clearFilterFacet from '@salesforce/label/c.quantic_ClearFilterFacet';
+import clearFilter_plural from '@salesforce/label/c.quantic_ClearFilter_plural';
+import collapseFacet from '@salesforce/label/c.quantic_CollapseFacet';
+import expandFacet from '@salesforce/label/c.quantic_ExpandFacet';
+import moreMatchesFor from '@salesforce/label/c.quantic_MoreMatchesFor';
+import noMatchesFor from '@salesforce/label/c.quantic_NoMatchesFor';
+import search from '@salesforce/label/c.quantic_Search';
+import showLess from '@salesforce/label/c.quantic_ShowLess';
+import showLessFacetValues from '@salesforce/label/c.quantic_ShowLessFacetValues';
+import showMore from '@salesforce/label/c.quantic_ShowMore';
+import showMoreFacetValues from '@salesforce/label/c.quantic_ShowMoreFacetValues';
 import {
   registerComponentForInit,
   initializeWithHeadless,
   registerToStore,
   getHeadlessBundle,
+  getBueno,
 } from 'c/quanticHeadlessLoader';
-import {I18nUtils, regexEncode, Store} from 'c/quanticUtils';
-
-import showMore from '@salesforce/label/c.quantic_ShowMore';
-import showLess from '@salesforce/label/c.quantic_ShowLess';
-import showMoreFacetValues from '@salesforce/label/c.quantic_ShowMoreFacetValues';
-import showLessFacetValues from '@salesforce/label/c.quantic_ShowLessFacetValues';
-import clearFilter from '@salesforce/label/c.quantic_ClearFilter';
-import clearFilter_plural from '@salesforce/label/c.quantic_ClearFilter_plural';
-import clearFilterFacet from '@salesforce/label/c.quantic_ClearFilterFacet';
-import search from '@salesforce/label/c.quantic_Search';
-import moreMatchesFor from '@salesforce/label/c.quantic_MoreMatchesFor';
-import noMatchesFor from '@salesforce/label/c.quantic_NoMatchesFor';
-import collapseFacet from '@salesforce/label/c.quantic_CollapseFacet';
-import expandFacet from '@salesforce/label/c.quantic_ExpandFacet';
+import {
+  I18nUtils,
+  regexEncode,
+  Store,
+  generateFacetDependencyConditions,
+} from 'c/quanticUtils';
+import {LightningElement, track, api} from 'lwc';
 
 /** @typedef {import("coveo").FacetState} FacetState */
 /** @typedef {import("coveo").Facet} Facet */
 /** @typedef {import("coveo").FacetValue} FacetValue */
 /** @typedef {import("coveo").SearchStatus} SearchStatus */
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
+/** @typedef {import("coveo").FacetConditionsManager} FacetConditionsManager */
+/** @typedef {import('../quanticUtils/facetDependenciesUtils').DependsOn} DependsOn */
 /**
  * @typedef FocusTarget
  * @type {object}
@@ -32,14 +39,27 @@ import expandFacet from '@salesforce/label/c.quantic_ExpandFacet';
  * @property {string} [value]
  * @property {number} [index]
  */
+/**
+ * @typedef CaptionProvider
+ * @type {object}
+ * @property {Record<string, string>} captions
+ */
 
 /**
- * A facet is a list of values for a certain field occurring in the results, ordered using a configurable criterion (e.g., number of occurrences).
+ * A facet is a list of values for a certain field occurring in the results, ordered using a configurable criterion (for example, number of occurrences).
  * A `QuanticFacet` displays a facet of the results for the current query.
+ * Custom captions can be provided by adding caption provider components to the `captions` named slot.
+ * See [Create a custom caption provider component for Quantic facets](https://docs.coveo.com/en/quantic/latest/usage/create-custom-caption-provider-component/).
  * @category Search
  * @category Insight Panel
  * @example
  * <c-quantic-facet engine-id={engineId} facet-id="myFacet" field="filetype" label="File Type" number-of-values="5" sort-criteria="occurrences" no-search display-values-as="link" is-collapsed></c-quantic-facet>
+ *
+ * @example
+ * <c-quantic-facet engine-id={engineId} field="filetype">
+ *   <c-quantic-facet-caption slot="captions" value="text" caption="Plain text"></c-quantic-facet-caption>
+ *   <c-quantic-facet-caption slot="captions" value="html" caption="Web page"></c-quantic-facet-caption>
+ * </c-quantic-facet>
  */
 export default class QuanticFacet extends LightningElement {
   /**
@@ -118,6 +138,35 @@ export default class QuanticFacet extends LightningElement {
    */
   @api injectionDepth = 1000;
   /**
+   * Identifies the facet values that must appear at the top, in order.
+   * This parameter can be used in conjunction with the `sortCriteria` parameter.
+   * Facet values not part of the `customSort` list will be sorted according to the `sortCriteria`.
+   * The maximum amount of custom sort values is 25.
+   * The default value is `undefined`, and the facet values will be sorted using only the `sortCriteria`.
+   * @api
+   * @type {String[]}
+   */
+  @api customSort;
+  /**
+   * This property defines the relationship between this facet and a parent facet, indicating
+   * the specific parent facet that this facet relies on and the selected value required
+   * from that parent facet for this facet to be displayed.
+   *
+   * When this property is defined, the facet will only display if the specified `parentFacetId`
+   * has the `expectedValue` selected. If `expectedValue` is omitted or set to `undefined`,
+   * the facet will display as long as any value is selected in the parent facet.
+   *
+   * **Supported facets:** Dependencies can only be created on a basic or category facet.
+   * Dependencies on numeric, timeframe, or date facets are not supported.
+   *
+   * For example usage and more details, see:
+   * https://docs.coveo.com/en/quantic/latest/usage/display-facet-based-on-selection-of-another-facet/
+   *
+   * @api
+   * @type {DependsOn}
+   */
+  @api dependsOn;
+  /**
    * Whether the facet is collapsed.
    * @api
    * @type {boolean}
@@ -142,6 +191,8 @@ export default class QuanticFacet extends LightningElement {
     'displayValuesAs',
     'noFilterFacetCount',
     'injectionDepth',
+    'customSort',
+    'dependsOn',
   ];
 
   /** @type {FacetState} */
@@ -165,9 +216,10 @@ export default class QuanticFacet extends LightningElement {
   focusTarget;
   /** @type {boolean} */
   focusShouldBeInFacet = false;
-   @api caption;
-    dict = {};
-  @api formattingFunction;
+  /** @type {boolean} */
+  hasInitializationError = false;
+  /** @type {FacetConditionsManager} */
+  facetConditionsManager;
 
   labels = {
     showMore,
@@ -184,29 +236,20 @@ export default class QuanticFacet extends LightningElement {
     expandFacet,
   };
 
+  /** @type {object} */
+  customCaptions = {};
+
+  /** @type {Function} */
+  remoteGetValueCaption;
+
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
-    this.setCaptions();
-  }
-  setCaptions(){
-    if(this.field == "tabfilter"){
-      this.dict = {"Developers": "Resource & Documentation Center", "forums" : "Communities", "Support" : "Support", "Partners": "Partners"};
-    }
-    else if(this.field == "datasource"){
-      // this.dict = {"Ark.intel.com" : "intel"};
-    }
-    else if(this.field == "objecttype"){
-      this.dict = {};
-    }
+    this.remoteGetValueCaption = this.getValueCaption.bind(this);
   }
 
   renderedCallback() {
     initializeWithHeadless(this, this.engineId, this.initialize);
     this.input = this.template.querySelector('.facet__searchbox-input');
-     const sendEvent = new CustomEvent('hasvalues', {
-          detail: {hasvalue: this.hasValues}
-      });
-    this.dispatchEvent(sendEvent);
     if (this.focusShouldBeInFacet && !this.facet?.state?.isLoading) {
       this.setFocusOnTarget();
       this.focusTarget = null;
@@ -223,6 +266,17 @@ export default class QuanticFacet extends LightningElement {
       this.updateState()
     );
 
+    this.customCaptions = this.loadCustomCaptions();
+
+    if (
+      this.sortCriteria === 'alphanumeric' &&
+      Object.keys(this.customCaptions).length > 0
+    ) {
+      console.warn(
+        'The Quantic Facet component should not be used with custom captions and alphanumeric sorting simultaneously. The values might appear in the wrong order.'
+      );
+    }
+
     const options = {
       field: this.field,
       sortCriteria: this.sortCriteria,
@@ -230,27 +284,39 @@ export default class QuanticFacet extends LightningElement {
       facetSearch: this.noSearch
         ? undefined
         : {
+            captions: this.customCaptions,
             numberOfValues: Number(this.numberOfValues),
           },
       facetId: this.facetId ?? this.field,
       filterFacetCount: !this.noFilterFacetCount,
       injectionDepth: Number(this.injectionDepth),
+      customSort: Array.isArray(this.customSort)
+        ? [...this.customSort]
+        : undefined,
     };
     this.facet = this.headless.buildFacet(engine, {options});
-      this.facet.facetSearch.updateCaptions(this.dict);
-
-      this.formattingFunction = (item) => this.dict[item.value] ?? item.value;
     this.unsubscribe = this.facet.subscribe(() => this.updateState());
     registerToStore(this.engineId, Store.facetTypes.FACETS, {
       label: this.label,
       facetId: this.facet.state.facetId,
+      format: this.remoteGetValueCaption,
       element: this.template.host,
+      metadata: {
+        customCaptions: Object.entries(this.customCaptions).map(
+          ([key, label]) => ({value: key, caption: label})
+        ),
+      },
     });
+    if (this.dependsOn) {
+      this.validateDependsOnProperty();
+      this.initFacetConditionManager(engine);
+    }
   };
 
   disconnectedCallback() {
     this.unsubscribe?.();
     this.unsubscribeSearchStatus?.();
+    this.facetConditionsManager?.stopWatching();
   }
 
   updateState() {
@@ -260,7 +326,7 @@ export default class QuanticFacet extends LightningElement {
       !this.searchStatus?.state?.hasError &&
       !this.searchStatus?.state?.firstSearchExecuted;
 
-    const renderFacetEvent = new CustomEvent('renderfacet', {
+    const renderFacetEvent = new CustomEvent('quantic__renderfacet', {
       detail: {
         id: this.facetId ?? this.field,
         shouldRenderFacet: this.hasValues,
@@ -270,6 +336,37 @@ export default class QuanticFacet extends LightningElement {
     });
     this.dispatchEvent(renderFacetEvent);
   }
+  validateDependsOnProperty() {
+    if (this.dependsOn) {
+      getBueno(this).then(() => {
+        const {parentFacetId, expectedValue} = this.dependsOn;
+        if (!Bueno.isString(parentFacetId)) {
+          console.error(
+            `The ${this.field} ${this.template.host.localName} requires dependsOn.parentFacetId to be a valid string.`
+          );
+          this.setInitializationError();
+        }
+        if (expectedValue && !Bueno.isString(expectedValue)) {
+          console.error(
+            `The ${this.field} ${this.template.host.localName} requires dependsOn.expectedValue to be a valid string.`
+          );
+          this.setInitializationError();
+        }
+      });
+    }
+  }
+
+  initFacetConditionManager(engine) {
+    this.facetConditionsManager = this.headless.buildFacetConditionsManager(
+      engine,
+      {
+        facetId: this.facet.state.facetId,
+        conditions: generateFacetDependencyConditions({
+          [this.dependsOn.parentFacetId]: this.dependsOn.expectedValue,
+        }),
+      }
+    );
+  }
 
   get values() {
     return (
@@ -277,9 +374,8 @@ export default class QuanticFacet extends LightningElement {
         .filter((value) => value.numberOfResults || value.state === 'selected')
         .map((v) => ({
           ...v,
-          value: v.value,
           checked: v.state === 'selected',
-          highlightedResult: v.value,
+          highlightedResult: this.getValueCaption(v),
         })) || []
     );
   }
@@ -308,6 +404,10 @@ export default class QuanticFacet extends LightningElement {
 
   get hasValues() {
     return this.values.length !== 0;
+  }
+
+  get isFacetEnabled() {
+    return this.state?.enabled;
   }
 
   get hasActiveValues() {
@@ -352,7 +452,7 @@ export default class QuanticFacet extends LightningElement {
   }
 
   get actionButtonIcon() {
-    return this.isCollapsed ? 'utility:chevrondown' : 'utility:chevronup';
+    return this.isCollapsed ? 'utility:add' : 'utility:dash';
   }
 
   get actionButtonCssClasses() {
@@ -403,6 +503,17 @@ export default class QuanticFacet extends LightningElement {
     return !this.noSearch && this.state?.canShowMoreValues;
   }
 
+  /**
+   * @returns {Array<CaptionProvider>}
+   */
+  get captionProviders() {
+    // @ts-ignore
+    return Array.from(this.querySelectorAll('*[slot="captions"]')).filter(
+      // @ts-ignore
+      (component) => component.captions
+    );
+  }
+
   onSelectClickHandler(value) {
     if (this.isDisplayAsLink) {
       this.facet.toggleSingleSelect(value);
@@ -418,7 +529,18 @@ export default class QuanticFacet extends LightningElement {
   getItemFromValue(value) {
     return (
       this.isFacetSearchActive ? this.facetSearchResults : this.values
-    ).find((item) =>this.formattingFunction(item) === value);
+    ).find((item) => this.getValueCaption(item) === value);
+  }
+
+  getValueCaption(item) {
+    return this.customCaptions[item.value] || item.value;
+  }
+
+  loadCustomCaptions() {
+    // The list is reversed so the caption comes from the first provider matching the value.
+    return this.captionProviders
+      .reverse()
+      .reduce((res, provider) => ({...res, ...provider.captions}), {});
   }
 
   /**
@@ -554,5 +676,12 @@ export default class QuanticFacet extends LightningElement {
       // @ts-ignore
       focusTarget.setFocusOnHeader();
     }
+  }
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
   }
 }

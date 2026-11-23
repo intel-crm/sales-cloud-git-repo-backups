@@ -19,9 +19,6 @@
         <field>CHILD_NAME</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration_Product__c.Core_Opportunity_Product_Id__c</field>
-    </columns>
-    <columns>
         <field>FK_NAME</field>
     </columns>
     <columns>
@@ -55,20 +52,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>EMEA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Design_Registration_Product__c.Core_Design_Product_Status_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

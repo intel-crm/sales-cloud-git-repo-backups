@@ -8,7 +8,7 @@
             <recipient>ucd_AccountRequestApproverGroup</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>ucdcustomerdataoperations@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Account_Request_Approved</template>
     </alerts>

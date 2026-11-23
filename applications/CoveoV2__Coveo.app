@@ -8,7 +8,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Coveo</label>
-    <logo>CoveoV2__Coveo/CoveoV2__Logo.png</logo>
     <tabs>CoveoV2__Search</tabs>
     <tabs>CoveoV2__CommunitySearch</tabs>
     <tabs>CoveoV2__CaseCreation</tabs>

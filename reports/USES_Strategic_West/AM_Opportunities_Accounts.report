@@ -70,13 +70,6 @@
             <operator>contains</operator>
             <value>Andrew Meyer</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

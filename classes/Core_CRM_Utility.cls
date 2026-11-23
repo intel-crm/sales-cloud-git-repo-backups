@@ -229,6 +229,7 @@ public without sharing class Core_CRM_Utility {
         public static Map<String, Object> getTagsWithCount(Integer limitSize, Integer offsetSize, String searchKey) {
             try {
                 String filterSearchKey = '';
+                //String whereClause ='';
                 String coreQuery = System.Label.CRM_getTagsDetailsQuery;
                 String filterQuery = System.Label.CRM_showTagsFilter;
                 String orderByQuery = System.Label.CRM_tagsOrderByQuery;
@@ -249,6 +250,9 @@ public without sharing class Core_CRM_Utility {
                 recordQuery = coreQuery + whereClause + ' ' + orderByQuery;
                 countQuery = 'SELECT COUNT() FROM UniTag__Tag__c' + whereClause;
                 
+                // Get the count
+                //countQuery = 'SELECT COUNT() FROM UniTag__Tag__c' + whereClause +filterSearchKey;
+                //System.debug(recordQuery);
                 List<UniTag__Tag__c> tags = Database.query(recordQuery);
                 Integer totalCount = Database.countQuery(countQuery);
                 

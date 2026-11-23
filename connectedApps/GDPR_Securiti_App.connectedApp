@@ -4,12 +4,12 @@
     <label>GDPR Securiti App</label>
     <oauthConfig>
         <callbackUrl>https://app.securiti.ai/static/activateConnector.html</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6u_5fIPvgNTotOh92kSF5QDZEfroc1D2Ld.LeVrAJNrwdbKlDXoYsPF_lqK9</consumerKey>
+        <consumerKey>3MVG9BWMiHkoluZE0qiUtAc6UxWGUS2BLev8MkLXbi0mviqrVCNHFm_QIKMEgw.CtXEdxc_6lVjw21FcW..7E</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
-        <isCodeCredentialEnabled>true</isCodeCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
-        <isConsumerSecretOptional>true</isConsumerSecretOptional>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isDPopEnabled>false</isDPopEnabled>
         <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
         <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
@@ -19,7 +19,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Basic</scopes>

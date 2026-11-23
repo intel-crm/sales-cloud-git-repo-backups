@@ -14,9 +14,6 @@
         <field>Opportunity$ExpectedRevenue</field>
     </columns>
     <columns>
-        <field>Opportunity$Core_Opportunity_Owner__c</field>
-    </columns>
-    <columns>
         <field>Opportunity$Owner</field>
     </columns>
     <columns>
@@ -96,6 +93,27 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Mavenir,KGPCo,Tech Mahindra,America Movil,AT&amp;T,BCE,CenturyLink,Charter Communications,Comcast,Comcast Corporation,Dish Network,Lumen,Telecom Italia,Telefonica,Rogers Communication,SHAW COMMUNICATIONS,T-Mobile,Telus,Verizon</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

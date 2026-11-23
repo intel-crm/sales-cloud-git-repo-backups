@@ -696,6 +696,20 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(247, 26, 41);&quot;&gt;Important Note for &lt;/span&gt;&lt;strong style=&quot;color: rgb(247, 26, 41);&quot;&gt;&lt;u&gt;Altera/PSG Users Only&lt;/u&gt;&lt;/strong&gt;&lt;span style=&quot;color: rgb(247, 26, 41);&quot;&gt; : As part of the Altera CRM R1 release from Jul 17-28, we are in the process of moving data and functionality to a new Altera Salesforce instance. During this time, please do not create new accounts/contacts/products/leads/opportunities/quotes/DPAs. From July 28 onwards, the new system will be available, and you will receive an email with the new URL and instructions.&lt;/span&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>hideUpdateButton</name>
                     <value>true</value>
                 </componentInstanceProperties>
@@ -711,6 +725,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>
@@ -771,6 +789,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-199e6072-0cb8-4817-adb8-1b9a4a94d3d0</value>

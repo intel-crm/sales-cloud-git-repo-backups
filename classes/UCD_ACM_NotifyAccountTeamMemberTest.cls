@@ -2,11 +2,6 @@
 private with sharing class UCD_ACM_NotifyAccountTeamMemberTest {
     @testSetup
     static void dataSetUp() {
-        Core_Account_Bypass_Validation_Rule__c bypass= new Core_Account_Bypass_Validation_Rule__c();
-        bypass.ByPass__c = true;
-        bypass.SetupOwnerId = UserInfo.getOrganizationId();
-        INSERT bypass;
-
         User user1 = New User();
         user1.Alias = 'tu1';
         user1.Email='testUser1@intel.com';
@@ -32,21 +27,19 @@ private with sharing class UCD_ACM_NotifyAccountTeamMemberTest {
         user2.LanguageLocaleKey = 'en_US';   
         INSERT new List<User>{user1, user2};
             
-        Account acc1 = new Account();
+            Account acc1 = new Account();
         acc1.Name = 'Test account 1';
         acc1.OwnerId = user1.Id;
         acc1.billingCountry = 'India';
-        acc1.BillingCity = 'Bangalore';
         
         Account acc2 = new Account();
         acc2.Name = 'Test account 2';
         acc2.OwnerId = user1.Id;
         acc2.BillingCountry = 'India';
-        acc2.BillingCity = 'Bangalore';
         
         INSERT new List<Account>{acc1, acc2};
             
-        AccountTeamMember atm1 = New AccountTeamMember();
+            AccountTeamMember atm1 = New AccountTeamMember();
         atm1.accountId = acc1.Id;
         atm1.TeamMemberRole = 'Team Member';
         atm1.userId = user2.Id;
@@ -56,9 +49,8 @@ private with sharing class UCD_ACM_NotifyAccountTeamMemberTest {
         atm2.TeamMemberRole = 'Team Member';
         atm2.userId = user2.Id;
         
-        INSERT new List<AccountTeamMember>{atm1, atm2};
-
-    }
+        INSERT new List<AccountTeamMember>{atm1, atm2};        
+            }
     
     @isTest
     private static void accountOwnerChangeTest() {

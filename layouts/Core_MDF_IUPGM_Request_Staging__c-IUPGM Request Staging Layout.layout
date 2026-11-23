@@ -123,6 +123,18 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>Core_MDF_Copy_Operation_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Copy_Source_User_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Pending_Dependent_Role_txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>Core_MDF_Request_Type_nm__c</field>
             </layoutItems>
         </layoutColumns>

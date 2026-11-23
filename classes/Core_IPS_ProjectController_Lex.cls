@@ -10,29 +10,13 @@ public with sharing class Core_IPS_ProjectController_Lex {
     public static Set<Id> faeId=new Set<Id>();
     
     //Added as Part of Active Project Member Fix - Showing warning message if Account Member Type is selected as 'ALL'
-    /* @AuraEnabled // Commented by tushar for vanuability
-public static Boolean getAccountMemberType(String projAccId) {
-Boolean isAccntMemTypeAll = false;
-Core_IPS_Account__c coreAccList = new Core_IPS_Account__c();
-try{
-if(Core_IPS_Account__c.SObjectType.getDescribe().isQueryable()) {
-coreAccList =[SELECT Id, Core_Members__c FROM Core_IPS_Account__c WHERE Id= :projAccId LIMIT 1];
-}
-if(coreAccList!=null && coreAccList.Core_Members__c == 'All') {
-isAccntMemTypeAll = true;
-}
-}catch(Exception e){}
-return isAccntMemTypeAll;
-}*/
+
     @AuraEnabled // Added by tushar for vanuability
     public static Boolean getAccountMemberType(String projAccId) {
         
         try {
             
-           /* if (
-                Schema.sObjectType.Core_IPS_Account__c.isAccessible() &&
-                Schema.sObjectType.Core_IPS_Account__c.fields.Core_Members__c.isAccessible()
-            ) {*/
+
                 
                 Core_IPS_Account__c coreAcc = [
                     SELECT Id, Core_Members__c
@@ -44,7 +28,7 @@ return isAccntMemTypeAll;
                 
                 return coreAcc != null &&
                     coreAcc.Core_Members__c == 'All';
-           // }
+
             
         } catch (Exception e) {
             System.debug('Error: ' + e.getMessage());
@@ -266,12 +250,10 @@ return isAccntMemTypeAll;
         for (Core_IPS_Project_Member__c ipsMem: existingMembers) {
             setMemIds.add(ipsMem.core_ips_contact__c);        
         }
-        System.debug('### getAddMembers DEBUG ### projectId=' + projectId + ' fetchType=' + fetchType);
-        System.debug('### setAcctIds (all project accounts)=' + setAcctIds);
-        System.debug('### setMemIds (existing member contacts)=' + setMemIds);
+
         //In case of FAE only those contacts should be vailable where FAE is Account Team Member
         if(System.Label.Core_IPS_SalesRep_Profile_Ids.Contains(String.ValueOf(userinfo.getProfileId()).substring(0,15))){ 
-            System.debug('### Running as FAE/SalesRep profile: ' + UserInfo.getProfileId());
+
             //if(AccountTeamMember.SObjectType.getDescribe().isAccessible()){
             for(AccountTeamMember accteam : [Select Id, AccountId From AccountTeamMember WHERE UserId =:UserInfo.getUserId() AND AccountId IN: setAcctIds]){
                 setAccTeamIds.add(accteam.AccountId); 
@@ -306,8 +288,7 @@ return isAccntMemTypeAll;
         }
         
         else{
-            System.debug('### Running as non-FAE profile: ' + UserInfo.getProfileId());
-            System.debug('### queryAcctIds (setAcctIds for non-FAE)=' + setAcctIds);
+
             if(fetchType == 'Load Data') {
                 //if(User.SObjectType.getDescribe().isQueryable())
                 membersList = [Select id,ContactId,Contact.FirstName,Contact.LastName,Contact.Email, Contact.Account.Name from User where Contact.Core_IPS_Active__c=true AND AccountId IN :setAcctIds AND ContactId NOT IN :setMemIds LIMIT :limitSize OFFSET :offset];  
@@ -332,7 +313,7 @@ return isAccntMemTypeAll;
             }
         }
         //wrapperInContext.sort();
-        System.debug('### getAddMembers returning ' + wrapperInContext.size() + ' members');
+
         return JSON.serialize(wrapperInContext);
     }
     
@@ -573,7 +554,7 @@ return isAccntMemTypeAll;
                 tMember.Status__c = 'Active';
             }
             teamMemberList.add(tMember);
-            System.debug('teamMemberList'+teamMemberList);
+
         }
         if(teamMemberList.size()>0) {
             if(Schema.sObjectType.Core_IPS_Intel_Support_Team__c.isCreateable()){

@@ -558,11 +558,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>User_Unique__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>WirelessTrialExpirationDate</field>
             <table>User</table>
         </columns>

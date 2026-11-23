@@ -45,10 +45,6 @@
             <translation><!-- End Customer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Extended Sales Force</masterLabel>
-            <translation><!-- Extended Sales Force --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hyperscaler (AWS, Azure, GCP)</masterLabel>
             <translation><!-- Hyperscaler (AWS, Azure, GCP) --></translation>
         </picklistValues>
@@ -4114,6 +4110,10 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <validationRules>
         <errorMessage><!-- You cannot edit a record once rejected --></errorMessage>
         <name>Rejection_Flow_Update</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Umbrella Group is required when Industry is Defense and Space, Education, or Government --></errorMessage>
+        <name>Umbrella_Group_Required_for_Industries</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Postal code should be an integer --></errorMessage>

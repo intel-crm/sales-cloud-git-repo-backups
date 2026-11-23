@@ -30,7 +30,6 @@
     </filter>
     <format>Matrix</format>
     <groupingsAcross>
-        <dateGranularity>Quarter</dateGranularity>
         <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>

@@ -29,20 +29,13 @@
     </columns>
     <description>This shows the activities that have #STRATOKR</description>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1</booleanFilter>
         <criteriaItems>
             <column>SUBJECT</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>#STRATOKR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ASSIGNED</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Alastair Duncan,Alan Rose,David Minnaar,Hughes Morin,Michael OBrien,Katherine Heidelman,Rick Lisa,Burnie Legette,David Richard,Darren Pulsipher,John Haag IV,Ricardo Dutton Jr.,Jason Dunn-Potter,Christina Daubeneck</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

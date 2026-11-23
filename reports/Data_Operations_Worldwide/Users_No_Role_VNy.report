@@ -65,7 +65,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Sales Rep,Sales Man,Sales Ops,Brief,Marketing Dev,Program Core,SMG,IPS Agent</value>
+            <value>Sales Rep,Sales Man,Sales Ops,Brief,Marketing Dev,Program Core,SMG</value>
         </criteriaItems>
         <criteriaItems>
             <column>FIRST_NAME</column>
@@ -95,8 +95,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>User.Core_User_Profile_Name__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
+    <sortColumn>LAST_LOGIN</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>LAST_LOGIN</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

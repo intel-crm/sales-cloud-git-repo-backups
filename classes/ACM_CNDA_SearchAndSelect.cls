@@ -5,6 +5,7 @@ public without sharing class ACM_CNDA_SearchAndSelect
         try 
         {            
             UCD_ACM_Logger.information('ACM_CNDA_SearchAndSelect', 'ExecuteAPI', 'Account ID fetched through Current Reference Page : '+ AcctID, 'CNDA');
+            System.debug('AcctID : '+AcctID);
             
             // Check if the user has any of the allowed profiles
         	
@@ -54,6 +55,7 @@ public without sharing class ACM_CNDA_SearchAndSelect
             
         try{
             response = new Http().send(httpReq);           
+            system.debug('response- '+response.getBody());
             UCD_ACM_Logger.information('ACM_CNDA_SearchAndSelect', 'getCNDAforName', 'Response from LAWMAS API : '+ response.getBody(), 'CNDA');
             
             String strResponse = response.getBody(); 
@@ -73,6 +75,9 @@ public without sharing class ACM_CNDA_SearchAndSelect
     @AuraEnabled
     // Method to append text to an existing string field of an Account
     public static Boolean appendToAccountField(Id accountId, String textToAppend,List<String> preselectedRows) {
+        System.debug('appendToAccountField : '+accountId);
+        System.debug('appendToAccountField : '+textToAppend);
+        System.debug('preselectedRows : '+preselectedRows);
         // Query the Account record to retrieve the existing field value
         Account acc = [SELECT Id, Core_CNDA_Number__c FROM Account WHERE Id = :accountId LIMIT 1];
         
@@ -99,6 +104,7 @@ public without sharing class ACM_CNDA_SearchAndSelect
         
         result.addAll(selectedSet);
         
+        System.debug('result : '+result);
         
         Set<String> finalSet = new Set<String>(result);
         
@@ -110,20 +116,19 @@ public without sharing class ACM_CNDA_SearchAndSelect
 			finalResult += ';';
         }
         
+        System.debug('finalResult : '+finalResult);
         
         acc.Core_CNDA_Number__c = finalResult;
     
         try 
         {
-            if(Schema.sObjectType.Account.isUpdateable()){
             update acc; // Update the Account record
             return true;  // Return true if update is successful
-            }
-            return false;
             
         } catch (DmlException e) 
         {
             // If there's an error during the update, log the error and return false
+            System.debug('Error updating account: ' + e.getMessage());
             return false;
     	}
     }

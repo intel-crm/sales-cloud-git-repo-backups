@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Sturrock Technologies Pty Ltd Partner User</description>
+    <description>MGM TECHNOLOGIES PTY LTD Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Sturrock Technologies Pty Ltd Partner User</name>
+    <name>MGM TECHNOLOGIES PTY LTD Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
     <parentRole>Admin</parentRole>
 </Role>

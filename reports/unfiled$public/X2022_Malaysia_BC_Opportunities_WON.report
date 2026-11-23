@@ -9,11 +9,13 @@
             <axisBinding>y</axisBinding>
             <column>Opportunity.KPI_Opportunity__r$Core_KPI_Total_Price__c</column>
         </chartSummaries>
-        <chartType>HorizontalBar</chartType>
+        <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>Opportunity$Account</groupingColumn>
+        <groupingColumn>Opportunity$CloseDate</groupingColumn>
+        <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
+        <secondaryGroupingColumn>Opportunity.KPI_Opportunity__r$Name</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -25,9 +27,6 @@
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
-    <columns>
-        <field>Opportunity$CloseDate</field>
-    </columns>
     <columns>
         <field>Opportunity$Core_Opportunity_Owner__c</field>
     </columns>
@@ -42,8 +41,11 @@
         <field>Opportunity.KPI_Opportunity__r$Core_KPI_Total_Price__c</field>
     </columns>
     <columns>
+        <field>Opportunity$Core_Status_Update__c</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.KPI_Opportunity__r$Core_KPI_Quantity__c</field>
+        <field>Opportunity$Probability</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -74,20 +76,6 @@
             <operator>contains</operator>
             <value>APJ Sales Territory</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity$Core_Opportunity_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>jovern lim</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity$Account</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>government of malaysia</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -97,11 +85,11 @@
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity$Account</field>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>Opportunity$CloseDate</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2022 Malaysia Ent Opportunities $ (WON)</name>
+    <name>2022 Malaysia BC Opportunities $ (WON)</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -113,8 +101,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Opportunity$CloseDate</dateColumn>
-        <endDate>2022-12-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

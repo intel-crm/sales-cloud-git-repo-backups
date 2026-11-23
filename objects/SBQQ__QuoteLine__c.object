@@ -11661,9 +11661,29 @@ IF(SBQQ__Product__r.Core_Hierarchy_ID__c = &apos;43&apos;,  SBQQ__Product__r.Cor
         <columns>Pricing_Intel_Response_Requested_By_Date__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
+            <field>Pricing_Program_Type_Nm__c</field>
+            <operation>equals</operation>
+            <value>Client</value>
+        </filters>
+        <filters>
+            <field>Pricing_End_Customer_Country__c</field>
+            <operation>equals</operation>
+            <value>Canada,United States</value>
+        </filters>
+        <filters>
+            <field>Pricing_Region_Nm__c</field>
+            <operation>equals</operation>
+            <value>ASMO</value>
+        </filters>
+        <filters>
             <field>Pricing_Status_Nm__c</field>
             <operation>equals</operation>
             <value>Pending Further Intel Review</value>
+        </filters>
+        <filters>
+            <field>Pricing_Market_Segment_values_Nm__c</field>
+            <operation>equals</operation>
+            <value>Corp,Government,SMB,Education</value>
         </filters>
         <label>IQR Pending Pricing Review</label>
         <sharedTo>

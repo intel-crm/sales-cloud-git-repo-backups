@@ -1201,11 +1201,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Attendee__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Athena_Candidate__c</field>
             <table>Opportunity</table>
         </columns>
@@ -1468,11 +1463,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__EventTitle__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Date_Submitted_for_Approval__c</field>
             <table>Opportunity</table>
         </columns>
@@ -1519,11 +1509,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Days_from_Opportunity_Create_to_Su__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__Event__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>

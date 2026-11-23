@@ -495,7 +495,6 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
         <columns>Core_MDF_RMF_Proposed_Payment_Amt__c</columns>
         <columns>Core_MDF_RMF_Actual_Payment_Amt__c</columns>
         <columns>Core_MDF_Payment_Status_Txt__c</columns>
-        <columns>Core_MDF_AccountCompany_Txt__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -912,6 +911,42 @@ Name + &quot; - &quot; + CASE(Core_MDF_Program_Txt__c,
     </nameField>
     <pluralLabel>Payments</pluralLabel>
     <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Core_MDF_Channel_MDF</fullName>
+        <active>true</active>
+        <description>Channel MDF Record Type</description>
+        <label>Channel MDF</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_Nm__c</picklist>
+            <values>
+                <fullName>Client Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Payment_Status_Txt__c</picklist>
+            <values>
+                <fullName>Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Payment</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
     <recordTypes>
         <fullName>Core_MDF_Client_Co_Marketing_Fund</fullName>
         <active>true</active>

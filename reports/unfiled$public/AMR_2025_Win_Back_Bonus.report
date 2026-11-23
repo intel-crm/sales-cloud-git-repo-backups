@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Product2.Core_Code_Name__c</field>
+        <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Competitor__c</field>
@@ -43,9 +43,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
     </columns>
     <description>Report to track bonus 1 (CCG Win-backs against ARM, Apple, or AMD)</description>
     <filter>
@@ -118,17 +115,12 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Commissionable__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OPPORTUNITY_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Product2.Core_Code_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>AMR 2025 Win Back Bonus (CCG)</name>

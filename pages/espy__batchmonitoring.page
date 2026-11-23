@@ -69,7 +69,7 @@
                                     <div class="panel-heading panel-header" >
                                         <h3 class="panel-title">Jobs In Progress</h3>
                                     </div>
-                                    <div class="panel-body" style="max-height: 234px; overflow-y:auto;">
+                                    <div class="panel-body" style="max-height: 234px;overflow-y">
                                         <c:BM_batchprogress />
                                     </div>
                                 </div>
@@ -130,9 +130,9 @@
     
     
     <style>
-            .panel-body{height:234px;overflow:auto;}
+            .panel-body{min-height: 234px}
             .panel-bodyInline{flex: 1;min-height: 234px}
-            .panel panel-default{display: flex}
+            .panel panel-default{display: flex} 
             .nopadding{ padding: 5px !important; margin: 0 !important;}
             .up-arrow-active{color: #13be13 !important;font-weight: bolder}
             .down-arrow-active{content: "\21C2";color: red;font-weight: bolder}
@@ -164,7 +164,7 @@
                 background-color: #ccd3ff;
                 border-color: #ddd;
                 font-size: 18px;
-                font-weight: bolder;
+                font-family: bolder;
             }
             .panel-default{
                 box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2) !important;

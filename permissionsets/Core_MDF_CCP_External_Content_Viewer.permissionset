@@ -2131,11 +2131,6 @@
         <field>User.Core_WWID__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>User.User_Unique__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP External Content Viewer</label>
     <license>Partner Community</license>

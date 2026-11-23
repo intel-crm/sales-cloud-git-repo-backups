@@ -1,12 +1,5 @@
 @isTest
 public class Core_IPS_Portal_Project_Controller_Test {
-
-    private static void insertUserWithValidationBypass(User testUser) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert testUser;
-        }
-    }
     
     
     @isTest
@@ -54,7 +47,7 @@ public class Core_IPS_Portal_Project_Controller_Test {
         userAccount.TimeZoneSidKey='America/New_York';
         userAccount.ProfileId= pf.Id;
         userAccount.LocaleSidKey='en_US';
-        insertUserWithValidationBypass(userAccount);
+        insert userAccount;
         System.assert(userAccount.Id != null, 'Record not created');
         
             system.runas(userAccount) {
@@ -217,7 +210,7 @@ public class Core_IPS_Portal_Project_Controller_Test {
         userAccount.TimeZoneSidKey='America/New_York';
         userAccount.ProfileId= pf.Id;
         userAccount.LocaleSidKey='en_US';
-        insertUserWithValidationBypass(userAccount);
+        insert userAccount; 
         System.assert(userAccount.Id != null, 'Record not created');
         
                 system.runas(userAccount){
@@ -501,7 +494,7 @@ public class Core_IPS_Portal_Project_Controller_Test {
         userAccount.TimeZoneSidKey='America/New_York';
         userAccount.ProfileId= pf.Id;
         userAccount.LocaleSidKey='en_US';
-        insertUserWithValidationBypass(userAccount);
+        insert userAccount;
         System.assert(userAccount.Id != null, 'Record not created');
         
                 Core_IPS_Project__c projectRecord=new Core_IPS_Project__c();
@@ -560,7 +553,7 @@ insert con1;
                             EmailEncodingKey = 'UTF-8',
                             LocaleSidKey = 'en_US'
                            );
-        insertUserWithValidationBypass(usr);
+        insert usr;
         System.assert(usr.Id != null, 'Record not created');
        
         Account newAccount = new Account (
@@ -769,7 +762,7 @@ insert con1;
             LanguageLocaleKey = 'en_US',
             LocaleSidKey = 'en_US',
             ContactId = con.Id);
-        insertUserWithValidationBypass(uu);
+        insert uu;
         System.runas(uu){
             Core_IPS_Project__c project = new Core_IPS_Project__c();
     		project.Name = 'test project';

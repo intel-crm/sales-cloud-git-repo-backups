@@ -122,6 +122,14 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Copy Operation Id --></label>
+        <name>Core_MDF_Copy_Operation_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Copy Source User Name --></label>
+        <name>Core_MDF_Copy_Source_User_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Error Message --></label>
         <name>Core_MDF_Error_Message_txt__c</name>
     </fields>
@@ -252,6 +260,10 @@
         <name>Core_MDF_New_User_Name__c</name>
     </fields>
     <fields>
+        <label><!-- Pending Dependent Role --></label>
+        <name>Core_MDF_Pending_Dependent_Role_txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Request Status --></label>
         <name>Core_MDF_Request_Status_nm__c</name>
         <picklistValues>
@@ -277,6 +289,10 @@
         <picklistValues>
             <masterLabel>Completed</masterLabel>
             <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Copy_Pending</masterLabel>
+            <translation><!-- Copy_Pending --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Error</masterLabel>
@@ -310,6 +326,10 @@
     <fields>
         <label><!-- Request Type --></label>
         <name>Core_MDF_Request_Type_nm__c</name>
+        <picklistValues>
+            <masterLabel>COPY</masterLabel>
+            <translation><!-- COPY --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>GRANT</masterLabel>
             <translation><!-- GRANT --></translation>

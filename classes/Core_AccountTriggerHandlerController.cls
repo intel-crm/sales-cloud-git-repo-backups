@@ -363,11 +363,9 @@ public without sharing class Core_AccountTriggerHandlerController {
             }
         }
         /*Utkarsh Changes start - TWC729-9520 - Calling IPA Partner Deal class when account become uncovered.*/
-        if (!accountsChangedToUncovered.isEmpty()) {
         List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();
-        
         lstAccountTeamMember = [Select id, AccountId, UserId,Core_Account_Category__c,TeamMemberRole from AccountTeamMember where AccountId IN : accountsChangedToUncovered  Order By CreatedDate ];
-        PRM_PartnerDealOpportunitySharingService.removeShares(lstAccountTeamMember);}
+        PRM_PartnerDealOpportunitySharingService.removeShares(lstAccountTeamMember);
         /*Utkarsh Changes END*/
         if(accountsChangedToUncovered != null && !accountsChangedToUncovered.isEmpty()) {
             List<PermissionSetAssignment> currentUserPerSet = new List<PermissionSetAssignment>();

@@ -5,7 +5,7 @@
         <value>지급 문서</value>
     </caseValues>
     <fields>
-        <label>계좌 이름</label>
+        <label><!-- Account Name --></label>
         <name>Core_MDF_Account_nm__c</name>
     </fields>
     <fields>
@@ -99,6 +99,10 @@
         <help>세금 금액</help>
         <label>세금 금액</label>
         <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Cancellation Comment --></label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
     </fields>
     <fields>
         <label><!-- Created By --></label>

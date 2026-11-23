@@ -277,6 +277,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Executive_Meeting_Brief__c.Core_Document_Link__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Executive_Meeting_Brief__c.Core_Executive_Meeting_Brief_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -288,6 +293,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Executive_Meeting_Brief__c.Industry_Insights_Political_Climate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Executive_Meeting_Brief__c.Quip_Document_URL__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
@@ -329,7 +339,7 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>CRM_Timezone_values__c</object>
-        <viewAllFields>false</viewAllFields>
+        <viewAllFields>true</viewAllFields>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>

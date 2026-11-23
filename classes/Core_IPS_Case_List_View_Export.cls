@@ -69,9 +69,10 @@ public with sharing class Core_IPS_Case_List_View_Export {
         loadFilterFields();
         
         Integer idx = strQuery.indexOf(' FROM ');
-        // TWC745-9117 - ATHR Critical fixed by Tushar
-        Integer limitValue = MAX_EXPORT_ROWS + 1;
-        String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT :limitValue';
+        // String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT ' + (MAX_EXPORT_ROWS + 1); // commented by Tushar
+        
+        Integer limitValue = MAX_EXPORT_ROWS + 1; // line added by Tushar
+        String strCountQuery = 'SELECT Id ' + strQuery.substring(idx) + ' LIMIT :limitValue'; // TWC745-9117 - ATHR Critical fixed by Tushar
         
         List<Object> lstObj = Database.query(strCountQuery);
         if (lstObj.size() > MAX_EXPORT_ROWS) {

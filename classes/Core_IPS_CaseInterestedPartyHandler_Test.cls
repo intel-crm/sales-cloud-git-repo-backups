@@ -25,13 +25,6 @@ public class Core_IPS_CaseInterestedPartyHandler_Test {
         static List<Core_IPS_Case_Interested_Party__c> ipRecList = new List<Core_IPS_Case_Interested_Party__c>();
         static Profile p = null;
 
-        private static void insertUsersWithValidationBypass(List<User> users) {
-            User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-            System.runAs(validationBypassUser) {
-                insert users;
-            }
-        }
-
         public static void getRecordsForIntIP(){
         
         //Profiles of SalesReps & IPS Agents to add these Users to Case' Account    --  4/24/2017     Manoj Kumar
@@ -86,7 +79,7 @@ public class Core_IPS_CaseInterestedPartyHandler_Test {
         ListOfUser.get(2).LastName= 'Sales Rep';
         ListOfUser.get(2).ProfileID =  salesRepProfIds.get(0);
         
-        insertUsersWithValidationBypass(ListOfUser);
+        insert ListOfUser;
         
         //Creating Account for Case to add Case's Account Teams     --  4/24/2017     Manoj Kumar
         System.RunAs(ListOfUser[0]){
@@ -165,7 +158,6 @@ public class Core_IPS_CaseInterestedPartyHandler_Test {
             p = [select Id,name from Profile where name = 'System Administrator' limit 1];
             User userRec = TestUtilities.getUser();
             userRec.ProfileId = p.Id;
-            insertUsersWithValidationBypass(new List<User>{userRec});
             System.runAs(userRec){
             List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
             insert listOfAccounts;
@@ -188,7 +180,7 @@ public class Core_IPS_CaseInterestedPartyHandler_Test {
                 ListOfCustomUsers.add(customerUserRec);
                 count++;
             }
-            insertUsersWithValidationBypass(ListOfCustomUsers);
+            insert ListOfCustomUsers;
             caseRecList = TestUtilities.getListOfCases(10);
             insert caseRecList;
             System.assert(caseRecList[0].Id != null, 'Record not created');

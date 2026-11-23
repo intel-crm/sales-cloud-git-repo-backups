@@ -38,7 +38,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Client</masterLabel>
-        <translation>客户端</translation>
+        <translation><!-- Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud</masterLabel>
@@ -178,7 +178,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>网络/以太网</translation>
+        <translation><!-- Networking/Ethernet --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Notebook</masterLabel>
@@ -238,7 +238,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Telco</masterLabel>
-        <translation>电信</translation>
+        <translation><!-- Telco --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
@@ -270,6 +270,6 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Xeon</masterLabel>
-        <translation>至强</translation>
+        <translation><!-- Xeon --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

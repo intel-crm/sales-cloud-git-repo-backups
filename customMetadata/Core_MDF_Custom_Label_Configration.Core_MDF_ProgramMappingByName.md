@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Core_MDF_Value4_Txt__c</field>
-        <value xsi:type="xsd:string">&quot;CoGTM&quot;:&quot;CoGTM&quot;}</value>
+        <value xsi:type="xsd:string">&quot;CoGTM&quot;:&quot;CoGTM&quot;,&quot;Co-Inv&quot;:&quot;CoInv&quot;,&quot;CoInv&quot;:&quot;CoInv&quot;}</value>
     </values>
     <values>
         <field>Core_MDF_Value5_Txt__c</field>

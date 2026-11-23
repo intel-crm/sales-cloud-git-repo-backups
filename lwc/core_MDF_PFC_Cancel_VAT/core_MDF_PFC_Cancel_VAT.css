@@ -1,0 +1,13 @@
+.confirmation {
+  min-height: 9rem;
+}
+
+.confirmation p {
+  margin: 1rem 0 2.5rem;
+  text-align: center;
+}
+
+.confirmation-buttons {
+  display: flex;
+  justify-content: center;
+}

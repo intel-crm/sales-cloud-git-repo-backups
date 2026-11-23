@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>PartnerFundRequest$Id</field>
-    </columns>
-    <columns>
-        <field>PartnerFundRequest$Name</field>
+        <field>PartnerFundRequest$Campaign.Core_MDF_Market__c</field>
     </columns>
     <columns>
         <field>PartnerFundRequest$ChannelPartner</field>
     </columns>
     <columns>
         <field>PartnerFundRequest$Core_MDF_Activity_Number__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Campaign</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest$Name</field>
     </columns>
     <columns>
         <field>PartnerFundRequest$CreatedDate</field>
@@ -37,20 +40,20 @@
         <field>PartnerFundRequest$Core_MDF_Activity_Reserved_Amount_txt__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR (3 AND 4)) AND 5 AND (6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14) AND 15</booleanFilter>
+        <booleanFilter>1 AND (2 OR (3 AND 4)) AND 5 AND 6 AND (7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13 OR 14 OR 15) AND 16</booleanFilter>
         <criteriaItems>
             <column>PartnerFundRequest$Campaign.Status</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Completed,In Progress,Pending Approval,Pending Review,Planned</value>
+            <value>Planned,In Progress,Completed</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Fund_Request_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Pending Review,Revision Required,Planned,In-Progress</value>
+            <value>In-Progress,Pending Review,Planned,Revision Required</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Core_MDF_Activity_Closure_Type__c</column>
@@ -64,7 +67,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Pending Review,Pending Approval,Revision Required,Planned,In-Progress,In-Progress Revision Required,In-Progress Pending Review,In-Progress Pending Approval</value>
+            <value>Closed</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$Campaign.Core_MDF_Program__c</column>
@@ -72,6 +75,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Intel Partner Alliance</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PartnerFundRequest$Core_MDF_Budget_Type_nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account Plan</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundRequest$ChannelPartner</column>
@@ -137,11 +147,11 @@
             <value>IPA - TD Synnex - Benelux,IPA - TD Synnex - Cee,IPA - TD Synnex - Dach,IPA - TD Synnex - EMEA</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PartnerFundRequest$Core_MDF_Start_Date__c</column>
+            <column>PartnerFundRequest$Campaign.StartDate</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>1/1/2026</value>
+            <value>6/28/2025</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

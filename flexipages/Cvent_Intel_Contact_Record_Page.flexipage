@@ -384,27 +384,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>CventEvents:contactLeadManagementTab</componentName>
-                <identifier>CventEvents_contactLeadManagementTab</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>tabs</name>
-                    <value>maintabs</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tabset</componentName>
-                <identifier>flexipage_tabset</identifier>
-            </componentInstance>
-        </itemInstances>
-        <mode>Replace</mode>
-        <name>main</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
                 <componentInstanceProperties>
                     <name>parentFieldApiName</name>
                     <value>Contact.Id</value>

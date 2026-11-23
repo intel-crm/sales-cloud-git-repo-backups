@@ -25,9 +25,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>PUSH_COUNT</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Status_Update__c</field>
-    </columns>
     <description>Opportunity Quality Report</description>
     <filter>
         <criteriaItems>
@@ -62,10 +59,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Opportunity.Core_Status_Update__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-22</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-22</startDate>
     </timeFrameFilter>
 </Report>

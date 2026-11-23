@@ -1,0 +1,53 @@
+.citation:hover {
+  cursor: pointer;
+  color: var(--slds-g-color-accent-container-1, var(--lwc-brandAccessible, #0176d3));
+}
+
+.citation__link {
+  max-width: 10.625rem;
+  height: var(--slds-g-sizing-9, 2rem);
+  border-radius: var(--slds-g-radius-border-2, 0.25rem);
+}
+
+.citation__link:hover {
+  background-color: var(--slds-g-color-accent-light-1, var(--lwc-brandLight, #f4f6fe));
+}
+
+.citation__link:focus {
+  border: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-accent-container-1, var(--lwc-brandAccessible, #0070d2));
+  box-shadow: 0 0 3px 0 var(--slds-g-color-accent-container-1, var(--lwc-brandAccessible, #0070d2));
+}
+
+.citation__link:hover .citation__title {
+  color: var(--slds-g-color-accent-container-1, var(--lwc-brandAccessible, #0176d3));
+}
+
+.citation__title {
+  font-weight: var(--lwc-fontWeightRegular, 400);
+  color: var(--slds-g-color-on-surface-1, var(--lwc-colorTextPlaceholder, #747474));
+  font-size: var(--slds-g-font-size-base, 13px);
+}
+
+.citation__tooltip-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.citation__tooltip {
+  color: var(--slds-g-color-on-surface-3, rgb(26, 27, 30));
+  cursor: default;
+}
+
+.citation__link--active {
+  border-color: var(--slds-g-color-accent-container-1, var(--lwc-brandAccessible, #0176d3));
+}
+
+.citation__title--active {
+  color: var(--slds-g-color-accent-container-1, var(--lwc-brandAccessible, #0176d3));
+}
+
+.citation__icon--active {
+  --slds-c-icon-color-foreground-default: var(--slds-g-color-accent-container-1, var(--lwc-brandAccessible, #0176d3));
+}

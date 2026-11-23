@@ -37,7 +37,7 @@
         <field>Account.Core_Sub_Industry__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Opportunity_ID__c</field>
+        <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Intel_Platform__c</field>
@@ -55,7 +55,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design,Design Win,Production Win,Lost,Production Lost,Production Cancelled</value>
+            <value>Design,Design Win,Production Win,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER_MANAGER</column>

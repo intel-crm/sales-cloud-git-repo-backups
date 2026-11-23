@@ -155,6 +155,15 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Pricing_AI_Host_Node_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This field indicates that the Account is of  AI Host Node</description>
+        <label>AI Host Node</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Pricing_ASMO_Country__c</fullName>
         <description>This field will check for country Canada and United States</description>
         <formula>IF(OR(INCLUDES(Pricing_End_Customer_Country_Nm__c,&quot;Canada&quot;), INCLUDES(Pricing_End_Customer_Country_Nm__c,&quot;United States&quot;)),true, false)</formula>
@@ -221,6 +230,46 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pricing_Change_Request_Type_Nm__c</fullName>
+        <label>Change Request Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Volume Change</fullName>
+                    <default>false</default>
+                    <label>Volume Change</label>
+                </value>
+                <value>
+                    <fullName>Price Change</fullName>
+                    <default>false</default>
+                    <label>Price Change</label>
+                </value>
+                <value>
+                    <fullName>Date Change</fullName>
+                    <default>false</default>
+                    <label>Date Change</label>
+                </value>
+                <value>
+                    <fullName>Payable Quantity Change</fullName>
+                    <default>false</default>
+                    <label>Payable Quantity Change</label>
+                </value>
+                <value>
+                    <fullName>Consumption Reason Change</fullName>
+                    <default>false</default>
+                    <label>Consumption Reason Change</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
     </fields>
     <fields>
         <fullName>Pricing_Decision_Table_Name_Txt__c</fullName>
@@ -412,6 +461,20 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Pricing_Overall_Quote_Quantity_Calc_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <formula>Pricing_Overall_Quote_Quantity_Nbr__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Requested Quantity Calc</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Pricing_Overall_Quote_Quantity_Nbr__c</fullName>
         <description>This field holds the Total Requested Quantity</description>
         <externalId>false</externalId>
@@ -485,6 +548,19 @@
                     <label>Ethernet</label>
                 </value>
             </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Pricing_Program_Types_Nm__c</fullName>
+        <description>This holds the Quote Program Type</description>
+        <label>Program Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Quote_Program</valueSetName>
         </valueSet>
     </fields>
     <fields>
@@ -567,6 +643,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Pricing_Routing_Rule_Active_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This fields determines whether the Routing Rule is Active/Inactive.</description>
+        <label>Is Routing Rule Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Pricing_Routing_Rule_End_Dt__c</fullName>
         <description>The date which the routing rule becomes invalid and will no longer run against quote lines in Tenders IQR</description>
         <label>Routing Rule End Date</label>
@@ -596,6 +681,15 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Routing_Rule_Active_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This fields determines whether the Routing Rule is Active/Inactive.</description>
+        <label>Routing Rule Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <label>Routing Rule</label>
     <listViews>

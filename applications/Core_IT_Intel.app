@@ -7,7 +7,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>IT@Intel</label>
-    <logo>SharedDocuments/IT_Intel_Logo.png</logo>
     <tabs>Core_IT_Intel_SSR</tabs>
     <tabs>Core_Sales_Support</tabs>
     <tabs>Core_Opportunity_Stages</tabs>

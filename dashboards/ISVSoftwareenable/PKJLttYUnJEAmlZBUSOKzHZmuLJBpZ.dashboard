@@ -190,7 +190,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>DWs by Month</header>
+                <header>CWs by Month</header>
                 <legendPosition>Bottom</legendPosition>
                 <report>ISVSoftwareenable/POP_25_CWs_by_Quarter_IEM</report>
                 <showPercentage>false</showPercentage>
@@ -257,7 +257,7 @@
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
-                <expandOthers>true</expandOthers>
+                <expandOthers>false</expandOthers>
                 <groupingColumn>Account.Core_Geo__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>

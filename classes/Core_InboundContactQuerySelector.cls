@@ -19,10 +19,10 @@ public without sharing class Core_InboundContactQuerySelector implements Core_In
     public Contact getContact(String erpmPersonId,String erpmEmail,String queryFields){
         List<Contact> contacts = new List<Contact>();
         String query = 'SELECT '+queryFields+' FROM contact WHERE Core_eRPM_Person_Id__c =:erpmPersonId LIMIT 1';
-        contacts = Database.query(String.escapeSingleQuotes(query));
+        contacts = Database.query(query);
         if(contacts.size() == 0) {
             String query1 = 'SELECT '+queryFields+' FROM contact WHERE Email =:erpmEmail LIMIT 1';
-            contacts = Database.query(String.escapeSingleQuotes(query1));
+            contacts = Database.query(query1);
         }
         return (!contacts.isEmpty() && contacts != null) ? contacts[0] : null;
     }
@@ -35,7 +35,7 @@ public without sharing class Core_InboundContactQuerySelector implements Core_In
     */
     public Map<Id, Core_Contact_Entitlement__c> getContactEntitlements(Id matchingContactId, String queryConEntitlementFields){
         String query = 'SELECT '+queryConEntitlementFields+' FROM Core_Contact_Entitlement__c WHERE Core_Contact_Id__c =:matchingContactId';
-        List<Core_Contact_Entitlement__c> contactEntitlements = Database.query(String.escapeSingleQuotes(query));        
+        List<Core_Contact_Entitlement__c> contactEntitlements = Database.query(query);        
         Map<Id, Core_Contact_Entitlement__c> contactEntitlementMap = new Map<Id, Core_Contact_Entitlement__c>(contactEntitlements);
         return contactEntitlementMap.size() > 0 ? contactEntitlementMap : null;
     }
@@ -48,7 +48,7 @@ public without sharing class Core_InboundContactQuerySelector implements Core_In
     */
     public Account getAccount(String salesforceId, String queryAccount){
         String query = 'SELECT '+ queryAccount +' FROM Account WHERE Id =:salesforceId LIMIT 1';
-        List<Account> accounts = Database.query(String.escapeSingleQuotes(query));
+        List<Account> accounts = Database.query(query);
         return (accounts != null && !accounts.isEmpty()) ? accounts[0] : null;        
     }
 
@@ -60,7 +60,7 @@ public without sharing class Core_InboundContactQuerySelector implements Core_In
     */
     public Map<Id, Contact> getContactsById(Set<Id> contactIdsInserted, String querycontactsToInsert){
         String query = 'SELECT '+ querycontactsToInsert +' FROM contact WHERE Id IN :contactIdsInserted';
-        List<Contact> contacts = Database.query(String.escapeSingleQuotes(query));        
+        List<Contact> contacts = Database.query(query);        
         Map<Id, Contact> contactsByIdMap  = new Map<Id, Contact>(contacts);
         return contactsByIdMap.size() > 0 ? contactsByIdMap : null;
     }
@@ -73,7 +73,7 @@ public without sharing class Core_InboundContactQuerySelector implements Core_In
     */
     public Contact getContactById(String contactIdInserted, String querycontactsToInsert){
         String query = 'SELECT '+ querycontactsToInsert +' FROM contact WHERE Id =:contactIdInserted LIMIT 1';
-        List<Contact> contacts = Database.query(String.escapeSingleQuotes(query));        
+        List<Contact> contacts = Database.query(query);        
         return (contacts!=null && !contacts.isEmpty()) ? contacts[0] : null;
     }
 
@@ -98,7 +98,7 @@ public without sharing class Core_InboundContactQuerySelector implements Core_In
     */
     public Core_Integration_Inbound_Message__c getInboundMsg(String contactMessageId, String queryInboundMsg){
         String query = 'SELECT '+ queryInboundMsg +' FROM Core_Integration_Inbound_Message__c WHERE Id =:contactMessageId LIMIT 1';
-        List<Core_Integration_Inbound_Message__c> inboundMsgs = Database.query(String.escapeSingleQuotes(query));
+        List<Core_Integration_Inbound_Message__c> inboundMsgs = Database.query(query);
         return (inboundMsgs != null && !inboundMsgs.isEmpty()) ? inboundMsgs[0] : null;        
     }  
 }

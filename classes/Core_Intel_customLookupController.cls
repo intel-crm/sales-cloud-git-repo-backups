@@ -87,17 +87,20 @@ Modified By:                      Date:07/25/2018                     Changes:No
         else
         {       //Akash - as part of this story changed order by created date desc to order by name asc for account lookup,[KIIT] Sort the custom account list picklist based on ascending order
                 if ('Account'.equalsIgnoreCase(sanitizedObjectName)){
-                    sQuery =  sQuery + ' WHERE Name LIKE \'' + sanitizedSearchKey + + '\' ORDER BY Name ASC LIMIT 10';
+                    sQuery =  sQuery + ' WHERE Name LIKE \'' + sanitizedSearchKey + '\' ORDER BY Name ASC LIMIT 10';
                 }
                 else{
-                    sQuery =  sQuery + ' WHERE Name LIKE \'' + sanitizedSearchKey + + '\' ORDER BY CreatedDate DESC LIMIT 10';
+                    sQuery =  sQuery + ' WHERE Name LIKE \'' + sanitizedSearchKey + '\' ORDER BY CreatedDate DESC LIMIT 10';
                 }
         }
         List < sObject > lstOfRecords  = new List<sObject>();
         List < sObject > lstOfAccounts  = new List<sObject>();
         
         Map < Id,sObject > mapOfAccount= new Map < Id,sObject > ();
-        if(('campaign'.equalsIgnoreCase(sanitizedObjectName) && sanitizedAdditionalFilter.indexOf('startDate')>0 ) || (sanitizedObjectName != 'Campaign')){
+	// Skip the partner account search if no filter is provided to avoid a query error.
+        Boolean skipPartnerAccountLookup = 'Account'.equalsIgnoreCase(sanitizedObjectName) && UserInfo.getUserType() == 'PowerPartner' && String.isBlank(sanitizedAdditionalFilter);
+        if (!skipPartnerAccountLookup && (('campaign'.equalsIgnoreCase(sanitizedObjectName) && sanitizedAdditionalFilter.indexOf('startDate') > 0) || sanitizedObjectName != 'Campaign')) {
+        //if(('campaign'.equalsIgnoreCase(sanitizedObjectName) && sanitizedAdditionalFilter.indexOf('startDate')>0 ) || (sanitizedObjectName != 'Campaign')){
             lstOfRecords = Database.query(sQuery);
             
             if('Account'.equalsIgnoreCase(sanitizedObjectName) && UserInfo.getUserType()=='PowerPartner'){

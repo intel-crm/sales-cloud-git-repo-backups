@@ -15,7 +15,6 @@
     <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
     <customWebAddresses>
-        <certificate>quoterequest_intel_com11</certificate>
         <domainName>quoterequest.intel.com</domainName>
         <primary>false</primary>
     </customWebAddresses>

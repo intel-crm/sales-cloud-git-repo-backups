@@ -218,7 +218,7 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
     @AuraEnabled(cacheable = true)
     public static List<Option> getDependentMap() {
         return PMP_SearchCountryStateMapping.getDependentMap();
-    }  
+    }	
     
     //We have updated this method to receive Profession instead of Job Function
     //Sai: 12thNov2021
@@ -514,23 +514,23 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             '           <body>  '  + 
             '               <table style="background-color:#0071c5;'+fontStyle+'" width="75%"><tbody><tr><td style="padding-left:50px;border: 0px;border:none;"><div style="color:white;"><h1>YOUR INQUIRY HAS BEEN SUBMITTED </h1></div></td><td align="right" style="border:none;padding-right:20px;"><img src="'+logoUrl+'"></td></tr></tbody></table>' +
             '               <table width="75%" style="border-collapse: collapse;'+fontStyle+'">   '  + 
-            '            <tr>  '  + 
+            '    				<tr>  '  + 
             '                       <td style="'+borderStyle+'">  '  + 
             '                           Hello<br/><br/>     '  + 
             '                           Thank you for requesting information from '+partnerName+'. Your inquiry has been submitted. For your reference, please see the details of your request below.<br/>  '  + 
-            '             <p>Thanks again,</p>  '  + 
-            '             <b><p>The Intel® Solutions Marketplace Team</p></b>  '  +  
+            '   					<p>Thanks again,</p>  '  + 
+            '   					<b><p>The Intel® Solutions Marketplace Team</p></b>  '  +  
             '                      <b>INQUIRY DETAILS<br /></b><hr />  '  + 
-            '             Submitted To: '+partnerName+'<br/>  '  + 
-            '             <p>What would you like to know?<br />  '  + leadStageObj.Core_Lead_Notes__c+' <br /><br />  '  + 
+            '   					Submitted To: '+partnerName+'<br/>  '  + 
+            '   					<p>What would you like to know?<br />  '  + leadStageObj.Core_Lead_Notes__c+' <br /><br />  '  + 
             '                       Tell us about you: <br />  '  + 
             '                       First Name: '+leadStageObj.Core_First_Name__c+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name: '+leadStageObj.Core_Last_Name__c+' <br />  '  + 
-            '             Company Name: '+leadStageObj.Core_Company__c+' <br />  '  + 
+            '   					Company Name: '+leadStageObj.Core_Company__c+' <br />  '  + 
             '                       Country/Region: '+leadStageObj.Core_Country__c+' <br />  '  + 
             '                       State: '+leadStageObj.Core_State__c+' <br />  '  + 
             '                       Phone: '+leadStageObj.Core_Business_Phone__c+' <br />  '  + 
             '                       Email: '+leadStageObj.Core_Email__c+' <br/><br/></p>'  + 
-            '                    </td>  '  + 
+            '   	               </td>  '  + 
             '                   </tr>  '  + 
             '                   <!-- Questions/Contact -->  '  + 
             '                           <tr>  '  + 
@@ -555,25 +555,25 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
             '           <body>  '  + 
             '               <table style="background-color:#0071c5;'+fontStyle+'" width="75%"><tbody><tr><td style="padding-left:50px;border: 0px;border:none;"><div style="color:white;"><h1>YOUR QUOTE INQUIRY HAS BEEN SUBMITTED </h1></div></td><td align="right" style="border:none;padding-right:20px;"><img src="'+logoUrl+'"></td></tr></tbody></table>' +
             '               <table width="75%" style="border-collapse: collapse;'+fontStyle+'">   '  + 
-            '            <tr>  '  + 
+            '    				<tr>  '  + 
             '                       <td style="'+borderStyle+'">  '  + 
-            '                         Hello<br/><br/>      '  + 
+            '                       	Hello<br/><br/>      '  + 
             '                           Thank you for contacting '+partnerName+' regarding '+offeringName+'. Your quote inquiry has been submitted. For your reference, please see the details of your request below.<br/>  '  + 
-            '             <p>Thanks again,</p>  '  +  
-            '             <b><p>The Intel Solutions Marketplace Team</p></b> '  + 
+            '   					<p>Thanks again,</p>  '  +  
+            '   					<b><p>The Intel Solutions Marketplace Team</p></b> '  + 
             '                       <b>INQUIRY DETAILS</b><hr />  '  + 
-            '             Submitted To: '+partnerName + '<br/>' +
-            '             Volume for Quotation: '+leadStageObj.Core_Lead_Quotation_Cnt__c+'<br/>  '  + 
-            '                       <p>Please describe how we can assist with your project: <br />    '  + 
+            '   					Submitted To: '+partnerName + '<br/>' +
+            '   					Volume for Quotation: '+leadStageObj.Core_Lead_Quotation_Cnt__c+'<br/>  '  + 
+            '                       <p>Please describe how we can assist with your project: <br />	  '  + 
             '                       '+leadStageObj.Core_Lead_Notes__c+' </p> '  + 
             '                       <p>Tell us about you:<br />  '  + 
             '                       First Name: '+leadStageObj.Core_First_Name__c+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last Name: '+leadStageObj.Core_Last_Name__c+' <br />  '  + 
-            '             Company Name: '+leadStageObj.Core_Company__c+' <br />  '  + 
+            '   					Company Name: '+leadStageObj.Core_Company__c+' <br />  '  + 
             '                       Country/Region: '+leadStageObj.Core_Country__c+' <br />  '  + 
             '                       State: '+leadStageObj.Core_State__c+' <br />  '  + 
             '                       Phone: '+leadStageObj.Core_Business_Phone__c+' <br />  '  + 
             '                       Email: '+leadStageObj.Core_Email__c+' <br/><br/></p> '  + 
-            '                    </td>  '  + 
+            '   	               </td>  '  + 
             '                   </tr>  '  + 
             '                   <!-- Questions/Contact -->  '  + 
             '                           <tr>  '  + 
@@ -593,9 +593,9 @@ public with sharing class PMP_SearchCompanyLeadGenController extends PMP_SearchW
     
     public static String getFooter(String communityURL, String borderStyle){
         String emailFooter = '<tr>      '  + 
-            '              <td style="'+borderStyle+'">  '  + 
-            '                         For FAQs and helpful information about using Intel® Solutions Marketplace, <br/>'  + 
-            '                         please visit <a href="'+System.Label.PMP_IPA_HelpLink+'" style="color:#0071c5;"> Intel® Solutions Marketplace Help. </a> '  + 
+            '        			<td style="'+borderStyle+'">  '  + 
+            '                       	For FAQs and helpful information about using Intel® Solutions Marketplace, <br/>'  + 
+            '                       	please visit <a href="'+System.Label.PMP_IPA_HelpLink+'" style="color:#0071c5;"> Intel® Solutions Marketplace Help. </a> '  + 
             '                   </td></tr>  '  + 
             '                   <tr><td style="font-size:10px;text-align:center;'+borderStyle+'">  '  + 
             '                           This message was sent to you as an important business communication related to your current relationship with Intel Solutions Marketplace<br/>  '  + 

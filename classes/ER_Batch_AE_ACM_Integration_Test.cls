@@ -6,10 +6,9 @@ public class ER_Batch_AE_ACM_Integration_Test {
     public static string CMFGIntegration = System.Label.ER_ACM_Content_CMFG; 
     @isTest
     private static void testBatchExecution() {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account testAccount = new Account(Name='testAccountSetup',/*Core_Account_Type__c='Other',*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
+        Account testAccount = new Account(Name='testAccountSetup',Core_Account_Type__c='Other', Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',BillingCountry='USA', BillingPostalCode='12345',
-                                          ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',RecordTypeId=intelAccRecTypeId,Core_CNDA_Number__c = '126545');
+                                          ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',Core_CNDA_Number__c = '126545');
         insert testAccount;
         Id IntelContRecTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Intel Contact').getRecordTypeId();
         Contact testContact = new Contact(FirstName='test',LastName='Contact1',RecordTypeId=IntelContRecTypeId, Email='testcontact1@mailinator.com',

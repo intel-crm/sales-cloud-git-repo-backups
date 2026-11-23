@@ -4,12 +4,12 @@
     <label>Access Agent</label>
     <oauthConfig>
         <callbackUrl>https://n8n.ecpapps.intel.com/rest/oauth2-credential/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6lpDgovBETZ8ZroUg7tmLgG3umdNU2QoswQcuF.i4lj7rot56RjEtt17dVun</consumerKey>
+        <consumerKey>3MVG9BWMiHkoluZE0qiUtAc6UxdGWwcpoyINFaYq2Q1OLss.Q43qrjmnQ2Fo99xXGnt9fkmdo0z982SQR_c32</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>true</isClientCredentialEnabled>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
-        <isConsumerSecretOptional>true</isConsumerSecretOptional>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
         <isDPopEnabled>false</isDPopEnabled>
         <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
         <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
@@ -22,7 +22,6 @@
         <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>11579289@intel.com.crm</oauthClientCredentialUser>
         <scopes>Api</scopes>
         <scopes>RefreshToken</scopes>
     </oauthConfig>

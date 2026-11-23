@@ -9,12 +9,11 @@ public class Core_SharingUtility_Test {
     static List<User> faeUsers = new List<User>();
 
     static void getRecords() {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
         ipsProjects = TestUtilities.getListOfIpsProjects(5);
         insert ipsProjects;
         System.Assert(ipsProjects.get(0).Id != null, 'Record not created');
 
-        System.runAs(validationBypassUser) {
+        System.runAs(new User(Id = UserInfo.getUserId())) {
             accounts = TestUtilities.getListOfAccounts(5);
         }
         insert accounts;
@@ -42,7 +41,7 @@ public class Core_SharingUtility_Test {
             userRecord.ContactId = contacts.get(counter2).Id;
             counter2++;
         }
-        System.runAs(validationBypassUser) {
+        System.runAs(new User(Id = UserInfo.getUserId())) {
             insert users;
         }
         System.Assert(users.get(0).Id != null, 'Record not created');
@@ -66,9 +65,7 @@ public class Core_SharingUtility_Test {
 
         faeUsers = TestUtilities.getListOfUser(1);
         faeUsers.get(0).ProfileId = profileRec.Id;
-        System.runAs(validationBypassUser) {
-            insert faeUsers;
-        }
+        insert faeUsers;
     }
 
     /*static testmethod void createShareRecordsTest(){

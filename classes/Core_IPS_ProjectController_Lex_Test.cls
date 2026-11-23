@@ -5,13 +5,6 @@
 @isTest
 @SuppressWarnings('PMD.CyclomaticComplexity')
 public with sharing class Core_IPS_ProjectController_Lex_Test {
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
-
     @TestSetup
     static void makeData() {
         UserRole role = [SELECT Id FROM UserRole WHERE PortalType = 'None' LIMIT 1];
@@ -30,7 +23,7 @@ public with sharing class Core_IPS_ProjectController_Lex_Test {
         listOfUsers.get(0).ProfileID = profiles.get('System Administrator');
         listOfUsers.get(0).UserRoleId = role.Id;
         listOfUsers.get(1).ProfileID = profiles.get('Sales Rep-BB');
-        insertUsersWithValidationBypass(listOfUsers);
+        insert listOfUsers;
 
         System.assertEquals(profiles.get('System Administrator'), listOfUsers.get(0).ProfileId, 'First user should have System Administrator profile');
         System.assertEquals(profiles.get('Sales Rep-BB'), listOfUsers.get(1).ProfileId, 'Second user should have Sales Rep-BB profile');
@@ -249,7 +242,7 @@ public with sharing class Core_IPS_ProjectController_Lex_Test {
         List<User> listOfUsers = TestUtilities.getListOfUser(2);
         listOfUsers.get(0).ProfileID = profiles.get('System Administrator');
         listOfUsers.get(1).ProfileID = profiles.get('Sales Rep-BB');
-        insertUsersWithValidationBypass(listOfUsers);
+        insert listOfUsers;
 
         User sysAdminUser = listOfUsers[0];
         User faeUser = listOfUsers[1];
@@ -347,7 +340,7 @@ public with sharing class Core_IPS_ProjectController_Lex_Test {
         User user1 = TestUtilities.getUser();
         user1.ContactId = con1.Id;
         user1.ProfileID = System.Label.Core_IPS_Partner_Profile_Id;
-        insertUsersWithValidationBypass(new List<User>{user1});
+        insert user1;
 
         Core_IPS_ProjectController_Lex.IPSMemberWrapper wrapper = new Core_IPS_ProjectController_Lex.IPSMemberWrapper();
         wrapper.FirstName = 'Test';
@@ -527,7 +520,7 @@ public with sharing class Core_IPS_ProjectController_Lex_Test {
         User user1 = TestUtilities.getUser();
         user1.FirstName = 'TestingSearchOwner';
         user1.ProfileID = System.Label.Core_IPS_DefaultCaseOwner_Profile_Id.split(';')[0];
-        insertUsersWithValidationBypass(new List<User>{user1});
+        insert user1;
 
         List<Core_IPS_Product_Organization__c> listOfSupportOrg = TestUtilities.getListOfSupportOrg(1);
         insert listOfSupportOrg;
@@ -631,7 +624,7 @@ public with sharing class Core_IPS_ProjectController_Lex_Test {
         User user1 = TestUtilities.getUser();
         user1.FirstName = 'TestingSearchOwner';
         user1.ProfileID = System.Label.Core_IPS_DefaultCaseOwner_Profile_Id.split(';')[0];
-        insertUsersWithValidationBypass(new List<User>{user1});
+        insert user1;
 
         List<Core_IPS_Product_Organization__c> listOfSupportOrg = TestUtilities.getListOfSupportOrg(1);
         insert listOfSupportOrg;
@@ -670,7 +663,7 @@ public with sharing class Core_IPS_ProjectController_Lex_Test {
         User user1 = TestUtilities.getUser();
         user1.FirstName = 'TestingSearchOwner';
         user1.ProfileID = System.Label.Core_IPS_DefaultCaseOwner_Profile_Id.split(';')[0];
-        insertUsersWithValidationBypass(new List<User>{user1});
+        insert user1;
 
         Group caseOwnerQueue = TestUtilities.getQueue();
         System.runAs([SELECT Id FROM User WHERE Id != :UserInfo.getUserId() AND Profile.Name = 'System Administrator' AND IsActive = true][0]) {
@@ -738,7 +731,7 @@ public with sharing class Core_IPS_ProjectController_Lex_Test {
         List<User> listOfUsers = TestUtilities.getListOfUser(1);
         listOfUsers[0].ProfileID = profileId;
         listOfUsers[0].Email = 'testowner@example.com';
-        insertUsersWithValidationBypass(listOfUsers);
+        insert listOfUsers;
 
         Core_IPS_ProjectController_Lex.WrapperClass wrapper = Core_IPS_ProjectController_Lex.searchOwner('testowner@example.com', 'user', listOfIpsProducts[0].Id);
         System.assert(wrapper.returnData.size() == 1, 'One matching user should be returned');

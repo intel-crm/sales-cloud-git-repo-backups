@@ -22,6 +22,9 @@
         <field>Sales_License__c$Sales_License_Activation_Code__c</field>
     </columns>
     <columns>
+        <field>Sales_License__c$Sales_License_Status__c</field>
+    </columns>
+    <columns>
         <field>Sales_License__c$Sales_License_Product_Name_Txt__c</field>
     </columns>
     <columns>
@@ -89,6 +92,12 @@
     </columns>
     <columns>
         <field>Sales_License__c$Sales_License_Order__c.Sales_Order_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Sales_License__c$Name</field>
+    </columns>
+    <columns>
+        <field>Sales_License__c$Sales_License_Type__c</field>
     </columns>
     <columns>
         <field>Sales_License__c$Sales_License_Contract__c</field>
@@ -272,26 +281,9 @@
             <operator>equals</operator>
             <value>,Original,Renewal,Add Seat,Amend Contract - Qty Decrease,Renew Contract - Qty Decrease</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Sales_License__c$Sales_License_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Licensed,Unlicensed,Renewals Applied,Merged</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>Day</dateGranularity>
-        <field>Sales_License__c$Sales_License_Type__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Sales_License__c$Sales_License_Status__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>License_Migration_CRM (Furqan)</name>
     <params>
         <name>co</name>
@@ -300,7 +292,7 @@
     <reportType>Sales_License_with_Related_Object_Custom__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <showGrandTotal>false</showGrandTotal>
+    <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Sales_License__c$CreatedDate</dateColumn>

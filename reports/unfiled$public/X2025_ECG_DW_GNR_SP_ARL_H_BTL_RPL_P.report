@@ -75,7 +75,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Original</value>
+            <value>Design: Original,Design: Secondary</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Intel_Platform__c</column>

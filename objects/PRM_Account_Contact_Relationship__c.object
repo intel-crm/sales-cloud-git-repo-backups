@@ -478,11 +478,6 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;
                     <default>false</default>
                     <label>Auto Granted IPA for DZP</label>
                 </value>
-                <value>
-                    <fullName>Admin Partner Invite</fullName>
-                    <default>false</default>
-                    <label>Admin Partner Invite</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

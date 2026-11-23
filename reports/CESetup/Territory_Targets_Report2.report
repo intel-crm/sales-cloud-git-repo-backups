@@ -16,39 +16,15 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
+        <field>CPT_Territory_Target__c.CPT_BR_DCAI_DAIS_Target__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CPT_Territory_Target__c.CPT_BR_NEX_Ethernet_Target__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
         <field>CPT_Territory_Target__c.CPT_CR_CCG_One_Intel_OEM_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Target__c.CPT_CR_Partner_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Target__c.CPT_CR_Retail_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Target__c.CPT_MarVol_Margin_CCG_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Target__c.CPT_MarVol_Margin_DCG_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Target__c.CPT_MarVol_Next_Gen_CCG_LNL_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Target__c.CPT_MarVol_Next_Gen_CCG_PTL_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Target__c.CPT_MarVol_Next_Gen_CCG_WCL_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Target__c.CPT_MarVol_Next_Gen_DCG_GNR_Target__c</field>
     </columns>
     <format>Tabular</format>
     <name>Territory Targets Report</name>

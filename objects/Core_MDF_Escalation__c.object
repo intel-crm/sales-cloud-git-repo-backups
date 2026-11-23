@@ -176,12 +176,12 @@
     ISPICKVAL(Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Activity_Level_nm__c, &quot;Super Activity&quot;),
     IF(
       $Profile.Name = &quot;Partner&quot;,
-								$Label.Core_MDF_PFRCommunityLink &amp; &quot;s/outcome-based-campaign-details?recordId=&quot; &amp; Core_MDF_Co_Marketing_Activity_id__c,
+      &quot;/Partnercenter/s/outcome-based-campaign-details?recordId=&quot; &amp; Core_MDF_Co_Marketing_Activity_id__c,
       &quot;/lightning/n/Core_MDF_Outcome_Based_Campaign_Detail?c__recordId=&quot; &amp; Core_MDF_Co_Marketing_Activity_id__c
     ),
     IF(
       $Profile.Name = &quot;Partner&quot;,
-								$Label.Core_MDF_PFRCommunityLink &amp; &quot;s/partnerfundrequest/&quot; &amp; Core_MDF_Co_Marketing_Activity_id__c,
+      &quot;/Partnercenter/s/partnerfundrequest/&quot; &amp; Core_MDF_Co_Marketing_Activity_id__c,
       &quot;/lightning/r/PartnerFundRequest/&quot; &amp; Core_MDF_Co_Marketing_Activity_id__c &amp; &quot;/view&quot;
     )
   ),

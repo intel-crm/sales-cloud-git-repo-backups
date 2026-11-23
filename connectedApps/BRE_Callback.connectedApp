@@ -4,7 +4,7 @@
     <label>BRE_Callback</label>
     <oauthConfig>
         <callbackUrl>https://intel.my.salesforce.com/services/authcallback/BRE_Callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6jXXUoDgm4rQxpXI3fJgdBrztzTplCELUZXe46OlkwTDswnogpndMchnFJR7</consumerKey>
+        <consumerKey>3MVG9BWMiHkoluZE0qiUtAc6UxdGWwcpoyINFXtoEQjuuKH2gr7vMm8cR9PKX_yD_HPf2pGrED4A38KNLCh1Q</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -19,7 +19,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Basic</scopes>

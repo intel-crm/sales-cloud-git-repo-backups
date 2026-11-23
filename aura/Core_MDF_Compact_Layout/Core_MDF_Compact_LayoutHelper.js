@@ -64,6 +64,8 @@
                 component.set("v.openCmp", 'Manual Audit');
             }else if(quickAction == 'Complete Payment Clearance Processing'){
                 component.set("v.openCmp", 'Complete Payment Clearance Processing');
+            }else if(quickAction == 'Cancel VAT'){  //Roshan - TWC3117-19010
+                component.set("v.openCmp", 'Cancel VAT');
             }
             if(quickAction != 'Create Claim'){
                 component.set("v.openModalForLtCmp", true);

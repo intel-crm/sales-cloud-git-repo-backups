@@ -48,6 +48,9 @@
     <columns>
         <field>AGE</field>
     </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>Account.Core_Opportunity_Sales_Group_Txt__c</column>
@@ -77,7 +80,7 @@
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Open opportunities 2026 (Kasia)</name>
+    <name>2026 open opportunities</name>
     <params>
         <name>terr</name>
         <value>all</value>

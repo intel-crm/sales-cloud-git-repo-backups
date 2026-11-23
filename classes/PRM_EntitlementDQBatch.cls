@@ -25,7 +25,7 @@ global class PRM_EntitlementDQBatch implements Database.Batchable<sObject>,Datab
     global static Database.QueryLocator start(Database.BatchableContext context){
         
         Datetime dt = Datetime.valueOfGmt(Label.PRM_EntitlementDQBatchPickupDate.replace('T', ' ').replace('Z', ''));
-        
+        system.debug('dt-->'+dt);
         
         return Database.getQueryLocator([
         SELECT Id, Name,PRM_Status_Nm__c,
@@ -50,7 +50,8 @@ global class PRM_EntitlementDQBatch implements Database.Batchable<sObject>,Datab
         List<PRM_Batch_Entitlement__c> tempBeList = new List<PRM_Batch_Entitlement__c>();
         List<PRM_Batch_Entitlement__c> finalBeList = new List<PRM_Batch_Entitlement__c>();
         Set<Id> setContactId = new Set<Id>();
-        
+        system.debug('scope-->'+scope);
+        System.debug('Number of scope records: ' + scope.size());
         
         logEntryMsgString+='Inside execute method, scope: '+scope;
         for(PRM_Batch_Entitlement__c be: scope){
@@ -64,14 +65,17 @@ global class PRM_EntitlementDQBatch implements Database.Batchable<sObject>,Datab
                 beListwithInProgressStatus.add(be);
             }
             setContactId.add(be.PRM_Contact_Id__c);
+            system.debug('setContactId-->'+setContactId.size());
+            
         }
         if(setContactId!= null && !setContactId.isEmpty()){
             contList = [Select id,name,Core_IPA_PartnerRole__c from Contact Where Id IN:setContactId];
         }
+        system.debug('contList-->'+contList.size());
         //Update the Status of the Batch Entitelments records from New to In-Progress
         tempBeList = PRM_EntitlementUtility.updateBatchEntitelmentStatus(beListwithNewStatus);
         beListwithInProgressStatus.addAll(tempBeList);
-        
+        system.debug('beListwithInProgressStatus-->'+beListwithInProgressStatus.size());
         
         PRM_EntitlementUtility.accIdAssocSet.addAll(accIdSetAssoc);
         PRM_EntitlementUtility.accIdRemoveSet.addAll(accIdSetRemove);
@@ -83,6 +87,8 @@ global class PRM_EntitlementDQBatch implements Database.Batchable<sObject>,Datab
        
         if(getlogentries.logentries!=null)
         this.logentires=getlogentries.logentries;
+        system.debug('---logentry '+getlogentries.logentries);
+        system.debug('---logenry '+ this.logentires);
         
         PRM_IPA_DQ_Logs__c dqLog = new PRM_IPA_DQ_Logs__c();
         dqLog.PRM_Object_Name__c='Contact Entitlement' ;

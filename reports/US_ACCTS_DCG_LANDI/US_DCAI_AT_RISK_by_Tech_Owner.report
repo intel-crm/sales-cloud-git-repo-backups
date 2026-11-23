@@ -73,18 +73,18 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner_Email_Txt__c</column>
+            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Ben.karr@intel.com,jarred.l.abreo@intel.com,richard.t.trinh@intel.com,stephen.m.bigbee@intel.com,almanzo.t.ortiz@intel.com,terry.harper@intel.com,christopher.r.blevins@intel.com</value>
+            <value>Corredor,Landi</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Technical_Owner__c</field>
+        <field>OWNER_MANAGER</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -97,7 +97,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>AT RISK by Tech Owner</name>
+    <name>US DCAI AT RISK by Tech Owner</name>
     <params>
         <name>terr</name>
         <value>all</value>

@@ -53,13 +53,6 @@ public class Core_Ips_DynamicDataTable_Lwc_Ctrl_Test {
         Core_Ips_ContactListView_LWC__mdt prodData3 =  [SELECT Id,FieldValue__c,HeaderValue__c,DeveloperName FROM Core_Ips_ContactListView_LWC__mdt WHERE DeveloperName='MyContacts'];
         Core_Ips_ContactDataTable_LWC_Ctrl.ContactFieldAndDataValues(prodData3.DeveloperName);
        }
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
-
     @isTest
     static void GetWrapperOfSObjectFieldColumnActionValues_Test1 (){
         
@@ -77,7 +70,7 @@ public class Core_Ips_DynamicDataTable_Lwc_Ctrl_Test {
         listOfUser = TestUtilities.getListOfUser(1);
         listOfUser.get(0).ProfileID =  profiles.get('System Administrator');
         listOfUser.get(0).userRoleId = role.Id;
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         
         Account accRec = TestUtilities.getAccount();
         accRec.Name ='Test Account 1';
@@ -103,7 +96,7 @@ public class Core_Ips_DynamicDataTable_Lwc_Ctrl_Test {
         listOfUser1 = TestUtilities.getListOfUser(1);
         listOfUser1.get(0).ProfileID =  profiles.get('Partner');
         listOfUser1.get(0).ContactId = listOfContacts.get(0).id;
-        insertUsersWithValidationBypass(listOfUser1);
+        insert listOfUser1;
         
         system.runAs(listOfUser.get(0)){
         Case caseRecord = new Case();

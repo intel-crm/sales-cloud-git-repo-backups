@@ -225,13 +225,12 @@
             <columnIndex>8</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
                     <aggregate>Sum</aggregate>
                     <axisBinding>y</axisBinding>
-                    <column>Opportunity.Core_has_Solution__c</column>
+                    <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
                 </chartSummary>
-                <componentType>BarGrouped</componentType>
+                <componentType>Gauge</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
@@ -246,30 +245,21 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Opportunity.Core_Sales_Groups__c</groupingColumn>
-                <groupingColumn>ACCOUNT_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Copy of APJ NEX Partner Cons$ Approved</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/Copy_of_APJ_NEX_Partner_Cons_Approved</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
+                <gaugeMax>6.4176585E7</gaugeMax>
+                <gaugeMin>0.0</gaugeMin>
+                <groupingSortProperties/>
+                <header>APJ NEX Partner Cons$ Approved w Solutio</header>
+                <indicatorBreakpoint1>5.2508115E7</indicatorBreakpoint1>
+                <indicatorBreakpoint2>5.834235E7</indicatorBreakpoint2>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
+                <report>APJ_RBM/APJ_NEX_Partner_Consumption_Approved</report>
+                <showPercentage>true</showPercentage>
+                <showRange>false</showRange>
+                <showTotal>true</showTotal>
+                <showValues>false</showValues>
+                <title>1H24 Target $58.3M</title>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
@@ -387,12 +377,13 @@
             <columnIndex>8</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
                     <aggregate>Sum</aggregate>
                     <axisBinding>y</axisBinding>
-                    <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
+                    <column>TOTAL_PRICE</column>
                 </chartSummary>
-                <componentType>Gauge</componentType>
+                <componentType>Donut</componentType>
                 <dashboardFilterColumns>
                     <column>Account.Core_Sales_Groups__c</column>
                 </dashboardFilterColumns>
@@ -407,21 +398,26 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <gaugeMax>6.4176585E7</gaugeMax>
-                <gaugeMin>0.0</gaugeMin>
-                <groupingSortProperties/>
-                <header>APJ NEX Partner Cons$ Approved w Solutio</header>
-                <indicatorBreakpoint1>5.2508115E7</indicatorBreakpoint1>
-                <indicatorBreakpoint2>5.834235E7</indicatorBreakpoint2>
-                <indicatorHighColor>#00716B</indicatorHighColor>
-                <indicatorLowColor>#C23934</indicatorLowColor>
-                <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>APJ_RBM/APJ_NEX_Partner_Consumption_Approved</report>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>true</expandOthers>
+                <groupingColumn>Opportunity.Core_Sales_Groups__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>APJ NEX Partner Deal Pending</header>
+                <legendPosition>Right</legendPosition>
+                <report>APJ_RBM/APJ_NEX_Partner_Deal_Pending</report>
                 <showPercentage>true</showPercentage>
-                <showRange>false</showRange>
                 <showTotal>true</showTotal>
-                <showValues>false</showValues>
-                <title>1H24 Target $58.3M</title>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
@@ -689,56 +685,6 @@
                 <chartSummary>
                     <aggregate>Sum</aggregate>
                     <axisBinding>y</axisBinding>
-                    <column>TOTAL_PRICE</column>
-                </chartSummary>
-                <componentType>Donut</componentType>
-                <dashboardFilterColumns>
-                    <column>Account.Core_Sales_Groups__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>ACCOUNT_NAME</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>Opportunity.Decision_Date__c</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>true</expandOthers>
-                <groupingColumn>Opportunity.Core_Sales_Groups__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>APJ NEX Partner Deal Pending</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/APJ_NEX_Partner_Deal_Pending</report>
-                <showPercentage>true</showPercentage>
-                <showTotal>true</showTotal>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>24</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>8</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
                     <column>Opportunity.Core_Opportunity_Count__c</column>
                 </chartSummary>
                 <componentType>Donut</componentType>
@@ -775,7 +721,7 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>32</rowIndex>
+            <rowIndex>24</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -828,7 +774,7 @@
                 <title>all stages, excl production win stage</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>40</rowIndex>
+            <rowIndex>32</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>

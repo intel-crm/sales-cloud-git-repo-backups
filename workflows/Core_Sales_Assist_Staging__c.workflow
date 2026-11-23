@@ -8,7 +8,7 @@
             <recipient>Core_Sales_Assist_Failure_UserGroup</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_SalesAssist_Failure_Template</template>
     </alerts>

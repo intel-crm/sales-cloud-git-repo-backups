@@ -490,7 +490,7 @@
         <collection>false</collection>
         <dataType>Boolean</dataType>
         <input>true</input>
-        <lookupName>Pricing_Route_Rules_ASMO_DCG_HPC_TRQ_LTE</lookupName>
+        <lookupName>Pricing_Route_Rules_ASMO_DCG_HPC</lookupName>
         <lookupType>DecisionTable</lookupType>
         <name>Pricing_EndCustomer_CSP_List_Ind__c</name>
         <output>false</output>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
     <customMetadataTypeRecord>Core_IPS_APIAuthSettingPlugin__mdt.Core_IPS_Case_promote_depromote</customMetadataTypeRecord>
-    <executionUser>ips.pam.integration.user@intel.com.crm</executionUser>
+    <executionUser>ips.pam.integration.user@intel.com.crm.crmstage9</executionUser>
     <friendlyName>Core IPS Case promote depromote</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
     <isPkceEnabled>false</isPkceEnabled>

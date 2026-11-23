@@ -162,25 +162,18 @@
             <value>Hewlett</value>
         </criteriaItems>
         <criteriaItems>
-            <column>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Quote_Total_Requested_Quantity__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>1000</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SBQQ__Quote__c$SBQQ__Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Approved</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>SBQQ__Quote__c$Pricing_Region_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>EMEA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Quote_Total_Requested_Quantity__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>200</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -199,8 +192,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2025-10-15</startDate>
     </timeFrameFilter>
 </Report>

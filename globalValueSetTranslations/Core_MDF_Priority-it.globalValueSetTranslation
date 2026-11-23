@@ -109,6 +109,10 @@
         <translation>Commerciale - PMI</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Commercial Client</masterLabel>
+        <translation><!-- Commercial Client --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Commercial Evo (non-vPro)</masterLabel>
         <translation>Evo commerciale (non vPro)</translation>
     </valueTranslation>
@@ -305,6 +309,10 @@
         <translation><!-- Machine Learning --></translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>Mainstream Client</masterLabel>
+        <translation><!-- Mainstream Client --></translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>Mainstream PCs</masterLabel>
         <translation>PC mainstream</translation>
     </valueTranslation>
@@ -379,6 +387,14 @@
     <valueTranslation>
         <masterLabel>Other</masterLabel>
         <translation>Altro</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Physical AI</masterLabel>
+        <translation><!-- Physical AI --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Premium Client</masterLabel>
+        <translation><!-- Premium Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Private Wireless Networks</masterLabel>

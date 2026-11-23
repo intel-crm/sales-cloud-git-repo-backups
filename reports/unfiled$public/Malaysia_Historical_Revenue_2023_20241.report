@@ -4,10 +4,16 @@
         <field>Opportunity$Account</field>
     </columns>
     <columns>
+        <field>Opportunity$Name</field>
+    </columns>
+    <columns>
         <field>Opportunity$Amount</field>
     </columns>
     <columns>
         <field>Opportunity$CloseDate</field>
+    </columns>
+    <columns>
+        <field>Opportunity$Owner</field>
     </columns>
     <columns>
         <field>Opportunity.Opportunity__hd$Amount__hst</field>
@@ -28,13 +34,19 @@
         <showChanges>false</showChanges>
     </columns>
     <columns>
-        <field>Opportunity$Core_Opportunity_Country__c</field>
+        <field>Opportunity$Core_Opportunity_Products__c</field>
     </columns>
     <columns>
-        <field>Opportunity$Core_Technical_Owner__c</field>
+        <field>Opportunity$Core_Product_Segment__c</field>
     </columns>
     <filter>
-        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity$Core_Technical_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Lawrence law</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Opportunity$StageName</column>
             <columnToColumn>false</columnToColumn>
@@ -44,16 +56,7 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Matrix</format>
-    <groupingsAcross>
-        <field>SnapshotDate</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity$Core_Product_Segment__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <historicalSelector>
         <snapshot>N_DAYS_AGO:1</snapshot>
     </historicalSelector>
@@ -64,7 +67,6 @@
     </params>
     <reportType>Opportunities_with_Historical_Trending__c</reportType>
     <scope>organization</scope>
-    <showCurrentDate>true</showCurrentDate>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

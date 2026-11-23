@@ -51,7 +51,7 @@ public class Core_FC_ProductSchedule_ExtCont_Test{
         Id recTypeId = r.getDescribe().getRecordTypeInfosByDeveloperName().get(Label.Pricing_Tender_Account_RecordType_IntelAccount).getRecordTypeId();
        
         Id newOppRecTypeId = Schema.SObjectType.Opportunity.getRecordTypeInfosByName().get('Deal Opportunity').getRecordTypeId();
-        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND Email LIKE '%intel.com' AND Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true and isActive = true LIMIT 1];
+        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND /*Email LIKE '%intel.com' AND*/ Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true and isActive = true LIMIT 1];
         
         Account acct = new Account(Name = 'Test Account1', Industry = 'Agriculture', Core_Sub_Industry__c = 'Forestry',RecordTypeId = recTypeId, 
                                    BillingStreet = '123 Fake St',BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
@@ -199,7 +199,7 @@ public class Core_FC_ProductSchedule_ExtCont_Test{
     }
     
     static testMethod void recallLastApprovedFCTest(){
-        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND Email LIKE '%intel.com' AND Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
+        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND /*Email LIKE '%intel.com' AND*/ Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
         Test.startTest();
         
         System.runAs(sysAdminList[0]){
@@ -220,7 +220,7 @@ public class Core_FC_ProductSchedule_ExtCont_Test{
     
     static testmethod void deleteAllBlankQuantityTest(){   
         Opportunity opp = [select Id, Name,Core_Number_of_Quarters__c from Opportunity where Name =: 'Test1'];
-        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND Email LIKE '%intel.com' AND Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
+        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND /*Email LIKE '%intel.com' AND*/ Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
         Test.startTest();
         System.runAs(sysAdminList[0]){
             PageReference FC_6QPS_Page = Page.Core_FC_Product_Schedule;
@@ -237,7 +237,7 @@ public class Core_FC_ProductSchedule_ExtCont_Test{
         
         Test.startTest();
         Opportunity opp = [select Id, Name,Core_Number_of_Quarters__c from Opportunity where Name =: 'Test1'];
-        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND Email LIKE '%intel.com' AND Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
+        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND /*Email LIKE '%intel.com' AND*/ Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
         System.runAs(sysAdminList[0]){
             PageReference FC_6QPS_Page = Page.Core_FC_Product_Schedule;
             Test.setCurrentPage(FC_6QPS_Page);
@@ -274,7 +274,7 @@ public class Core_FC_ProductSchedule_ExtCont_Test{
         
         Test.startTest();
         Opportunity opp = [select Id, Name,Core_Number_of_Quarters__c from Opportunity where Name =: 'Test2'];
-        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND Email LIKE '%intel.com' AND Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
+        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND /*Email LIKE '%intel.com' AND*/ Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
         System.runAs(sysAdminList[0]){
             PageReference FC_6QPS_Page = Page.Core_FC_Product_Schedule;
             Test.setCurrentPage(FC_6QPS_Page);
@@ -312,7 +312,7 @@ public class Core_FC_ProductSchedule_ExtCont_Test{
     
     static testmethod void submitAndRejectMethodTest(){ 
         Opportunity opp = [select Id, Name,Core_Number_of_Quarters__c from Opportunity where Name =: 'Test2'];
-        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND Email LIKE '%intel.com' AND Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
+        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND /*Email LIKE '%intel.com' AND*/ Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
         Test.startTest();
         System.runAs(sysAdminList[0]){
             PageReference FC_6QPS_Page = Page.Core_FC_Product_Schedule;
@@ -328,7 +328,7 @@ public class Core_FC_ProductSchedule_ExtCont_Test{
     
     static testmethod void submitAndRejectQtrTest(){ 
         Opportunity opp = [select Id, Name,Core_Number_of_Quarters__c from Opportunity where Name =: 'Test2'];
-        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND Email LIKE '%intel.com' AND Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
+        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND /*Email LIKE '%intel.com' AND*/ Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
         Test.startTest();
         System.runAs(sysAdminList[0]){
             PageReference FC_6QPS_Page = Page.Core_FC_Product_Schedule;
@@ -375,7 +375,7 @@ public class Core_FC_ProductSchedule_ExtCont_Test{
     static testmethod void deleteOliMethodTest(){ 
         Opportunity opp = [select Id, Name,Core_Number_of_Quarters__c from Opportunity where Name =: 'Test2'];
         Opportunity opp3 = [select Id, Name,Core_Number_of_Quarters__c from Opportunity where Name =: 'Test3'];
-        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND Email LIKE '%intel.com' AND Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
+        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND /*Email LIKE '%intel.com' AND*/ Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
         Test.startTest();
         System.runAs(sysAdminList[0]){
             PageReference FC_6QPS_Page = Page.Core_FC_Product_Schedule;
@@ -393,7 +393,7 @@ public class Core_FC_ProductSchedule_ExtCont_Test{
     
      static testmethod void removeQuantitiesTest(){
          Opportunity opp = [select Id, Name,Core_Number_of_Quarters__c from Opportunity where Name =: 'Test2'];
-         sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND Email LIKE '%intel.com' AND Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
+         sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND /*Email LIKE '%intel.com' AND*/ Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
          Test.startTest();
         System.runAs(sysAdminList[0]){
             PageReference FC_6QPS_Page = Page.Core_FC_Product_Schedule;
@@ -413,7 +413,7 @@ public class Core_FC_ProductSchedule_ExtCont_Test{
     
     static testmethod void FChandlerBeforeUpdateTest(){ 
         Opportunity opp = [select Id, Name,Core_Number_of_Quarters__c from Opportunity where Name =: 'Test2'];
-        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND Email LIKE '%intel.com' AND Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
+        sysAdminList =  [SELECT Id, Name FROM User WHERE isActive = TRUE AND /*Email LIKE '%intel.com' AND*/ Core_Employee_Type_Code__c = 'EMP' AND Profile.Name = 'Sales Rep-BB' AND ManagerId != '' AND Manager.DelegatedApproverId != '' and manager.IsActive =true LIMIT 1];
         Test.startTest();
         System.runAs(sysAdminList[0]){
             PageReference FC_6QPS_Page = Page.Core_FC_Product_Schedule;

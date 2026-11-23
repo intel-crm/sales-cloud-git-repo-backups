@@ -1,38 +1,27 @@
 <html>
- <head>
-  <title></title>
- </head>
- <body style="height: auto; min-height: auto;">
-  <img alt="intel_BANNER new" src="{[devName:intel_BANNER_new]}" style="max-width: 672.9167053222656px" title="intel_BANNER new" />
-  <br />
-  <br />
-  <span style="font-family:Times New Roman,Times New Roman,Times,serif;"><span style="font-size:11pt"><span style="line-height:107%"><span style="color:black">Hi {{{Recipient.FirstName}}},</span></span></span> 
-   <br /> 
-   <br /> 
-   <span style="font-size:11pt"><span style="line-height:107%"><span style="color:black">Trust is one of the most critical security elements and strategic imperatives for any organization today. It propels innovation, nurtures partnerships, and fuels growth. That’s why I’m reaching out to introduce you to Intel’s independent attestation service, Intel Trust Authority,&#xa0; &#xa0;This new SaaS is designed to bring more security and assurance to confidential computing, from the cloud to the edge.&#xa0; </span></span></span> 
-   <br /> 
-   <span style="font-size:11pt"><span style="line-height:107%"><span style="color:black">With Intel Trust Authority, you can: </span></span></span></span>
-  <ul>
-   <li style="margin-left:8px"><span style="font-family:Times New Roman,Times New Roman,Times,serif;"><span style="font-size:11pt"><span style="line-height:107%"><b><span style="color:black">Move your organization’s data and workloads to the cloud </span></b><span style="color:black">with confidence and control and put Zero Trust within reach. </span></span></span></span></li>
-   <li style="margin-left:8px"><span style="font-family:Times New Roman,Times New Roman,Times,serif;"><span style="font-size:11pt"><span style="line-height:107%"><b><span style="color:black">Unleash the power of trust:</span></b><span style="color:black"> Experience a whole new level of collaboration and shared analysis while keeping data verifiably confidential. </span></span></span></span></li>
-   <li style="margin-bottom:11px; margin-left:8px"><span style="font-family:Times New Roman,Times New Roman,Times,serif;"><span style="font-size:11pt"><span style="line-height:107%"><b><span style="color:black">Strengthen your organization’s security posture: </span></b><span style="color:black">Gain more protection while remaining compliant with GDPR, HIPAA, and other regulatory frameworks. </span></span></span></span></li>
-  </ul>
-  <span style="line-height: 107%;"><font face="Times New Roman, Times New Roman, Times, serif"><span style="font-size: 11pt;">Intel Trust </span><span style="font-size: 14.6667px;">Authority</span><span style="font-size: 11pt;">&#xa0;is also supported by a robust ecosystem of leading providers, ensuring you have the support you need to address critical security challenges. Check out the attached product brief for a deeper look, or to pass along to another stakeholder. </span></font></span>
-  <br />
-  <span style="font-family: &quot;Times New Roman&quot;, &quot;Times New Roman&quot;, Times, serif; font-size: 11pt;"><span style="line-height:107%"><span style="color:black">Ready to enhance your organization's security while driving more innovation? Let’s get something on the calendar to discuss! Simply reply to this email to get started.&#xa0;</span></span></span>
-  <br />
-  <br />
-  <a href="https://www.intel.com/content/www/us/en/content-details/788131/put-zero-trust-within-reach-and-get-public-cloud-flexibility-with-private-cloud-security.html?DocID=788131">https://www.intel.com/content/www/us/en/content-details/788131/put-zero-trust-within-reach-and-get-public-cloud-flexibility-with-private-cloud-security.html?DocID=788131</a>
-  <br />
-  <br />
-  <span style="font-family: &quot;Times New Roman&quot;, &quot;Times New Roman&quot;, Times, serif; font-size: 11pt;"><span style="line-height:107%"><span style="color:black">Sincerely,</span></span></span>
-  <br />
-  <br />
-  <font face="Times New Roman, Times New Roman, Times, serif">{{{Sender.Name}}}</font>
-  <br />
-  <br />
-  <font face="Times New Roman, Times New Roman, Times, serif">{{{Sender.Phone}}}</font>
-  <br />
-  &#xa0;
- </body>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><img alt="intel_BANNER new" src="" style="max-width: 672.9167053222656px" title="intel_BANNER new" /><br />
+<br />
+<span style="font-family:Times New Roman,Times New Roman,Times,serif;"><span style="font-size:11pt"><span style="line-height:107%"><span style="color:black">Hi {{{Recipient.FirstName}}},</span></span></span><br />
+<br />
+<span style="font-size:11pt"><span style="line-height:107%"><span style="color:black">Trust is one of the most critical security elements and strategic imperatives for any organization today. It propels innovation, nurtures partnerships, and fuels growth. That’s why I’m reaching out to introduce you to Intel’s independent attestation service, Intel Trust Authority,&nbsp; &nbsp;This new SaaS is designed to bring more security and assurance to confidential computing, from the cloud to the edge.&nbsp; </span></span></span><br />
+<span style="font-size:11pt"><span style="line-height:107%"><span style="color:black">With Intel Trust Authority, you can: </span></span></span></span>
+<ul>
+	<li style="margin-left:8px"><span style="font-family:Times New Roman,Times New Roman,Times,serif;"><span style="font-size:11pt"><span style="line-height:107%"><b><span style="color:black">Move your organization’s data and workloads to the cloud </span></b><span style="color:black">with confidence and control and put Zero Trust within reach. </span></span></span></span></li>
+	<li style="margin-left:8px"><span style="font-family:Times New Roman,Times New Roman,Times,serif;"><span style="font-size:11pt"><span style="line-height:107%"><b><span style="color:black">Unleash the power of trust:</span></b><span style="color:black"> Experience a whole new level of collaboration and shared analysis while keeping data verifiably confidential. </span></span></span></span></li>
+	<li style="margin-bottom:11px; margin-left:8px"><span style="font-family:Times New Roman,Times New Roman,Times,serif;"><span style="font-size:11pt"><span style="line-height:107%"><b><span style="color:black">Strengthen your organization’s security posture: </span></b><span style="color:black">Gain more protection while remaining compliant with GDPR, HIPAA, and other regulatory frameworks. </span></span></span></span></li>
+</ul>
+<span style="line-height: 107%;"><font face="Times New Roman, Times New Roman, Times, serif"><span style="font-size: 11pt;">Intel Trust </span><span style="font-size: 14.6667px;">Authority</span><span style="font-size: 11pt;">&nbsp;is also supported by a robust ecosystem of leading providers, ensuring you have the support you need to address critical security challenges. Check out the attached product brief for a deeper look, or to pass along to another stakeholder. </span></font></span><br />
+<span style="font-family: &quot;Times New Roman&quot;, &quot;Times New Roman&quot;, Times, serif; font-size: 11pt;"><span style="line-height:107%"><span style="color:black">Ready to enhance your organization's security while driving more innovation? Let’s get something on the calendar to discuss! Simply reply to this email to get started.&nbsp;</span></span></span><br />
+<br />
+<a href="https://www.intel.com/content/www/us/en/content-details/788131/put-zero-trust-within-reach-and-get-public-cloud-flexibility-with-private-cloud-security.html?DocID=788131">https://www.intel.com/content/www/us/en/content-details/788131/put-zero-trust-within-reach-and-get-public-cloud-flexibility-with-private-cloud-security.html?DocID=788131</a><br />
+<br />
+<span style="font-family: &quot;Times New Roman&quot;, &quot;Times New Roman&quot;, Times, serif; font-size: 11pt;"><span style="line-height:107%"><span style="color:black">Sincerely,</span></span></span><br />
+<br />
+<font face="Times New Roman, Times New Roman, Times, serif">{{{Sender.Name}}}</font><br />
+<br />
+<font face="Times New Roman, Times New Roman, Times, serif">{{{Sender.Phone}}}</font><br />
+&nbsp;</body>
 </html>

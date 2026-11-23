@@ -1,6 +1,6 @@
 @isTest
 public class UCD_ACM_AccountDeactivationTest {
-
+    
     private static UCD_ACM_ServiceContracts.IAccountService accountServiceInstance = UCD_ACM_AccountService.getInstance();
     
     @TestSetup
@@ -43,7 +43,7 @@ private static void setCommonData() {
         // Validate Account Business Types before deletion
         List<Account_Business_Types__c> abtBefore = [SELECT Id FROM Account_Business_Types__c WHERE Account__c IN :accountById.keySet()];
         System.assertEquals(2, abtBefore.size(), 'There should be 2 Account Business Types before deactivation');
-
+        
         Test.startTest();
         UCD_ACM_AccountDeactivation.removeUCDAttributes(accountById);
         Test.stopTest();
@@ -52,7 +52,7 @@ private static void setCommonData() {
         List<Account_Business_Types__c> abtAfter = [SELECT Id FROM Account_Business_Types__c WHERE Account__c IN :accountById.keySet()];
         System.assertEquals(0, abtAfter.size(), 'Account Business Type records should be deleted');
     }
-
+    
     @isTest
     private static void testRemoveBusinessTypeNoRecords() {
         Map<Id, Account> emptyAccountById = new Map<Id, Account>();
@@ -65,24 +65,22 @@ private static void setCommonData() {
         List<Account_Business_Types__c> abtAfter = [SELECT Id FROM Account_Business_Types__c WHERE Account__c IN :emptyAccountById.keySet()];
         System.assertEquals(0, abtAfter.size(), 'No Account Business Types should be deleted because no input was provided.');
     }
-
+    
     @isTest
     private static void testRemoveOnlyCWL() {
         // Query for the Intel account
         Map<Id, Account> accountById = new Map<Id, Account>([SELECT Id, Name FROM Account WHERE Name = 'TestIntelAccount']);
-
         // Empty map for accounts (no business types will be deleted)
         Map<Id, Account> emptyAccountById = new Map<Id, Account>();
-
+        
         Test.startTest();
         UCD_ACM_AccountDeactivation.removeUCDAttributes(emptyAccountById);
         Test.stopTest();
-
         // Check that Account Business Types are not deleted (they should still exist)
         List<Account_Business_Types__c> abtAfter = [SELECT Id FROM Account_Business_Types__c WHERE Account__c IN :accountById.keySet()];
         System.assertNotEquals(0, abtAfter.size(), 'Account Business Types should not be deleted');
     }
-
+    
     @isTest
     private static void testRemoveOnlyBusinessTypes() {
         Map<Id, Account> accountById = new Map<Id, Account>([SELECT Id, Name FROM Account WHERE Name = 'TestIntelAccount']);
@@ -94,5 +92,13 @@ private static void setCommonData() {
         List<Account_Business_Types__c> abtAfter = [SELECT Id FROM Account_Business_Types__c WHERE Account__c IN :accountById.keySet()];
         System.assertEquals(0, abtAfter.size(), 'Account Business Type records should be deleted');
     }
-
+    
+    @isTest
+    private static void testRemoveHierarchyAttr() {
+        Account acc = [SELECT Id,Core_Unified_Global_Customer_BP_Id__c,Core_Unified_Global_Customer_Name__c,Core_Unified_Intermediate_Customer_BP_Id__c,Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Intermdt_Customer_2_BP_Id__c,Core_Unified_Intermdt_Customer_2_Name__c,ParentId,Core_Parent_Business_Party_Id__c FROM Account WHERE Name = 'TestIntelAccount' LIMIT 1];
+        Test.startTest();
+        acc = UCD_ACM_AccountDeactivation.removeHierarchyAttr(acc);
+        Test.stopTest();
+        System.assertEquals(null, acc.Core_Unified_Global_Customer_BP_Id__c);
+    }
 }

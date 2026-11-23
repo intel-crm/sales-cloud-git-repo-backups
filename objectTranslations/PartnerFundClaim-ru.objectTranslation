@@ -360,6 +360,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Claim Cancellation Reason --></label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>Текстовая заметка, связанная с заявкой</help>
         <label>Примечания к заявке</label>
         <name>Core_MDF_Claim_Comments__c</name>
@@ -1555,8 +1559,18 @@
     <gender>Neuter</gender>
     <recordTypes>
         <description><!-- Channel MDF Program Record Type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Channel MDF Program Record Type --></description>
         <label>Персонализированный фонд маркетингового развития для канала</label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record is used for Channel MDF Proposal Based claims --></description>
+        <label>Фонд маркетингового развития для канала, основанный на предложении</label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
@@ -1644,11 +1658,11 @@
         <name>Core_MDF_EndDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Введите дату окончания исполнения, которая находится в пределах диапазона предполагаемых дат кампании, основанной на результатах.</errorMessage>
+        <errorMessage><!-- Please enter an Execution End Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
         <name>Core_MDF_EndDateValidation_OutcomeBased</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Вы не можете использовать эту кампанию, основанную на результатах, так как связанный аккаунт неактивен</errorMessage>
+        <errorMessage><!-- You cannot use this Outcome-Based Campaign as the account over the Outcome-Based Campaign is inactive --></errorMessage>
         <name>Core_MDF_InactiveAccountValidation_Outco</name>
     </validationRules>
     <validationRules>
@@ -1680,7 +1694,7 @@
         <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Сведения о заявке не могут быть созданы для кампании, основанной на результатах, в статусе закрыто/отменено.</errorMessage>
+        <errorMessage><!-- Claim cannot be created on an Outcome-Based Campaign in Closed/Cancelled status. --></errorMessage>
         <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
     </validationRules>
     <validationRules>
@@ -1696,7 +1710,7 @@
         <name>Core_MDF_Restrict_Claim_Creation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Создание сведений о заявке блокируется из-за того, что требуется одобрение для кампании, основанной на результатах, «Выполняется».</errorMessage>
+        <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Outcome-Based Campaign needing approval. --></errorMessage>
         <name>Core_MDF_Restrict_Claim_Creation_Outcome</name>
     </validationRules>
     <validationRules>
@@ -1728,7 +1742,7 @@
         <name>Core_MDF_StartDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>Введите дату начала исполнения, которая находится в пределах диапазона предполагаемых дат кампании, основанной на результатах.</errorMessage>
+        <errorMessage><!-- Please enter an Execution Start Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
         <name>Core_MDF_StartDateValidation_Outcome</name>
     </validationRules>
     <validationRules>

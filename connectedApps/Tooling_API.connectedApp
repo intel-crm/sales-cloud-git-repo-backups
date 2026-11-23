@@ -4,7 +4,7 @@
     <label>Tooling API</label>
     <oauthConfig>
         <callbackUrl>https://intel.my.salesforce.com/services/authcallback/Tooling_API</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6ogKH2yiI_u7ITtdF4wgZK1XzdHDrmCzkEqssHQl4r_HG6D7bTCLtUlTysQ3</consumerKey>
+        <consumerKey>3MVG9BWMiHkoluZE0qiUtAc6UxZEBWaf5tyShNseQxvlJc3gWpPvQFCsgDzhSQHtfWxPy_h7AsfeiqQBhp0H2</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -19,7 +19,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Basic</scopes>

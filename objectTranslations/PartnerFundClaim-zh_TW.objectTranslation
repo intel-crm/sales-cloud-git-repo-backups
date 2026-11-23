@@ -282,6 +282,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Claim Cancellation Reason --></label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>與此申請相關的自由文字備註</help>
         <label>申請意見</label>
         <name>Core_MDF_Claim_Comments__c</name>
@@ -1476,8 +1480,18 @@
     </fields>
     <recordTypes>
         <description><!-- Channel MDF Program Record Type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Channel MDF Program Record Type --></description>
         <label>通路 MDF 帳戶型</label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record is used for Channel MDF Proposal Based claims --></description>
+        <label>通路 MDF 提案型</label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
@@ -1565,11 +1579,11 @@
         <name>Core_MDF_EndDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>請輸入一個在基於結果的企劃案估計日期範圍內的執行結束日期。</errorMessage>
+        <errorMessage><!-- Please enter an Execution End Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
         <name>Core_MDF_EndDateValidation_OutcomeBased</name>
     </validationRules>
     <validationRules>
-        <errorMessage>你無法使用此基於結果的企劃案，因為該企劃案的帳號已不活躍</errorMessage>
+        <errorMessage><!-- You cannot use this Outcome-Based Campaign as the account over the Outcome-Based Campaign is inactive --></errorMessage>
         <name>Core_MDF_InactiveAccountValidation_Outco</name>
     </validationRules>
     <validationRules>
@@ -1601,7 +1615,7 @@
         <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
     </validationRules>
     <validationRules>
-        <errorMessage>無法針對狀態為已結案/取消的基於結果的企劃案建立申請。</errorMessage>
+        <errorMessage><!-- Claim cannot be created on an Outcome-Based Campaign in Closed/Cancelled status. --></errorMessage>
         <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
     </validationRules>
     <validationRules>
@@ -1617,7 +1631,7 @@
         <name>Core_MDF_Restrict_Claim_Creation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>由於「進行中」基於結果的企劃案需要核准，申請建立被封鎖。</errorMessage>
+        <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Outcome-Based Campaign needing approval. --></errorMessage>
         <name>Core_MDF_Restrict_Claim_Creation_Outcome</name>
     </validationRules>
     <validationRules>
@@ -1649,7 +1663,7 @@
         <name>Core_MDF_StartDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>請輸入一個在基於結果的企劃案估計日期範圍內的執行開始日期。</errorMessage>
+        <errorMessage><!-- Please enter an Execution Start Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
         <name>Core_MDF_StartDateValidation_Outcome</name>
     </validationRules>
     <validationRules>

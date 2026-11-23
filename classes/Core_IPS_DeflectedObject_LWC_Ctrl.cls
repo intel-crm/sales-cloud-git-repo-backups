@@ -68,7 +68,6 @@ public with sharing class Core_IPS_DeflectedObject_LWC_Ctrl {
         	}
         }
         //upsert deflectedObj;
-// Niyaz -vulnerability fix-refering to service class
        List<Core_IPS_Deflected_Object__c> deflectedObjList = new List<Core_IPS_Deflected_Object__c>{ deflectedObj };
 Core_IPS_QueryService.upsertRecords(deflectedObjList);
 deflectedObj = deflectedObjList[0];

@@ -1529,11 +1529,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__ContactStub__c</field>
-            <table>Account.Contacts</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Jigsaw</field>
             <table>Account.Contacts</table>
         </columns>

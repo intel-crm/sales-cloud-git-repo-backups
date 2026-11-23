@@ -68,13 +68,6 @@
             <operator>equals</operator>
             <value>EMEA Hosted Sales Group,EMEA Partner Led,EMEA Sales Group</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>FK_$Opportunity.Decision_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>11/30/2025,12/26/2026</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>

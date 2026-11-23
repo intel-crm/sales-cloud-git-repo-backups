@@ -365,10 +365,6 @@
         <name>PMP_View_Dashboard</name>
     </customPermissions>
     <description>Market Place permissions for Partner Employee.</description>
-    <externalCredentialPrincipalAccesses>
-        <enabled>true</enabled>
-        <externalCredentialPrincipal>PowerBI-Credentials</externalCredentialPrincipal>
-    </externalCredentialPrincipalAccesses>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.AccountNumber</field>

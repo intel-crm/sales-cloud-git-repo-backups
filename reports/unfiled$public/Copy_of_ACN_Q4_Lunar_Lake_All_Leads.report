@@ -7,30 +7,22 @@
         <field>COUNTRY_CODE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.Core_LS_Company_Size_Employees__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.Core_LS_Company_Size_Range_Employees__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_LS_Company_Industry__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Covered_account_owner__c</field>
-    </columns>
-    <columns>
         <field>FIRST_NAME</field>
-    </columns>
-    <columns>
-        <field>LAST_NAME</field>
     </columns>
     <columns>
         <field>EMAIL</field>
     </columns>
     <columns>
-        <field>TITLE</field>
+        <field>Lead.Core_LS_Title__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_LS_Job_Function__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_LS_Level__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Notes__c</field>
     </columns>
     <columns>
         <field>STATUS</field>
@@ -42,28 +34,37 @@
         <field>Lead.Core_Lead_Status__c</field>
     </columns>
     <columns>
+        <field>Lead.SWS_LeadConverted_fm__c</field>
+    </columns>
+    <columns>
         <field>Lead.Core_Lead_Sub_Status__c</field>
     </columns>
     <columns>
         <field>Lead.Core_Qualification_Notes__c</field>
     </columns>
     <columns>
-        <field>LAST_ACTIVITY</field>
-    </columns>
-    <columns>
         <field>LAST_UPDATE</field>
     </columns>
     <columns>
-        <field>OWNER</field>
+        <field>Lead.Core_Last_Activity_Date__c</field>
     </columns>
     <columns>
-        <field>Lead.Core_Lead_Notes__c</field>
+        <field>OWNER</field>
     </columns>
     <columns>
         <field>Lead.Core_Entrance_Date_MQL__c</field>
     </columns>
     <columns>
         <field>Lead.Core_Lead_Conversion_Point__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_LS_Department__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_LS_Best_Profile_Fit__c</field>
     </columns>
     <filter>
         <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
@@ -122,6 +123,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>CREATED_DATE</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

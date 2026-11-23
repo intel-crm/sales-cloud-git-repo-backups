@@ -109,10 +109,7 @@ public class Core_IPS_BES_CasePromotion_Handler_Test {
         insert backendSystem;
          List<User> ListOfUser = TestUtilities.getListOfUser(1);
          ListOfUser[0].ProfileId = profiles.get('System Administrator');
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert ListOfUser;
-        }
+         insert ListOfUser;
         List<Product2> prodlist = new List<Product2>();
             Product2 prod=Core_IPS_Backend_TestClass_Utility.getProduct();
             prod.Core_Product_Org__c='IPS'; 

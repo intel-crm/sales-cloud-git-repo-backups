@@ -44,10 +44,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity$Core_Oppty_Count__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity$TotalOpportunityQuantity</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity$Core_Opportunity_Type__c</column>
@@ -96,7 +92,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>America Movil,AT&amp;T,BCE,CenturyLink,Charter Communications,Comcast,Dish Network,Lumen,Telecom Italia,Telefonica,Rogers Communication,SHAW COMMUNICATIONS,T-Mobile,Telus,Verizon</value>
+            <value>KGPCo,Mavenir,Tech Mahindra,America Movil,AT&amp;T,BCE,CenturyLink,Charter Communications,Comcast,Dish Network,Lumen,Telecom Italia,Telefonica,Rogers Communication,SHAW COMMUNICATIONS,T-Mobile,Telus,Verizon</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity$Core_Opportunity_Owner_Geo__c</column>
@@ -111,6 +107,27 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity$Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -145,6 +162,6 @@
         <dateColumn>Opportunity$CloseDate</dateColumn>
         <endDate>2026-12-26</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-04</startDate>
+        <startDate>2025-12-29</startDate>
     </timeFrameFilter>
 </Report>

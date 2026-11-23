@@ -3820,6 +3820,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>PartnerFundClaim.Core_MDF_Claim_Cancellation_Reason_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Claim_Comments__c</field>
         <readable>true</readable>

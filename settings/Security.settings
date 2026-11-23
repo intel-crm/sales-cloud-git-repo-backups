@@ -107,11 +107,6 @@
             <start>35.243.255.155</start>
         </ipRanges>
         <ipRanges>
-            <description>APIGEE IP</description>
-            <end>35.240.210.131</end>
-            <start>35.240.210.131</start>
-        </ipRanges>
-        <ipRanges>
             <description>Copado Cloud NA</description>
             <end>35.236.3.65</end>
             <start>35.236.3.65</start>
@@ -120,26 +115,6 @@
             <description>Copado Cloud NA</description>
             <end>35.235.92.254</end>
             <start>35.235.92.254</start>
-        </ipRanges>
-        <ipRanges>
-            <description>APIGEE IP</description>
-            <end>35.233.242.136</end>
-            <start>35.233.242.136</start>
-        </ipRanges>
-        <ipRanges>
-            <description>APIGEE IP</description>
-            <end>35.227.131.219</end>
-            <start>35.227.131.218</start>
-        </ipRanges>
-        <ipRanges>
-            <description>APIGEE IP</description>
-            <end>35.203.150.160</end>
-            <start>35.203.150.160</start>
-        </ipRanges>
-        <ipRanges>
-            <description>APIGEE IP</description>
-            <end>35.197.133.167</end>
-            <start>35.197.133.167</start>
         </ipRanges>
         <ipRanges>
             <description>Copado Cloud NA</description>
@@ -172,7 +147,7 @@
         <canConfirmEmailChangeInLightningCommunities>false</canConfirmEmailChangeInLightningCommunities>
         <canConfirmIdentityBySmsOnly>true</canConfirmIdentityBySmsOnly>
         <disableTimeoutWarning>false</disableTimeoutWarning>
-        <enableBuiltInAuthenticator>false</enableBuiltInAuthenticator>
+        <enableBuiltInAuthenticator>true</enableBuiltInAuthenticator>
         <enableCSPOnEmail>true</enableCSPOnEmail>
         <enableCSRFOnGet>true</enableCSRFOnGet>
         <enableCSRFOnPost>true</enableCSRFOnPost>
@@ -191,7 +166,7 @@
         <enablePermissionsPolicy>false</enablePermissionsPolicy>
         <enablePostForSessions>false</enablePostForSessions>
         <enableSMSIdentity>true</enableSMSIdentity>
-        <enableU2F>false</enableU2F>
+        <enableU2F>true</enableU2F>
         <enforceIpRangesEveryRequest>false</enforceIpRangesEveryRequest>
         <enforceUserDeviceRevoked>false</enforceUserDeviceRevoked>
         <forceLogoutOnSessionTimeout>true</forceLogoutOnSessionTimeout>
@@ -229,7 +204,7 @@
         <enableForceDelegatedCallout>false</enableForceDelegatedCallout>
         <enableMultipleSamlConfigs>true</enableMultipleSamlConfigs>
         <enableSamlJitProvisioning>false</enableSamlJitProvisioning>
-        <enableSamlLogin>true</enableSamlLogin>
+        <enableSamlLogin>false</enableSamlLogin>
         <isLoginWithSalesforceCredentialsDisabled>true</isLoginWithSalesforceCredentialsDisabled>
     </singleSignOnSettings>
 </SecuritySettings>

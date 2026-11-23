@@ -269,7 +269,6 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         accBusType.Account__c = account1.Id;
         accBusType.Business_Types__c = bussType.Id;
         accBussTypeList.add(accBusType);
-        System.debug('Account Id : Test : '+account2); 
         insert accBussTypeList;
     }
     

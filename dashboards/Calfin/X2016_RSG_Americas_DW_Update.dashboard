@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>NAR</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAR</values>
+        </dashboardFilterOptions>
+        <name>Sub Geo</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Sunil Gupta</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Max R Glover</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Christopher Murphy</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Jason Fedder</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Trefina Gindi-Fox</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Chuck Palmeri</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>David Foote</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>David Meffe</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Gary Betrix</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Greg Calfin</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Iddo Kadim</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Laura Barbaro</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Pete Matheson</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Piush Gupta</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Rick Walther</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Stephen P Thorne</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Brad Haczynski</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Allison Doller</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Binoy Unnikrishnan</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Steve Stratton</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Timothy R Wood</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Chris J Halversen</values>
+        </dashboardFilterOptions>
+        <name>Team</name>
+    </dashboardFilters>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>EXP_PRODUCT_AMOUNT</column>
+            </chartSummary>
+            <componentType>Donut</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sub_Geo__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>ROLLUP_DESCRIPTION</column>
+            </dashboardFilterColumns>
+            <displayUnits>Billions</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>true</expandOthers>
+            <groupingColumn>STAGE_NAME</groupingColumn>
+            <groupingSortProperties/>
+            <legendPosition>Right</legendPosition>
+            <report>Calfin/RSG_Americas_2016_DW_Update</report>
+            <showPercentage>true</showPercentage>
+            <showTotal>true</showTotal>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Expected Rev By Stage RSG Americas</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>EXP_PRODUCT_AMOUNT</column>
+            </chartSummary>
+            <componentType>Donut</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sub_Geo__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>ROLLUP_DESCRIPTION</column>
+            </dashboardFilterColumns>
+            <displayUnits>Billions</displayUnits>
+            <drillEnabled>true</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingSortProperties/>
+            <legendPosition>Bottom</legendPosition>
+            <report>Calfin/RSG_Americas_2016_DW_Update</report>
+            <showPercentage>true</showPercentage>
+            <showTotal>true</showTotal>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Expected Rev By Bus Unit RSG Americas</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </middleSection>
+    <owner>11376616@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>EXP_PRODUCT_AMOUNT</column>
+            </chartSummary>
+            <componentType>BarStacked</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sub_Geo__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>ROLLUP_DESCRIPTION</column>
+            </dashboardFilterColumns>
+            <displayUnits>Billions</displayUnits>
+            <drillEnabled>true</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingColumn>STAGE_NAME</groupingColumn>
+            <groupingColumn>ROLLUP_DESCRIPTION</groupingColumn>
+            <groupingSortProperties/>
+            <legendPosition>Bottom</legendPosition>
+            <report>Calfin/RSG_Americas_2016_DW_Update</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Expected Stage By Mgr RSG Americas</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </rightSection>
+    <runningUser>11376616@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>2016 RSG Americas DW Update</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

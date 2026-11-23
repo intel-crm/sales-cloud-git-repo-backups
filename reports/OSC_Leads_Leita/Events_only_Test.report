@@ -43,9 +43,6 @@
         <field>Activity.Core_Activity_Type__c</field>
     </columns>
     <columns>
-        <field>Activity.CventEvents__Attendee__c</field>
-    </columns>
-    <columns>
         <field>Activity.Core_Type_of_Activity__c</field>
     </columns>
     <columns>

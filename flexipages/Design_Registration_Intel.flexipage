@@ -775,6 +775,20 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(234, 25, 25); font-size: inherit;&quot;&gt;Important for Altera/PSG Users:&lt;/strong&gt;&lt;span style=&quot;color: rgb(234, 25, 25); font-size: inherit;&quot;&gt;&amp;nbsp;Starting July 28, 2025, use the new Altera Salesforce for accounts, contacts, leads, design registration, opportunities, quotes (except corporate tool quotes) and DPAs. Exception:&amp;nbsp;Use Intel Salesforce (IQR) for corporate tool quotes, orders, licensing, and IPS. For details, visit the &lt;/span&gt;&lt;a href=&quot;https://altera.sharepoint.com/sites/AlteraBusinessEnablementSalesforce/SitePages/FAQs.aspx?csf=1&amp;amp;web=1&amp;amp;e=8DrWLE&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: inherit; color: rgb(20, 71, 253);&quot;&gt;Altera CRM FAQ&lt;/a&gt;&lt;span style=&quot;font-size: inherit;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: inherit; color: rgb(234, 25, 25);&quot;&gt;If you are looking&amp;nbsp;to access the Altera portal, please be aware that the website has moved. Use &lt;/span&gt;&lt;a href=&quot;http://distributorportal.altera.com/&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: inherit; color: rgb(20, 71, 253);&quot;&gt;d&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;istributorportal.altera.com&lt;/a&gt;&lt;span style=&quot;font-size: inherit; color: rgb(234, 25, 25);&quot;&gt;&amp;nbsp;going forward and follow login instructions.&lt;/span&gt;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>hideUpdateButton</name>
                     <value>true</value>
                 </componentInstanceProperties>
@@ -788,6 +802,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>
@@ -848,6 +866,10 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-e0698962-fc3b-4b17-bc27-a755cd118ce4</value>

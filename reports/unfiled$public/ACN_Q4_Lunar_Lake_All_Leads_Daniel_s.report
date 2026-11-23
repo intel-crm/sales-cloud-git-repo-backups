@@ -80,7 +80,7 @@
     </columns>
     <description>Custom report of the original</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7</booleanFilter>
         <criteriaItems>
             <column>Lead.Core_Lead_Conversion_Point__c</column>
             <columnToColumn>false</columnToColumn>
@@ -122,6 +122,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>Intel</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>12/12/2025 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -593,11 +593,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Assignee.User_Unique__c</field>
-            <table>PermissionSetAssignment</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Assignee.WirelessTrialExpirationDate</field>
             <table>PermissionSetAssignment</table>
         </columns>

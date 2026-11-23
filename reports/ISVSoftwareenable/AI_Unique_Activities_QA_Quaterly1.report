@@ -78,7 +78,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Mario DiSanza,Umair Tariq,Ashton Porter,Christel Thompson,Derek Gaines,Jorge Gomez Oliveros,Sameera Kandewatte,Rodney Dahleen,Matthew House,Mark Wier,Ajaysinh Mansinh,Alfredo Diez,Chloe Hui,Chris Smart,Colby Dumas,Eddie Wong,Ellen Farber,George Kondos,Gresa Heta,Jackson Hubbard,Justin Manker,Kelly Maw,Khondoker Mujtaba,Kristian Boyadzhiev,Kristiyan Kolev,Maneesh Durgaiah,Monica Rangelova,Nailesh Chikkamath,Naveen Kumar,Nischitha TS,Rakshan Kunjar,Robert McLoughlin,Russell Cheng,Samanth R,Shantanu Priyadarshi,Sonali Singh,Syed Amir Ali,Vladimir Isikiyski,XIN FAN</value>
+            <value>Ashton Porter,Christel Thompson,Derek Gaines,Jorge Gomez Oliveros,Sameera Kandewatte,Rodney Dahleen,Matthew House,Mark Wier,Ajaysinh Mansinh,Alfredo Diez,Chloe Hui,Chris Smart,Colby Dumas,Eddie Wong,Ellen Farber,George Kondos,Gresa Heta,Jackson Hubbard,Justin Manker,Kelly Maw,Khondoker Mujtaba,Kristian Boyadzhiev,Kristiyan Kolev,Maneesh Durgaiah,Monica Rangelova,Nailesh Chikkamath,Naveen Kumar,Nischitha TS,Rakshan Kunjar,Robert McLoughlin,Russell Cheng,Samanth R,Shantanu Priyadarshi,Sonali Singh,Syed Amir Ali,Vladimir Isikiyski,XIN FAN</value>
         </criteriaItems>
         <criteriaItems>
             <column>Activity.Core_Subtype_of_Activity__c</column>
@@ -106,20 +106,20 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>LinkedIn,LI,Wechat,Maimai,Website,WhatsApp,Web</value>
+            <value>LinkedIn,LI,Wechat,Maimai</value>
         </criteriaItems>
         <criteriaItems>
             <column>DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>startsWith</operator>
-            <value>To: umairx.tariq@intel.com,To: mariox.disanza@intel.com,To: derekx.gaines@intel.com,To: ashtonx.porter@intel.com,To: jorgex.gomez.oliveros@intel.com,To: Rodneyx.Dahleen@intel.com,To: Matthewx.House@intel.com,To: Markx.Wier@intel.com,To: Sameerax.Kandewatte@intel.com,To: AjaysinhX.Mansinh@intel.com,To: AlfredoX.Diez@intel.com,To: AnkitX.Kumar@intel.com,To: CaydenX.Miller@intel.com,To: ChloeX.Hui@intel.com,To: ChrisX.Smart@intel.com,To: ColbyX.Dumas@intel.com,To: EddieX.Wong@intel.com,To: EllenX.Farber@intel.com,To: GeorgeX.Kondos@intel.com,To: GresaX.Heta@intel.com,To: IrfanX.Ahmed@intel.com,To: JacksonX.Hubbard@intel.com,To: JoelX.Aguilar@intel.com,To: JorgeX.GomezOliveros@intel.com,To: JustinX.Manker@intel.com,To: KellyX.Maw@intel.com,To: KhondokerX.Mujtaba@intel.com,To: KristianX.Boyadzhiev@intel.com,To: KristiyanX.Kolev@intel.com,To: ManeeshX.Durgaiah@intel.com,To: MonicaX.Rangelova@intel.com,To: NaileshX.Chikkamath@intel.com,To: NaveenX.Kumar@intel.com,To: NischithaX.TS@intel.com,To: PeterX.Bas@intel.com,To: RakshanX.Kunjar@intel.com,To: RobertX.McLoughlin@intel.com,To: RussellX.Cheng@intel.com,To: SachinX.Shidlingannavar@intel.com,To: SamanthX.R@intel.com,To: ShantanuX.Priyadarshi@intel.com,To: SonaliX.Singh@intel.com,To: VladimirX.Isikiyski@intel.com,To: XINX.FAN@intel.com,To: syedx.amir.ali@intel.com</value>
+            <value>To: derekx.gaines@intel.com,To: ashtonx.porter@intel.com,To: jorgex.gomez.oliveros@intel.com,To: Rodneyx.Dahleen@intel.com,To: Matthewx.House@intel.com,To: Markx.Wier@intel.com,To: Sameerax.Kandewatte@intel.com,To: AjaysinhX.Mansinh@intel.com,To: AlfredoX.Diez@intel.com,To: AnkitX.Kumar@intel.com,To: CaydenX.Miller@intel.com,To: ChloeX.Hui@intel.com,To: ChrisX.Smart@intel.com,To: ColbyX.Dumas@intel.com,To: EddieX.Wong@intel.com,To: EllenX.Farber@intel.com,To: GeorgeX.Kondos@intel.com,To: GresaX.Heta@intel.com,To: IrfanX.Ahmed@intel.com,To: JacksonX.Hubbard@intel.com,To: JoelX.Aguilar@intel.com,To: JorgeX.GomezOliveros@intel.com,To: JustinX.Manker@intel.com,To: KellyX.Maw@intel.com,To: KhondokerX.Mujtaba@intel.com,To: KristianX.Boyadzhiev@intel.com,To: KristiyanX.Kolev@intel.com,To: ManeeshX.Durgaiah@intel.com,To: MonicaX.Rangelova@intel.com,To: NaileshX.Chikkamath@intel.com,To: NaveenX.Kumar@intel.com,To: NischithaX.TS@intel.com,To: PeterX.Bas@intel.com,To: RakshanX.Kunjar@intel.com,To: RobertX.McLoughlin@intel.com,To: RussellX.Cheng@intel.com,To: SachinX.Shidlingannavar@intel.com,To: SamanthX.R@intel.com,To: ShantanuX.Priyadarshi@intel.com,To: SonaliX.Singh@intel.com,To: SyedX.AmirAli@intel.com,To: VladimirX.Isikiyski@intel.com,To: XINX.FAN@intel.com</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>FiscalQuarter</dateGranularity>
         <field>DUE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>

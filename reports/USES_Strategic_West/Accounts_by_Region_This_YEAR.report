@@ -27,18 +27,18 @@
     </customDetailFormulas>
     <filter>
         <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_YEAR</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Account.Core_Account_Owner_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>cormack glass,Asma Aziz,Vince Curella,christopher haynes,todd phillips,tim wood,ken constantino</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>DUE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>THIS_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -54,7 +54,7 @@
         <value>1</value>
     </params>
     <reportType>AccountList</reportType>
-    <scope>organization</scope>
+    <scope>scopingRule</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

@@ -296,6 +296,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Claim Cancellation Reason --></label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help><!-- Free text note related to the Claim --></help>
         <label><!-- Claim Comments --></label>
         <name>Core_MDF_Claim_Comments__c</name>
@@ -1490,8 +1494,18 @@ Settle, then get paid – Best for minimizing post-payment recovery; prioritizes
     </fields>
     <recordTypes>
         <description><!-- Channel MDF Program Record Type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Channel MDF Program Record Type --></description>
         <label><!-- Channel MDF Account Based --></label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record is used for Channel MDF Proposal Based claims --></description>
+        <label><!-- Channel MDF Proposal Based --></label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>

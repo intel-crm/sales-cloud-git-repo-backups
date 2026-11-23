@@ -164,7 +164,6 @@ public class PRM_Account_Contact_Profiles_Test {
         acr.PRM_isActive__c = True;
         acr.PRM_Relationship_Id__c = contRel.Id;
         acr.PRM_Status_Nm__c = 'Complete';
-        acr.PRM_Status_Reason_Txt__c = 'Test';
         insert acr;
         
         Core_Entitlement__c coreEntitlement = new Core_Entitlement__c();

@@ -3,8 +3,8 @@
     <contactEmail>kushal.r.khokale@intel.com</contactEmail>
     <label>UserInterface_API</label>
     <oauthConfig>
-        <callbackUrl>https://intel.my.salesforce.com/services/authcallback/UserIntefaceAPI_CallBack</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6sWzA7dftDbAANxHlc2lcFGr2jgbFtG39zmWWvLys6LPuWG1uVIZa4uYeWGl</consumerKey>
+        <callbackUrl>https://intel--crmstage9.sandbox.my.salesforce.com/services/authcallback/UserIntefaceAPI_CallBack</callbackUrl>
+        <consumerKey>3MVG9BWMiHkoluZE0qiUtAc6UxZEBWaf5tySh2AmkRiX3OSus4IemUJECCdPJYmQdvYq_ZHwFuBvyneY6oBLD</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>

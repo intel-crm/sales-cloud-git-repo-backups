@@ -1,10 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>HorizontalBar</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>ACCOUNT.NAME</groupingColumn>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
-        <field>ASSIGNED</field>
+        <field>SUBJECT</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 3 AND (2 OR 4)</booleanFilter>
+        <criteriaItems>
+            <column>Account.Core_Account_Owner_Manager__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>cormack glass,christopher haynes,tim wood,ken constantino,todd phillips</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Activity.Core_Subtype_of_Activity__c</column>
             <columnToColumn>false</columnToColumn>
@@ -12,32 +42,22 @@
             <operator>notContain</operator>
             <value>Push Reason,Complete SOAR1 qualification documentation,SOAR1 review meeting scheduled,Get Regional Manager Approval for Value Based Selling,Complete Win Analysis,Conduct Testing and Review Results,Articulate Prioritized Problem Statements and Desired Business Results,Complete Competitor Threat Mitigation,Complete Current and Future State Analysis</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>CREATED_BY</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Dilag,Curella,Eaves,Equi,Hafeez,Mayoral,Miles,Nelson,Pastor,Patel,Pryszlak,Saini,Simmons,Tozzi,Willey,Aziz,Constantino,Darrah,Glass,Haynes,Phillips,Wood,Alldredge,Buchholz,Fernandes,Kumaresan,Lerfald,Manning,Demaestri,Farias,Lopez Zmijak,Abelardo,Brooks,Crawford,Duchaine,Kim,Ramasami,Simon,Correa-denoncourt,Dalton,Finamore,Forsbrey,Gildea,Jain,Jean,Pearson,Rodrigue,Stepanov,Highland,Hurrell,Kelly,Kerker,Stucky,Tolls,Zapata,Espinoza,Gonzalez,Haddad,Hulcy,Nuyen,Tyson Taylor,Thinagarajan,Chick,Cudaback,Fay,Meyer,Monroy,Schumacher,Willihnganz,Allen,Baines,Carson,Chan,Chandra,Chiavaroli,Defelippe,Gauthier,Germain,Lahbabi BBA,Norris,Pavlovic,Robinson,Saif,Vokins,Abadi,Turner,Harrison,Chong,Kim Kelly,Gardner</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CREATED_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>5/31/2026 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ASSIGNED</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Dilag,Curella,Eaves,Equi,Hafeez,Mayoral,Miles,Nelson,Pastor,Patel,Pryszlak,Saini,Simmons,Tozzi,Willey,Aziz,Constantino,Darrah,Glass,Haynes,Phillips,Wood,Alldredge,Buchholz,Fernandes,Kumaresan,Lerfald,Manning,Demaestri,Farias,Lopez Zmijak,Abelardo,Brooks,Crawford,Duchaine,Kim,Ramasami,Simon,Correa-denoncourt,Dalton,Finamore,Forsbrey,Gildea,Jain,Jean,Pearson,Rodrigue,Stepanov,Highland,Hurrell,Kelly,Kerker,Stucky,Tolls,Zapata,Espinoza,Gonzalez,Haddad,Hulcy,Nuyen,Tyson Taylor,Thinagarajan,Chick,Cudaback,Fay,Meyer,Monroy,Schumacher,Willihnganz,Allen,Baines,Carson,Chan,Chandra,Chiavaroli,Defelippe,Gauthier,Germain,Lahbabi BBA,Norris,Pavlovic,Robinson,Saif,Vokins,Abadi,Turner,Harrison,Chong,Kim Kelly,Gardner</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>FiscalWeek</dateGranularity>
         <field>CREATED_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account.Core_Account_Owner_Manager__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT.NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Account Activities by FW by manager</name>
@@ -55,11 +75,13 @@
     </params>
     <reportType>AccountActivity</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
-    <showGrandTotal>false</showGrandTotal>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <endDate>2025-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

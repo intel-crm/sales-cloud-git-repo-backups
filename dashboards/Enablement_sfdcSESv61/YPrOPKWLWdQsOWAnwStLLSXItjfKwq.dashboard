@@ -94,7 +94,7 @@
                 <chartSummary>
                     <aggregate>Sum</aggregate>
                     <axisBinding>y</axisBinding>
-                    <column>OpportunityLineItem.Core_KPI_Quantity__c</column>
+                    <column>PROBABILITY</column>
                 </chartSummary>
                 <componentType>Gauge</componentType>
                 <dashboardFilterColumns>

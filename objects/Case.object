@@ -6256,69 +6256,6 @@ NULL))))</formula>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>ImpartnerPRM__NotifyPartner__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Notify Partner</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerAccount__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Account</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Cases</relationshipLabel>
-        <relationshipName>Cases</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerContact__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Contact</label>
-        <lookupFilter>
-            <active>true</active>
-            <booleanFilter>1 OR 2</booleanFilter>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <valueField>Contact.AccountId</valueField>
-            </filterItems>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <value></value>
-            </filterItems>
-            <isOptional>true</isOptional>
-        </lookupFilter>
-        <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Cases</relationshipLabel>
-        <relationshipName>Cases</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerLastModifiedDate__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Partner Last Modified Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
-    </fields>
-    <fields>
         <fullName>IsClosedOnCreate</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
@@ -14039,23 +13976,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_007_EMBED_Device_Management_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>EMBED - Device Management TK</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_007_EMBED_Device_Management</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_007_EMBED_Device_Management</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>Core_IPS_Org_007_EMBED_HW_ECSI_India_Case</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
@@ -18473,57 +18393,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_022_CCG_SSP_Android_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>CCG-SSP - Android</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_022_CCG_SSP_Android</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_022_CCG_SSP_Android</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_022_CCG_SSP_Linux_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>CCG-SSP - Linux</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_022_CCG_SSP_Linux</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_022_CCG_SSP_Linux</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_022_CCG_SSP_Unassigned_Case</fullName>
-        <columns>CASES.CASE_NUMBER</columns>
-        <columns>NAME</columns>
-        <columns>CASES.SUBJECT</columns>
-        <columns>CASES.STATUS</columns>
-        <columns>CASES.PRIORITY</columns>
-        <columns>CASES.CREATED_DATE</columns>
-        <columns>CORE.USERS.ALIAS</columns>
-        <filterScope>Queue</filterScope>
-        <label>CCG-SSP - Unassigned</label>
-        <language>en_US</language>
-        <queue>Core_IPS_Org_022_CCG_SSP_Unassigned</queue>
-        <sharedTo>
-            <group>Core_IPS_Org_022_CCG_SSP_Unassigned</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>Core_IPS_Org_022_Cascade_Lake_UBER_Case</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
@@ -19580,15 +19449,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
         <queue>Core_IPS_Org_028_SMG_Projects_Unassigned</queue>
         <sharedTo>
             <group>Core_IPS_Org_028_SMG_Projects_Unassigned</group>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_029_Unassigned_Case</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IGT – Unassigned</label>
-        <queue>Core_IPS_Org_029_Unassigned</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
     <listViews>
@@ -34857,6 +34717,10 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Infrastructure Power Manager</fullName>
                 <default>false</default>
             </values>
@@ -35346,10 +35210,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>BELARUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>BELGIUM</fullName>
                 <default>false</default>
             </values>
@@ -35678,10 +35538,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>LEBANON</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>LESOTHO</fullName>
                 <default>false</default>
             </values>
@@ -35779,10 +35635,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>MOZAMBIQUE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYANMAR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -35922,10 +35774,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>SOMALIA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SOUTH AFRICA</fullName>
                 <default>false</default>
             </values>
@@ -36030,10 +35878,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>VENEZUELA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VIETNAM</fullName>
                 <default>false</default>
             </values>
@@ -36043,10 +35887,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>WESTERN SAHARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>YEMEN</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -37401,6 +37241,14 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Scalable Video Technology%C2%A0%28SVT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 %28Wildcat Lake Refresh%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 Ultra %28Nova Lake%29</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -41153,6 +41001,10 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
+                <fullName>Intel%C2%AE Geti%E2%84%A2</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Intel%C2%AE Infrastructure Power Manager</fullName>
                 <default>false</default>
             </values>
@@ -41642,10 +41494,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>BELARUS</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>BELGIUM</fullName>
                 <default>false</default>
             </values>
@@ -41974,10 +41822,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>LEBANON</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>LESOTHO</fullName>
                 <default>false</default>
             </values>
@@ -42075,10 +41919,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>MOZAMBIQUE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYANMAR</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -42218,10 +42058,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>SOMALIA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>SOUTH AFRICA</fullName>
                 <default>false</default>
             </values>
@@ -42326,10 +42162,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
                 <default>false</default>
             </values>
             <values>
-                <fullName>VENEZUELA</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>VIETNAM</fullName>
                 <default>false</default>
             </values>
@@ -42339,10 +42171,6 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>WESTERN SAHARA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>YEMEN</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -43697,6 +43525,14 @@ Please type in at least 3 chars of the product name. If you do not see your prod
             </values>
             <values>
                 <fullName>Scalable Video Technology%C2%A0%28SVT%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 %28Wildcat Lake Refresh%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Series 4 Intel%C2%AE Core%E2%84%A2 Ultra %28Nova Lake%29</fullName>
                 <default>false</default>
             </values>
             <values>

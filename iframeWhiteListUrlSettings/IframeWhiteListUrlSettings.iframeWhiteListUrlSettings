@@ -36,12 +36,4 @@
         <context>VisualforcePages</context>
         <url>https://intel--c.visualforce.com</url>
     </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>LightningOut</context>
-        <url>*.slack.com</url>
-    </iframeWhiteListUrls>
-    <iframeWhiteListUrls>
-        <context>LightningOut</context>
-        <url>*.slack-gov.com</url>
-    </iframeWhiteListUrls>
 </IframeWhiteListUrlSettings>

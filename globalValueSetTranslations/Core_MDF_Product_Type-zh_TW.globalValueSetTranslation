@@ -38,7 +38,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Client</masterLabel>
-        <translation>用戶端</translation>
+        <translation><!-- Client --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud</masterLabel>
@@ -178,7 +178,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>網路/乙太網路</translation>
+        <translation><!-- Networking/Ethernet --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Notebook</masterLabel>
@@ -238,7 +238,7 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Telco</masterLabel>
-        <translation>電信</translation>
+        <translation><!-- Telco --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>

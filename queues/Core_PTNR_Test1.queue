@@ -3,11 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>PTNR - Test1</name>
-    <queueMembers>
-        <users>
-            <user>10560180@intel.com.crm</user>
-        </users>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Lead</sobjectType>
     </queueSobject>

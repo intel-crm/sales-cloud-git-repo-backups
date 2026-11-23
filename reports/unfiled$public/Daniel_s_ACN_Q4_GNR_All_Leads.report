@@ -25,13 +25,10 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>STATUS</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_State__c</field>
-    </columns>
-    <columns>
         <field>Lead.SWS_LeadConverted_fm__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Lead_Sub_Status__c</field>
     </columns>
     <columns>
         <field>COMPANY</field>
@@ -44,6 +41,9 @@
     </columns>
     <columns>
         <field>Lead.Core_Lead_Notes__c</field>
+    </columns>
+    <columns>
+        <field>TITLE</field>
     </columns>
     <columns>
         <field>Lead.Core_LS_Title__c</field>
@@ -72,17 +72,8 @@
     <columns>
         <field>Lead.Core_LS_Department__c</field>
     </columns>
-    <columns>
-        <field>Lead.Core_Lead_Status__c</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Sub_Status__c</field>
-    </columns>
-    <columns>
-        <field>LEAD_SOURCE</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8 AND 9</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND 8</booleanFilter>
         <criteriaItems>
             <column>Lead.Core_Lead_Conversion_Point__c</column>
             <columnToColumn>false</columnToColumn>
@@ -129,8 +120,8 @@
             <column>Lead.Core_Entrance_Date_MQL__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>10/22/2025 12:00 AM</value>
+            <operator>lessOrEqual</operator>
+            <value>1/31/2026 12:00 AM</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
@@ -139,16 +130,14 @@
             <operator>notEqual</operator>
             <value>Charlie Blake</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>COUNTRY_CODE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CAN,USA</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Lead.Core_Lead_Conversion_Point__c</field>

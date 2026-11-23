@@ -1,4 +1,7 @@
 //from devccp
+/**
+* Tests cancellation eligibility, cancellation execution, and helper methods in Core_MDF_PFC_Cancel.
+*/
 @isTest(SeeAllData = false)
 public class Core_MDF_PFC_Cancel_Test {
     
@@ -9,6 +12,7 @@ public class Core_MDF_PFC_Cancel_Test {
         // Creating User with utility class 
         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
         usr.Email = 'sysadmin@example.com';
+        usr.Username = 'sysadmin.test@example.com';
         Database.insert(usr);
         
         Profile ccpCoreProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
@@ -108,15 +112,15 @@ public class Core_MDF_PFC_Cancel_Test {
         Database.insert(usr3);
         Map<String,PermissionSet> nameToPerSet = new Map<String,PermissionSet>();
         for(PermissionSet pSet:[SELECT Id,Name FROM PermissionSet WHERE Name IN (
-                            'Core_MDF_CCP_Internal_Retail_Finance_Usr','Core_MDF_CCP_Internal_IPA_Finance_Usr',
-            				'Core_MDF_CCP_Internal_Finance_Usr','Core_MDF_CCP_Internal_CCF_User',
-            				'Core_MDF_CCP_Internal_DCF_User','Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader'
-                            )]) {
+            'Core_MDF_CCP_Internal_Retail_Finance_Usr','Core_MDF_CCP_Internal_IPA_Finance_Usr',
+            'Core_MDF_CCP_Internal_Finance_Usr','Core_MDF_CCP_Internal_CCF_User',
+            'Core_MDF_CCP_Internal_DCF_User','Core_MDF_CCP_Internal_CCF_MDF_Budget_Loader'
+        )]) {
             nameToPerSet.put(pSet.Name,pSet);
         }
         
-         
-		List<PermissionSetAssignment> permSetAssgnLst = new List<PermissionSetAssignment>();
+        
+        List<PermissionSetAssignment> permSetAssgnLst = new List<PermissionSetAssignment>();
         PermissionSet retailInternalFinanceUser = nameToPerSet.get('Core_MDF_CCP_Internal_Retail_Finance_Usr');
         PermissionSetAssignment assignMDFBudgetLoaderPermissionSet = new PermissionSetAssignment();
         assignMDFBudgetLoaderPermissionSet.AssigneeId = usr3.Id;
@@ -151,116 +155,120 @@ public class Core_MDF_PFC_Cancel_Test {
         }
         
         System.runAs(usr3){
-        PartnerMarketingBudget pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000000, System.today().addDays(-4), System.today().addDays(364), false);
-        pbm.Core_MDF_Budget_Type_Txt__c='OEM CMP';
-        insert pbm;
-        PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm, acc2, 3000000, true);
-        
-        pbm.IsIgnoreValidation = true;
-        update pbm;
-        
-        PartnerFundAllocation pfa = [Select id, Amount from PartnerFundAllocation where BudgetId =: pbm.Id and Title='Test PFA' limit 1];
-        
-        Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-2), System.today().addDays(300), 100000, 'Always Connected PC', acc2.Id,'Desktop', false);
-        camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-        camp.Core_MDF_Budget_Amount_amt__c = 1000000;
-        camp.Core_MDF_Total_Campaign_Cost_Amt__c = 1000000;
-        insert(camp);    
+            PartnerMarketingBudget pbm = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 2', Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc2.Id, cp1.Id, 3000000, System.today().addDays(-4), System.today().addDays(364), false);
+            pbm.Core_MDF_Budget_Type_Txt__c='OEM CMP';
+            insert pbm;
+            PartnerFundAllocation pfaRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test PFA', pbm, acc2, 3000000, true);
             
-        List<Core_Trigger_Executions__c> executionList = new List<Core_Trigger_Executions__c>();
-        Core_Trigger_Executions__c claimFunctionalityNameTriggerExecution = new Core_Trigger_Executions__c();
-        claimFunctionalityNameTriggerExecution.Core_Active__c = true;
-        claimFunctionalityNameTriggerExecution.Core_Class_Name__c = 'Core_MDF_ProcessCCP_Claim';
-        claimFunctionalityNameTriggerExecution.Core_Trigger_Events__c = 'after insert';
-        claimFunctionalityNameTriggerExecution.Core_Object__c = 'PartnerFundClaim';
-        claimFunctionalityNameTriggerExecution.Name = 'fundReservation';
-        claimFunctionalityNameTriggerExecution.Core_Description__c = 'description';
-        executionList.add(claimFunctionalityNameTriggerExecution);
-        Core_Trigger_Executions__c claimFunctionalityNameTriggerExecution2 = new Core_Trigger_Executions__c();
-        claimFunctionalityNameTriggerExecution2.Core_Active__c = true;
-        claimFunctionalityNameTriggerExecution2.Core_Class_Name__c = 'Core_MDF_ProcessCCP_Claim';
-        claimFunctionalityNameTriggerExecution2.Core_Trigger_Events__c = 'before insert';
-        claimFunctionalityNameTriggerExecution2.Core_Object__c = 'PartnerFundClaim';
-        claimFunctionalityNameTriggerExecution2.Name = 'checkESDHoldAndUpdateClaimStatus';
-        claimFunctionalityNameTriggerExecution2.Core_Description__c = 'check ESD hold for the bank selected on Claim and change Claim status to Hold if it is on ESD Hold';
-        executionList.add(claimFunctionalityNameTriggerExecution2);
-        Core_Trigger_Executions__c claimFunctionalityNameTriggerExecution1 = new Core_Trigger_Executions__c();
-        claimFunctionalityNameTriggerExecution1.Core_Active__c = true;
-        claimFunctionalityNameTriggerExecution1.Core_Class_Name__c = 'Core_MDF_ProcessCCP_Claim';
-        claimFunctionalityNameTriggerExecution1.Core_Trigger_Events__c = 'before insert';
-        claimFunctionalityNameTriggerExecution1.Core_Object__c = 'PartnerFundClaim';
-        claimFunctionalityNameTriggerExecution1.Name = 'duplicateClaimCheck';
-        claimFunctionalityNameTriggerExecution1.Core_Description__c = 'check ESD hold for the bank selected on Claim and change Claim status to Hold if it is on ESD Hold';
-        executionList.add(claimFunctionalityNameTriggerExecution1);
-        
-        Database.insert(executionList); 
-        
-        Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', false,'1231231230');
-        bank.Core_MDF_Payment_Currency_Cd__c = 'USD';    
-        bank.Core_MDF_Bank_Status__c='Active';
-        //System.runAs(usr){
-        insert bank;
-        
-        //}
-        Core_MDF_Account_Bank_Mapping__c accountBankMap = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank.Id, true);
-        
-        
-        Test.startTest();
-        
-       
-        PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','Consumer','Desktop','Intel® Corporate Logo','Broadcast (Pre-2025)','Radio','Draft',false);
-           
-        testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
-        testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c ='OEM CMP';
-        testPartnerFundRequestRecord.AllocationId = pfa.Id;
-        testPartnerFundRequestRecord.Status = 'Approved';
-        testPartnerFundRequestRecord.Title = 'indiaActivity';
-		testPartnerFundRequestRecord.Amount = 200;
-        testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c = '50%';
-        
-       
-        insert testPartnerFundRequestRecord;
-           
-        
-        
-        
-        Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
-        List<PartnerFundClaim> claimsToBeInserted = new List<PartnerFundClaim>();
-        List<PartnerFundClaim> claimsToBeUpdated = new List<PartnerFundClaim>();
-        PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 50.00, System.today(), bank.Id, false);
-        //claimsToBeInserted.add(claim1);
-        claim1.Status = Label.Core_MDF_Status_Approved;
-        claim1.Core_MDF_Status__c = Label.Core_MDF_Status_Payment_Due;
-        claimsToBeUpdated.add(claim1);
-        
-        PartnerFundClaim claim2 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim2', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 50.00, System.today(), bank.Id, false);
-        //claimsToBeInserted.add(claim2);
-        claim2.Status = Label.Core_MDF_Status_Approved;
-        claim2.Core_MDF_Criteria_Hold_Ind__c = true;
-        claim2.Core_MDF_Intel_Manual_Hold_Ind__c =true;
-        claim2.Core_MDF_Status__c = 'hold';        
-        claimsToBeUpdated.add(claim2);  
-        
-        //Database.insert(claimsToBeInserted); 
-       
-        
-        PartnerFundClaim claim3 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim3', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), -50.00, System.today(), bank.Id, false);
-        claim3.Status = Label.Core_MDF_Status_Submitted;
-        claim3.Core_MDF_Status__c = Label.Core_MDF_Status_Pending_Available_Fund;
-        claim3.Core_MDF_Type_Txt__c = Label.Core_MDF_Claim_Type_to_be_excluded;
-        claimsToBeUpdated.add(claim3);
-        Database.upsert(claimsToBeUpdated);
-        
-        Test.stopTest();
-        
-        Core_MDF_Configuration__c config8 = new Core_MDF_Configuration__c();
-        config8.Core_MDF_Value__c = 'Core_MDF_CCP_RMF_Internal_Claim_Operations';
-        config8.Name = 'PRC_CLAIM_OPERATION_CUSTOM_PERMISSION';
-        insert config8;
-        Core_MDF_Configuration__c config9 = new Core_MDF_Configuration__c();
-        config9.Core_MDF_Value__c = 'Core_MDF_CCP_Internal_CSC_Claim_Submitter';
-        config9.Name = 'CSC_CLAIM_SUBMITTER_CUSTOM_PERMISSION';
-        insert config9;
+            pbm.IsIgnoreValidation = true;
+            update pbm;
+            
+            PartnerFundAllocation pfa = [Select id, Amount from PartnerFundAllocation where BudgetId =: pbm.Id and Title='Test PFA' limit 1];
+            
+            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 12','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today().addDays(-2), System.today().addDays(300), 100000, 'Always Connected PC', acc2.Id,'Desktop', false);
+            camp.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
+            camp.Core_MDF_Budget_Amount_amt__c = 1000000;
+            camp.Core_MDF_Total_Campaign_Cost_Amt__c = 1000000;
+            insert(camp);    
+            
+            List<Core_Trigger_Executions__c> executionList = new List<Core_Trigger_Executions__c>();
+            Core_Trigger_Executions__c claimFunctionalityNameTriggerExecution = new Core_Trigger_Executions__c();
+            claimFunctionalityNameTriggerExecution.Core_Active__c = true;
+            claimFunctionalityNameTriggerExecution.Core_Class_Name__c = 'Core_MDF_ProcessCCP_Claim';
+            claimFunctionalityNameTriggerExecution.Core_Trigger_Events__c = 'after insert';
+            claimFunctionalityNameTriggerExecution.Core_Object__c = 'PartnerFundClaim';
+            claimFunctionalityNameTriggerExecution.Name = 'fundReservation';
+            claimFunctionalityNameTriggerExecution.Core_Description__c = 'description';
+            executionList.add(claimFunctionalityNameTriggerExecution);
+            Core_Trigger_Executions__c claimFunctionalityNameTriggerExecution2 = new Core_Trigger_Executions__c();
+            claimFunctionalityNameTriggerExecution2.Core_Active__c = true;
+            claimFunctionalityNameTriggerExecution2.Core_Class_Name__c = 'Core_MDF_ProcessCCP_Claim';
+            claimFunctionalityNameTriggerExecution2.Core_Trigger_Events__c = 'before insert';
+            claimFunctionalityNameTriggerExecution2.Core_Object__c = 'PartnerFundClaim';
+            claimFunctionalityNameTriggerExecution2.Name = 'checkESDHoldAndUpdateClaimStatus';
+            claimFunctionalityNameTriggerExecution2.Core_Description__c = 'check ESD hold for the bank selected on Claim and change Claim status to Hold if it is on ESD Hold';
+            executionList.add(claimFunctionalityNameTriggerExecution2);
+            Core_Trigger_Executions__c claimFunctionalityNameTriggerExecution1 = new Core_Trigger_Executions__c();
+            claimFunctionalityNameTriggerExecution1.Core_Active__c = true;
+            claimFunctionalityNameTriggerExecution1.Core_Class_Name__c = 'Core_MDF_ProcessCCP_Claim';
+            claimFunctionalityNameTriggerExecution1.Core_Trigger_Events__c = 'before insert';
+            claimFunctionalityNameTriggerExecution1.Core_Object__c = 'PartnerFundClaim';
+            claimFunctionalityNameTriggerExecution1.Name = 'duplicateClaimCheck';
+            claimFunctionalityNameTriggerExecution1.Core_Description__c = 'check ESD hold for the bank selected on Claim and change Claim status to Hold if it is on ESD Hold';
+            executionList.add(claimFunctionalityNameTriggerExecution1);
+            
+            Database.insert(executionList); 
+            
+            Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(acc1.Id, 'Core_MDF_Client_CoMarketing_Fund', false,'1231231230');
+            bank.Core_MDF_Payment_Currency_Cd__c = 'USD';    
+            bank.Core_MDF_Bank_Status__c='Active';
+            //System.runAs(usr){
+            insert bank;
+            
+            //}
+            // Highlight: Unused Local Variable
+            // Core_MDF_Account_Bank_Mapping__c accountBankMap = Core_MDF_CCP_TestDataUtility.createAccountBankMap(acc2.Id, bank.Id, true);
+            
+            
+            Test.startTest();
+            
+            
+            PartnerFundRequest testPartnerFundRequestRecord = Core_MDF_CCP_TestDataUtility.createPartnerFundRequest(camp.id,Core_MDF_CCP_TestDataUtility.PartnerFund_RecordType_CCF,acc2.Id,pfa,pbm,'ALBANIA','','Desktop','Intel® Corporate Logo','Broadcast','Radio','Draft',false);
+            
+            testPartnerFundRequestRecord.Amount = testPartnerFundRequestRecord.RequestedAmount;
+            testPartnerFundRequestRecord.Core_MDF_Budget_Type_nm__c ='OEM CMP';
+            testPartnerFundRequestRecord.AllocationId = pfa.Id;
+            testPartnerFundRequestRecord.Status = 'Approved';
+            testPartnerFundRequestRecord.Title = 'indiaActivity';
+            testPartnerFundRequestRecord.Amount = 200;
+            testPartnerFundRequestRecord.Core_MDF_Reimbursement_Rate_txt__c = '50%';
+            testPartnerFundRequestRecord.Core_MDF_ActivityCategory__c = 'Video';
+            testPartnerFundRequestRecord.Core_MDF_Activity_Types__c = '';
+            
+            
+            insert testPartnerFundRequestRecord;
+            
+            
+            
+            
+            Core_MDF_CCP_TestDataUtility.createMDFConfigurationData();
+            // Highlight: Unused Local Variable
+            // List<PartnerFundClaim> claimsToBeInserted = new List<PartnerFundClaim>();
+            List<PartnerFundClaim> claimsToBeUpdated = new List<PartnerFundClaim>();
+            PartnerFundClaim claim1 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 50.00, System.today(), bank.Id, false);
+            //claimsToBeInserted.add(claim1);
+            claim1.Status = Label.Core_MDF_Status_Approved;
+            claim1.Core_MDF_Status__c = Label.Core_MDF_Status_Payment_Due;
+            claimsToBeUpdated.add(claim1);
+            
+            PartnerFundClaim claim2 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim2', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), 50.00, System.today(), bank.Id, false);
+            //claimsToBeInserted.add(claim2);
+            claim2.Status = Label.Core_MDF_Status_Approved;
+            claim2.Core_MDF_Criteria_Hold_Ind__c = true;
+            claim2.Core_MDF_Intel_Manual_Hold_Ind__c =true;
+            claim2.Core_MDF_Status__c = 'hold';        
+            claimsToBeUpdated.add(claim2);  
+            
+            //Database.insert(claimsToBeInserted); 
+            
+            
+            PartnerFundClaim claim3 = Core_MDF_CCP_TestDataUtility.createClaim('Test Claim3', Core_MDF_CCP_TestDataUtility.Claim_RecordType_CCF, testPartnerFundRequestRecord.Id, System.today(), System.today(), -50.00, System.today(), bank.Id, false);
+            claim3.Status = Label.Core_MDF_Status_Submitted;
+            claim3.Core_MDF_Status__c = Label.Core_MDF_Status_Pending_Available_Fund;
+            claim3.Core_MDF_Type_Txt__c = Label.Core_MDF_Claim_Type_to_be_excluded;
+            claimsToBeUpdated.add(claim3);
+            Database.upsert(claimsToBeUpdated);
+            
+            Test.stopTest();
+            
+            Core_MDF_Configuration__c config8 = new Core_MDF_Configuration__c();
+            config8.Core_MDF_Value__c = 'Core_MDF_CCP_RMF_Internal_Claim_Operations';
+            config8.Name = 'PRC_CLAIM_OPERATION_CUSTOM_PERMISSION';
+            insert config8;
+            Core_MDF_Configuration__c config9 = new Core_MDF_Configuration__c();
+            config9.Core_MDF_Value__c = 'Core_MDF_CCP_Internal_CSC_Claim_Submitter';
+            config9.Name = 'CSC_CLAIM_SUBMITTER_CUSTOM_PERMISSION';
+            insert config9;
         }
         
     }
@@ -270,13 +278,13 @@ public class Core_MDF_PFC_Cancel_Test {
         Test.startTest();
         
         
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        User sysAdminUser = [SELECT Id,Email from User where Username ='sysadmin.test@example.com' limit 1];
         User extUser = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
         
         System.runAs(sysAdminUser){
             
             PartnerFundClaim claim = [Select Id,Core_MDF_Status__c from PartnerFundClaim where Title = 'Test Claim' limit 1];
-
+            
             
             //System.assertEquals(true, Core_MDF_PFC_Cancel.isClaimEligibleForCancel(claim.Id).claimEligibleForCancel);
             
@@ -310,58 +318,168 @@ public class Core_MDF_PFC_Cancel_Test {
     @isTest static void validateCancelClaim(){ 
         
         Test.startTest();
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        // Highlight: Unused Local Variable
+        // User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
         User clmCaseUser = [SELECT Id,Email from User where Email='clmcase@example.com' limit 1];
-        
-        PartnerFundRequest indiaActivity = [SELECT Title,Core_MDF_Start_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
-        Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
+        // Highlight: Unused Local Variable
+        // PartnerFundRequest indiaActivity = [SELECT Title,Core_MDF_Start_Date__c from PartnerFundRequest where Title='indiaActivity' limit 1];
+        // Core_MDF_Bank__c indiaBank = [Select ID from Core_MDF_Bank__c limit 1];
         
         System.runAs(clmCaseUser){
             PartnerFundClaim indiaClaim = [select id,Core_MDF_Status__c from PartnerFundClaim where Title = 'Test Claim' limit 1];
             /*PartnerFundClaim indiaClaim = Core_MDF_CCP_TestDataUtility.createClaim('India Claim1', Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF, 
-                                                                                   indiaActivity.Id, 
-                                                                                   indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
-                                                                                   101, 
-                                                                                   System.today().addDays(-1), indiaBank.ID, true);
-            */
+indiaActivity.Id, 
+indiaActivity.Core_MDF_Start_Date__c, indiaActivity.Core_MDF_Start_Date__c, 
+101, 
+System.today().addDays(-1), indiaBank.ID, true);
+*/
             indiaClaim.Core_MDF_Status__c = 'PIC Pending';
             update indiaClaim;
             List<Id> claimId = new List<Id>();    
             claimId.add(indiaClaim.Id);
             
             //if(Core_MDF_PFC_Cancel.isClaimEligibleForCancel(indiaClaim.Id).claimEligibleForCancel){
-                Core_MDF_PFC_Cancel.cancelClaims(claimId);
+            System.assertEquals(
+                true,
+                Core_MDF_PFC_Cancel.cancelClaimsWithReason(claimId, 'test'),
+                'Cancellation should report success'
+            );
             //}
             //PartnerFundClaim claimUpdated = [Select Id,Core_MDF_Status__c,Status from PartnerFundClaim where Title = 'India Claim' limit 1];
             //System.assertEquals(Label.Core_MDF_Status_Cancelled, indiaClaim.Core_MDF_Status__c);
             //System.assertEquals(Label.Core_MDF_Status_Rejected, indiaClaim.Status);
+            
+            // Unit Test Method should include System.Assert
+            System.assertEquals(1, claimId.size(), 'Claim ID list should contain one claim');
+            System.assertEquals(indiaClaim.Id, claimId[0], 'Claim ID should match the updated claim');
         }
+        
+        PartnerFundClaim cancelledClaim = [
+            SELECT Core_MDF_Status__c, Core_MDF_Claim_Cancellation_Reason_txt__c
+            FROM PartnerFundClaim
+            WHERE Title = 'Test Claim'
+            LIMIT 1
+        ];
+        System.assertEquals(
+            Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Cancelled'),
+            cancelledClaim.Core_MDF_Status__c,
+            'The claim status should be changed to Cancelled'
+        );
+        System.assertEquals(
+            'test',
+            cancelledClaim.Core_MDF_Claim_Cancellation_Reason_txt__c,
+            'The cancellation reason should be saved on the claim'
+        );
         Test.stopTest();
     }
     
-    @isTest static void testHoldIndicator()
-    {
-        Test.startTest();
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        System.runAs(sysAdminUser)
-        {
-            PartnerFundClaim claim = [Select Id,Core_MDF_Audit_Hold__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Status__c from PartnerFundClaim where Title = 'Test Claim2' limit 1]; 
-            boolean result = Core_MDF_PFC_Cancel.isClaimOnHold(claim);
-            System.assertEquals(result, false);          
-        }
-        Test.stopTest();
+    private static Core_MDF_PFC_Cancel.CancellationDecision getPartnerCancellationDecision(
+        PartnerFundClaim claim
+    ) {
+        return Core_MDF_PFC_Cancel.getCancellationDecision(
+            claim,
+            null,
+            true,
+            new List<String>{ Label.Core_MDF_Status_Hold, Label.Core_MDF_Status_Payment_Due },
+            'Partner',
+            'Partner',
+            false,
+            false
+        );
     }
-    @isTest static void testHoldIndicatorFail()
-    {
-        Test.startTest();
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
-        System.runAs(sysAdminUser)
-        {
-            PartnerFundClaim claim = [Select Id,Core_MDF_Audit_Hold__c,Core_MDF_VAT_Hold_Ind__c,Core_MDF_Document_Hold_Ind__c,Core_MDF_Intel_Manual_Hold_Ind__c,Core_MDF_Criteria_Hold_Ind__c,Core_MDF_Member_Manual_Hold_Ind__c,Core_MDF_ESD_Hold__c,Core_MDF_Payment_Hold_ind__c,Core_MDF_Status__c from PartnerFundClaim where Title = 'Test Claim' limit 1]; 
-            boolean result = Core_MDF_PFC_Cancel.isClaimOnHold(claim);
-            System.assertEquals(result, false);             
-        }
-        Test.stopTest();
+    
+    @isTest static void cancellationDecisionDistinguishesHoldsAndReasons() {
+        PartnerFundClaim claim = new PartnerFundClaim(
+            Core_MDF_Status__c = Label.Core_MDF_Status_Hold,
+            Core_MDF_Bank_Doc_Hold_Ind__c = false,
+            Core_MDF_Payment_Hold_ind__c = false,
+            Core_MDF_ESD_Hold__c = false,
+            Core_MDF_VAT_Hold_Ind__c = false,
+            Core_MDF_Intel_Manual_Hold_Ind__c = false,
+            Core_MDF_Member_Manual_Hold_Ind__c = false,
+            Core_MDF_Criteria_Hold_Ind__c = false,
+            Core_MDF_Document_Hold_Ind__c = false
+        );
+        
+        Core_MDF_PFC_Cancel.CancellationDecision decision =
+            getPartnerCancellationDecision(claim);
+        System.assertEquals(true, decision.claimEligibleForCancel);
+        System.assertEquals(false, decision.requiresCancellationReason);
+        
+        claim.Core_MDF_Payment_Hold_ind__c = true;
+        decision = getPartnerCancellationDecision(claim);
+        System.assertEquals(true, decision.claimEligibleForCancel);
+        System.assertEquals(true, decision.requiresCancellationReason);
+        
+        claim.Core_MDF_Payment_Hold_ind__c = false;
+        claim.Core_MDF_ESD_Hold__c = true;
+        decision = getPartnerCancellationDecision(claim);
+        System.assertEquals(true, decision.claimEligibleForCancel);
+        System.assertEquals(true, decision.requiresCancellationReason);
+        
+        claim.Core_MDF_ESD_Hold__c = false;
+        claim.Core_MDF_Bank_Doc_Hold_Ind__c = true;
+        decision = getPartnerCancellationDecision(claim);
+        System.assertEquals(true, decision.claimEligibleForCancel);
+        System.assertEquals(true, decision.requiresCancellationReason);
+        
+        claim.Core_MDF_Criteria_Hold_Ind__c = true;
+        decision = getPartnerCancellationDecision(claim);
+        System.assertEquals(false, decision.claimEligibleForCancel);
+        System.assertEquals(true, decision.requiresCancellationReason);
+        
+        claim.Core_MDF_Status__c = Label.Core_MDF_Status_Payment_Due;
+        decision = getPartnerCancellationDecision(claim);
+        System.assertEquals(true, decision.claimEligibleForCancel);
+        System.assertEquals(false, decision.requiresCancellationReason);
+        
+        claim.Core_MDF_Status__c = Label.Core_MDF_Status_Hold;
+        claim.Core_MDF_Criteria_Hold_Ind__c = true;
+        decision = Core_MDF_PFC_Cancel.getCancellationDecision(
+            claim,
+            null,
+            true,
+            new List<String>{ Label.Core_MDF_Status_Hold },
+            'Standard',
+            'Partner',
+            false,
+            false
+        );
+        System.assertEquals(true, decision.claimEligibleForCancel);
+        System.assertEquals(false, decision.requiresCancellationReason);
+        
+        claim.Core_MDF_Criteria_Hold_Ind__c = false;
+        claim.Core_MDF_Audit_Hold__c = true;
+        decision = getPartnerCancellationDecision(claim);
+        System.assertEquals(false, decision.claimEligibleForCancel);
+        System.assertEquals(true, decision.claimSelectedForAudit);
+        
+        claim.Core_MDF_Audit_Hold__c = false;
+        decision = Core_MDF_PFC_Cancel.getCancellationDecision(
+            claim,
+            null,
+            false,
+            new List<String>{ Label.Core_MDF_Status_Hold },
+            'Standard',
+            'Partner',
+            false,
+            false
+        );
+        System.assertEquals(false, decision.claimEligibleForCancel);
+        System.assertEquals(false, decision.claimHasRecovery);
+        
+        decision = Core_MDF_PFC_Cancel.getCancellationDecision(
+            claim,
+            null,
+            true,
+            new List<String>{ Label.Core_MDF_Status_Payment_Due },
+            'Standard',
+            'Partner',
+            false,
+            false
+        );
+        System.assertEquals(false, decision.claimEligibleForCancel);
+        System.assertEquals(false, decision.claimHasRecovery);
     }
     
     @isTest static void validateNegativeClaim(){ 
@@ -369,26 +487,15 @@ public class Core_MDF_PFC_Cancel_Test {
         Test.startTest();
         
         Set<Id> pfcSet = new Set<Id>();
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        User claimOwner = [SELECT Id FROM User WHERE Email='test2@example.com' LIMIT 1];
         User extUser = [SELECT Id,Email from User where Email='test2@intel.com' limit 1];
         
-        Group grp = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_MDF_CCP_Claim_Case_Reviewer_Q_Group'];
-        Group grp2 = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_All_Users_CCP_Internal'];
-        
-        System.runAs(sysAdminUser){
+        System.runAs(claimOwner){
             
             PermissionSet claimCaseReviewerPermissionSet = [SELECT Id, Name FROM PermissionSet where Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager'];        
             PermissionSetAssignment  psa = new PermissionSetAssignment(PermissionSetId = claimCaseReviewerPermissionSet.Id, AssigneeId = extUser.Id);
             insert psa;
             
-            
-            GroupMember grpMem = new GroupMember();
-            grpMem.GroupId = grp.Id;
-            grpMem.UserOrGroupId = extUser.Id;
-            GroupMember grpMem2 = new GroupMember();
-            grpMem2.GroupId = grp2.Id;
-            grpMem2.UserOrGroupId = extUser.Id;
-            Database.insert(grpMem2);
             
             PartnerFundClaim claim = [Select Id,Core_MDF_Status__c from PartnerFundClaim where Title = 'Test Claim3' limit 1];
             claim.Core_MDF_Invoice_Date__c = System.today().addDays(-1);
@@ -411,6 +518,18 @@ public class Core_MDF_PFC_Cancel_Test {
             
             System.assertEquals(false, Core_MDF_PFC_Cancel.isClaimEligibleForCancel(String.valueOf(claim.Id)).restrictClaimOperator);
             Core_MDF_PFC_Cancel.cancelVatInformation(pfcSet);
+            
+            Core_MDF_Claim_VAT_Info__c cancelledVatInfo = [
+                SELECT Core_MDF_Status_Txt__c
+                FROM Core_MDF_Claim_VAT_Info__c
+                WHERE Core_MDF_Claim_Id__c = :claim.Id
+                LIMIT 1
+            ];
+            System.assertEquals(
+                Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Status_Cancelled'),
+                cancelledVatInfo.Core_MDF_Status_Txt__c,
+                'VAT information for the claim should be cancelled'
+            );
         } 
         
         Test.stopTest();
@@ -421,26 +540,15 @@ public class Core_MDF_PFC_Cancel_Test {
         Test.startTest();
         
         
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        User claimOwner = [SELECT Id FROM User WHERE Email='test2@example.com' LIMIT 1];
         User extUser = [SELECT Id,Email from User where Email='test2@intel.com' limit 1];
         
-        Group grp = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_MDF_CCP_Claim_Case_Reviewer_Q_Group'];
-        Group grp2 = [SELECT Id, Name, DeveloperName FROM Group where DeveloperName = 'Core_All_Users_CCP_Internal'];
-        
-        System.runAs(sysAdminUser){
+        System.runAs(claimOwner){
             
             PermissionSet claimCaseReviewerPermissionSet = [SELECT Id, Name FROM PermissionSet where Name = 'Core_MDF_CCP_Internal_Claim_Case_Reviewer_Manager'];        
             PermissionSetAssignment  psa = new PermissionSetAssignment(PermissionSetId = claimCaseReviewerPermissionSet.Id, AssigneeId = extUser.Id);
             insert psa;
             
-            
-            GroupMember grpMem = new GroupMember();
-            grpMem.GroupId = grp.Id;
-            grpMem.UserOrGroupId = extUser.Id;
-            GroupMember grpMem2 = new GroupMember();
-            grpMem2.GroupId = grp2.Id;
-            grpMem2.UserOrGroupId = extUser.Id;
-            Database.insert(grpMem2);
             
             PartnerFundClaim claim = [Select Id,Core_MDF_Status__c from PartnerFundClaim where Title = 'Test Claim' limit 1];
             
@@ -469,18 +577,21 @@ public class Core_MDF_PFC_Cancel_Test {
         Test.startTest();
         
         
-        User sysAdminUser = [SELECT Id,Email from User where Email='sysadmin@example.com' limit 1];
+        User sysAdminUser = [SELECT Id,Email from User where Username ='sysadmin.test@example.com' limit 1];
         User extUser = [SELECT Id,Email from User where Email='test1@example.com' limit 1];
         
         System.runAs(sysAdminUser){
             
-            PartnerFundClaim claim = [Select Id,Core_MDF_Status__c from PartnerFundClaim where Title = 'Test Claim' limit 1];
+            //PartnerFundClaim claim = [Select Id,Core_MDF_Status__c from PartnerFundClaim where Title = 'Test Claim' limit 1]; //Pic-Pop Changes Anushya
+            PartnerFundClaim claim = [Select Id,Core_MDF_Status__c,Core_MDF_OutcomeBased_Ind__c from PartnerFundClaim where Title = 'Test Claim' limit 1]; //Pic-Pop Changes Anushya
             
             
             //System.assertEquals(true, Core_MDF_PFC_Cancel.isClaimEligibleForCancel(claim.Id).claimEligibleForCancel);
             
             //claim.Core_MDF_Criteria_Hold_Ind__c = true;
-            claim.Core_MDF_Status__c = Label.Core_MDF_Claim_Status_PIC_Pending;
+            //claim.Core_MDF_Status__c = Label.Core_MDF_Claim_Status_PIC_Pending; //Pic-Pop Changes Anushya
+            claim.Core_MDF_Status__c = claim.Core_MDF_OutcomeBased_Ind__c ? Label.Core_MDF_Claim_Status_Payment_Clearance_Processing : Label.Core_MDF_Claim_Status_PIC_Pending; //Pic-Pop Changes Anushya
+            
             claim.Status = Label.Core_MDF_Status_Submitted;
             claim.Core_MDF_Invoice_Date__c = System.today().addDays(-1);
             update claim;  
@@ -504,6 +615,163 @@ public class Core_MDF_PFC_Cancel_Test {
         } 
         
         Test.stopTest();
+    }
+    
+    @isTest static void holdAndIrreversibleSubClaimHelpersHandleTheirInputs() {
+        Set<String> holdFields = new Set<String>{
+            'Core_MDF_Bank_Doc_Hold_Ind__c',
+                'Core_MDF_VAT_Hold_Ind__c'
+                };
+                    PartnerFundClaim noHolds = new PartnerFundClaim(
+                        Core_MDF_Bank_Doc_Hold_Ind__c = false,
+                        Core_MDF_VAT_Hold_Ind__c = false
+                    );
+        PartnerFundClaim bankDocumentHold = new PartnerFundClaim(
+            Core_MDF_Bank_Doc_Hold_Ind__c = true,
+            Core_MDF_VAT_Hold_Ind__c = false
+        );
+        
+        System.assertEquals(false, Core_MDF_PFC_Cancel.hasAnyHold(null, holdFields));
+        System.assertEquals(false, Core_MDF_PFC_Cancel.hasAnyHold(noHolds, holdFields));
+        System.assertEquals(true, Core_MDF_PFC_Cancel.hasAnyHold(bankDocumentHold, holdFields));
+        System.assertEquals(false, Core_MDF_PFC_Cancel.hasAnyClaimHold(null, holdFields));
+        System.assertEquals(
+            false,
+            Core_MDF_PFC_Cancel.hasAnyClaimHold(new List<PartnerFundClaim>(), holdFields)
+        );
+        System.assertEquals(
+            false,
+            Core_MDF_PFC_Cancel.hasAnyClaimHold(
+                new List<PartnerFundClaim>{ noHolds, null },
+                holdFields
+            )
+        );
+        System.assertEquals(
+            true,
+            Core_MDF_PFC_Cancel.hasAnyClaimHold(
+                new List<PartnerFundClaim>{ noHolds, bankDocumentHold },
+                holdFields
+            )
+        );
+        
+        System.assertEquals(false, Core_MDF_PFC_Cancel.hasIrreversibleSubClaim(null));
+        System.assertEquals(
+            false,
+            Core_MDF_PFC_Cancel.hasIrreversibleSubClaim(new List<PartnerFundClaim>())
+        );
+        System.assertEquals(
+            false,
+            Core_MDF_PFC_Cancel.hasIrreversibleSubClaim(
+                new List<PartnerFundClaim>{ null }
+            )
+        );
+        System.assertEquals(
+            false,
+            Core_MDF_PFC_Cancel.hasIrreversibleSubClaim(
+                new List<PartnerFundClaim>{
+                    new PartnerFundClaim(
+                        Core_MDF_Status__c = 'definitely-not-an-irreversible-status'
+                    )
+                        }
+            )
+        );
+        
+        List<String> irreversibleStatuses =
+            Core_MDF_CustomLabelConfig.getTextList('Core_MDF_IrreversibleSubClaimStatuses');
+        if (!irreversibleStatuses.isEmpty() && String.isNotBlank(irreversibleStatuses[0])) {
+            PartnerFundClaim irreversibleSubClaim = new PartnerFundClaim(
+                Core_MDF_Status__c = irreversibleStatuses[0]
+            );
+            System.assertEquals(
+                true,
+                Core_MDF_PFC_Cancel.hasIrreversibleSubClaim(
+                    new List<PartnerFundClaim>{ null, irreversibleSubClaim }
+                )
+            );
+        }
+    }
+    
+    @isTest static void activeSubClaimQueryReturnsRelatedClaims() {
+        PartnerFundClaim superClaim = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test Claim' LIMIT 1];
+        PartnerFundClaim subClaim = [SELECT Id FROM PartnerFundClaim WHERE Title = 'Test Claim2' LIMIT 1];
+        subClaim.Core_MDF_Claim_Id__c = superClaim.Id;
+        update subClaim;
+        
+        Core_MDF_PFC_Cancel.cancelClaimInnerClass cancellationService =
+            new Core_MDF_PFC_Cancel.cancelClaimInnerClass();
+        List<PartnerFundClaim> activeSubClaims =
+            cancellationService.getActiveSubClaims(superClaim.Id);
+        
+        System.assertEquals(1, activeSubClaims.size(), 'The related sub-claim should be returned');
+        System.assertEquals(subClaim.Id, activeSubClaims[0].Id);
+        System.assertEquals(
+            0,
+            cancellationService.getActiveSubClaims(null).size(),
+            'A null super-claim ID should return an empty list'
+        );
+    }
+
+    @isTest static void partnerSuperClaimBlocksAllConfiguredHoldFieldsOnSubClaims() {
+        PartnerFundClaim superClaim = [
+            SELECT Id, Core_MDF_Type_Txt__c, Core_MDF_Status__c,
+                Core_MDF_Has_Sub_Claims_Ind__c, Core_MDF_Audit_Hold__c,
+                Core_MDF_Claim_Review_Case__c, Core_MDF_Total_Claim_Recovery_Amount__c,
+                Core_MDF_Bank_Doc_Hold_Ind__c, Core_MDF_Payment_Hold_ind__c,
+                Core_MDF_ESD_Hold__c, Core_MDF_VAT_Hold_Ind__c,
+                Core_MDF_Intel_Manual_Hold_Ind__c, Core_MDF_Member_Manual_Hold_Ind__c,
+                Core_MDF_Criteria_Hold_Ind__c, Core_MDF_Document_Hold_Ind__c
+            FROM PartnerFundClaim
+            WHERE Title = 'Test Claim'
+            LIMIT 1
+        ];
+        PartnerFundClaim subClaim = [
+            SELECT Id
+            FROM PartnerFundClaim
+            WHERE Title = 'Test Claim2'
+            LIMIT 1
+        ];
+        superClaim.Core_MDF_Status__c = Label.Core_MDF_Status_Hold;
+        superClaim.Core_MDF_Has_Sub_Claims_Ind__c = true;
+        update superClaim;
+
+        subClaim.Core_MDF_Claim_Id__c = superClaim.Id;
+        subClaim.Core_MDF_Intel_Manual_Hold_Ind__c = true;
+        update subClaim;
+
+        Core_MDF_PFC_Cancel.CancellationDecision decision =
+            Core_MDF_PFC_Cancel.getCancellationDecision(
+                superClaim,
+                superClaim.Id,
+                true,
+                new List<String>{ Label.Core_MDF_Status_Hold },
+                'Partner',
+                'Partner',
+                false,
+                false
+            );
+
+        System.assertEquals(
+            false,
+            decision.claimEligibleForCancel,
+            'An Intel manual hold on a sub-claim should block superclaim cancellation'
+        );
+        System.assertEquals(true, decision.isSuperClaimOnHold);
+
+        decision = Core_MDF_PFC_Cancel.getCancellationDecision(
+            superClaim,
+            superClaim.Id,
+            true,
+            new List<String>{ Label.Core_MDF_Status_Hold },
+            'Standard',
+            'Partner',
+            false,
+            false
+        );
+        System.assertEquals(
+            true,
+            decision.isSuperClaimOnHold,
+            'Internal users should also receive the superclaim-on-hold indicator'
+        );
     }
     
 }

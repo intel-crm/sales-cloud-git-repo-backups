@@ -12,13 +12,13 @@ public with sharing class Core_MDF_KPI_FieldsTest {
         
         System.runAs(testUser){
             
-            ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram ('Intel Partner Alliance','Intel Partner Alliance', true);
+            ChannelProgram retailCP = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
             
-            Account ipaIntelAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test IPA Intel Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
-            ipaIntelAcc.Core_Geo__c = 'APJ';
-            insert ipaIntelAcc;
+            Account retailIntelAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount('Test Retail Intel Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
+            retailIntelAcc.Core_Geo__c = 'APJ';
+            insert retailIntelAcc;
             
-            Account masterAcc = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Master Account', ipaCP.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, ipaIntelAcc.Id, false);
+            Account masterAcc = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('Test Master Account', retailCP.Id, Core_MDF_CCP_TestDataUtility.Account_Record_Type, retailIntelAcc.Id, false);
             masterAcc.Core_Geo__c = 'APJ';
             masterAcc.Core_Sub_Geo__c = 'IJKK';
             insert masterAcc;
@@ -43,18 +43,19 @@ public with sharing class Core_MDF_KPI_FieldsTest {
             
             List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
-            PartnerMarketingBudget ipaBudget = Core_MDF_CCP_TestDataUtility.createBudget('TestBudgetData1',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
-                                                                                            masterAcc.id, ipaCP.Id , 10000 , System.today()-60 , System.today() + 60 , false);
-            ipaBudget.IsIgnoreValidation = true;
-            insert ipaBudget;
-            ipaBudget.Core_MDF_Budget_Status__c = 'Released';
-            update ipaBudget;
+            PartnerMarketingBudget retailBudget = Core_MDF_CCP_TestDataUtility.createBudget('TestBudgetData1',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
+                                                                                            masterAcc.id, retailCP.Id , 10000 , System.today()-60 , System.today() + 60 , false);
+            retailBudget.IsIgnoreValidation = true;
+            insert retailBudget;
+            retailBudget.Core_MDF_Budget_Status__c = 'Released';
+            update retailBudget;
             
             Profile ccpCoreAccessProfile = [SELECT Id FROM Profile WHERE Name='CCP - Core Access' LIMIT 1];
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' limit 1];
             PermissionSet aacntMngrPS = [SELECT Id, Name FROM PermissionSet WHERE Name='Core_MDF_CCP_Internal_Retail_Account_Manager' LIMIT 1];
+
             
-            Contact con  = Core_MDF_CCP_TestDataUtility.createContact(ipaIntelAcc.Id, true);
+            Contact con  = Core_MDF_CCP_TestDataUtility.createContact(retailIntelAcc.Id, true);
             User usrBudgetAdmin = Core_MDF_CCP_TestDataUtility.createUser(false);
             usrBudgetAdmin.LastName = 'Budget Admin';
             usrBudgetAdmin.ContactId = con.Id;
@@ -75,21 +76,21 @@ public with sharing class Core_MDF_KPI_FieldsTest {
             assignPermissionSetObj.PermissionSetId = aacntMngrPS.Id;
             Database.insert(assignPermissionSetObj);
             
-            Campaign ipaCampaign = Core_MDF_CCP_TestDataUtility.createCampaign('Test IPA Camp 1','Mainstream Consumer - Knowledge','10ᵗʰ Gen Core', 'Yes',
+            Campaign retailCampaign = Core_MDF_CCP_TestDataUtility.createCampaign('Test Retail Camp 1','Mainstream Consumer - Knowledge','10ᵗʰ Gen Core', 'Yes',
                                                                                   Core_MDF_CCP_TestDataUtility.campaign_RecordType_Retail, 
-                                                                                  'Intel_Partner_Alliance', System.today(),
+                                                                                  'Retail_Marketing_Funds', System.today(),
                                                                                   System.today()+300, 10000, 'Instore merchandise', 
                                                                                   masterAcc.Id,'2-in-1', false);
             
-            ipaCampaign.RecordTypeId = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Intel_Partner_Alliance').getRecordTypeId();
-            ipaCampaign.Core_MDF_Activity_Category_Type__c =null;
-            ipaCampaign.Core_MDF_Program__c = 'Intel Partner Alliance';
-            ipaCampaign.Core_MDF_Reimbursement_Rate__c='100%';
-            ipaCampaign.Core_MDF_Technology__c = '';
-            insert ipaCampaign;
+            retailCampaign.RecordTypeId = Schema.SObjectType.Campaign.getRecordTypeInfosByDeveloperName().get('Core_MDF_Retail_Marketing_Funds').getRecordTypeId();
+            retailCampaign.Core_MDF_Activity_Category_Type__c =null;
+            retailCampaign.Core_MDF_Program__c = 'Retail Marketing Funds';
+            retailCampaign.Core_MDF_Reimbursement_Rate__c='100%';
+            retailCampaign.Core_MDF_Technology__c = 'ACPC';
+            insert retailCampaign;
             
             test.startTest();
-            Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(ipaIntelAcc.Id, 'Core_MDF_Intel_Partner_Alliance', false,'1231231230');
+            Core_MDF_Bank__c bank = Core_MDF_CCP_TestDataUtility.createBank(retailIntelAcc.Id, 'Core_MDF_Retail_Marketing_Funds', false,'1231231230');
             bank.Core_MDF_Bank_Alias_Name__c='TestActiveBank1';
             bank.Core_MDF_Intel_Company_Code__c='150';
             bank.Core_MDF_Tax_codes_cd__c = 'I0';
@@ -97,6 +98,7 @@ public with sharing class Core_MDF_KPI_FieldsTest {
             bank.Core_MDF_Bank_Status__c = 'Active'; 
             Database.update(bank);
             //creating ABM for bank1
+
             test.stopTest();
         }
         
@@ -106,7 +108,7 @@ public with sharing class Core_MDF_KPI_FieldsTest {
     static void runKPIFromMetaData(){
         
         User usr = [select id,email from User where email='testUsercoreMDF@intel.com' Limit 1];
-        string program = 'Intel Partner Alliance';
+        string program = 'Retail Marketing Funds';
         string objectName = 'PartnerFundRequest';
         Test.startTest(); 
         System.runAs(usr){
@@ -145,7 +147,6 @@ public with sharing class Core_MDF_KPI_FieldsTest {
                 }
             }
             //Assert.areEqual(true, successCount>0, 'successCount > 0');
-            
             Test.stopTest();  
 
         }
@@ -156,27 +157,27 @@ public with sharing class Core_MDF_KPI_FieldsTest {
     static void runKPIEditAcgMgrAndExtApprover(){
         try{
             User usr = [select id,email from User where email='ccfaccntmngr@example.com' limit 1];
-            string program = 'Intel Partner Alliance';
+            string program = 'Retail Marketing Funds';
             string objectName = 'PartnerFundRequest';
             PartnerFundRequest pfr = new PartnerFundRequest();
             List<Core_MDF_KPI_FieldsController.KPIAttributes> kpiResultList = new List<Core_MDF_KPI_FieldsController.KPIAttributes>();
             
             Test.startTest(); 
             System.runAs(usr){
-                Campaign camp = [select id,Name from Campaign WHERE Name = 'Test IPA Camp 1' LIMIT 1];
+                Campaign camp = [select id,Name from Campaign WHERE Name = 'Test Retail Camp 1' LIMIT 1];
                 Account accCoMarketing = [select id from Account WHERE Name = 'Test Master Account'];
                 pfr = Core_MDF_CCP_TestDataUtility.createRetailActivity(string.valueof(camp.Id),string.valueof(accCoMarketing.id),System.today()+3,System.today()+13,false); 
                 
                 pfr.Core_MDF_Fund_Request_Status__c = 'Pending Review';
-                pfr.Title = 'Test IPA Activity';
-                pfr.Core_MDF_Activity_Description__c = 'Test IPA Activity';
+                pfr.Title = 'Test Retail Activity';
+                pfr.Core_MDF_Activity_Description__c = 'Test Retail Activity';
                 pfr.Core_MDF_Channel_Partner_Led__c = false;
                 pfr.Core_MDF_Budget_Amount_Local_amt__c=100;
                 pfr.Core_MDF_Budget_Currency_cd__c='USD';
                 pfr.Core_MDF_Metrics_txt__c = '123';
                 insert pfr;
                 
-                pfr = [select id,Core_MDF_ActivityCategory__c,Core_MDF_Activity_Types__c from partnerfundrequest where title = 'Test IPA Activity' limit 1];
+                pfr = [select id,Core_MDF_ActivityCategory__c,Core_MDF_Activity_Types__c from partnerfundrequest where title = 'Test Retail Activity' limit 1];
                 InputValues inputValues = new InputValues();
                 inputValues.activityCategory = pfr.Core_MDF_ActivityCategory__c;
                 inputValues.activityType = pfr.Core_MDF_Activity_Types__c;

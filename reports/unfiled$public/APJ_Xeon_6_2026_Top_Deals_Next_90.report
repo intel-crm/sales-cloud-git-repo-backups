@@ -140,11 +140,11 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_KPI_Quantity__c</column>
+            <column>OPP_QUANTITY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>250</value>
+            <value>500</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

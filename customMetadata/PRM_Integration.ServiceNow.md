@@ -4,15 +4,15 @@
     <protected>false</protected>
     <values>
         <field>API_Key__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/v1/auth/token</value>
+        <value xsi:type="xsd:string">https://apis-sandbox.intel.com/v1/auth/token</value>
     </values>
     <values>
         <field>EndPointURL__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/itsm/api/now/table/incident</value>
+        <value xsi:type="xsd:string">https://apis-sandbox.intel.com/itsm/api/now/table/incident</value>
     </values>
     <values>
         <field>Password__c</field>
-        <value xsi:type="xsd:string">Tke8Q~0TQfyikoBGbhjQNBBQmYwHFLyukDzsPagF</value>
+        <value xsi:type="xsd:string">uQY8Q~21JNrbHFNgypDMOXPwwMiNercvIJ5zTaOF</value>
     </values>
     <values>
         <field>Scope__c</field>

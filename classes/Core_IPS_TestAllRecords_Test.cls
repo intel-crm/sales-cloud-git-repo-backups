@@ -42,7 +42,7 @@ public class Core_IPS_TestAllRecords_Test {
         }
         List<Profile> anyProfile = [SELECT Id FROM Profile LIMIT 1];
         return anyProfile.isEmpty() ? null : anyProfile[0].Id;
-    }
+        }
 
     private static Id resolvePermissionSetId(String permissionSetName) {
         List<PermissionSet> permissionSets = [SELECT Id, Name FROM PermissionSet WHERE Name = :permissionSetName LIMIT 1];
@@ -354,10 +354,10 @@ public class Core_IPS_TestAllRecords_Test {
 
             Id partnerFaePermissionSetId = resolvePermissionSetId('Core_IPS_Partner_FAE_Permission_Set');
             if (partnerFaePermissionSetId != null) {
-                PermissionSetAssignment permissionSetAssignment = new PermissionSetAssignment();
-                permissionSetAssignment.AssigneeId = userRecord.Id;
+            PermissionSetAssignment permissionSetAssignment = new PermissionSetAssignment();
+            permissionSetAssignment.AssigneeId = userRecord.Id;
                 permissionSetAssignment.PermissionSetId = partnerFaePermissionSetId;
-                insert permissionSetAssignment;
+            insert permissionSetAssignment;
             }
 
             testContact = new Contact(
@@ -569,6 +569,8 @@ public class Core_IPS_TestAllRecords_Test {
 
         Core_IPS_TestAllRecords.getCaseClosed(caseRecord.Id);
         Core_IPS_TestAllRecords.saveNewComment(caseId, visibleTo, comment);
+        Core_IPS_TestAllRecords.Wrapsearchresult wrapperList = Core_IPS_TestAllRecords.getSearchResult('Test');
+        Core_IPS_TestAllRecords.getSearchResult('Test');
     }
 
     @isTest
@@ -1011,5 +1013,137 @@ public class Core_IPS_TestAllRecords_Test {
         } catch (Exception exceptionInstance) {
             assertCaughtException(exceptionInstance, 'Expected isNACCase exception should include a message');
         }
+    }
+    @isTest
+    public static void getSupportedAccount_Test(){
+        Profile profileId = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
+        //User userDetails =[select Id,FirstName, LastName, Email from User limit 1];
+        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        User usr = new User(LastName = 'LIVESTON1',
+                            FirstName='JASON1',
+                            Alias = 'jliv1',
+                            Email = 'jason1.livesto@example.com',
+                            Username = 'jason1.liveston'+Crypto.getRandomLong()+'@asdf.com',
+                            ProfileId = profileId.id,
+                            TimeZoneSidKey = 'GMT',
+                            LanguageLocaleKey = 'en_US',
+                            EmailEncodingKey = 'UTF-8',
+                            LocaleSidKey = 'en_US'
+                           );
+        insert usr;
+System.assertNotEquals(null, usr.Id, 'Id should not be equal');
+        Account newAccount = new Account (
+            name='XYZ',
+            Phone = '+49-12345',
+            BillingStreet = 'Am Tierpark 16',
+            BillingCity = 'Fremont',
+            BillingPostalCode = '54321',
+            BillingState = 'CA',
+            BillingCountry = 'USA',
+            RecordTypeId = recordTypeIdAccount
+        );
+        
+        insert newAccount;        
+        
+        Contact cc = new Contact(  
+            
+            FirstName='Joe',
+            LastName='Schmoe',
+            Email='Joe.Schmoe@test.de',
+            AccountId=newAccount.id,
+            MailingStreet=newAccount.BillingStreet,
+            //Core_IPS_Active__c=true,
+            Core_IPS_Email_Opt_Out__c=false,
+            MailingState = newAccount.BillingState,
+            MailingCity=newAccount.BillingCity,
+            MailingPostalCode=newAccount.BillingPostalCode,
+            MailingCountry = newAccount.BillingCountry,
+            Phone=newAccount.Phone);
+        insert cc;
+        
+        Core_IPS_Project__c pr = new Core_IPS_Project__c();
+        pr.name = 'test';
+        pr.Core_IPS_Enable_ISTasInterested_Parties__c = True;
+        pr.Core_IPS_EnableMemberasInterestedParties__c =True;
+        insert pr;   
+        asset assetProduct=new asset();
+        assetProduct.Name='TestAsset';
+        assetProduct.Core_IPS_Project__c=Pr.Id;
+        insert assetProduct;
+        
+        
+        Core_IPS_Intel_Support_Team__c steam = new Core_IPS_Intel_Support_Team__c();
+        steam.Core_IPS_Project__c = pr.id;   
+        steam.Status__c='Active';
+        steam.Core_IPS_User__c=usr.id;           
+        insert steam;
+        
+        Map<Id,Core_IPS_Intel_Support_Team__c> mapTeam = new Map<Id,Core_IPS_Intel_Support_Team__c>();
+        // mapTeam.put(id,pr.id);  
+        
+        List<Case> caselst = new List<Case>();
+        
+        Case cas = new Case();          
+        cas.Core_IPS_Project_Case__c = pr.id;
+        cas.status = 'open';   
+        cas.AccountId=newAccount.Id;
+        caselst.add(cas);
+        
+        Case cas1 = new Case();          
+        // cas1.Core_IPS_Project_Case__c = pr.id;
+        cas1.status = 'open'; 
+        cas1.AccountId=newAccount.Id;
+        caselst.add(cas1);
+        
+        insert caselst;  
+        
+        List<Core_IPS_Case_Interested_Party__c> Iparty = new List<Core_IPS_Case_Interested_Party__c>(); 
+        
+        Core_IPS_Case_Interested_Party__c party = new Core_IPS_Case_Interested_Party__c();
+        party.User__c = usr.id;
+        party.Case__c = cas.id;
+        party.Contact__c=cc.id;
+        party.Active__c= true ;
+        party.Type__c= 'External';
+        Iparty.add(party);
+        
+        Core_IPS_Case_Interested_Party__c party1 = new Core_IPS_Case_Interested_Party__c();
+        party1.User__c = usr.id;
+        party1.Case__c = cas1.id;
+        party1.Contact__c=cc.id;
+        Iparty.add(party1);   
+        insert Iparty;
+        List<Core_IPS_Project_Member__c> Pmem = new List<Core_IPS_Project_Member__c>();
+        
+        Core_IPS_Project_Member__c mem = new Core_IPS_Project_Member__c();
+        mem.Core_IPS_Project__c = pr.id;
+        mem.Core_User__c = usr.id;
+        mem.Core_IPS_Contact__c = cc.id;
+        mem.Core_Status__c='Active';
+        mem.Core_IPS_Project__c=cas.Core_IPS_Project_Case__c;
+        
+        
+        Pmem.add(mem);
+        //Core_IPS_Project__c =: CaseObj.Core_IPS_Project_Case__c AND Core_Status__c = 'Active' 
+        //AND Core_IPS_Contact__r.Core_IPS_Active__c = true AND Core_IPS_Contact__r.Core_IPS_Email_Opt_Out__c=false
+        Core_IPS_Project_Member__c mem1 = new Core_IPS_Project_Member__c();
+        mem1.Core_IPS_Project__c = pr.id;
+        mem1.Core_User__c = usr.id;
+        mem1.Core_IPS_Contact__c = cc.id;
+        mem1.Core_Status__c='Active';
+        mem1.Core_Status__c='Active';
+        mem1.Core_IPS_Project__c=cas.Core_IPS_Project_Case__c;
+        Pmem.add(mem1);  
+        
+        insert Pmem;
+        Id userId = UserInfo.getUserId();
+        test.startTest();
+        Core_IPS_TestAllRecords.getSupportedAccount(null,usr.id);
+        Core_IPS_TestAllRecords.getSupportedAccount(Pmem[0].id,usr.id);
+        Core_IPS_TestAllRecords.getSupOwnerAndSupAccountforEditCase(caselst[0].id);
+        Core_IPS_TestAllRecords.submitCaseClosureRes(caselst[0]);
+        Core_IPS_TestAllRecords.getProjectStatus(pr.id);
+        Core_IPS_TestAllRecords.getProductStatus(assetProduct.id);
+        test.stopTest();
     }
 }

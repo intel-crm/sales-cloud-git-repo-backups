@@ -19,7 +19,7 @@ Modification Log :
     public static void changeAssetOwner(List<Asset> newList){
         // Venrublity Fix - Refering query to service class 
         // User userRec = [Select Id, Name, isActive from User where alias IN ('iowne')];
-        //sabira syed Vulnerability Fix - Refering query to service class
+        //added by sabira 24-07-2026  
         User userRec = ((List<User>) Core_IPS_QueryService.queryRecords('Select Id, Name, isActive from User where alias IN :aliases', new Map<String,Object>{'aliases' => new List<String>{'iowne'}}))[0];
         for(Asset ast: newList){
             if(userRec.isActive <> false)
@@ -303,10 +303,9 @@ Modification Log :
             //[Processing Project specific Assets only.]
             if(projectIdSet.size() > 0){
                 //FLS check added-Venugopal
-//niyaz commented as part of vulnerability fix
                 //if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
                     //projectById = new Map<Id,Core_IPS_Project__c>([Select id, Core_IPS_GroupId__c,Core_IPS_InternalGroupId__c from Core_IPS_Project__c where id IN: projectIdSet]); //modified by Aayushi to share assets with Intel Support Team US102838
-                //Sabira Syed Venrublity Fix - Refering query to service class
+                
                 String projectQuery = 'SELECT Id, Core_IPS_GroupId__c, Core_IPS_InternalGroupId__c FROM Core_IPS_Project__c WHERE Id IN :projectIdSet';
                 List<Core_IPS_Project__c> projectList = (List<Core_IPS_Project__c>) Core_IPS_QueryService.queryRecords(projectQuery, new Map<String, Object>{ 'projectIdSet' => projectIdSet });
                 projectById = new Map<Id,Core_IPS_Project__c>(projectList);

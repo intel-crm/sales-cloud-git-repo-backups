@@ -123,7 +123,7 @@
         <object>Product_Inbound_Staging_Load__e</object>
         <triggerType>PlatformEvent</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <textTemplates>
         <name>failureEmailBody</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>

@@ -8,7 +8,7 @@ private class Core_MDF_Prop_Based_Camp_Process_Test {
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 1];
         // Creating User with utility class   
         User testUser = Core_MDF_CCP_TestDataUtility.createUser(false);
-        testUser.LastName = 'Test User1';
+        testUser.LastName = 'Test User1'; 
         
         testUser.UserRoleId = usRole.Id;
         

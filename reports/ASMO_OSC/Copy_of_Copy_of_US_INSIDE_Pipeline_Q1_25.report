@@ -80,7 +80,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Copy of Copy of US INSIDE Pipeline Q4-26</name>
+    <name>Copy of Copy of US INSIDE Pipeline Q1-26</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -106,6 +106,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-03-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-01-01</startDate>
     </timeFrameFilter>
 </Report>

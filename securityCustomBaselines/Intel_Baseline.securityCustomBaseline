@@ -12,12 +12,9 @@
         &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;critical&quot; name=&quot;SessionSettings.csrfGet&quot;/&gt;
         &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;critical&quot; name=&quot;SessionSettings.csrfPost&quot;/&gt;
         &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;critical&quot; name=&quot;SessionSettings.requireHttpOnly&quot;/&gt;
-        &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;critical&quot; name=&quot;Identity.mfaEnabled&quot;/&gt;
-        &lt;booleanSetting compliant=&quot;false&quot; nonCompliant=&quot;critical&quot; name=&quot;ExternalClientApps.metadataApiAccess&quot;/&gt;
         &lt;numericRangeSetting compliant=&quot;0.0&quot; warning=&quot;0.5&quot; name=&quot;FileUploadAndDownloadSecurity.hybridSecurityRiskFileTypes&quot;/&gt;
         &lt;numericRangeSetting compliant=&quot;0.0&quot; warning=&quot;1.0&quot; name=&quot;CertificateAndKeyManagement.expiredCert&quot;/&gt;
         &lt;numericRangeSetting compliant=&quot;0.0&quot; warning=&quot;1.0&quot; name=&quot;SharingSettings.orgWideDefaults&quot;/&gt;
-        &lt;numericRangeSetting compliant=&quot;1.0&quot; warning=&quot;0.5&quot; name=&quot;NetworkSecurity.trustedIpRangesConfigured&quot;/&gt;
         &lt;enumSetting compliant=&quot;ThreeAttempts,FiveAttempts,TenAttempts&quot; warning=&quot;NoLimit&quot; name=&quot;PasswordPolicies.maxLoginAttempts&quot;/&gt;
     &lt;/highRiskSecuritySettings&gt;
     &lt;mediumRiskSecuritySettings&gt;
@@ -25,9 +22,9 @@
         &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;warning&quot; name=&quot;SessionSettings.forceRelogin&quot;/&gt;
         &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;warning&quot; name=&quot;SessionSettings.enforceLoginIp&quot;/&gt;
         &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;critical&quot; name=&quot;SessionSettings.cspOnEmail&quot;/&gt;
+        &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;critical&quot; name=&quot;SessionSettings.xssProtection&quot;/&gt;
         &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;critical&quot; name=&quot;SessionSettings.contentSniffingProtection&quot;/&gt;
         &lt;booleanSetting compliant=&quot;false&quot; nonCompliant=&quot;critical&quot; name=&quot;LoginAccessPolicies.adminLoginAsAnyUser&quot;/&gt;
-        &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;critical&quot; name=&quot;SessionSettings.terminateSessionsOnPasswordReset&quot;/&gt;
         &lt;numericRangeSetting compliant=&quot;5.0&quot; warning=&quot;0.0&quot; name=&quot;PasswordPolicies.history&quot;/&gt;
         &lt;numericRangeSetting compliant=&quot;8.0&quot; warning=&quot;6.0&quot; name=&quot;PasswordPolicies.minPasswordLength&quot;/&gt;
         &lt;enumSetting compliant=&quot;ThirtyDays,SixtyDays,NinetyDays&quot; warning=&quot;SixMonths&quot; critical=&quot;OneYear,Never&quot; name=&quot;PasswordPolicies.expiration&quot;/&gt;
@@ -46,13 +43,10 @@
         &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;critical&quot; name=&quot;UserPIISettings.enforceNameVisibility&quot;/&gt;
         &lt;booleanSetting compliant=&quot;false&quot; nonCompliant=&quot;warning&quot; name=&quot;SessionSettings.redirectionAllowUntrusted&quot;/&gt;
         &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;warning&quot; name=&quot;SessionSettings.icOnEmailChange&quot;/&gt;
-        &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;warning&quot; name=&quot;SessionSettings.lockSessionsToIp&quot;/&gt;
-        &lt;booleanSetting compliant=&quot;true&quot; nonCompliant=&quot;critical&quot; name=&quot;Identity.samlEnabled&quot;/&gt;
         &lt;numericRangeSetting compliant=&quot;4096.0&quot; warning=&quot;2048.0&quot; name=&quot;CertificateAndKeyManagement.keySize&quot;/&gt;
         &lt;numericRangeSetting compliant=&quot;180.0&quot; warning=&quot;1.0&quot; name=&quot;CertificateAndKeyManagement.certExpiration&quot;/&gt;
         &lt;numericRangeSetting compliant=&quot;4.0&quot; warning=&quot;9.0&quot; name=&quot;GuestUserAccess.guestEditAccess&quot;/&gt;
         &lt;numericRangeSetting compliant=&quot;4.0&quot; warning=&quot;9.0&quot; name=&quot;GuestUserAccess.guestReadAccess&quot;/&gt;
-        &lt;numericRangeSetting compliant=&quot;5.0&quot; warning=&quot;10.0&quot; name=&quot;AdminUsers.activeSystemAdministratorCount&quot;/&gt;
     &lt;/informationalSecuritySettings&gt;
 &lt;/baseline&gt;</baseline>
     <isDefault>true</isDefault>

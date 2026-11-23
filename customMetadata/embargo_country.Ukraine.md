@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>State_Code__c</field>
-        <value xsi:type="xsd:string">43,14,09,40,65,23</value>
+        <value xsi:type="xsd:string">43,14,09,40</value>
     </values>
     <values>
         <field>State__c</field>

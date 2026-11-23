@@ -243,7 +243,7 @@
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
                 <groupingColumn>ASSIGNED</groupingColumn>
-                <groupingColumn>COMPLETED_DATE_TIME</groupingColumn>
+                <groupingColumn>DUE_DATE</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -254,7 +254,7 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>2026 SLED #EVOKR</header>
+                <header>2026 SLED #EVOKR Count</header>
                 <legendPosition>Right</legendPosition>
                 <report>unfiled$public/X2026_SLED_EVOKR_Count</report>
                 <showPercentage>false</showPercentage>
@@ -289,6 +289,53 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
+                <groupingColumn>DUE_DATE</groupingColumn>
+                <groupingColumn>ASSIGNED</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2026 SLED #MMOKR Count</header>
+                <legendPosition>Right</legendPosition>
+                <report>unfiled$public/X2026_SLED_MMOKR_Count</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>25</rowIndex>
+            <rowSpan>7</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>4</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>ColumnGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>ACCOWNER</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>ASSIGNED</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
                 <groupingColumn>ASSIGNED</groupingColumn>
                 <groupingColumn>DUE_DATE</groupingColumn>
                 <groupingSortProperties>
@@ -311,11 +358,54 @@
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>25</rowIndex>
-            <rowSpan>12</rowSpan>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>3</colSpan>
-            <columnIndex>4</columnIndex>
+            <colSpan>5</colSpan>
+            <columnIndex>7</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Donut</componentType>
+                <dashboardFilterColumns>
+                    <column>ACCOWNER</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>ASSIGNED</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>ASSIGNED</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>2026 SLED #1.5OKR Count</header>
+                <legendPosition>Right</legendPosition>
+                <report>unfiled$public/X2026_SLED_1_5OKR_Count</report>
+                <showPercentage>false</showPercentage>
+                <showTotal>true</showTotal>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>25</rowIndex>
+            <rowSpan>7</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -353,12 +443,12 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>25</rowIndex>
-            <rowSpan>14</rowSpan>
+            <rowIndex>32</rowIndex>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>5</colSpan>
-            <columnIndex>7</columnIndex>
+            <colSpan>3</colSpan>
+            <columnIndex>4</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -400,12 +490,12 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>25</rowIndex>
-            <rowSpan>14</rowSpan>
+            <rowIndex>32</rowIndex>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>0</columnIndex>
+            <colSpan>5</colSpan>
+            <columnIndex>7</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -413,7 +503,7 @@
                     <axisBinding>y</axisBinding>
                     <column>RowCount</column>
                 </chartSummary>
-                <componentType>BarGrouped</componentType>
+                <componentType>Donut</componentType>
                 <dashboardFilterColumns>
                     <column>ACCOWNER</column>
                 </dashboardFilterColumns>
@@ -426,33 +516,30 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>ASSIGNED</groupingColumn>
                 <groupingColumn>DUE_DATE</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
                 </groupingSortProperties>
-                <header>2026 SLED #1.5OKR</header>
+                <header>2026 SLED #1.5OKR Count</header>
                 <legendPosition>Right</legendPosition>
+                <maxValuesDisplayed>6</maxValuesDisplayed>
                 <report>unfiled$public/X2026_SLED_1_5OKR_Count</report>
                 <showPercentage>false</showPercentage>
+                <showTotal>true</showTotal>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>37</rowIndex>
-            <rowSpan>13</rowSpan>
+            <rowIndex>32</rowIndex>
+            <rowSpan>7</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>8</colSpan>
-            <columnIndex>4</columnIndex>
+            <colSpan>12</colSpan>
+            <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -495,7 +582,7 @@
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>39</rowIndex>
-            <rowSpan>10</rowSpan>
+            <rowSpan>14</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>

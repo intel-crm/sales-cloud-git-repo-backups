@@ -1,9 +1,9 @@
-import {LightningElement, api, track} from 'lwc';
 import {
   registerComponentForInit,
   initializeWithHeadless,
   getHeadlessBundle,
 } from 'c/quanticHeadlessLoader';
+import {LightningElement, api, track} from 'lwc';
 
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
 /** @typedef {import("coveo").Tab} Tab */
@@ -23,7 +23,13 @@ export default class QuanticTab extends LightningElement {
    */
   @api engineId;
   /**
-   * The non-localized label for the tab.
+   * A unique identifier for the tab. The value will be used as the originLevel2 when the tab is active.
+   * @api
+   * @type {string}
+   */
+  @api name;
+  /**
+   * The label to display on the tab.
    * @api
    * @type {string}
    */
@@ -34,6 +40,22 @@ export default class QuanticTab extends LightningElement {
    * @type {string}
    */
   @api expression = '';
+  /**
+   * Whether to clear the filters when the active tab changes.
+   * @api
+   * @type {boolean}
+   */
+  @api get clearFiltersOnTabChange() {
+    return this._clearFiltersOnTabChange;
+  }
+  set clearFiltersOnTabChange(value) {
+    if (value === false) {
+      this._clearFiltersOnTabChange = false;
+    } else {
+      this._clearFiltersOnTabChange = true;
+    }
+  }
+  _clearFiltersOnTabChange = false;
   /**
    * Whether the tab should be active.
    * @api
@@ -59,6 +81,8 @@ export default class QuanticTab extends LightningElement {
   unsubscribeSearchStatus;
   /** @type {AnyHeadless} */
   headless;
+  /** @type {boolean} */
+  hasInitializationError = false;
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
@@ -66,7 +90,9 @@ export default class QuanticTab extends LightningElement {
 
   renderedCallback() {
     initializeWithHeadless(this, this.engineId, this.initialize);
-    this.dispatchEvent(new CustomEvent('tab_rendered', {bubbles: true}));
+    this.dispatchEvent(
+      new CustomEvent('quantic__tabrendered', {bubbles: true})
+    );
   }
 
   /**
@@ -77,7 +103,8 @@ export default class QuanticTab extends LightningElement {
     this.tab = this.headless.buildTab(engine, {
       options: {
         expression: this.expression,
-        id: this.label,
+        id: this.name ?? this.label,
+        clearFiltersOnTabChange: this.clearFiltersOnTabChange,
       },
       initialState: {
         isActive: this.isActive,
@@ -114,5 +141,12 @@ export default class QuanticTab extends LightningElement {
   get isPressed() {
     // convert type boolean to type string for attribute aria-pressed
     return `${this.isActive}`;
+  }
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
   }
 }

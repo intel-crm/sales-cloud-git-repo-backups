@@ -4239,11 +4239,6 @@
         <field>User.Core_WWID__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>User.User_Unique__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP Channel MDF Proposal Approver L1</label>
     <license>Salesforce</license>
@@ -4542,6 +4537,10 @@
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
+        <recordType>Campaign.Core_MDF_Channel_MDF</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
         <recordType>Campaign.Core_MDF_Intel_Partner_Alliance</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
@@ -4563,6 +4562,10 @@
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Core_MDF_PFRCustomPicklist__c.Core_MDF_Channel_MDF_Proposal_Based</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundRequest.Core_MDF_Channel_MDF</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

@@ -2849,6 +2849,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PartnerFundClaim.Core_MDF_Claim_Cancellation_Reason_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PartnerFundClaim.Core_MDF_Claim_Comments__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3455,6 +3460,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PartnerFundRequest.Core_MDF_POP_Requirements_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PartnerFundRequest.Core_MDF_Partner_Contact_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

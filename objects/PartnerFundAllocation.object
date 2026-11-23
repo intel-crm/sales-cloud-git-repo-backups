@@ -341,14 +341,6 @@ $Label.Core_MDF_Intel_System_User
         <columns>ChannelPartner</columns>
         <columns>Description</columns>
         <columns>Amount</columns>
-        <columns>Core_MDF_Available_Allocation_Amount__c</columns>
-        <columns>Core_MDF_Claim_Reserved_Amount_Amt__c</columns>
-        <columns>Core_MDF_Total_Activity_Allocated_Amount__c</columns>
-        <columns>Core_MDF_Available_Activity_Alloc_Amt__c</columns>
-        <columns>Core_MDF_Intel_Account_Name_Txt__c</columns>
-        <columns>TotalApprovedFcs</columns>
-        <columns>TotalApprovedFrs</columns>
-        <columns>TotalReimbursedFcs</columns>
         <filterScope>Everything</filterScope>
         <label>All Partner Fund Allocations</label>
     </listViews>

@@ -142,6 +142,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_MDF_Processing_Preference_nm__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_MDF_Claim_Cancellation_Reason_txt__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -408,6 +412,7 @@
         <fields>NAME</fields>
         <fields>Core_MDF_VAT_Amt__c</fields>
         <fields>Core_MDF_Status_Txt__c</fields>
+        <fields>Core_MDF_VAT_Comments_txt__c</fields>
         <relatedList>Core_MDF_Claim_VAT_Info__c.Core_MDF_Claim_Id__c</relatedList>
     </relatedLists>
     <relatedLists>

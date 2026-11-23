@@ -520,7 +520,7 @@ public without sharing class Core_MDF_RecoveryClaimReportViewCtrl {
                 recommendedRTRClaims.add(rr);
             }else if(eligibleClaims != null && eligibleClaims.size() > 0 && eligibleClaims.containsKey(sc.id)){
                 recommendedClaims.add(rr);
-            }else if(sc.Core_MDF_Budget_Type_Options_Nm__c != 'RSA MD' || (sc.Core_MDF_Budget_Type_Options_Nm__c == 'RSA MD' && String.isNotBlank(budgetGeo) && rr.recoveryBudAmtMap.keySet().contains(budgetGeo))){
+            }else if(sc.Core_MDF_Budget_Type_Options_Nm__c != 'RSA MD' || (sc.Core_MDF_Budget_Type_Options_Nm__c == 'RSA MD' && String.isNotBlank(budgetGeo) && (rr.recoveryBudAmtMap != null && rr.recoveryBudAmtMap.keySet().contains(budgetGeo)))){
                 nonRecommendedClaims.add(rr);
             }
         }

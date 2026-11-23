@@ -60,10 +60,10 @@
             }
             
             if(programBudgetTypeWiseAcctMgrMap.containsKey(key)){
-                for(String roleName : programBudgetTypeWiseAcctMgrMap.get(key)){
-                    roleList.add(roleName);
-                }         
+            roleList.addAll(programBudgetTypeWiseAcctMgrMap.get(key));
             }
+
+
            
                 String geoStr='';
                 geoList.add('WW'); 
@@ -228,9 +228,7 @@
                 roles.add(programBudgetTypeWiseAcctMgrMap.get(key));
             }*/
             if(programBudgetTypeWiseAcctMgrMap.containsKey(key)){
-                for(String roleName : programBudgetTypeWiseAcctMgrMap.get(key)){
-                    roleList.add(roleName);
-                }         
+                roleList.addAll(programBudgetTypeWiseAcctMgrMap.get(key));        
             }
                 String geoStr='';
                 String acctstr='';
@@ -1062,10 +1060,7 @@ Description  : Wrapper class for User details
                         }
                     }
                     else if(iupgmObj.Core_MDF_Region_cd__c != NULL){
-                        // geoStrList = iupgmObj.Core_MDF_Region_cd__c.split(';');
-                        for(String geo:iupgmObj.Core_MDF_Region_cd__c.split(';')){
-                            geoBudgetTypeList.add(geo);
-                        }
+                         geoBudgetTypeList.addAll(iupgmObj.Core_MDF_Region_cd__c.split(';'));
                     }
                     
                     for(String geo: geoBudgetTypeList){

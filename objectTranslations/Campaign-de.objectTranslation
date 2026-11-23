@@ -1183,14 +1183,6 @@
         <name>Core_Tasks_Generated__c</name>
     </fields>
     <fields>
-        <label><!-- Event Stub --></label>
-        <name>CventEvents__EventStub__c</name>
-    </fields>
-    <fields>
-        <label><!-- Session Stub --></label>
-        <name>CventEvents__SessionStub__c</name>
-    </fields>
-    <fields>
         <label><!-- Campaign Brief Details --></label>
         <name>MKT_Campaign_Brief_Details_Formula_Txt__c</name>
     </fields>
@@ -1226,6 +1218,11 @@
         <label><!-- Bulk Add/Invite Email Template --></label>
         <name>PRM_Bulk_Add_Invite_Email_Template__c</name>
     </fields>
+    <recordTypes>
+        <description><!-- This record type is for Channel MDF Program --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
     <recordTypes>
         <description><!-- Record type for CCP Client Program --></description>
         <label>Kunden-Co-Marketing-Fonds</label>
@@ -1423,14 +1420,6 @@
     <webLinks>
         <label><!-- Core_New_Sales_Campaign --></label>
         <name>Core_New_Sales_Campaign</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- LinkEventsToCampaign --></label>
-        <name>CventEvents__LinkEventsToCampaign</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- SendInvitation --></label>
-        <name>CventEvents__SendInvitation</name>
     </webLinks>
     <webLinks>
         <label><!-- ViewAllCampaignMembers --></label>

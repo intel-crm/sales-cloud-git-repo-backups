@@ -419,13 +419,11 @@ public with sharing class Core_IPS_Portal_ProjectUtility_LWC { /* Tushar --- Add
         User us;
         /*FLS Read fix  13/05/2022 */
         Core_IPS_Project__c ipsProj=new Core_IPS_Project__c();
-        // Venrublity Fix - Refering query to service class
         ipsProj = (Core_IPS_Project__c)Core_IPS_QueryService.queryRecords(
             'SELECT Owner.ID FROM Core_IPS_Project__c WHERE id = :projId',
             new Map<String, Object>{ 'projId' => projId }
         )[0];
         if(ipsProj.Owner.ID != null || ipsProj.Owner.ID != ''){
-          // Venrublity Fix - Refering query to service class
             us = (User)Core_IPS_QueryService.queryRecords(
                 'SELECT ContactID FROM User WHERE ID = :ownerId',
                 new Map<String, Object>{ 'ownerId' => ipsProj.Owner.ID }

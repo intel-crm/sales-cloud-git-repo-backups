@@ -405,6 +405,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_MDF_Claim_VAT_Process</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_MDF_CloseActivity</apexClass>
         <enabled>true</enabled>
     </classAccesses>

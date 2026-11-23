@@ -166,14 +166,16 @@ Accenture – Shridhar K        03/28/2019                   Created.
         }
 
         // Internal Case Closure Note logic
-        String internalHistory = removeCurrentDraftNote(oldCase.Core_MDF_Internal_Case_Closure_Notes__c, oldCase.Core_MDF_AddInternalCaseClosureNotes_txt__c);
+        //Roshan - TWC3117-19150
         if (isClosing) {
             // case is closed: append the date
-            newCase.Core_MDF_Internal_Case_Closure_Notes__c = String.isBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) ? internalHistory : prependNoteEntry(internalHistory, stampNoteWithCurrentDate(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c));
+            if (String.isNotBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c)) {
+                newCase.Core_MDF_Internal_Case_Closure_Notes__c = stampNoteWithCurrentDate(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c);
+            }
             newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c = null;
         } else if (newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c != oldCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) {
             // update new note if provided
-            newCase.Core_MDF_Internal_Case_Closure_Notes__c = prependNoteEntry(internalHistory, String.isBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) ? null : newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c.trim());
+            newCase.Core_MDF_Internal_Case_Closure_Notes__c = String.isBlank(newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c) ? null : newCase.Core_MDF_AddInternalCaseClosureNotes_txt__c.trim();
         }
     }
 
@@ -185,15 +187,6 @@ Accenture – Shridhar K        03/28/2019                   Created.
         if (String.isBlank(entry)) { return existingHistory; }
         if (String.isBlank(existingHistory)) { return entry.trim(); }
         return entry.trim() + '\n' + NOTE_DIVIDER + '\n' + existingHistory.trim();
-    }
-
-    // returns the historic note without the current draft and divider
-    private static String removeCurrentDraftNote(String accumulatedNote, String draftNote) {
-        if (String.isBlank(accumulatedNote) || String.isBlank(draftNote)) { return accumulatedNote; }
-        if (accumulatedNote.trim() == draftNote.trim()) { return null; }
-
-        String currentNoteWithDivider = draftNote.trim() + '\n' + NOTE_DIVIDER + '\n';
-        return accumulatedNote.trim().startsWith(currentNoteWithDivider) ? accumulatedNote.trim().substring(currentNoteWithDivider.length()) : accumulatedNote;
     }
     
     //Method calculates the Checklist completion percentage of a given case

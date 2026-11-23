@@ -21,6 +21,11 @@
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>12119998@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
         <accessLevel>View</accessLevel>
         <sharedTo>12042432@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
@@ -36,11 +41,6 @@
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
-        <accessLevel>Manage</accessLevel>
-        <sharedTo>11451037@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
         <accessLevel>View</accessLevel>
         <sharedTo>11226609@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
@@ -53,11 +53,6 @@
     <folderShares>
         <accessLevel>View</accessLevel>
         <sharedTo>10662527@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>Manage</accessLevel>
-        <sharedTo>12353450@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
@@ -78,11 +73,6 @@
     <folderShares>
         <accessLevel>Manage</accessLevel>
         <sharedTo>11891474@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>12344712@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>

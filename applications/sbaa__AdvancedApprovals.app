@@ -7,7 +7,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Advanced Approvals</label>
-    <logo>sbaa__Salesforce_CPQ_AA_Assets/sbaa__Salesforce_CPQ_Logo.png</logo>
     <tabs>standard-Opportunity</tabs>
     <tabs>standard-Product2</tabs>
     <tabs>sbaa__ApprovalRule__c</tabs>

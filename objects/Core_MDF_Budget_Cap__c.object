@@ -862,6 +862,179 @@
         </picklistValues>
     </recordTypes>
     <recordTypes>
+        <fullName>Core_MDF_Channel_MDF_Budget_Type_Cap</fullName>
+        <active>true</active>
+        <label>Channel MDF Budget Type Cap</label>
+        <picklistValues>
+            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
+            <values>
+                <fullName>Account Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Business Client Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Specialties MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Co-Engineering</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCF 1%2E0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Center Market Accelerate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Centric Acceleration - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel MDF Account Based2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel Rise Technology Initiative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT Premier - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IoT Targeted - MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MDF%2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ODM Growth Plan - Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>OEM CMP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal I MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Proposal II MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSA MD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Retail MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Client MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SOEM Data Center MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider CMP</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Cap_Status_nm__c</picklist>
+            <values>
+                <fullName>Active</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending Review</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Revision Required</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Cap_Type_nm__c</picklist>
+            <values>
+                <fullName>Channel Led Activity</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Channel MDF Budget Type Cap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>IPA Budget Type Cap</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Variable Reimbursement Incentive Applied</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Core_MDF_Region_nm__c</picklist>
+            <values>
+                <fullName>APJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ASMO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>WW</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
         <fullName>Core_MDF_IPA_Budget_Type_Cap</fullName>
         <active>true</active>
         <label>IPA Budget Type Cap</label>

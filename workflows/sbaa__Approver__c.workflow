@@ -8,7 +8,7 @@
             <field>sbaa__User__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>PSG_Email_Templates/Notify_BO_BM_for_Delegated_Approver</template>
     </alerts>

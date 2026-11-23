@@ -114,7 +114,10 @@ public class Core_IPS_BES_CaseOutbound_Test{
         for(Profile prof : [select id, name from Profile where name IN: profileNames]){
             profilesByName.put(prof.name, prof.id);
         }
-        SysAdminUsr = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
+        //List<User> SysAdminUsr = new List<User> ();
+        SysAdminUsr = TestUtilities.getListOfUser(1);
+         SysAdminUsr.get(0).UserName = 'SysAdminUsr'+SysAdminUsr.get(0).UserName;
+        SysAdminUsr.get(0).ProfileID =  profilesByName.get('System Administrator');
        
          UserRole role = new UserRole();
         role.name='CEO';
@@ -1191,6 +1194,8 @@ public class Core_IPS_BES_CaseOutbound_Test{
         }
         statusNReason = Core_IPS_BES_HSD_CustomLogic.getStatusNReasonForIOT(caseRecord, 'Status', customMapping.get('EMBED - HSDES IoT Platform'));
         System.assertEquals('complete', statusNReason, 'Status and reason returned are not correct');
+        caseRecord.Status = 'Close-Pending';
+        caseRecord.Core_Sub_Status__c = 'Closed';
         caseRecord.Core_Environment_Details__c = '';
         update caseRecord;
          Core_IPS_BES_JSONTriggerHandler.getJson(new List<Id>{outboundObject[0].Id,outboundObject[1].Id});

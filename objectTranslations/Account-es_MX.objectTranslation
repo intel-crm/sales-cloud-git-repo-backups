@@ -296,10 +296,6 @@
             <masterLabel>PSG-DISTI</masterLabel>
             <translation><!-- PSG-DISTI --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>Sovereign Cloud</masterLabel>
-            <translation><!-- Sovereign Cloud --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Account CCG Tier --></label>
@@ -346,10 +342,6 @@
             <translation><!-- End Customer --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Extended Sales Force</masterLabel>
-            <translation><!-- Extended Sales Force --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hyperscaler (AWS, Azure, GCP)</masterLabel>
             <translation><!-- Hyperscaler (AWS, Azure, GCP) --></translation>
         </picklistValues>
@@ -393,10 +385,6 @@
         <picklistValues>
             <masterLabel>End Customer</masterLabel>
             <translation><!-- End Customer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Extended Sales Force</masterLabel>
-            <translation><!-- Extended Sales Force --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hyperscaler (AWS, Azure, GCP)</masterLabel>
@@ -1699,10 +1687,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
         <picklistValues>
             <masterLabel>Not Covered</masterLabel>
             <translation><!-- Not Covered --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other-led Account</masterLabel>
-            <translation><!-- Other-led Account --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -7947,22 +7931,6 @@ No Level: Not Covered Accounts &amp; no Opportunities present --></help>
     <webLinks>
         <label><!-- Core_Sales_Support --></label>
         <name>Core_Sales_Support</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- InviteAccountToEvent --></label>
-        <name>CventEvents__InviteAccountToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelAccountToEvent --></label>
-        <name>CventEvents__ModifyCancelAccountToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateAccountToEvent --></label>
-        <name>CventEvents__NominateAccountToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterAccountToEvent --></label>
-        <name>CventEvents__RegisterAccountToEvent</name>
     </webLinks>
     <webLinks>
         <label><!-- GoogleMaps --></label>

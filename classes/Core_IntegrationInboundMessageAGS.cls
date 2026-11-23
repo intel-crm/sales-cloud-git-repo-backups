@@ -1,5 +1,5 @@
 /******************************************************************************************************************************************
-Class Name  : Core_IntegrationInboundMessageAGS  
+Class Name  : Core_IntegrationInboundMessageAGS
 Version     : 1.0
 Created Date: 30 NOV 2016
 Function    : Business logic for processing inbound AGS messages   
@@ -449,8 +449,8 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                         if(use.Core_License_Reclaimed_on_Creation__c){
                             IntEntUserMap.put(use.ContactId, use.Core_License_Reclaimed_on_Creation__c);
                         } else {
-                            IntEntUserMap.put(use.ContactId, use.IsActive);
-                        }
+                        IntEntUserMap.put(use.ContactId, use.IsActive);
+                    }
                     }
                     for(Core_Contact_Entitlement__c currIntEnt : listPendingIntContEnt){
                 	String IntgLogTags = currIntEnt.Core_Display_Nm__c;                        
@@ -533,17 +533,17 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                 entForUpdate.addAll(currentMap.values());
             }
             
-           
-            
-            contactEntSuccessIdListToUpdate = Core_Draco_Misc_Functionalities.validateBeforeDML(entForUpdate,matchingContacts);
-            
-            if(contactEntSuccessIdListToUpdate != null && !contactEntSuccessIdListToUpdate.isEmpty()){
-                update contactEntSuccessIdListToUpdate;
-            }
             if (matchingContacts.size() > 0) {
                 insert ContactMsg;
                 update matchingContacts;
             }
+            
+            contactEntSuccessIdListToUpdate = Core_Draco_Misc_Functionalities.validateBeforeDML(entForUpdate,matchingContacts);
+           
+            if(contactEntSuccessIdListToUpdate != null && !contactEntSuccessIdListToUpdate.isEmpty()){
+                update contactEntSuccessIdListToUpdate;
+            }
+            
             
             //Contact ReTrigger to make AGS outbound again for the pending entitlements
             if(String.isBlank(error)){
@@ -617,7 +617,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
         }
         update messagesToUpdate;
         Core_IntegrationInboundMessageAGS.processFailedInbound(failedMessageSet);
-        
+      
     }    
     
     
@@ -867,7 +867,7 @@ return enterpriseIdSet;
             UCD_ACM_Logger.error('Core_IntegrationInboundMessageAGS','reprocessFailedInboundAsync',e.getMessage(), null);
             UCD_ACM_Logger.setLogDetails();
         }
-        
+       
         //update pendingIIM;
     }
 
@@ -875,7 +875,7 @@ return enterpriseIdSet;
     // Added by Draco to format the payload information to convert errors in the roles from "Errors": "<some error>" format to 
     // "Errors": [{"description": "Failed to update role","code": 400,"serviceCode": "WorkflowExecutionError","sourceSystemCode": "","sourceSystemMessage": "<some error>","requestId": null}] format
     public static String errorFormatting (String payloadString){
-	Map<String, String> errorMap = new Map<String, String>();
+        Map<String, String> errorMap = new Map<String, String>();
         if(payloadString != null && payloadString != '' && payloadString.containsIgnoreCase('"Errors": "')){
             List<String> strListErrorsSplit = payloadString.split('"Errors": "');
             for(Integer i = 1; i < strListErrorsSplit.size(); i++){

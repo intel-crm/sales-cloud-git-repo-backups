@@ -8,7 +8,7 @@
             <field>Core_MDF_Ref_Claim_Owner_Email_Txt__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_Claim_Adj_Create_fromAdjReq_Ext</template>
     </alerts>
@@ -20,7 +20,7 @@
             <field>Core_MDF_Ref_Claim_Owner_Email_Txt__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_Claim_Adj_Create_fromAdjReq_Int</template>
     </alerts>

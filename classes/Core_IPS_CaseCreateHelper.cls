@@ -1185,7 +1185,7 @@ Modification Log :
     }
     // Added  by Ganapati for LEX: copy case functionality
     public static void copyInterestedParties(String parentCaseId, String caseId) { // Changed by tushar for security venuabilty
-        
+        system.debug('Interested Parties');
         List<Core_IPS_Case_Interested_Party__c> newPartyList = new List<Core_IPS_Case_Interested_Party__c>();
         //if (Schema.sObjectType.Core_IPS_Case_Interested_Party__c.isAccessible()) {
             for(Core_IPS_Case_Interested_Party__c party : [SELECT User__c,Active__c,Contact__c,Type__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c=:parentCaseId]){
@@ -1193,7 +1193,7 @@ Modification Log :
                 if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Case__c.isCreateable()){
                     newParty.Case__c = caseId;
                 }
-                if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.User__c.isCreateable()){ //Tushar--vulnerability fix
+                if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.User__c.isCreateable()){
                     newParty.User__c = party.User__c;
                 }
                 if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.fields.Active__c.isCreateable()){
@@ -1209,12 +1209,11 @@ Modification Log :
             }
         //}
         if(newPartyList.size()>0){
-	    //Tushar--vulnerability fix
             if(Schema.sObjectType.Core_IPS_Case_Interested_Party__c.isCreateable()){
                 Core_IPS_AdminUtility.insertInterestedParties(newPartyList);
             }
         }
-        
+        system.debug('Interested Parties 2');
     }
     
     public static String getErrorMessage(string errorCode){

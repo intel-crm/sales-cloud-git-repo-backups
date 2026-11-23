@@ -117,6 +117,11 @@
     <gender>Masculine</gender>
     <nameFieldLabel>Référence de paiement</nameFieldLabel>
     <recordTypes>
+        <description><!-- Channel MDF Record Type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
         <description><!-- Client Program Record Type --></description>
         <label><!-- Client --></label>
         <name>Core_MDF_Client_Co_Marketing_Fund</name>

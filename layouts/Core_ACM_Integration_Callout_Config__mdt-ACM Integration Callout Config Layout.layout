@@ -24,7 +24,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Timeout_Ms__c</field>
+                <field>Is_Active__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -33,16 +33,12 @@
                 <field>IsProtected</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Timeout_Ms__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Required</behavior>
                 <field>NamespacePrefix</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Content_Type__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Is_Active__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -82,7 +78,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00hcv00000E2vgT</masterLabel>
+        <masterLabel>00hRL00000Jusaf</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

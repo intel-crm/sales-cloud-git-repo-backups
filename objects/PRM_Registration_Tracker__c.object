@@ -295,11 +295,6 @@
                     <default>false</default>
                     <label>Auto Granted IPA for DZP</label>
                 </value>
-                <value>
-                    <fullName>Admin Partner Invite</fullName>
-                    <default>false</default>
-                    <label>Admin Partner Invite</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

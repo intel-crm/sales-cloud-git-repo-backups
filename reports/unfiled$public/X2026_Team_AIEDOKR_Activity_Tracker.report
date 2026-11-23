@@ -67,6 +67,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-01-01</startDate>
     </timeFrameFilter>
 </Report>

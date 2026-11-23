@@ -25,25 +25,28 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Opportunity.Core_Intel_Platform__c</field>
-    </columns>
-    <columns>
-        <field>URL</field>
-    </columns>
-    <columns>
-        <field>DESCRIPTION</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Status_Update__c</field>
+        <field>CLOSE_DATE</field>
     </columns>
     <columns>
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>Account.Core_Account_Owner__c</field>
+        <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>Account.Core_Account_Owner_Manager__c</field>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Status_Update__c</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Competitive_Architecture__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -67,6 +70,10 @@
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Opportunity.Core_Age__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_Account_ID__c</field>
     </columns>
     <columns>
@@ -82,19 +89,22 @@
         <field>Opportunity.Core_Concatenated_Application_workload__c</field>
     </columns>
     <columns>
+        <field>URL</field>
+    </columns>
+    <columns>
         <field>Account.Core_English_Only_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Technical_Need__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Concatenated_Industry_use_case__c</field>
+        <field>CONTACT</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Concatenated_Technology_Enabled__c</field>
+        <field>CON.TITLE</field>
     </columns>
     <columns>
-        <field>Account.Core_Business_Party_Id__c</field>
+        <field>CON.EMAIL</field>
     </columns>
     <crossFilters>
         <criteriaItems>
@@ -109,7 +119,7 @@
         <relatedTableJoinColumn>Core_Opportunity__c</relatedTableJoinColumn>
     </crossFilters>
     <filter>
-        <booleanFilter>(1 AND 2) AND 3 AND 4</booleanFilter>
+        <booleanFilter>(1 AND 2) AND 3</booleanFilter>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
@@ -125,18 +135,11 @@
             <value>Production Win</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Skinner</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Comms Infra. / Networking</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Production Win</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -144,16 +147,11 @@
     <groupingsDown>
         <dateGranularity>Year</dateGranularity>
         <field>Opportunity.Core_First_Customer_Ship_Date__c</field>
-        <sortOrder>Desc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OPPORTUNITY_NAME</field>
+        <field>Opportunity.Core_Intel_Platform__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Historic AI PWs</name>
@@ -179,8 +177,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Opportunity.Core_First_Customer_Ship_Date__c</dateColumn>
+        <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
     </timeFrameFilter>
 </Report>

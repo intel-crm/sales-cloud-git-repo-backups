@@ -7,9 +7,6 @@
         <field>SBQQ__Quote__c$CreatedDate</field>
     </columns>
     <columns>
-        <field>SBQQ__Quote__c$LastModifiedDate</field>
-    </columns>
-    <columns>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Status_Nm__c</field>
     </columns>
     <columns>
@@ -73,17 +70,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_CPUs_per_system_qty__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c$Pricing_Exclude_from_Volume_Excep_Quota__c</field>
-    </columns>
-    <columns>
-        <field>SBQQ__Quote__c$Pricing_Quota_Exclusion_Reason__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c$Pricing_Volume_Exception_Quota_Cb__c</field>
-    </columns>
     <filter>
         <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
         <criteriaItems>
@@ -134,7 +120,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>SBQQ__Quote__c$CreatedDate</sortColumn>
+    <sortColumn>SBQQ__Quote__c$Name</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>

@@ -166,19 +166,19 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>HPE,Hewlett</value>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
-            <column>PRODUCT_NAME</column>
+            <column>Product2.Core_Code_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>startsWith</operator>
-            <value>Intel® Xeon® 69,GNR-AP,Xeon 6900 series,GNR</value>
+            <operator>contains</operator>
+            <value>granite</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>WW HPC vendor GNR - Vendor HPE</name>
+    <name>2025 WW HPC vendor missing GNR</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -204,7 +204,7 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2025-01-01</startDate>
     </timeFrameFilter>

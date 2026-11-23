@@ -2,6 +2,7 @@ public without sharing class ACM_DeleteDupsOnContactMergeHandler {
     
     public static void contactStagingRecords(Set<Id> survivorContactIds){
         Map<id, Contact> deletedCons = new Map<Id, contact>([SELECT id, MasterRecordId from contact where id in :survivorContactIds and isDeleted= true ALL ROWS]);
+        system.debug('Trogger OLD MAP in Future Method' + deletedCons);
         Set<Id> masterRecordIds = new Set<Id>();
         for(Id masterIds: deletedCons.keySet()){
             masterRecordIds.add(deletedCons.get(masterIds).MasterRecordId);
@@ -169,7 +170,7 @@ return returnProjectMemberMap;
                 for(PRM_Partner_Community_Enrollment_Request__c partnrReq:partnrReqMap.values()) {
                     string Key = String.valueOf(partnrReq.PRM_Contact_Id__c)+'_'+ String.valueOf(partnrReq.PRM_Partner_Community_Nm__c);
                     if (contactPartnrReqList.contains(Key)) {
-                        if (Schema.sObjectType.PRM_Partner_Community_Enrollment_Request__c.isDeletable()){
+                        if (PRM_Partner_Community_Enrollment_Request__c.sObjectType.getDescribe().isDeletable()){
                             deletionContactPartnrReqList.add(partnrReq);
                         }
                     } else {
@@ -177,7 +178,7 @@ return returnProjectMemberMap;
                     }
                 }
                 if(!deletionContactPartnrReqList.isEmpty()) {
-                    if (Schema.sObjectType.PRM_Partner_Community_Enrollment_Request__c.isDeletable()){
+                    if (PRM_Partner_Community_Enrollment_Request__c.sObjectType.getDescribe().isDeletable()){
                         deletePartnerRequestResults = Database.delete(deletionContactPartnrReqList, false);
                     }
                 }
@@ -220,7 +221,7 @@ return returnProjectMemberMap;
                 for(Core_Inquiry__c Inquiry:InquiryMap.values()) {
                     string Key = String.valueOf(Inquiry.Core_Contact_Inquiries__c)+'_'+String.valueOf(Inquiry.Core_Inquiry_Type_Pkt__c);
                     if (contactInquiryList.contains(Key)) {
-                        if (Schema.sObjectType.Core_Inquiry__c.isDeletable()){
+                        if (Core_Inquiry__c.sObjectType.getDescribe().isDeletable()){
                             deletionContactInquiryList.add(Inquiry);
                         }
                     } else {
@@ -228,7 +229,7 @@ return returnProjectMemberMap;
                     }
                 }
                 if(!deletionContactInquiryList.isEmpty()) {
-                    if (Schema.sObjectType.Core_Inquiry__c.isDeletable()){
+                    if (Core_Inquiry__c.sObjectType.getDescribe().isDeletable()){
                         deleteInquiryResults = Database.delete(deletionContactInquiryList, false);
                     }
                 }
@@ -270,7 +271,7 @@ return returnProjectMemberMap;
                 for(PRM_ContactSubscriptionAssociation__c Subscription:SubscriptionMap.values()) {
                     string Key = String.valueOf(Subscription.PRM_Contact_Id__c)+'_'+(Subscription.PRM_Partner_Subscription_Id__c!=null ? String.valueOf(Subscription.PRM_Partner_Subscription_Id__r.Name) : '');
                     if (contactSubscriptionList.contains(Key)) {
-                        if (Schema.sObjectType.PRM_ContactSubscriptionAssociation__c.isDeletable()){
+                        if (PRM_ContactSubscriptionAssociation__c.sObjectType.getDescribe().isDeletable()){
                             deletionContactSubscriptionList.add(Subscription);
                         }
                     } else {
@@ -278,7 +279,7 @@ return returnProjectMemberMap;
                     }
                 }
                 if(!deletionContactSubscriptionList.isEmpty()) {
-                    if (Schema.sObjectType.PRM_ContactSubscriptionAssociation__c.isDeletable()){
+                    if (PRM_ContactSubscriptionAssociation__c.sObjectType.getDescribe().isDeletable()){
                         deleteSubscriptionResults = Database.delete(deletionContactSubscriptionList, false);
                     }
                 }
@@ -320,7 +321,7 @@ return returnProjectMemberMap;
                 for(Core_Contact_Engagement__c Engagement:EngagementMap.values()) {
                     string Key = String.valueOf(Engagement.Core_Contact__c)+'_'+(Engagement.Core_Engagement__c!=null ? String.valueOf(Engagement.Core_Engagement_Label__c) : '');
                     if (contactEngagementList.contains(Key)) {
-                        if (Schema.sObjectType.Core_Contact_Engagement__c.isDeletable()){
+                        if (Core_Contact_Engagement__c.sObjectType.getDescribe().isDeletable()){
                             deletionContactEngagementList.add(Engagement);
                         }
                     } else {
@@ -328,7 +329,7 @@ return returnProjectMemberMap;
                     }
                 }
                 if(!deletionContactEngagementList.isEmpty()) {
-                    if (Schema.sObjectType.Core_Contact_Engagement__c.isDeletable()){
+                    if (Core_Contact_Engagement__c.sObjectType.getDescribe().isDeletable()){
                         deleteEngagementResults = Database.delete(deletionContactEngagementList, false);
                     }
                 }

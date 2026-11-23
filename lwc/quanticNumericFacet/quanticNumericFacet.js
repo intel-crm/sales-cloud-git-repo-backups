@@ -1,27 +1,30 @@
-import {LightningElement, track, api} from 'lwc';
+import LOCALE from '@salesforce/i18n/locale';
+import apply from '@salesforce/label/c.quantic_Apply';
+import clearFilter from '@salesforce/label/c.quantic_ClearFilter';
+import clearFilterFacet from '@salesforce/label/c.quantic_ClearFilterFacet';
+import clearFilter_plural from '@salesforce/label/c.quantic_ClearFilter_plural';
+import collapseFacet from '@salesforce/label/c.quantic_CollapseFacet';
+import expandFacet from '@salesforce/label/c.quantic_ExpandFacet';
+import max from '@salesforce/label/c.quantic_Max';
+import messageWhenRangeOverflow from '@salesforce/label/c.quantic_MessageWhenRangeOverflow';
+import messageWhenRangeUnderflow from '@salesforce/label/c.quantic_MessageWhenRangeUnderflow';
+import min from '@salesforce/label/c.quantic_Min';
+import numberInputApply from '@salesforce/label/c.quantic_NumberInputApply';
+import numberInputMaximum from '@salesforce/label/c.quantic_NumberInputMaximum';
+import numberInputMinimum from '@salesforce/label/c.quantic_NumberInputMinimum';
 import {
   registerComponentForInit,
   initializeWithHeadless,
-  getHeadlessBindings,
   registerToStore,
   getHeadlessBundle,
+  getBueno,
 } from 'c/quanticHeadlessLoader';
-import {I18nUtils, Store} from 'c/quanticUtils';
-import LOCALE from '@salesforce/i18n/locale';
-
-import clearFilter from '@salesforce/label/c.quantic_ClearFilter';
-import clearFilter_plural from '@salesforce/label/c.quantic_ClearFilter_plural';
-import clearFilterFacet from '@salesforce/label/c.quantic_ClearFilterFacet';
-import collapseFacet from '@salesforce/label/c.quantic_CollapseFacet';
-import expandFacet from '@salesforce/label/c.quantic_ExpandFacet';
-import min from '@salesforce/label/c.quantic_Min';
-import max from '@salesforce/label/c.quantic_Max';
-import numberInputMinimum from '@salesforce/label/c.quantic_NumberInputMinimum';
-import numberInputMaximum from '@salesforce/label/c.quantic_NumberInputMaximum';
-import apply from '@salesforce/label/c.quantic_Apply';
-import numberInputApply from '@salesforce/label/c.quantic_NumberInputApply';
-import messageWhenRangeOverflow from '@salesforce/label/c.quantic_MessageWhenRangeOverflow';
-import messageWhenRangeUnderflow from '@salesforce/label/c.quantic_MessageWhenRangeUnderflow';
+import {
+  I18nUtils,
+  Store,
+  generateFacetDependencyConditions,
+} from 'c/quanticUtils';
+import {LightningElement, track, api} from 'lwc';
 
 /** @typedef {import("coveo").NumericFacetState} NumericFacetState */
 /** @typedef {import("coveo").NumericFilterState} NumericFilterState*/
@@ -30,6 +33,9 @@ import messageWhenRangeUnderflow from '@salesforce/label/c.quantic_MessageWhenRa
 /** @typedef {import("coveo").NumericFacetValue} NumericFacetValue */
 /** @typedef {import("coveo").SearchStatus} SearchStatus */
 /** @typedef {import("coveo").SearchEngine} SearchEngine */
+/** @typedef {import("coveo").InsightEngine} InsightEngine */
+/** @typedef {import("coveo").FacetConditionsManager} FacetConditionsManager */
+/** @typedef {import('../quanticUtils/facetDependenciesUtils').DependsOn} DependsOn */
 /**
  * @typedef FocusTarget
  * @type {object}
@@ -124,6 +130,25 @@ export default class QuanticNumericFacet extends LightningElement {
    * @type {'integer' | 'decimal'}
    */
   @api withInput;
+  /**
+   * This property defines the relationship between this facet and a parent facet, indicating
+   * the specific parent facet that this facet relies on and the selected value required
+   * from that parent facet for this facet to be displayed.
+   *
+   * When this property is defined, the facet will only display if the specified `parentFacetId`
+   * has the `expectedValue` selected. If `expectedValue` is omitted or set to `undefined`,
+   * the facet will display as long as any value is selected in the parent facet.
+   *
+   * **Supported facets:** Dependencies can only be created on a basic or category facet.
+   * Dependencies on numeric, timeframe, or date facets are not supported.
+   *
+   * For example usage and more details, see:
+   * https://docs.coveo.com/en/quantic/latest/usage/display-facet-based-on-selection-of-another-facet/
+   *
+   * @api
+   * @type {DependsOn}
+   */
+  @api dependsOn;
   /*
    * Whether the facet is collapsed.
    * @api
@@ -148,6 +173,7 @@ export default class QuanticNumericFacet extends LightningElement {
     'sortCriteria',
     'rangeAlgorithm',
     'withInput',
+    'dependsOn',
   ];
 
   /** @type {NumericFacetState} */
@@ -179,6 +205,14 @@ export default class QuanticNumericFacet extends LightningElement {
   focusTarget;
   /** @type {boolean} */
   focusShouldBeInFacet = false;
+  /** @type {boolean} */
+  hasInitializationError = false;
+  /** @type {FacetConditionsManager} */
+  numericFacetConditionsManager;
+  /** @type {FacetConditionsManager} */
+  numericFilterConditionsManager;
+  /** @type {SearchEngine | InsightEngine} */
+  engine;
 
   /** @type {string} */
   start;
@@ -218,9 +252,11 @@ export default class QuanticNumericFacet extends LightningElement {
   }
 
   /**
-   * @param {SearchEngine} engine
+   * @param {SearchEngine | InsightEngine} engine
    */
   initialize = (engine) => {
+    this.engine = engine;
+    this.validateDependsOnProperty();
     this.headless = getHeadlessBundle(this.engineId);
     this.searchStatus = this.headless.buildSearchStatus(engine);
     this.unsubscribeSearchStatus = this.searchStatus.subscribe(() =>
@@ -228,15 +264,11 @@ export default class QuanticNumericFacet extends LightningElement {
     );
 
     if (this.numberOfValues > 0) {
-      this.initializeFacet(engine);
+      this.initializeFacet();
     }
     if (this.withInput) {
-      this.initializeFilter(engine);
+      this.initializeFilter();
     }
-    this.searchStatus = this.headless.buildSearchStatus(engine);
-    this.unsubscribeSearchStatus = this.searchStatus.subscribe(() =>
-      this.updateState()
-    );
     registerToStore(this.engineId, Store.facetTypes.NUMERICFACETS, {
       label: this.label,
       facetId: this.facet?.state.facetId ?? this.field,
@@ -245,11 +277,28 @@ export default class QuanticNumericFacet extends LightningElement {
     });
   };
 
-  /**
-   * @param {import("coveo").SearchEngine} engine
-   */
-  initializeFacet(engine) {
-    this.facet = this.headless.buildNumericFacet(engine, {
+  validateDependsOnProperty() {
+    if (this.dependsOn) {
+      getBueno(this).then(() => {
+        const {parentFacetId, expectedValue} = this.dependsOn;
+        if (!Bueno.isString(parentFacetId)) {
+          console.error(
+            `The ${this.field} ${this.template.host.localName} requires dependsOn.parentFacetId to be a valid string.`
+          );
+          this.setInitializationError();
+        }
+        if (expectedValue && !Bueno.isString(expectedValue)) {
+          console.error(
+            `The ${this.field} ${this.template.host.localName} requires dependsOn.expectedValue to be a valid string.`
+          );
+          this.setInitializationError();
+        }
+      });
+    }
+  }
+
+  initializeFacet() {
+    this.facet = this.headless.buildNumericFacet(this.engine, {
       options: {
         field: this.field,
         generateAutomaticRanges: true,
@@ -260,13 +309,16 @@ export default class QuanticNumericFacet extends LightningElement {
       },
     });
     this.unsubscribe = this.facet.subscribe(() => this.updateState());
+    if (this.dependsOn) {
+      this.numericFacetConditionsManager = this.initFacetConditionManager(
+        this.engine,
+        this.facet.state?.facetId
+      );
+    }
   }
 
-  /**
-   * @param {import("coveo").SearchEngine} engine
-   */
-  initializeFilter(engine) {
-    this.numericFilter = this.headless.buildNumericFilter(engine, {
+  initializeFilter() {
+    this.numericFilter = this.headless.buildNumericFilter(this.engine, {
       options: {
         field: this.field,
         facetId: this.facet?.state.facetId
@@ -277,12 +329,29 @@ export default class QuanticNumericFacet extends LightningElement {
     this.unsubscribeFilter = this.numericFilter.subscribe(() =>
       this.updateFilterState()
     );
+    if (this.dependsOn) {
+      this.numericFilterConditionsManager = this.initFacetConditionManager(
+        this.engine,
+        this.numericFilter.state?.facetId
+      );
+    }
+  }
+
+  initFacetConditionManager(engine, facetId) {
+    return this.headless.buildFacetConditionsManager(engine, {
+      facetId,
+      conditions: generateFacetDependencyConditions({
+        [this.dependsOn.parentFacetId]: this.dependsOn.expectedValue,
+      }),
+    });
   }
 
   disconnectedCallback() {
     this.unsubscribe?.();
     this.unsubscribeFilter?.();
     this.unsubscribeSearchStatus?.();
+    this.numericFacetConditionsManager?.stopWatching();
+    this.numericFilterConditionsManager?.stopWatching();
   }
 
   updateState() {
@@ -292,7 +361,7 @@ export default class QuanticNumericFacet extends LightningElement {
       !this.searchStatus?.state?.hasError &&
       !this.searchStatus?.state?.firstSearchExecuted;
 
-    const renderFacetEvent = new CustomEvent('renderfacet', {
+    const renderFacetEvent = new CustomEvent('quantic__renderfacet', {
       detail: {
         id: this.facetId ?? this.field,
         shouldRenderFacet: this.shouldRenderFacet,
@@ -339,6 +408,10 @@ export default class QuanticNumericFacet extends LightningElement {
 
   get hasActiveValues() {
     return this.state?.hasActiveValues || this.filterState?.range;
+  }
+
+  get isFacetEnabled() {
+    return this.state?.enabled;
   }
 
   get actionButtonIcon() {
@@ -390,8 +463,7 @@ export default class QuanticNumericFacet extends LightningElement {
 
   get shouldRenderInput() {
     return (
-      (this.withInput && this.searchStatus?.state?.hasResults) ||
-      !!this.filterState?.range
+      (this.withInput && !!this.values.length) || !!this.filterState?.range
     );
   }
 
@@ -489,10 +561,9 @@ export default class QuanticNumericFacet extends LightningElement {
     }
 
     if (this.numberOfValues > 0) {
-      const engine = getHeadlessBindings(this.engineId).engine;
-      engine.dispatch(
+      this.engine.dispatch(
         this.headless
-          .loadNumericFacetSetActions(engine)
+          .loadNumericFacetSetActions(this.engine)
           .deselectAllNumericFacetValues(this.facet.state.facetId)
       );
     }
@@ -607,5 +678,12 @@ export default class QuanticNumericFacet extends LightningElement {
       // @ts-ignore
       focusTarget.focus();
     }
+  }
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
   }
 }

@@ -5,7 +5,7 @@
         <value>支払いドキュメント</value>
     </caseValues>
     <fields>
-        <label>アカウント名</label>
+        <label><!-- Account Name --></label>
         <name>Core_MDF_Account_nm__c</name>
     </fields>
     <fields>
@@ -99,6 +99,10 @@
         <help>税額</help>
         <label>税額</label>
         <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Cancellation Comment --></label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
     </fields>
     <fields>
         <label><!-- Created By --></label>

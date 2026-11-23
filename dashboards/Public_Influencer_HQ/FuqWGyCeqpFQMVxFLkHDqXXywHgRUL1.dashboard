@@ -9,6 +9,10 @@
     <dashboardColorPalette>unity</dashboardColorPalette>
     <dashboardFilters>
         <dashboardFilterOptions>
+            <operator>lessOrEqual</operator>
+            <values>12/27/2025</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
             <operator>between</operator>
             <values>1/1/2026</values>
             <values>12/31/2026</values>
@@ -17,92 +21,9 @@
             <operator>greaterThan</operator>
             <values>12/31/2026</values>
         </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>lessOrEqual</operator>
-            <values>6/30/2026</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>between</operator>
-            <values>12/27/2026</values>
-            <values>1/2/2027</values>
-        </dashboardFilterOptions>
         <name>KPI - Date</name>
     </dashboardFilters>
     <dashboardGridLayout>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
-                </chartSummary>
-                <componentType>BarGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>1</decimalPrecision>
-                <displayUnits>Millions</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>USA SLED Submitted Opportunities</header>
-                <legendPosition>Right</legendPosition>
-                <report>unfiled$public/USA_SLED_Submitted_Opportunities</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>0</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>6</colSpan>
-            <columnIndex>6</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <componentType>Bar</componentType>
-                <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
-                </dashboardFilterColumns>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingSortProperties/>
-                <header>USA SLED Past Due Opportunities</header>
-                <report>unfiled$public/USA_SLED_Past_Due_Opportunities</report>
-                <showPercentage>false</showPercentage>
-                <showPicturesOnCharts>false</showPicturesOnCharts>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>true</useReportChart>
-            </dashboardComponent>
-            <rowIndex>0</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>4</colSpan>
             <columnIndex>0</columnIndex>
@@ -141,7 +62,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>8</rowIndex>
+            <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -182,7 +103,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>8</rowIndex>
+            <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -224,7 +145,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>8</rowIndex>
+            <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -271,7 +192,7 @@
                 <title>Northwest SLED Region</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>16</rowIndex>
+            <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -318,7 +239,7 @@
                 <title>North Central SLED Region</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>16</rowIndex>
+            <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -365,7 +286,7 @@
                 <title>Northeast SLED Region</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>16</rowIndex>
+            <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -411,7 +332,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>24</rowIndex>
+            <rowIndex>16</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -457,7 +378,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>24</rowIndex>
+            <rowIndex>16</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -503,7 +424,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>24</rowIndex>
+            <rowIndex>16</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -513,12 +434,12 @@
                 <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
                 <componentType>RichText</componentType>
                 <dashboardComponentContents>
-                    <richTextContent>[{\&amp;quot;insert\&amp;quot;:\&amp;quot;-\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
+                    <richTextContent>[{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;color\&amp;quot;:\&amp;quot;#ffffff\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;Divider\&amp;quot;},{\&amp;quot;attributes\&amp;quot;:{\&amp;quot;align\&amp;quot;:\&amp;quot;left\&amp;quot;},\&amp;quot;insert\&amp;quot;:\&amp;quot;\\n\&amp;quot;}]</richTextContent>
                 </dashboardComponentContents>
                 <groupingSortProperties/>
             </dashboardComponent>
-            <rowIndex>32</rowIndex>
-            <rowSpan>1</rowSpan>
+            <rowIndex>24</rowIndex>
+            <rowSpan>2</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>4</colSpan>
@@ -558,7 +479,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>33</rowIndex>
+            <rowIndex>26</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -599,7 +520,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>33</rowIndex>
+            <rowIndex>26</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -640,7 +561,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>33</rowIndex>
+            <rowIndex>26</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -687,7 +608,7 @@
                 <title>Southwest SLED Region</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>41</rowIndex>
+            <rowIndex>34</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -734,7 +655,7 @@
                 <title>South Central SLED Region</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>41</rowIndex>
+            <rowIndex>34</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -781,7 +702,7 @@
                 <title>SouthEast SLED Region</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>41</rowIndex>
+            <rowIndex>34</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -828,7 +749,7 @@
                 <title>Southwest SLED Region</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>49</rowIndex>
+            <rowIndex>42</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -874,7 +795,7 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>49</rowIndex>
+            <rowIndex>42</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
@@ -920,7 +841,100 @@
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>49</rowIndex>
+            <rowIndex>42</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
+                </chartSummary>
+                <componentType>BarGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>2</decimalPrecision>
+                <displayUnits>Millions</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>FULL_NAME</groupingColumn>
+                <groupingColumn>CLOSE_DATE</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>Southwest SLED Pending Pipeline</header>
+                <legendPosition>Right</legendPosition>
+                <report>unfiled$public/RAL_SLED_Past_Due_Pending_Pipeline</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <title>Past Due - Upcoming</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>50</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
+                </chartSummary>
+                <componentType>BarGrouped</componentType>
+                <dashboardFilterColumns>
+                    <column>OpportunityLineItem.Core_KPI_Date__c</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>2</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>OPPORTUNITY_NAME</groupingColumn>
+                <groupingColumn>STAGE_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>s!OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>ITS Owned SLED Stage Mismatch</header>
+                <legendPosition>Right</legendPosition>
+                <report>unfiled$public/ITS_SLED_Stage_Mismatch</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>true</sortLegendValues>
+                <title>All SLED Regions</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>58</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
@@ -931,7 +945,7 @@
     <owner>11380999@intel.com.crm</owner>
     <runningUser>11380999@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>USA SLED Pipeline Cleanup Dashboard</title>
+    <title>USA SLED Pipeline CleanUp Dashboard</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

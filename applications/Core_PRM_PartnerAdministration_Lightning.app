@@ -127,7 +127,6 @@
     </actionOverrides>
     <brand>
         <headerColor>#0070D2</headerColor>
-        <logo>IntelLogowithAsterisk8</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
@@ -8130,7 +8129,6 @@
     <tabs>PRM_PartnerType__c</tabs>
     <tabs>PRM_Registration_Request__c</tabs>
     <tabs>PRM_EmailLog__c</tabs>
-    <tabs>PRM_Partner_Deal_Opportunity__c</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>PRM_Benefit_Group__c</tabs>

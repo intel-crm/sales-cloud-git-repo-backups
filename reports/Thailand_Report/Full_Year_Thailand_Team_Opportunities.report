@@ -29,13 +29,6 @@
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_ProductionWin_KPI_Txt__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OPP_QUANTITY</field>
-    </columns>
-    <columns>
         <field>NEXT_STEP</field>
     </columns>
     <columns>
@@ -66,7 +59,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>all</value>
+        <value>open</value>
     </params>
     <params>
         <name>probability</name>
@@ -85,8 +78,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2027-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2024-01-01</startDate>
     </timeFrameFilter>
 </Report>

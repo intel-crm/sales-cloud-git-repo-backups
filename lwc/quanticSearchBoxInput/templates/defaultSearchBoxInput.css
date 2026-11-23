@@ -1,0 +1,9 @@
+@import 'c/searchBoxStyle';
+
+.searchbox__input-container {
+  display: flex;
+}
+
+input {
+  border: var(--slds-g-sizing-border-1, var(--lwc-borderWidthThin, 1px)) solid var(--slds-g-color-accent-container-1, var(--lwc-brandAccessible, #0176d3));
+}

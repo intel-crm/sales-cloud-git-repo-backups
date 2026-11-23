@@ -31,12 +31,6 @@
         <field>Lead.Core_Lead_Conversion_Point_First_Touch__c</field>
     </columns>
     <columns>
-        <field>STATUS</field>
-    </columns>
-    <columns>
-        <field>Lead.Core_Lead_Status__c</field>
-    </columns>
-    <columns>
         <field>Lead.Core_Lead_Sub_Status__c</field>
     </columns>
     <columns>
@@ -88,7 +82,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>DCO_25</value>
+            <value>DCO_25_HQ</value>
         </criteriaItems>
         <criteriaItems>
             <column>COMPANY</column>
@@ -141,7 +135,12 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Lead.Core_Lead_Conversion_Point__c</field>

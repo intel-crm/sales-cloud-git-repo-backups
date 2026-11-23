@@ -4246,11 +4246,6 @@
         <field>User.Core_WWID__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>User.User_Unique__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>Channel MDF L1 Manager</label>
     <license>Salesforce</license>
@@ -4546,6 +4541,10 @@
     </pageAccesses>
     <recordTypeVisibilities>
         <recordType>Account.Core_MDF_Co_Marketing</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>Campaign.Core_MDF_Channel_MDF</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>

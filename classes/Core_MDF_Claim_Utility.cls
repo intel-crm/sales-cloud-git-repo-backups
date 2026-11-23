@@ -1780,7 +1780,7 @@ Modified By:        Date:       Changes:
 public static Boolean isClaimEligibleForAICDBCallout(PartnerFundClaim claim) {
     List<String> aiPICEnabledPgms = Label.Core_MDF_AI_POP_Validation_EnabledPrograms.split(';');
     Boolean isClaimEligibleForCDBCallout = false;
-    if(!claim.Core_MDF_OutcomeBased_Ind__c && aiPICEnabledPgms.contains(claim.Core_MDF_Program__c)  && claim.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC) && 
+    if(!claim.Core_MDF_OutcomeBased_Ind__c && aiPICEnabledPgms.contains(claim.Core_MDF_Program__c)  && claim.Core_MDF_Budget_Type_Nm__c !=  Label.Core_MDF_Retail_RSAMD_UnTranslated && claim.CreatedDate > Date.valueOf(Label.Core_MDF_DateToEnableAIPIC) && 
     claim.Core_MDF_Status__c == label.Core_MDF_Claim_Status_PIC_Pending) {
         isClaimEligibleForCDBCallout = true;
     } else {

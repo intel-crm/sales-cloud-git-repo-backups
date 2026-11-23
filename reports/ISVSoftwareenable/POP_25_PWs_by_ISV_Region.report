@@ -91,11 +91,8 @@
     <columns>
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
     </columns>
-    <columns>
-        <field>Account.Core_Account_ID__c</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>1 AND 2 AND (3 AND 4)</booleanFilter>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
@@ -109,6 +106,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Malhar Thakkar,Tonya DeGance</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_First_Customer_Ship_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>LAST_YEAR</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -135,7 +139,7 @@
         <field>Account.Core_Geo__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>AI_POP_25_PWs by ISV Region</name>
+    <name>POP_25_PWs by ISV Region</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -158,9 +162,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Opportunity.Core_First_Customer_Ship_Date__c</dateColumn>
-        <endDate>2025-12-31</endDate>
+        <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

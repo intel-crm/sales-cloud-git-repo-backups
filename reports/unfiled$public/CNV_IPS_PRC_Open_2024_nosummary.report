@@ -28,9 +28,6 @@
         <field>OWNER</field>
     </columns>
     <columns>
-        <field>CONTACT.NAME</field>
-    </columns>
-    <columns>
         <field>Case.Core_Sub_Status__c</field>
     </columns>
     <columns>
@@ -59,7 +56,7 @@
         <field>LAST_UPDATEONLY</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND ((((2 AND 6) OR (3 AND 4 AND 7) OR 5) AND 8) OR ((11 OR 12) AND 13)) AND 9 AND 10 AND 14 AND 15</booleanFilter>
+        <booleanFilter>(1 AND ((2 AND 6) OR (3 AND 4 AND 7) OR 5) AND 8) AND 9 AND 10</booleanFilter>
         <criteriaItems>
             <column>ASSET.NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -72,7 +69,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Lenovo,Honor,Xiaomi,Wiko,LG,AIStone,longcheer,LUXSHAREPC</value>
+            <value>Lenovo,Huawei,Honor,Xiaomi,Wiko,Samsung,LG,AIStone,longcheer,LUXSHAREPC</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT.NAME</column>
@@ -86,14 +83,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Lenovo,Honor,Xiaomi,Wiko,LG</value>
+            <value>Lenovo,Honor,Xiaomi,Wiko,Samsung,LG</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Zhiqiang,Bingyue,Wenping,juan,tianshuai,mars,minjie</value>
+            <value>Zhiqiang,Bingyue,Wenping,juan,tianshuai,mars</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT.NAME</column>
@@ -107,14 +104,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>NEC,Fujitsu,ACER,AVON,Yukimura,LB4LC6,abby2,X13GEN6,Eiger,Blanc,Asus_CCBU,dell,curie3,HP</value>
+            <value>NEC,Fujitsu,ACER,AVON,Yukimura,LB4LC6,abby2,X13GEN6,Eiger</value>
         </criteriaItems>
         <criteriaItems>
             <column>SUBJECT</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Avon,JP,Thames,Matterhorn,Mersey,alloy,oak,syd,hed,marie,daisy,aster,Lugia,peach,nile,blanccook3,TM2,Yukimura,X13GEN6,acer,Eiger,ASUS,ptl_paris,P5405CSA,Dell,Roma,curie3,mario</value>
+            <value>Avon,JP,Thames,Matterhorn,Mersey,alloy,oak,syd,hed,marie,daisy,aster,Lugia,peach,nile,blanccook3,TM2,Yukimura,X13GEN6,acer,Eiger</value>
         </criteriaItems>
         <criteriaItems>
             <column>OPEN</column>
@@ -129,41 +126,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Close-Pending</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Samsung</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SUBJECT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Samsung</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Age__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>50</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CASE_NUMBER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>00995917,01001792,01001680,01002802,01002269,01003802,01003921,01014125,01017231,01014112,01011869,01016151,01008907,01008353,01017027,01023082,01024871,01025691,01027484,01029192,01029181,01030795,01024290</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Intel_Sup_Owner__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Takashi Hakiri</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

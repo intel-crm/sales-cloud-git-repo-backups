@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Entitlements__c</field>
-        <value xsi:type="xsd:string">Intel On Demand Purchase Agent – VLS</value>
+        <value xsi:type="xsd:string">Intel On Demand Purchase Agent VLS</value>
     </values>
     <values>
         <field>Folder_Name__c</field>

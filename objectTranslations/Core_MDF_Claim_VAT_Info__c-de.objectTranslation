@@ -41,7 +41,7 @@
         <value>Zahlungsdokumente</value>
     </caseValues>
     <fields>
-        <label>Kontobezeichnung</label>
+        <label><!-- Account Name --></label>
         <name>Core_MDF_Account_nm__c</name>
     </fields>
     <fields>
@@ -135,6 +135,10 @@
         <help>Der Steuerbetrag</help>
         <label>Steuerbetrag</label>
         <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Cancellation Comment --></label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
     </fields>
     <fields>
         <label><!-- Created By --></label>

@@ -21,16 +21,15 @@ public class ER_EmailVerificationUtility_Test {
         em.Business_Types__c = bt.Id;
         emList.add(em);
         insert emList;
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        
         Account a = new Account();
         a.Name='Intel';
-        //a.Core_Account_Type__c ='Distributor';
+        a.Core_Account_Type__c ='Distributor';
         a.Industry='Agriculture';
         a.BillingCity='Bengaluru';
         a.BillingCountry='India';
         a.BillingStreet='4th Floor,ITPL,Brookfield';
         a.BillingPostalCode='560037';
-        a.RecordTypeId = recordTypeIdAccount;
         insert(a); 
         
         Contact con = new Contact();

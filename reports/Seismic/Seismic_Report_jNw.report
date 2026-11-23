@@ -234,9 +234,6 @@
         <field>Activity.Core_Activity_Type__c</field>
     </columns>
     <columns>
-        <field>Activity.CventEvents__Attendee__c</field>
-    </columns>
-    <columns>
         <field>Activity.Core_Call_Result__c</field>
     </columns>
     <columns>
@@ -244,12 +241,6 @@
     </columns>
     <columns>
         <field>Activity.Core_Call_Script_ID__c</field>
-    </columns>
-    <columns>
-        <field>Activity.CventEvents__EventTitle__c</field>
-    </columns>
-    <columns>
-        <field>Activity.CventEvents__Event__c</field>
     </columns>
     <columns>
         <field>Activity.Core_Description__c</field>

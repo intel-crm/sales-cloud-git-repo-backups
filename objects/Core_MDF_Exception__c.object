@@ -1126,6 +1126,10 @@
                 <valueName>Search Engine Marketing (SEM) (Pre-2025)-&gt;Text Ad</valueName>
             </valueSettings>
             <valueSettings>
+                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
+                <valueName>Outcome-Based-&gt;Outcome-Based</valueName>
+            </valueSettings>
+            <valueSettings>
                 <controllingFieldValue>Core_MDF_Ecosystem_Extension_Fund</controllingFieldValue>
                 <valueName>Sales Incentive (Pre-2025)-&gt;Seller - Per Instance SPIF</valueName>
             </valueSettings>
@@ -2321,6 +2325,13 @@
                 <controllingFieldValue>Core_MDF_Data_Center_CoMarketing_Fund</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Retail_Marketing_Funds</controllingFieldValue>
                 <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
+                <valueName>RUSSIAN FEDERATION</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Core_MDF_Client_CoMarketing_Fund</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Data_Center_CoMarketing_Fund</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Retail_Marketing_Funds</controllingFieldValue>
+                <controllingFieldValue>Core_MDF_Intel_Partner_Alliance</controllingFieldValue>
                 <valueName>RWANDA</valueName>
             </valueSettings>
             <valueSettings>
@@ -3231,7 +3242,6 @@ NOT($Permission.Core_MDF_Internal_IPA_Exception_Reviewer )
 		ISCHANGED( Core_MDF_Select_All_Accounts_ind__c )
 	)
 )</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Account_id__c</errorDisplayField>
         <errorMessage>Cannot edit Exception in this status.</errorMessage>
     </validationRules>
     <validationRules>

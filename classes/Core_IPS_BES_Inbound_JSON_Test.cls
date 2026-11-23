@@ -125,7 +125,7 @@ public class Core_IPS_BES_Inbound_JSON_Test {
         customSetting.Name = 'Core_IPS_HSD_UserDetails';
         customSetting.MyIntel_Client_Id__c = '174b7bf8-8586-40ab-af6f-65450151f540';
         customSetting.MyIntel_Client_Secret__c = 'JeI8Q~WRoWsalXMrI7OHqHFBEvJeKXub7fCPPbNp';
-        customSetting.MyIntel_Endpoint_URL__c = 'https://apis.intel.com/m2r/hsdes/v1/user-details/';
+        customSetting.MyIntel_Endpoint_URL__c = 'https://apis-sandbox.intel.com/m2r/hsdes/v1/user-details/';
         customSetting.MyIntel_GrantType__c = 'client_credentials';
         customSetting.MyIntel_Token_Endpoint_URL__c = System.Label.Core_IPS_BES_Token_URL;
         insert customSetting;

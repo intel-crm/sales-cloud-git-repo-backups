@@ -3,11 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>Price Reviewer Queue</name>
-    <queueMembers>
-        <users>
-            <user>comarketing-flao-user@intel.com</user>
-        </users>
-    </queueMembers>
     <queueSobject>
         <sobjectType>PartnerFundRequest</sobjectType>
     </queueSobject>

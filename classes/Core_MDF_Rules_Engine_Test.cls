@@ -149,7 +149,7 @@ public class Core_MDF_Rules_Engine_Test {
                                                                                                          'Consumer',
                                                                                                          'Desktop',
                                                                                                          'Intel® Core™ i5 Processor',
-                                                                                                         'Broadcast',
+                                                                                                         'Broadcast (Pre-2025)',
                                                                                                          'Podcast',
                                                                                                          'Draft',
                                                                                                          false);

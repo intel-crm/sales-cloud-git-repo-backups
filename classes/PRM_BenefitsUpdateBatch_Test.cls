@@ -547,6 +547,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         PRM_BenefitUtility.assignBenefitsAndEntitlements(acc,false,true,true);
         be2.PRM_IsRemove_Ind__c = true;
         PRM_EntitlementUtility.assignContactEntitlements(new List<PRM_Batch_Entitlement__c>{be2});
+        //PRM_EntitlementDQUtility.assignContactEntitlements(new List<PRM_Batch_Entitlement__c>{be1});
         List<AsyncApexJob> jobInfo = [SELECT Status,NumberOfErrors FROM AsyncApexJob];
         //aba.PRM_Status_Nm__c = 'Active';
         //update aba;
@@ -914,6 +915,9 @@ public class PRM_BenefitsUpdateBatch_Test {
         Id batchprocessid =DataBase.executeBatch(obj); 
         //Test.stopTest();
         PRM_EntitlementUtility.assignContactEntitlements(beList);
+        PRM_EntitlementDQUtility.assignContactEntitlements(beList1);
+        PRM_EntitlementDQUtility.updateBatchEntitelmentStatus(beList1);
+        PRM_EntitlementDQUtility.getExistingEntitelments(conlst,entlst);
         PRM_Contact_Entitlements_Insert_batch ce = new PRM_Contact_Entitlements_Insert_batch();
         Id bpid =DataBase.executeBatch(ce);
         PRM_EntitlementDQBatch ce1 = new PRM_EntitlementDQBatch();
@@ -1680,6 +1684,7 @@ public class PRM_BenefitsUpdateBatch_Test {
             //Test.startTest();           
             insert beList;
             PRM_EntitlementUtility.assignContactEntitlements(null);
+            //PRM_EntitlementDQUtility.assignContactEntitlements(null);
         }
         catch(Exception ce){
             //system.debug('Exception Occured');
@@ -1697,6 +1702,7 @@ public class PRM_BenefitsUpdateBatch_Test {
         
         be2.PRM_IsRemove_Ind__c = true;
         PRM_EntitlementUtility.assignContactEntitlements(new List<PRM_Batch_Entitlement__c>{be2});
+        //PRM_EntitlementDQUtility.assignContactEntitlements(new List<PRM_Batch_Entitlement__c>{be3});
         List<AsyncApexJob> jobInfo = [SELECT Status,NumberOfErrors FROM AsyncApexJob];
         PRM_AccountChannelMembership__c acm2= new PRM_AccountChannelMembership__c(); //Account Channel Membership
         acm2.PRM_Account_Id__c=newAccount1.id;

@@ -4745,6 +4745,10 @@
         <recordType>PartnerFundClaim.Core_MDF_Channel_MDF_Account_Based</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundClaim.Core_MDF_Channel_MDF_Proposal_Based</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabSettings>
         <tab>Core_Contact_Entitlement__c</tab>
         <visibility>Available</visibility>

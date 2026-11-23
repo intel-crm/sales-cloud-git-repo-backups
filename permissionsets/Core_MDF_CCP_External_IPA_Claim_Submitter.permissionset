@@ -242,10 +242,6 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_BankProgram_Entitlement_Mapping__mdt</name>
-    </customMetadataTypeAccesses>
-    <customMetadataTypeAccesses>
-        <enabled>true</enabled>
         <name>Core_MDF_CCP_Activity_Budget_Cap_Window__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
@@ -266,19 +262,11 @@
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
-        <name>Core_MDF_ClaimActAllocRecTypeMapping__mdt</name>
-    </customMetadataTypeAccesses>
-    <customMetadataTypeAccesses>
-        <enabled>true</enabled>
         <name>Core_MDF_Custom_Approval_History_Config__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
         <name>Core_MDF_ObjRecType_Budget_FieldSetMap__mdt</name>
-    </customMetadataTypeAccesses>
-    <customMetadataTypeAccesses>
-        <enabled>true</enabled>
-        <name>Core_MDF_PFR_Event_Rule__mdt</name>
     </customMetadataTypeAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
@@ -295,6 +283,10 @@
     <customPermissions>
         <enabled>true</enabled>
         <name>Core_MDF_Cancel_Claim</name>
+    </customPermissions>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Core_MDF_Cancel_VAT_Claim</name>
     </customPermissions>
     <customPermissions>
         <enabled>true</enabled>
@@ -2806,6 +2798,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_MDF_Claim_VAT_Info__c.Core_MDF_VAT_Comments_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Claim_VAT_Info__c.Core_MDF_VAT_Invoice_Number_Txt__c</field>
         <readable>true</readable>
@@ -3523,6 +3520,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>PartnerFundClaim.Core_MDF_Cap_Type_nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>PartnerFundClaim.Core_MDF_Claim_Cancellation_Reason_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

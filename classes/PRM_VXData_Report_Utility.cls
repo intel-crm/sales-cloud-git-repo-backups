@@ -89,7 +89,9 @@ public without sharing class  PRM_VXData_Report_Utility {
                                                 
                                                 
                                             }//loop block ends here
-                                           
+                                            System.debug('@RRT countOfAccSalesGroupMap'+countOfAccSalesGroupMap);
+                                            System.debug('@RRT countOfAccMap'+countOfAccMap);
+                                            System.debug('@RRT countSalesAndTrainingNextTierMap'+countSalesAndTrainingNextTierMap);
              try {
                 if (!vxDataOldList.isEmpty() && vxDataOldList.size() > 0) {
                     updateVXDataReportFieldsWrapper obj=new updateVXDataReportFieldsWrapper();
@@ -157,7 +159,7 @@ public without sharing class  PRM_VXData_Report_Utility {
     //         }
 
     //          }//loop ends here
-    //     
+    //     system.debug('---locAccids '+locAccids);
     //     if(locAccids!=null && locAccids.size()>0){
     //         list<AggregateResult> dataListTrainedSum = new list<AggregateResult >();
     //         map<string,decimal> creditmap=new map<string,decimal>();
@@ -269,7 +271,11 @@ public without sharing class  PRM_VXData_Report_Utility {
             if(vxNew.PRM_One_Partner_Id__c !=null){
                 salesAndTrainingKey=vxNew.PRM_One_Partner_Id__c/*+vxNew.PRM_Partner_Role_Nm__c*/+vxNew.PRM_Country_Market_Type_Nm__c; //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087
             }
-            
+            System.debug('@RRT key'+key);
+            System.debug('@RRT salesAndTrainingKey'+salesAndTrainingKey);
+            System.debug('@RRT att.countOfAccMap'+att.countOfAccMap.get(vxNew.PRM_Account_Id__c));
+            System.debug('@RRT countOfAccSalesGroupMap'+att.countOfAccSalesGroupMap.get(key));
+            System.debug('@RRT countSalesAndTrainingNextTierMap'+att.countSalesAndTrainingNextTierMap.get(salesAndTrainingKey));
             if(!att.countOfAccMap.isEmpty() && att.countOfAccMap.containsKey(vxNew.PRM_Account_Id__c)){//updating field for caluclating average for reporting purpose on basis of AccountId count 
                 
                 vxNew.PRM_Training_Credit_Points_Report_Nbr__c = vxNew.PRM_Training_Credit_Points_Count_Nbr__c != null?vxNew.PRM_Training_Credit_Points_Count_Nbr__c/att.countOfAccMap.get(vxNew.PRM_Account_Id__c):0;//DE93806-Included negative value for the calculation
@@ -293,7 +299,16 @@ public without sharing class  PRM_VXData_Report_Utility {
             }
             
             
-            
+            System.debug('@RRT flagOne'+flagOne);
+            System.debug('@RRT flagTwo'+flagTwo);
+            System.debug('@RRT flagThree'+flagThree);
+            System.debug('@RRT vxNew.PRM_Training_Credit_Points_Report_Nbr__c '+vxNew.PRM_Training_Credit_Points_Report_Nbr__c );
+            System.debug('@RRT vxNew.PRM_Total_Achieved_Competency_Report_Nbr__c'+vxNew.PRM_Total_Achieved_Competency_Report_Nbr__c);
+            System.debug('@RRT vxNew.PRM_MP_Solutions_Count_Report_Nbr__c'+vxNew.PRM_MP_Solutions_Count_Report_Nbr__c);
+            System.debug('@RRT vxNew.PRM_Sales_Amount_Report_Nbr__c'+vxNew.PRM_Sales_Amount_Report_Nbr__c);
+            System.debug('@RRT vxNew.PRM_Total_Sales_Out_Units_Report_Nbr__c'+vxNew.PRM_Total_Sales_Out_Units_Report_Nbr__c);
+            System.debug('@RRT vxNew.PRM_Sales_To_Next_Tier_Report_Nbr__c'+vxNew.PRM_Sales_To_Next_Tier_Report_Nbr__c);
+            System.debug('@RRT vxNew.PRM_Training_credits_tier_report_Nbr__c'+vxNew.PRM_Training_credits_tier_report_Nbr__c);
             if(flagOne || flagTwo || flagThree){
                 updateVXRcrds.add(vxNew);
             }

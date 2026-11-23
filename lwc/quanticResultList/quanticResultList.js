@@ -1,12 +1,11 @@
-import {LightningElement, api, track} from 'lwc';
+import loadingResults from '@salesforce/label/c.quantic_LoadingResults';
 import {
   registerComponentForInit,
   initializeWithHeadless,
   getHeadlessBundle,
 } from 'c/quanticHeadlessLoader';
-import {AriaLiveRegion, I18nUtils} from 'c/quanticUtils';
-
-import loadingResults from '@salesforce/label/c.quantic_LoadingResults';
+import {AriaLiveRegion} from 'c/quanticUtils';
+import {LightningElement, api, track} from 'lwc';
 
 /** @typedef {import("coveo").Result} Result */
 /** @typedef {import("coveo").ResultList} ResultList */
@@ -17,7 +16,7 @@ import loadingResults from '@salesforce/label/c.quantic_LoadingResults';
 
 /**
  * The `QuanticResultList` component is responsible for displaying query results by applying one or more result templates.
- * @fires CustomEvent#registerresulttemplates
+ * @fires CustomEvent#quantic__registerresulttemplates
  * @category Search
  * @category Insight Panel
  * @example
@@ -34,11 +33,10 @@ export default class QuanticResultList extends LightningElement {
    * A list of fields to include in the query results, separated by commas.
    * @api
    * @type {string}
-   * @defaultValue `'date,author,source,language,filetype,parents,sfknowledgearticleid,lightningclickuri,description'`
+   * @defaultValue `'date,author,source,language,filetype,documenttype,parents,sfknowledgearticleid,sfid,sfkbid,sfkavid,sfparentid'`
    */
-  
   @api fieldsToInclude =
-    'date,author,source,language,filetype,parents,sfknowledgearticleid,lightningclickuri,description';
+    'date,author,source,language,filetype,documenttype,parents,sfknowledgearticleid,sfid,sfkbid,sfkavid,sfparentid';
 
   /** @type {ResultListState}*/
   @track state;
@@ -63,10 +61,12 @@ export default class QuanticResultList extends LightningElement {
   loadingAriaLiveMessage;
   /** @type {string} */
   openPreviewId;
+  /** @type {boolean} */
+  hasInitializationError = false;
 
   labels = {
-    loadingResults
-  }
+    loadingResults,
+  };
 
   connectedCallback() {
     registerComponentForInit(this, this.engineId);
@@ -113,7 +113,7 @@ export default class QuanticResultList extends LightningElement {
 
   registerTemplates() {
     this.dispatchEvent(
-      new CustomEvent('registerresulttemplates', {
+      new CustomEvent('quantic__registerresulttemplates', {
         bubbles: true,
         detail: this.resultTemplatesManager,
       })
@@ -124,7 +124,10 @@ export default class QuanticResultList extends LightningElement {
     this.unsubscribe?.();
     this.unsubscribeSearchStatus?.();
     this.unsubscribeResultsPerPage?.();
-    this.template.removeEventListener('quantic__resultpreviewtoggle', this.handleResultPreviewToggle);
+    this.template.removeEventListener(
+      'quantic__resultpreviewtoggle',
+      this.handleResultPreviewToggle
+    );
   }
 
   updateState() {
@@ -135,14 +138,16 @@ export default class QuanticResultList extends LightningElement {
       !this.searchStatus?.state?.hasError &&
       !this.searchStatus?.state?.firstSearchExecuted &&
       !!this.numberOfResults;
-    if(this.showPlaceholder) {
-      this.loadingAriaLiveMessage.dispatchMessage(I18nUtils.format(this.labels.loadingResults));
+    if (this.showPlaceholder) {
+      this.loadingAriaLiveMessage.dispatchMessage(this.labels.loadingResults);
     }
   }
 
   get fields() {
-    if (this.fieldsToInclude.trim() === '') return [];
-    return this.fieldsToInclude.split(',').map((field) => field.trim());
+    return this.fieldsToInclude
+      .split(',')
+      .map((field) => field.trim())
+      .filter((field) => field.length > 0);
   }
 
   get hasResults() {
@@ -150,6 +155,21 @@ export default class QuanticResultList extends LightningElement {
   }
 
   get results() {
-    return this.state?.results || [];
+    // We need to add a unique key to each result to make sure to re-render the LWC when the results change.
+    // If the unique key is only the result uniqueId, the LWC will not re-render when the results change AND the same result is still in the results.
+    const searchResponseId = this?.state?.searchResponseId || Math.random();
+    return (
+      this.state?.results?.map((result) => ({
+        ...result,
+        keyResultList: `${searchResponseId}_${result.uniqueId}`,
+      })) || []
+    );
+  }
+
+  /**
+   * Sets the component in the initialization error state.
+   */
+  setInitializationError() {
+    this.hasInitializationError = true;
   }
 }

@@ -8,7 +8,7 @@
             <recipient>coe-integration-user@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>test/Core_Amend_Renewal_Opportunities_Not_Deleted</template>
     </alerts>
@@ -201,7 +201,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>export.customer@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MINDS_Opportunity_Approved</template>
     </alerts>
@@ -212,7 +212,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>export.customer@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MAG_Opportunity_Fill_Out_Form</template>
     </alerts>
@@ -223,7 +223,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>export.customer@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MAG_Opportunity_GEC_Needs_Info</template>
     </alerts>
@@ -235,7 +235,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>export.customer@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>test/Core_MAG_Opportunity_Email_to_Owner</template>
     </alerts>
@@ -246,7 +246,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>export.customer@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MAG_Opportunity_Not_Approved</template>
     </alerts>
@@ -332,7 +332,7 @@
             <field>Core_Technical_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_PCC_OpportunityRejectNotification</template>
     </alerts>

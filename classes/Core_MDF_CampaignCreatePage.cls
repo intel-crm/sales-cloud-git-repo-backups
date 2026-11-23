@@ -1756,8 +1756,9 @@ created By: Namratha        Date: 1st April 2024
     Description:        This method is used to get the domains associated with accounts
     Created By:         Accenture - Aditya | Date: 28/06/2026
     Modified By:  
+    Roshan              Commented as part of TWC3117-18965
     *******************************************************************************************************/ 
-    @AuraEnabled
+    /*@AuraEnabled
     public static List<Core_MDF_Partner_Group_Domain_Mapping__c> getDomainsForAccount(String accountId) {
         try {
             if (String.isBlank(accountId)) {
@@ -1771,7 +1772,7 @@ created By: Namratha        Date: 1st April 2024
             Core_MDF_CCP_UtilityClass.logError(err);
             throw new AuraHandledException(err.getMessage());
         }
-    }
+    }*/
     
     public class EditCampaignLockWrapper {
         @AuraEnabled public Boolean isEditProposalAccess  { get; set; }

@@ -44,13 +44,7 @@
         <field>Opportunity$Owner.Core_WWID__c</field>
     </columns>
     <columns>
-        <field>Opportunity$Owner.Email</field>
-    </columns>
-    <columns>
         <field>Opportunity$Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity$Core_Technical_Owner_Email_Txt__c</field>
     </columns>
     <columns>
         <field>Opportunity$Core_Date_Submitted_for_Approval__c</field>
@@ -128,7 +122,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>APJ Australia &amp; New Zealand Sales Group,APJ Southeast Asia Sales Group,APJ Taiwan Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ India Sales Group,APJ Hosted Sales Group,APJ Partner</value>
+            <value>APJ Australia &amp; New Zealand Sales Group,APJ Southeast Asia Sales Group,APJ Taiwan Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ India Sales Group,APJ Hosted Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity$Core_Approval_Status__c</column>
@@ -142,7 +136,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Original,Design: Secondary,Design: Software-enable</value>
+            <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

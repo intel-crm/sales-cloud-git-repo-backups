@@ -7,60 +7,9 @@
     <colorPalette>unity</colorPalette>
     <dashboardChartTheme>light</dashboardChartTheme>
     <dashboardColorPalette>unity</dashboardColorPalette>
-    <dashboardFilters>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>David Minnaar</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Alan Rose</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Alastair Duncan</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Hugues Morin</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Michael OBrien</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>David Richard</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Darren Pulsipher</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Burnie Legette</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Christina M Daubeneck</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>John A Haag</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Ricardo Dutton</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>John Haag</values>
-        </dashboardFilterOptions>
-        <name>Opportunity Owner</name>
-    </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
-            <colSpan>5</colSpan>
+            <colSpan>3</colSpan>
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -70,17 +19,14 @@
                     <column>RowCount</column>
                 </chartSummary>
                 <componentType>BarGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>FULL_NAME</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
+                <groupingColumn>DUE_DATE</groupingColumn>
+                <groupingColumn>ACCOWNER</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -91,9 +37,9 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>All 2026 #OKR Count in Opp Name</header>
+                <header>2026 AE SLED TOTAL# OKRS</header>
                 <legendPosition>Right</legendPosition>
-                <report>unfiled$public/SLED_LEAD_OKR_Opp_Report_3</report>
+                <report>unfiled$public/X2026_AE_SLED_TOTAL_OKRS</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -101,11 +47,11 @@
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
-            <rowSpan>23</rowSpan>
+            <rowSpan>14</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
             <colSpan>4</colSpan>
-            <columnIndex>5</columnIndex>
+            <columnIndex>3</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -113,59 +59,15 @@
                     <axisBinding>y</axisBinding>
                     <column>RowCount</column>
                 </chartSummary>
-                <componentType>Donut</componentType>
-                <dashboardFilterColumns>
-                    <column>FULL_NAME</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>All 2026 #OKR Total in Opp Name</header>
-                <legendPosition>Right</legendPosition>
-                <report>unfiled$public/SLED_LEAD_OKR_Opp_Report_2</report>
-                <showPercentage>false</showPercentage>
-                <showTotal>true</showTotal>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>0</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>7</colSpan>
-            <columnIndex>5</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>TOTAL_PRICE</column>
-                </chartSummary>
                 <componentType>BarGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>FULL_NAME</column>
-                </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingColumn>CLOSE_DATE</groupingColumn>
+                <groupingColumn>DUE_DATE</groupingColumn>
+                <groupingColumn>ASSIGNED</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -176,17 +78,17 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>All 2026 #OKR DemandGen$ in Opp Name</header>
+                <header>2026 SE SLED TOTAL# OKRS</header>
                 <legendPosition>Right</legendPosition>
-                <report>unfiled$public/SLED_LEAD_OKR_Opp_Report_3</report>
+                <report>unfiled$public/X2026_SE_SLED_TOTAL_OKRS</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>true</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>23</rowSpan>
+            <rowIndex>0</rowIndex>
+            <rowSpan>14</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>

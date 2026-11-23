@@ -3,13 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>CEP Admin</name>
-    <queueMembers>
-        <users>
-            <user>11591707@intel.com.crm</user>
-            <user>10468047@intel.com.crm</user>
-            <user>10705561@intel.com.crm</user>
-        </users>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

@@ -80,17 +80,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>SBQQ__Quote__c$Pricing_Overall_Quote_Quantity__c</field>
     </columns>
-    <columns>
-        <field>SBQQ__Quote__c$Pricing_Market_Segment_values_Nm__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c$Pricing_Exclude_from_Volume_Excep_Quota__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>SBQQ__Quote__c$Pricing_Volume_Exception_Quota_Cb__c</field>
-    </columns>
     <description>Report with the Quote and Quote Line data for Data Center CPU, Optane™ SSD, Optane™ PMem, Ethernet and Client products.</description>
     <filter>
         <criteriaItems>
@@ -138,8 +127,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c$CreatedDate</dateColumn>
-        <endDate>2026-06-27</endDate>
+        <endDate>2025-12-27</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-03-29</startDate>
+        <startDate>2025-09-28</startDate>
     </timeFrameFilter>
 </Report>

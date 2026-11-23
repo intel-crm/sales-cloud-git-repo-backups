@@ -1,11 +1,15 @@
 .card {
   position: relative;
-  padding: 1rem .9rem;
-  background: transparent;
-  border-top: 1px solid #a6a6a6; 
-  border-radius: 0;
+  background: var(--slds-g-color-surface-1, var(--lwc-colorBackgroundAlt, #ffffff));
+  border: var(--slds-g-sizing-border-1, var(--lwc-borderWidthThin, 1px)) solid var(--slds-g-color-neutral-base-90, var(--lwc-colorBorder, #dddbda));
+  border-radius: var(--slds-g-radius-border-2, 0.25rem);
   background-clip: padding-box;
   -webkit-box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
-  box-shadow: none;
-  padding-top: 30px;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
+}
+
+.card__header {
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
 }

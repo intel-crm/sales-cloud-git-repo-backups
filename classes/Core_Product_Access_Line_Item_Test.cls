@@ -1,12 +1,5 @@
 @isTest
 public class Core_Product_Access_Line_Item_Test {
-
-    private static void insertUsersWithValidationBypass(List<User> users) {
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser) {
-            insert users;
-        }
-    }
     
     
     
@@ -369,7 +362,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1);
         listOfUser.get(0).ProfileID = profileId;
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         //System.assertEquals(listOfUser.get(0).profileid, profiles.get('IPS Data Migration'), 'Profile is IPS Data Migration');
         System.runAs(listOfUser.get(0)){
             // inserting Accounts
@@ -477,7 +470,7 @@ Modification Log :
         List<User> listOfUser = new List<User>();
         listOfUser = TestUtilities.getListOfUser(1);
         listOfUser.get(0).ProfileID = profileId;
-        insertUsersWithValidationBypass(listOfUser);
+        insert listOfUser;
         //System.assertEquals(listOfUser.get(0).profileid, profiles.get('IPS Data Migration'), 'Profile is IPS Data Migration');
         System.runAs(listOfUser.get(0)){
             // inserting Accounts

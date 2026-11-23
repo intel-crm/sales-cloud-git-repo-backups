@@ -543,6 +543,10 @@ public without sharing class IPABenefitUtility {
               
                 userBenefits.add(userBenefit);
             }
+            //DOCEBO WW44
+            else if(ben == 'Docebo'){userBenefit = getDoceboBlade();
+                userBenefits.add(userBenefit);
+            }
             else if(ben=='MDF'  && mdfLinks.size()>0)
             {
                 if(alertBlades.containsKey('MDF'))
@@ -2286,5 +2290,12 @@ public without sharing class IPABenefitUtility {
             }
         }
         return isRedirectToAccessDenied;
+    }
+    public static IPABenefitWrapper.UserBenefitInfo getDoceboBlade()
+    {
+        IPABenefitWrapper.UserBenefitInfo benefit = new IPABenefitWrapper.UserBenefitInfo();
+        benefit.title = 'Recommended Learning';
+        benefit.description = '';
+        return benefit;
     }
 }

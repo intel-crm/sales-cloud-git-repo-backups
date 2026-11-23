@@ -32,6 +32,7 @@ public without sharing class PRM_PartnerSearchController {
                 WHERE ID =: ur.AccountId];
             
             String userRegion = ac.Core_Geo__c;
+            //System.debug('userRegion=>>>>'+userRegion);
             String tempInput = '%' + searchInput + '%';
             String query = 'SELECT'+
             ' Id,'+
@@ -70,6 +71,7 @@ public without sharing class PRM_PartnerSearchController {
 
                 if(accRecords.Name.equals(searchInput) || accRecords.AccountNumber == searchInput){
                     accFirstSeachrec.add(accRecords) ;
+                    //system.debug('accFirstSeachrec'+accFirstSeachrec);
                     accountIndex++;
                 }
             }
@@ -244,6 +246,7 @@ public without sharing class PRM_PartnerSearchController {
         @AuraEnabled
         public static List<String> getCountryList(List<PRM_PartnerSearchResultWrapper> accountDetails){
             try{
+                //System.debug('Account details apex=>>>>'+accountDetails);
                 List<String> countries = new List<String>();
                 for(PRM_PartnerSearchResultWrapper acc: accountDetails){
                     countries.add(acc.billingCountry);

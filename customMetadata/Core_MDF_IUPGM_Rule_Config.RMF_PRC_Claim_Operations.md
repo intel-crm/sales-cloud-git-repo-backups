@@ -68,7 +68,7 @@
     </values>
     <values>
         <field>Core_MDF_Region_Options__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">APJ;ASMO-NAR;ASMO-LAR;EMEA;PRC</value>
     </values>
     <values>
         <field>Core_MDF_Role_Label__c</field>

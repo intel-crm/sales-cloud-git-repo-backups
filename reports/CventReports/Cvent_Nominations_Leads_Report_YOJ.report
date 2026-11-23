@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>Lead.CventEvents__Nominations__r$CventEvents__EventTitle__c</field>
-    </columns>
-    <columns>
-        <field>Lead.CventEvents__Nominations__r$Name</field>
-    </columns>
-    <columns>
-        <field>Lead.CventEvents__Nominations__r$CventEvents__Status__c</field>
-    </columns>
-    <columns>
-        <field>Lead.CventEvents__Nominations__r$CventEvents__Requester__c</field>
-    </columns>
-    <columns>
-        <field>Lead.CventEvents__Nominations__r$CventEvents__Comment__c</field>
-    </columns>
-    <columns>
-        <field>Lead.CventEvents__Nominations__r$CreatedDate</field>
-    </columns>
-    <columns>
-        <field>Lead.CventEvents__Nominations__r$CventEvents__CurrentApproverName__c</field>
-    </columns>
-    <columns>
-        <field>Lead.CventEvents__Nominations__r$CventEvents__ApproverComment__c</field>
-    </columns>
-    <columns>
-        <field>Lead.CventEvents__Nominations__r$CventEvents__AttendeeName__c</field>
-    </columns>
-    <columns>
         <field>Lead$Title</field>
     </columns>
     <columns>
@@ -44,9 +17,6 @@
     </columns>
     <columns>
         <field>Lead$Core_Lead_Owner_Name__c</field>
-    </columns>
-    <columns>
-        <field>Lead.CventEvents__Nominations__r$CventEvents__SendInviteOnApprove__c</field>
     </columns>
     <description>This report can be used to get basic information about Salesforce lead records which have been nominated for a Cvent-managed event.</description>
     <format>Tabular</format>

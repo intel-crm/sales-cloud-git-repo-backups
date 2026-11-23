@@ -207,6 +207,11 @@
             <actionType>QuickAction</actionType>
             <sortOrder>7</sortOrder>
         </platformActionListItems>
+        <platformActionListItems>
+            <actionName>SBQQ__Quote__c.Generate_RFP_Scraping</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>8</sortOrder>
+        </platformActionListItems>
     </platformActionList>
     <relatedLists>
         <excludeButtons>MassChangeOwner</excludeButtons>

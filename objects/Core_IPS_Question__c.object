@@ -638,15 +638,6 @@
         </sharedTo>
     </listViews>
     <listViews>
-        <fullName>Core_IPS_Org_029_Core_IPS_Question</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IGT</label>
-        <queue>Core_IPS_Org_029</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>Customer_Survey</fullName>
         <columns>NAME</columns>
         <columns>Core_IPS_Question__c</columns>

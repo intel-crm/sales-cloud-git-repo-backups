@@ -1,14 +1,4 @@
-/****************************************************************************************************
-Apex Class Name : PCC_UpdateSDPFlowController
-Created Date    : 16/06/2026
-Function        : Controller class for the apex action in flow 'PCC_Update_SDP_Price'
-Modifications   :
-*****************************************************************************************************
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------
-* Varun                     16/06/2026             Created
-*****************************************************************************************************/
-public with sharing class PCC_UpdateSDPFlowController { 
+public with sharing class PCC_UpdateSDPFlowController {
     
     @InvocableMethod(label='Bulk Update DRP SDP Price')
     public static List<BulkUpdateResponse> bulkUpdateDRPRecords(List<BulkUpdateRequest> requests) {

@@ -5990,7 +5990,7 @@
     </fields>
     <fields>
         <fullName>Core_MDF_Event_Name_nm__c</fullName>
-        <description>Event Name for Activity</description>
+        <description>To store the Event name of Activity</description>
         <label>Event Name</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -6246,6 +6246,7 @@
             </valueSettings>
             <valueSettings>
                 <controllingFieldValue>Joint Event</controllingFieldValue>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
                 <controllingFieldValue>Third Party Event</controllingFieldValue>
                 <valueName>Intel® Extreme Masters (IEM)</valueName>
             </valueSettings>
@@ -6474,6 +6475,50 @@
                 <controllingFieldValue>Joint Event</controllingFieldValue>
                 <controllingFieldValue>Third Party Event</controllingFieldValue>
                 <valueName>Zoomtopia</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>Intel® 360 (i360)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>Intel® Cloud Board of Advisors (Cloud BOA)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>Intel® FPGA Technology Day (IFTD)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>Intel® ON: Innovation</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>Intel® ON: Vision</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>Intel® Partner Alliance (IPA)</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>Intel® Public Sector Summit</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>Intel® Retail Executive Conference (REC) EMEA</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>Intel® Retail Executive Conference (REC) North America</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>Intel® Tech Connect</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Other (Event)</controllingFieldValue>
+                <valueName>LOEM Summit</valueName>
             </valueSettings>
         </valueSet>
     </fields>
@@ -20326,6 +20371,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Commercial Evo %28non-vPro%29</fullName>
                 <default>false</default>
             </values>
@@ -20426,6 +20475,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mainstream PCs</fullName>
                 <default>false</default>
             </values>
@@ -20463,6 +20516,14 @@
             </values>
             <values>
                 <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -20800,7 +20861,23 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Commercial Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Gaming</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mainstream Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Premium Client</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -37767,6 +37844,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Physical AI</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>RXT engagement</fullName>
                 <default>false</default>
             </values>
@@ -38114,6 +38195,10 @@
             </values>
             <values>
                 <fullName>Infrastructure Optimization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical AI</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -51395,6 +51480,10 @@
             </values>
             <values>
                 <fullName>ROMANIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RUSSIAN FEDERATION</fullName>
                 <default>false</default>
             </values>
             <values>

@@ -9,7 +9,7 @@
         <value>Documenti di pagamento</value>
     </caseValues>
     <fields>
-        <label>Nome account</label>
+        <label><!-- Account Name --></label>
         <name>Core_MDF_Account_nm__c</name>
     </fields>
     <fields>
@@ -103,6 +103,10 @@
         <help>L&apos;importo dell&apos;imposta</help>
         <label>Importo imposte</label>
         <name>Core_MDF_VAT_Amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- VAT Cancellation Comment --></label>
+        <name>Core_MDF_VAT_Comments_txt__c</name>
     </fields>
     <fields>
         <label><!-- Created By --></label>

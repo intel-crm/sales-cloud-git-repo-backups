@@ -16,33 +16,7 @@
             <operator>contains</operator>
             <values>Lenovo</values>
         </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>HPi</values>
-        </dashboardFilterOptions>
         <name>OEM</name>
-    </dashboardFilters>
-    <dashboardFilters>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>PNL</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>contains</operator>
-            <values>Server</values>
-        </dashboardFilterOptions>
-        <name>Program</name>
-    </dashboardFilters>
-    <dashboardFilters>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>THIS_MONTH</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>THIS_QUARTER</values>
-        </dashboardFilterOptions>
-        <name>Created Date</name>
     </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
@@ -50,8 +24,7 @@
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Manual</chartAxisRange>
-                <chartAxisRangeMax>20.0</chartAxisRangeMax>
+                <chartAxisRange>Auto</chartAxisRange>
                 <chartSummary>
                     <axisBinding>y</axisBinding>
                     <column>RowCount</column>
@@ -59,12 +32,6 @@
                 <componentType>ColumnStacked</componentType>
                 <dashboardFilterColumns>
                     <column>SUBJECT</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>SUBJECT</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>CREATED_DATE</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>0</decimalPrecision>
                 <displayUnits>Auto</displayUnits>

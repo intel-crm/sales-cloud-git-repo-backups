@@ -8,7 +8,7 @@
             <field>Pricing_Quote_Team_Member_Id__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CPQ_Email_Templates/Pricing_QuoteTeam_EmailNotification</template>
     </alerts>

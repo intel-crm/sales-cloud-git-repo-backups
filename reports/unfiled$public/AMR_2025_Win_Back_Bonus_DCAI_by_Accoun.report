@@ -51,15 +51,6 @@
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
     </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_OpportunityTeamMembers__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Commissionable__c</field>
-    </columns>
     <description>Report to track bonus 2 (DCAI Win-backs - on prem against Nvidia or AMD)</description>
     <filter>
         <booleanFilter>1 AND 2 AND 3 AND 4 AND ((5 AND 8) OR 11 OR (5 AND 12)) AND (6 OR 7 OR 10) AND 9</booleanFilter>
@@ -182,12 +173,10 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CREATED_DATE</sortColumn>
+    <sortColumn>QUANTITY</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2025-12-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2025-01-01</startDate>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

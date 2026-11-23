@@ -484,11 +484,13 @@ public inherited sharing class Core_MDF_PFR_RestAPI_Utility {
         if (String.isBlank(category) || String.isBlank(activityType)) {
             return errors;
         }
-        
+        if(activityType.contains('Others') || activityType.contains('Other') ){
+            errors.add('You cannot select others in Activity type');
+        }
         // Validate budget type restrictions for OEM CMP and Service Provider CMP
         if (String.isNotBlank(budgetType) && (budgetType == 'OEM CMP' || budgetType == 'Service Provider CMP')) {
             if (category.contains('Buyer Incentive') || category.contains('Seller Incentive') ||
-                activityType.contains('Seller Incentive') || activityType.contains('Buyer Incentive')) {
+                activityType.contains('Seller Incentive') || activityType.contains('Buyer Incentive') || category.contains('Sales Readiness') || category.contains('Technical Sales') ) {
                 errors.add(Core_MDF_PFR_RestAPI_Constants.formatError(Core_MDF_PFR_RestAPI_Constants.ERR_9222_INCENTIVE_NOT_ALLOWED_FOR_BUDGET, null));
                 return errors;
             }
@@ -2283,6 +2285,18 @@ private static List<String> calculateRequestedAmountAndExchangeRate(PartnerFundR
         String budgetId,
         String channelPartnerId
     ) {
+        return validateSPIFSegments(segments, accountId, program, campaignId, budgetId, channelPartnerId, null);
+    }
+
+    public static Map<String, Object> validateSPIFSegments(
+        List<Map<String, Object>> segments,
+        String accountId,
+        String program,
+        String campaignId,
+        String budgetId,
+        String channelPartnerId,
+        String activityType
+    ) {
         Map<String, Object> result = new Map<String, Object>();
         List<Map<String, Object>> validSegments = new List<Map<String, Object>>();
         List<Map<String, Object>> invalidSegments = new List<Map<String, Object>>();
@@ -2315,8 +2329,16 @@ private static List<String> calculateRequestedAmountAndExchangeRate(PartnerFundR
                     segmentMap,
                     i,
                     accountId,
-                    program
+                    program,
+                    activityType
                 );
+                if (segmentResult.get('stopValidation') == true) {
+                    result.put('isSuccess', false);
+                    result.put('stopValidation', true);
+                    result.put('message', ((List<String>) segmentResult.get('errors'))[0]);
+                    result.put('invalidSegments', new List<Map<String, Object>>{ segmentResult });
+                    return result;
+                }
                 
                 String segmentName = String.valueOf(segmentMap.get('SegmentName'));
                 Boolean isValid = (Boolean) segmentResult.get('isValid');
@@ -2378,7 +2400,8 @@ private static List<String> calculateRequestedAmountAndExchangeRate(PartnerFundR
         Map<String, Object> segmentMap,
         Integer index,
         String accountId,
-        String program
+        String program,
+        String activityType
     ) {
         Map<String, Object> result = new Map<String, Object>();
         List<String> errors = new List<String>();
@@ -2389,6 +2412,33 @@ private static List<String> calculateRequestedAmountAndExchangeRate(PartnerFundR
             String segmentName = convertToString(segmentMap.get('SegmentName'));
             Decimal minimumForecastVolume = convertToDecimal(segmentMap.get('MinimumForecastVolume'));
             Decimal incentiveAmountPerUnit = convertToDecimal(segmentMap.get('IncentiveAmountPerUnit'));
+            String normalizedActivityType = String.isBlank(activityType) ? '' : activityType.replaceAll('[^A-Za-z0-9]', '').toLowerCase();
+            Boolean requiresBundle = normalizedActivityType == 'offerbundle';
+            Boolean requiresForecast = new Set<String>{ 'spiftarget', 'spifvolume', 'offertarget' }.contains(normalizedActivityType);
+            Boolean hasBundleValues = segmentMap.get('MaximumBundledVolume') != null || segmentMap.get('MaximumCostOfBundle') != null;
+            if (requiresForecast && hasBundleValues) {
+                errors.add('MaximumBundledVolume and MaximumCostOfBundle must not be provided when ActivityTypes is ' + activityType + '.');
+                result.put('segmentName', segmentName);
+                result.put('isValid', false);
+                result.put('errors', errors);
+                result.put('stopValidation', true);
+                return result;
+            }
+            Boolean isBundle = requiresBundle || (!requiresForecast && hasBundleValues);
+            if (isBundle) {
+                if (segmentMap.get('MinimumForecastVolume') != null || segmentMap.get('IncentiveAmountPerUnit') != null) {
+                    errors.add(requiresBundle
+                        ? 'MinimumForecastVolume and IncentiveAmountPerUnit must not be provided when ActivityTypes is Offer - Bundle.'
+                        : 'Provide either bundle values or forecast/incentive values, not both.');
+                    result.put('segmentName', segmentName);
+                    result.put('isValid', false);
+                    result.put('errors', errors);
+                    result.put('stopValidation', true);
+                    return result;
+                }
+                minimumForecastVolume = convertToDecimal(segmentMap.get('MaximumBundledVolume'));
+                incentiveAmountPerUnit = convertToDecimal(segmentMap.get('MaximumCostOfBundle'));
+            }
             Object productIdsObj = segmentMap.get('ProductIds');
             
             // Validate segment name
@@ -2399,19 +2449,19 @@ private static List<String> calculateRequestedAmountAndExchangeRate(PartnerFundR
             
             // Validate minimum forecast volume
             if (minimumForecastVolume == null) {
-                errors.add(Core_MDF_PFR_RestAPI_Constants.formatError(Core_MDF_PFR_RestAPI_Constants.ERR_9226_MIN_FORECAST_VOLUME_REQUIRED, null));
+                errors.add(isBundle ? 'MaximumBundledVolume is required and must be a valid number.' : Core_MDF_PFR_RestAPI_Constants.formatError(Core_MDF_PFR_RestAPI_Constants.ERR_9226_MIN_FORECAST_VOLUME_REQUIRED, null));
                 isValid = false;
             } else if (minimumForecastVolume <= 0) {
-                errors.add(Core_MDF_PFR_RestAPI_Constants.formatError(Core_MDF_PFR_RestAPI_Constants.ERR_9227_MIN_FORECAST_VOLUME_GT_ZERO, null));
+                errors.add(isBundle ? 'MaximumBundledVolume must be greater than zero.' : Core_MDF_PFR_RestAPI_Constants.formatError(Core_MDF_PFR_RestAPI_Constants.ERR_9227_MIN_FORECAST_VOLUME_GT_ZERO, null));
                 isValid = false;
             }
             
             // Validate incentive amount
             if (incentiveAmountPerUnit == null) {
-                errors.add(Core_MDF_PFR_RestAPI_Constants.formatError(Core_MDF_PFR_RestAPI_Constants.ERR_9228_INCENTIVE_AMOUNT_REQUIRED, null));
+                errors.add(isBundle ? 'MaximumCostOfBundle is required and must be a valid number.' : Core_MDF_PFR_RestAPI_Constants.formatError(Core_MDF_PFR_RestAPI_Constants.ERR_9228_INCENTIVE_AMOUNT_REQUIRED, null));
                 isValid = false;
             } else if (incentiveAmountPerUnit <= 0) {
-                errors.add(Core_MDF_PFR_RestAPI_Constants.formatError(Core_MDF_PFR_RestAPI_Constants.ERR_9229_INCENTIVE_AMOUNT_GT_ZERO, null));
+                errors.add(isBundle ? 'MaximumCostOfBundle must be greater than zero.' : Core_MDF_PFR_RestAPI_Constants.formatError(Core_MDF_PFR_RestAPI_Constants.ERR_9229_INCENTIVE_AMOUNT_GT_ZERO, null));
                 isValid = false;
             }
             

@@ -16,10 +16,6 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>hideSlackAction</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>6</value>
                 </componentInstanceProperties>
@@ -2555,31 +2551,6 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>height</name>
-                    <value>300</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>pageName</name>
-                    <value>mkto_si__Account</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showLabel</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:visualforcePage</componentName>
-                <identifier>flexipage_visualforcePage</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-f74b4b06-1450-40ca-b156-aa28b7ce3bdb</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
                     <name>parentFieldApiName</name>
                     <value>Account.Id</value>
                 </componentInstanceProperties>
@@ -2795,20 +2766,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>customTab3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-f74b4b06-1450-40ca-b156-aa28b7ce3bdb</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Marketo Sales Insights</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab15</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

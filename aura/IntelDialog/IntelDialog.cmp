@@ -1,4 +1,4 @@
-<aura:component extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes">
+<aura:component implements="forceCommunity:availableForAllPageTypes">
 
         <aura:attribute name="cancelButtonText" type="string" default="{!$Label.c.Core_PMP_Cancel}"/>
         <aura:attribute name="confirmButtonText" type="string" default="{!$Label.c.PMP_Okay}"/>

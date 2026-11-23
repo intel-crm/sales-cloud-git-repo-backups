@@ -181,6 +181,10 @@
         <name>Core_MDF_Co_GTM</name>
     </recordTypes>
     <recordTypes>
+        <label><!-- Co-Inv --></label>
+        <name>Core_MDF_Co_Inv</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Datacenter --></label>
         <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
     </recordTypes>

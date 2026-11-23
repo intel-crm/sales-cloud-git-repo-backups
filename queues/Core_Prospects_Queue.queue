@@ -25,9 +25,6 @@
             <publicGroup>Core_PG_SMG_GMC_Read_Only</publicGroup>
             <publicGroup>Core_PG_System_Administrator</publicGroup>
         </publicGroups>
-        <users>
-            <user>salesrep1.test@intel.com.crm</user>
-        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_Prospect__c</sobjectType>

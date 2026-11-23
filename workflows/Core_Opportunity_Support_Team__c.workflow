@@ -8,7 +8,7 @@
             <field>Core_Opportunity_Support_Team_Member__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Opportunity_Support_Team_Submit</template>
     </alerts>

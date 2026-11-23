@@ -54,7 +54,7 @@
         <value>1</value>
     </params>
     <reportType>AccountList</reportType>
-    <scope>organization</scope>
+    <scope>scopingRule</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

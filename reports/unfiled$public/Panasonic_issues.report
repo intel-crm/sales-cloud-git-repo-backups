@@ -12,7 +12,7 @@
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
         <groupingColumn>Case.Core_IPS_Product__c</groupingColumn>
-        <legendPosition>Right</legendPosition>
+        <legendPosition>Bottom</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -76,20 +76,17 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,New,Open,​Open,​​Open,Closed,Escalated,On Hold,CEP On Hold,CEP Waiting for Customer,CEP Action Plan Created,CEP Action Plan Executed,Assigned,Awaiting Requestor’s Info,Awaiting Resolution Confirmation,Cancelled,Draft</value>
+            <value>New,Open,​Open,​​Open,Escalated</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <aggregateType>RowCount</aggregateType>
         <dateGranularity>Day</dateGranularity>
         <field>Case.Core_IPS_Product__c</field>
-        <sortByName>RowCount</sortByName>
         <sortOrder>Asc</sortOrder>
-        <sortType>Aggregate</sortType>
     </groupingsDown>
-    <name>Panasonic_Closed_issues</name>
+    <name>Panasonic_issues</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -103,8 +100,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>STATUS</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

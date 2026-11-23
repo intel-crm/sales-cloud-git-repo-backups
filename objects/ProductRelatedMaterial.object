@@ -150,16 +150,6 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>LeadTimeUomId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>MinimumEligibleQuantityUomId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Name</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -181,11 +171,6 @@
     <fields>
         <fullName>QuantityPerProductUnit</fullName>
         <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>QuantityUomId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>RelationshipType</fullName>

@@ -67,6 +67,10 @@
                 <behavior>Edit</behavior>
                 <field>Core_User_Sub_Geo__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Mask_Email_Id__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>

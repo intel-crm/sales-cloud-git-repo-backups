@@ -190,7 +190,6 @@
     </actionOverrides>
     <brand>
         <headerColor>#0070D2</headerColor>
-        <logo>intellogo</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>

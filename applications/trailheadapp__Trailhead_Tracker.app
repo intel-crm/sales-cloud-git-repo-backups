@@ -8,7 +8,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Trail Tracker</label>
-    <logo>trailheadapp__Trailhead/trailheadapp__trailheadLogo_png.png</logo>
     <tabs>trailheadapp__User_Badge__c</tabs>
     <tabs>trailheadapp__Badge__c</tabs>
     <tabs>trailheadapp__Trailmix__c</tabs>

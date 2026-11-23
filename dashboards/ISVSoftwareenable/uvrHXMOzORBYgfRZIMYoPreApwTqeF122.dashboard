@@ -10,6 +10,10 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
+            <values>Ashton Porter</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
             <values>Chris Smart</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
@@ -18,11 +22,19 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
+            <values>Derek Gaines</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
             <values>Ellen Farber</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
             <values>George Kondos</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Jorge Gomez Oliveros</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -42,7 +54,15 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
+            <values>Nailesh Chikkamath</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
             <values>Naveen Kumar</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Nischitha TS</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -51,6 +71,14 @@
         <dashboardFilterOptions>
             <operator>equals</operator>
             <values>Robert McLoughlin</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Rodney Dahleen</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Russell Cheng</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
@@ -74,15 +102,7 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Umair Tariq</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
             <values>XIN FAN</values>
-        </dashboardFilterOptions>
-        <dashboardFilterOptions>
-            <operator>equals</operator>
-            <values>Mario DiSanza,Derek Gaines,Justin Manker,Ashton Porter,Rodney Dahleen,Ajaysinh Mansinh,Daniel Alcazar,Gresa Heta,Jorge Gomez Oliveros,Kris Kolev,Nailesh Chikkamath,Nischitha Ts,Viktor Dekanj,Vladimir Isikiyski</values>
         </dashboardFilterOptions>
         <name>Opportunity Owner</name>
     </dashboardFilters>
@@ -93,11 +113,15 @@
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Christel Thompson,Chris Smart,Derek Gaines,Justin Manker,Khondoker Mujtaba,Mark Wier,Matthew House,Rodney Dahleen,Mario DiSanza,Umair Tariq</values>
+            <values>Chris Smart,Derek Gaines,Justin Manker,Khondoker Mujtaba,Mark Wier,Matthew House,Rodney Dahleen</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
             <values>Ellen Farber,George Kondos,Jorge Gomez Oliveros,Kris Kolev,Peter Bas,Robert McLoughlin,Sameera Kandewatte</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Ashton Porter,Christel Thompson</values>
         </dashboardFilterOptions>
         <name>Geo Team</name>
     </dashboardFilters>
@@ -178,9 +202,10 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Edge PWs by Quarter &amp; IEM</header>
+                <header>[AI PC] PWs by Quarter</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>ISVSoftwareenable/Edge_PWs_by_Quarter_IEM</report>
+                <maxValuesDisplayed>50</maxValuesDisplayed>
+                <report>ISVSoftwareenable/AI_PC_PWs_by_Quarter_IEM</report>
                 <showPercentage>true</showPercentage>
                 <showTotal>true</showTotal>
                 <showValues>true</showValues>
@@ -306,7 +331,7 @@
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
+                <expandOthers>true</expandOthers>
                 <groupingColumn>CDF1</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
@@ -314,10 +339,11 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Edge CWs by Quarter &amp; IEM</header>
+                <header>[AI PC] CWs by Quarter</header>
                 <legendPosition>Bottom</legendPosition>
-                <report>ISVSoftwareenable/Edge_CWs_by_Quarter_IEM</report>
-                <showPercentage>false</showPercentage>
+                <maxValuesDisplayed>60</maxValuesDisplayed>
+                <report>ISVSoftwareenable/AI_PC_CWs_by_Quarter_IEM</report>
+                <showPercentage>true</showPercentage>
                 <showTotal>true</showTotal>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -560,9 +586,9 @@
                         <sortOrder>d</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>Edge PW Pipeline by Probability Range &amp; Q</header>
+                <header>[AI PC] PW Pipeline by Probability Range &amp; Q</header>
                 <legendPosition>Right</legendPosition>
-                <report>ISVSoftwareenable/Edge_PW_Pipeline_by_Probability_Range</report>
+                <report>ISVSoftwareenable/CCG_PW_Pipeline_by_Probability_Range_Q</report>
                 <showPercentage>false</showPercentage>
                 <showValues>true</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -860,55 +886,7 @@
             <rowSpan>11</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>12</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Average</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>CDF1</column>
-                </chartSummary>
-                <componentType>ColumnGrouped</componentType>
-                <dashboardFilterColumns>
-                    <column>FULL_NAME</column>
-                </dashboardFilterColumns>
-                <dashboardFilterColumns>
-                    <column>FULL_NAME</column>
-                </dashboardFilterColumns>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingColumn>STAGE_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>Average Opp Age by Stage</header>
-                <legendPosition>Right</legendPosition>
-                <report>ISVSoftwareenable/AGE_AI_Opp_Pipeline_by_Stage</report>
-                <showPercentage>false</showPercentage>
-                <showValues>true</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>true</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>66</rowIndex>
-            <rowSpan>13</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
+            <colSpan>3</colSpan>
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -955,12 +933,12 @@
                 <header>Opps with Decision Date impacting Confidence</header>
                 <report>ISVSoftwareenable/Early_CW_Pipeline_impacting_Confidence</report>
             </dashboardComponent>
-            <rowIndex>79</rowIndex>
-            <rowSpan>9</rowSpan>
+            <rowIndex>66</rowIndex>
+            <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>4</columnIndex>
+            <colSpan>3</colSpan>
+            <columnIndex>3</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
@@ -1006,12 +984,12 @@
                 <header># Opps with Outdated First Customer Ship Date (FCSD)</header>
                 <report>ISVSoftwareenable/Outdated_1st_customer_Ship_Date_Opps</report>
             </dashboardComponent>
-            <rowIndex>79</rowIndex>
-            <rowSpan>9</rowSpan>
+            <rowIndex>66</rowIndex>
+            <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>8</columnIndex>
+            <colSpan>3</colSpan>
+            <columnIndex>6</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <chartAxisRange>Auto</chartAxisRange>
@@ -1049,8 +1027,51 @@
                 <sortLegendValues>false</sortLegendValues>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
-            <rowIndex>79</rowIndex>
-            <rowSpan>9</rowSpan>
+            <rowIndex>66</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>3</colSpan>
+            <columnIndex>9</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Funnel</componentType>
+                <dashboardFilterColumns>
+                    <column>FULL_NAME</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>FULL_NAME</column>
+                </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>true</expandOthers>
+                <groupingColumn>STAGE_NAME</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>[AI PC] Opps by Stage</header>
+                <legendPosition>Right</legendPosition>
+                <maxValuesDisplayed>6</maxValuesDisplayed>
+                <report>ISVSoftwareenable/AI_PC_Opp_Pipeline_by_Stage_2023_2024</report>
+                <showPercentage>true</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>66</rowIndex>
+            <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>

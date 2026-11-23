@@ -779,9 +779,6 @@
         <field>User.Core_User_Sub_Geo__c</field>
     </columns>
     <columns>
-        <field>User.User_Unique__c</field>
-    </columns>
-    <columns>
         <field>Account.Core_Account_Code__c</field>
     </columns>
     <columns>

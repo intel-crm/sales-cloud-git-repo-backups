@@ -3,15 +3,6 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
     <name>PSG Lead ASMO Covered Accts</name>
-    <queueMembers>
-        <users>
-            <user>11645521@intel.com.crm</user>
-            <user>11644379@intel.com.crm</user>
-            <user>11684506@intel.com.crm</user>
-            <user>11938055@intel.com.crm</user>
-            <user>serena@inteliotsolutionsalliance.com.crm</user>
-        </users>
-    </queueMembers>
     <queueSobject>
         <sobjectType>Lead</sobjectType>
     </queueSobject>

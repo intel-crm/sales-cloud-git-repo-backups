@@ -761,6 +761,12 @@
         <label>Lenovo Tech World</label>
     </customValue>
     <customValue>
+        <fullName>Intel Partner Alliance (IPA)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Intel Partner Alliance (IPA)</label>
+    </customValue>
+    <customValue>
         <fullName>Intel ON: Innovation</fullName>
         <default>false</default>
         <isActive>false</isActive>
@@ -773,10 +779,10 @@
         <label>Intel FPGA Technology Day (IFTD)</label>
     </customValue>
     <customValue>
-        <fullName>Intel Tech Connect</fullName>
+        <fullName>Intel 360 (i360)</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Intel Tech Connect</label>
+        <label>Intel 360 (i360)</label>
     </customValue>
     <customValue>
         <fullName>Intel Cloud Board of Advisors (Cloud BOA)</fullName>
@@ -785,10 +791,16 @@
         <label>Intel Cloud Board of Advisors (Cloud BOA)</label>
     </customValue>
     <customValue>
-        <fullName>Intel 360 (i360)</fullName>
+        <fullName>GOMACTech (Government Microcircuit Applications &amp; Critical Technology</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Intel 360 (i360)</label>
+        <label>GOMACTech (Government Microcircuit Applications &amp; Critical Technology</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel Tech Connect</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Intel Tech Connect</label>
     </customValue>
     <customValue>
         <fullName>Intel Retail Executive Conference (REC) North America</fullName>
@@ -813,12 +825,6 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>Intel ON: Vision</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel Partner Alliance (IPA)</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Intel Partner Alliance (IPA)</label>
     </customValue>
     <description>Stores Event Name</description>
     <masterLabel>Event Name</masterLabel>

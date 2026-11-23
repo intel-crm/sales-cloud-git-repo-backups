@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
     <customMetadataTypeRecord>Core_IPS_APIAuthSettingPlugin__mdt.Core_IPS_BES_ApigeeIntegrationNB</customMetadataTypeRecord>
-    <executionUser>ips.pam.integration.user@intel.com.crm</executionUser>
+    <executionUser>ips.pam.integration.user@intel.com.crm.crmstage9</executionUser>
     <friendlyName>Core_IPS_BES_ApigeeIntegrationNB</friendlyName>
     <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
     <isPkceEnabled>false</isPkceEnabled>

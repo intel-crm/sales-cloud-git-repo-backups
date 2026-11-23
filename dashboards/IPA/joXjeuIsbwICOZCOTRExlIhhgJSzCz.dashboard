@@ -10,11 +10,11 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Q4 2026 - Q3 2027</values>
+            <values>Q4 2025 - Q3 2026</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Q4 2025 - Q3 2026</values>
+            <values>Q4 2024 - Q3 2025</values>
         </dashboardFilterOptions>
         <name>Measurement Period</name>
     </dashboardFilters>
@@ -82,7 +82,7 @@
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11540272@intel.com.crm</owner>
-    <runningUser>ipa-data-migration-user@intel.com</runningUser>
+    <runningUser>11615861@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>SALES</title>
     <titleColor>#000000</titleColor>

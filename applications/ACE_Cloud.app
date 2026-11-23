@@ -6,7 +6,6 @@
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Salesforce</label>
-    <logo>SharedDocuments/Intel_Logo_with_asterisk.png</logo>
     <tabs>standard-Lead</tabs>
     <tabs>standard-Account</tabs>
     <tabs>standard-Contact</tabs>

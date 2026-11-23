@@ -72,7 +72,7 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">https://api.intel.insighthub.unrival.net/companies?include_unavailable=false</value>
+        <value xsi:type="xsd:string">https://sandbox-api-intel-insighthub-unrival-net-dzgxf3bjavbxdmgv.eastus-01.azurewebsites.net/companies?include_unavailable=false</value>
     </values>
     <values>
         <field>User_Filter_and_Value_txt__c</field>

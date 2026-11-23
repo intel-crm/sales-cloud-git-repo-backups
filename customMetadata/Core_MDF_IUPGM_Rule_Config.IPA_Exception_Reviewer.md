@@ -52,7 +52,7 @@
     </values>
     <values>
         <field>Core_MDF_Keywords__c</field>
-        <value xsi:type="xsd:string">Exception</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Permission_Set_Name__c</field>
@@ -76,7 +76,7 @@
     </values>
     <values>
         <field>Core_MDF_Role_Purpose__c</field>
-        <value xsi:type="xsd:string">Allows users to Approve/Reject Exception for IPA Program</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_Skip_PS_Check__c</field>
@@ -84,7 +84,7 @@
     </values>
     <values>
         <field>Core_MDF_Use_Cases__c</field>
-        <value xsi:type="xsd:string">Use when: approve or reject Exceptions for IPA Program</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_MDF_WW_Only__c</field>

@@ -237,11 +237,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CventEvents__ContactStub__c</field>
-            <table>Contact</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Jigsaw</field>
             <table>Contact</table>
         </columns>

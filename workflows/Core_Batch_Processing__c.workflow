@@ -12,15 +12,7 @@
             <recipient>10563705@intel.com.crm</recipient>
             <type>user</type>
         </recipients>
-        <recipients>
-            <recipient>10629834@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <recipients>
-            <recipient>11528952@intel.com.crm</recipient>
-            <type>user</type>
-        </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Opportunity_Management/Core_Batch_Success_Mail</template>
     </alerts>

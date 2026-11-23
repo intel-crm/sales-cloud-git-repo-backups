@@ -98,7 +98,10 @@ public with sharing class Core_IPS_TestAllRecords {
 
             return (List<Case>) Core_IPS_QueryService.queryRecords(query, new Map<String, Object>{
                 'userId' => userId
-            });}return null;
+            });
+        }
+
+        return null;
     }
 
     @AuraEnabled(cacheable=true)
@@ -116,7 +119,8 @@ public with sharing class Core_IPS_TestAllRecords {
             'usrId' => usrId
         });
 
-        if (userRecords == null || userRecords.isEmpty() || userRecords[0].ContactId == null) {return new List<Account>();           
+        if (userRecords == null || userRecords.isEmpty() || userRecords[0].ContactId == null) {
+            return new List<Account>();
         }
 
         String contactQuery = 'SELECT Id, Name, AccountId, Account.Name FROM Contact WHERE Id = :contactId LIMIT 1';
@@ -124,7 +128,8 @@ public with sharing class Core_IPS_TestAllRecords {
             'contactId' => userRecords[0].ContactId
         });
 
-        if (userContact == null || userContact.isEmpty() || userContact[0].AccountId == null) {return new List<Account>();
+        if (userContact == null || userContact.isEmpty() || userContact[0].AccountId == null) {
+            return new List<Account>();
         }
 
         String accountQuery = 'SELECT Id, Name FROM Account WHERE Id = :accountId LIMIT 1';
@@ -182,7 +187,9 @@ public with sharing class Core_IPS_TestAllRecords {
             });
         }
 
-        if (caseRecord != null && !caseRecord.isEmpty()) {return caseRecord[0];        }
+        if (caseRecord != null && !caseRecord.isEmpty()) {
+            return caseRecord[0];
+        }
         return null;
     }
 
@@ -207,7 +214,10 @@ public with sharing class Core_IPS_TestAllRecords {
                     Core_IPS_QueryService.deleteRecords(new List<SObject>{ attList[0] });
                 }
             }
-            return 'Deleted';} catch (Exception e) {   return 'Not Deleted';        }
+            return 'Deleted';
+        } catch (Exception e) {
+            return 'Not Deleted';
+        }
     }
 
     @AuraEnabled(cacheable=false)
@@ -226,9 +236,11 @@ public with sharing class Core_IPS_TestAllRecords {
 
         String profile = getcurrentuserprofile();
 
-        if (profile == 'Customer') {strqry += ' Core_IPS_Comment_Authored_By_Name__c, Core_IPS_Comment_Authored_By_FirstName__c ' +
+        if (profile == 'Customer') {
+            strqry += ' Core_IPS_Comment_Authored_By_Name__c, Core_IPS_Comment_Authored_By_FirstName__c ' +
                 'FROM Core_IPS_Case_Comments__c WHERE Core_IPS_Case__c = :csId AND Core_IPS_Case_Comment_Type__c = \'Public to Customers\'';
-        } else if (profile == 'PartnerAgent') {            strqry += ' Core_IPS_Comment_Authored_By_Name__c, Core_IPS_Comment_Authored_By_FirstName__c ' +
+        } else if (profile == 'PartnerAgent') {
+            strqry += ' Core_IPS_Comment_Authored_By_Name__c, Core_IPS_Comment_Authored_By_FirstName__c ' +
                 'FROM Core_IPS_Case_Comments__c WHERE Core_IPS_Case__c = :csId AND ' +
                 '(Core_IPS_Case_Comment_Type__c = \'Private to Agents\' OR Core_IPS_Case_Comment_Type__c = \'Private to Intel\' OR ' +
                 'Core_IPS_Case_Comment_Type__c = \'Private to Partner\' OR Core_IPS_Case_Comment_Type__c = \'Public to Customers\')';
@@ -249,7 +261,9 @@ public with sharing class Core_IPS_TestAllRecords {
 
         if (caseComments != null) {
             cscmtresult = frmtComments(caseComments, profile);
-            return cscmtresult;}return null;
+            return cscmtresult;
+        }
+        return null;
     }
 
     @AuraEnabled(cacheable=true)
@@ -261,7 +275,11 @@ public with sharing class Core_IPS_TestAllRecords {
                      cmt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE')) {
                     cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case__r.core_Account_Name__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
                         cmt.Core_IPS_Comment_Authored_By_Email__c + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
-                } else if (cmt.CreatedBy.Email != null && (cmt.Core_IPS_Comment_Author_Type__c == 'Customer' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner' ||cmt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE')) {cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case__r.core_Account_Name__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
+                } else if (cmt.CreatedBy.Email != null &&
+                    (cmt.Core_IPS_Comment_Author_Type__c == 'Customer' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner' ||
+                     cmt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE')) {
+                    cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case__r.core_Account_Name__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                 } else if (cmt.Core_IPS_Comment_Author_Type__c == 'Customer' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner' ||
                     cmt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE') {
                     cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case__r.core_Account_Name__c + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
@@ -269,9 +287,12 @@ public with sharing class Core_IPS_TestAllRecords {
                     cmt.Core_IPS_Comment_Author_Type__c == 'Backend Integration') &&
                     (profile == 'Customer' || profile == 'Partner' || profile == 'PartnerFAE')) {
                     cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
-                    if (!String.isBlank(cmt.Core_IPS_Comment_Authored_By_FirstName__c)) {cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
+                    if (!String.isBlank(cmt.Core_IPS_Comment_Authored_By_FirstName__c)) {
+                        cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
                     }
-                } else if (cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' && profile == 'Customer') {cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
+                } else if (cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' && profile == 'Customer') {
+                    cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
+                    cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
                 } else if (cmt.Core_IPS_Comment_Authored_By_Email__c != ' ' && cmt.Core_IPS_Comment_Authored_By_Email__c != null &&
                     (cmt.Core_IPS_Comment_Author_Type__c == 'Agent' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' ||
                      cmt.Core_IPS_Comment_Author_Type__c == 'Backend Integration') && profile == 'PartnerAgent') {
@@ -279,13 +300,21 @@ public with sharing class Core_IPS_TestAllRecords {
                         cmt.Core_IPS_Comment_Authored_By_Email__c + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                 } else if ((cmt.Core_IPS_Comment_Author_Type__c == 'Agent' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' ||
                     cmt.Core_IPS_Comment_Author_Type__c == 'Backend Integration') &&
-                    (profile == 'Customer' || profile == 'Partner' || profile == 'PartnerFAE')) {cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
-                } else if (cmt.CreatedBy.Email != null &&(cmt.Core_IPS_Comment_Author_Type__c == 'Agent' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' || cmt.Core_IPS_Comment_Author_Type__c == 'Backend Integration') && profile == 'PartnerAgent') {cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
+                    (profile == 'Customer' || profile == 'Partner' || profile == 'PartnerFAE')) {
+                    cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
+                    cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
+                } else if (cmt.CreatedBy.Email != null &&
+                    (cmt.Core_IPS_Comment_Author_Type__c == 'Agent' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' ||
+                     cmt.Core_IPS_Comment_Author_Type__c == 'Backend Integration') && profile == 'PartnerAgent') {
+                    cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                 } else if ((cmt.Core_IPS_Comment_Author_Type__c == 'FAE') &&
                     (profile == 'Customer' || profile == 'Partner' || profile == 'PartnerFAE')) {
                     cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Sales_Representative + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                     cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
-                } else if (cmt.CreatedBy.Email != null && cmt.Core_IPS_Comment_Author_Type__c == 'FAE' && profile == 'PartnerAgent') {cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Sales_Representative + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
+                } else if (cmt.CreatedBy.Email != null && cmt.Core_IPS_Comment_Author_Type__c == 'FAE' && profile == 'PartnerAgent') {
+                    cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Sales_Representative + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                 } else if (cmt.Core_IPS_Comment_Author_Type__c == 'FAE') {
                     cmt.Core_IPS_Rich_Comment__c = '<b>' + System.Label.Core_IPS_CaseRTF_Intel_Sales_Representative + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                 } else if (cmt.Core_IPS_Comment_Author_Type__c == 'Data Migration') {
@@ -301,7 +330,12 @@ public with sharing class Core_IPS_TestAllRecords {
                     cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
                         cmt.Core_IPS_Case__r.core_Account_Name__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
                         cmt.Core_IPS_Comment_Authored_By_Email__c + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
-                } else if (cmt.CreatedBy.Email != null &&(cmt.Core_IPS_Comment_Author_Type__c == 'Customer' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner' ||cmt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE')) {cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +cmt.Core_IPS_Case__r.core_Account_Name__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
+                } else if (cmt.CreatedBy.Email != null &&
+                    (cmt.Core_IPS_Comment_Author_Type__c == 'Customer' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner' ||
+                     cmt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE')) {
+                    cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        cmt.Core_IPS_Case__r.core_Account_Name__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                 } else if (cmt.Core_IPS_Comment_Author_Type__c == 'Customer' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner' ||
                     cmt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE') {
                     cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
@@ -312,7 +346,10 @@ public with sharing class Core_IPS_TestAllRecords {
                     cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
                         System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                     cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
-                } else if (cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' && profile == 'Customer') {cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
+                } else if (cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' && profile == 'Customer') {
+                    cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
+                    cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
                 } else if (cmt.Core_IPS_Comment_Authored_By_Email__c != ' ' && cmt.Core_IPS_Comment_Authored_By_Email__c != null &&
                     (cmt.Core_IPS_Comment_Author_Type__c == 'Agent' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' ||
                      cmt.Core_IPS_Comment_Author_Type__c == 'Backend Integration') && profile == 'PartnerAgent') {
@@ -321,14 +358,25 @@ public with sharing class Core_IPS_TestAllRecords {
                         cmt.Core_IPS_Comment_Authored_By_Email__c + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                 } else if ((cmt.Core_IPS_Comment_Author_Type__c == 'Agent' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' ||
                     cmt.Core_IPS_Comment_Author_Type__c == 'Backend Integration') &&
-                    (profile == 'Customer' || profile == 'Partner' || profile == 'PartnerFAE')) {cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
-                } else if (cmt.CreatedBy.Email != null &&(cmt.Core_IPS_Comment_Author_Type__c == 'Agent' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' ||cmt.Core_IPS_Comment_Author_Type__c == 'Backend Integration') && profile == 'PartnerAgent') {cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
+                    (profile == 'Customer' || profile == 'Partner' || profile == 'PartnerFAE')) {
+                    cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
+                    cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
+                } else if (cmt.CreatedBy.Email != null &&
+                    (cmt.Core_IPS_Comment_Author_Type__c == 'Agent' || cmt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent' ||
+                     cmt.Core_IPS_Comment_Author_Type__c == 'Backend Integration') && profile == 'PartnerAgent') {
+                    cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        System.Label.Core_IPS_CaseRTF_Intel_Technical_Specialist + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                 } else if ((cmt.Core_IPS_Comment_Author_Type__c == 'FAE') &&
                     (profile == 'Customer' || profile == 'Partner' || profile == 'PartnerFAE')) {
                     cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
                         System.Label.Core_IPS_CaseRTF_Intel_Sales_Representative + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                     cmt.Core_IPS_Comment_Authored_By_Name__c = cmt.Core_IPS_Comment_Authored_By_FirstName__c;
-                } else if (cmt.CreatedBy.Email != null && cmt.Core_IPS_Comment_Author_Type__c == 'FAE' && profile == 'PartnerAgent') {cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +System.Label.Core_IPS_CaseRTF_Intel_Sales_Representative + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
+                } else if (cmt.CreatedBy.Email != null && cmt.Core_IPS_Comment_Author_Type__c == 'FAE' && profile == 'PartnerAgent') {
+                    cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        System.Label.Core_IPS_CaseRTF_Intel_Sales_Representative + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
+                        cmt.CreatedBy.Email + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
                 } else if (cmt.Core_IPS_Comment_Author_Type__c == 'FAE') {
                     cmt.Core_IPS_Rich_Comment__c = '<b>' + cmt.Core_IPS_Case_Comment_Type__c + '</b>&nbsp&nbsp&nbsp&nbsp<b>' +
                         System.Label.Core_IPS_CaseRTF_Intel_Sales_Representative + '</b><br/>' + cmt.Core_IPS_Rich_Comment__c;
@@ -363,8 +411,12 @@ public with sharing class Core_IPS_TestAllRecords {
 
         String profileName = null;
 
-        if (currentUser != null && currentUser.Profile != null && currentUser.Profile.Name == System.Label.Core_IPS_External_Customer_Profile) {profileName = 'Customer';            return profileName;
-        } else if (currentUser != null && currentUser.Profile != null && currentUser.Profile.Id == System.Label.Core_IPS_Agent_Partner_Profile_id) {profileName = 'PartnerAgent';            return profileName;
+        if (currentUser != null && currentUser.Profile != null && currentUser.Profile.Name == System.Label.Core_IPS_External_Customer_Profile) {
+            profileName = 'Customer';
+            return profileName;
+        } else if (currentUser != null && currentUser.Profile != null && currentUser.Profile.Id == System.Label.Core_IPS_Agent_Partner_Profile_id) {
+            profileName = 'PartnerAgent';
+            return profileName;
         } else if (currentUser != null && currentUser.Profile != null &&
             !pset.isEmpty() && currentUser.Profile.Name == System.Label.Core_IPS_Partner_Profile_Name &&
             pset[0].PermissionSet.Name == 'Core_IPS_Partner_FAE_Permission_Set') {
@@ -381,7 +433,18 @@ public with sharing class Core_IPS_TestAllRecords {
         Case cs = getCurrentCase(caseId);
 
         if (cs == null || String.isBlank(cs.Core_Contact_Name__c)) {
-            return null;}List<User> contactUsers = (List<User>) Core_IPS_QueryService.queryRecords( 'SELECT Id, Name, Profile.Name, Profile.Id FROM User WHERE Name = :contactName AND (Profile.Name = \'IPS External Customer\' OR Profile.Name = \'Partner\') LIMIT 1',new Map<String, Object>{ 'contactName' => cs.Core_Contact_Name__c });if (contactUsers != null && !contactUsers.isEmpty()) { return contactUsers[0].Profile.Name;}return null;        
+            return null;
+        }
+
+        List<User> contactUsers = (List<User>) Core_IPS_QueryService.queryRecords(
+            'SELECT Id, Name, Profile.Name, Profile.Id FROM User WHERE Name = :contactName AND (Profile.Name = \'IPS External Customer\' OR Profile.Name = \'Partner\') LIMIT 1',
+            new Map<String, Object>{ 'contactName' => cs.Core_Contact_Name__c }
+        );
+
+        if (contactUsers != null && !contactUsers.isEmpty()) {
+            return contactUsers[0].Profile.Name;
+        }
+        return null;
     }
 
     @AuraEnabled(cacheable=true)
@@ -411,8 +474,10 @@ public with sharing class Core_IPS_TestAllRecords {
         String partnerType;
 
         if (userObj != null && userObj.Profile != null &&
-            System.Label.Core_IPS_External_Customer_Profile.contains(String.valueOf(userObj.Profile.Name))) { strqry += ' AND Core_IPS_Attachment_Visibility__c = \'Public to Customers\'';
-        } else if (System.Label.Core_IPS_Agent_Partner_Profile_id.contains(String.valueOf(UserInfo.getProfileId()).substring(0, 15))) {strqry += ' AND (Core_IPS_Attachment_Visibility__c = \'Private to Intel\' OR Core_IPS_Attachment_Visibility__c = \'Private to Partner\' OR ' +
+            System.Label.Core_IPS_External_Customer_Profile.contains(String.valueOf(userObj.Profile.Name))) {
+            strqry += ' AND Core_IPS_Attachment_Visibility__c = \'Public to Customers\'';
+        } else if (System.Label.Core_IPS_Agent_Partner_Profile_id.contains(String.valueOf(UserInfo.getProfileId()).substring(0, 15))) {
+            strqry += ' AND (Core_IPS_Attachment_Visibility__c = \'Private to Intel\' OR Core_IPS_Attachment_Visibility__c = \'Private to Partner\' OR ' +
                 'Core_IPS_Attachment_Visibility__c = \'Public to Customers\')';
         } else if (partnerProf.contains(String.valueOf(UserInfo.getProfileId()).substring(0, 15))) {
             String uploadpartnerProfileType = Core_Utility.getPartnerUserType(UserInfo.getUserId());
@@ -422,7 +487,9 @@ public with sharing class Core_IPS_TestAllRecords {
 
             if (partnerType != null && String.isNotBlank(partnerType)) {
                 if (partnerType == 'Partner - DFAE') {
-                    strqry += ' AND (Core_IPS_Attachment_Visibility__c = \'Private to Partner\' OR Core_IPS_Attachment_Visibility__c = \'Public to Customers\')';} else if (partnerType == 'Partner') {strqry += ' AND Core_IPS_Attachment_Visibility__c = \'Public to Customers\'';
+                    strqry += ' AND (Core_IPS_Attachment_Visibility__c = \'Private to Partner\' OR Core_IPS_Attachment_Visibility__c = \'Public to Customers\')';
+                } else if (partnerType == 'Partner') {
+                    strqry += ' AND Core_IPS_Attachment_Visibility__c = \'Public to Customers\'';
                 }
             }
         }
@@ -434,7 +501,10 @@ public with sharing class Core_IPS_TestAllRecords {
         });
 
         for (Core_IPS_Case_Attachments__c att : cdoc) {
-            if (att.Core_Upload_Status__c == 'Pending') {String url = att.Core_File_Hyperlink__c;url = url.replace('<a href="', '').replace('" target="Self">Resume</a>', ' ').replace('amp;', '').trim();att.Core_File_URL__c = url;
+            if (att.Core_Upload_Status__c == 'Pending') {
+                String url = att.Core_File_Hyperlink__c;
+                url = url.replace('<a href="', '').replace('" target="Self">Resume</a>', ' ').replace('amp;', '').trim();
+                att.Core_File_URL__c = url;
             }
         }
         return cdoc;
@@ -494,7 +564,10 @@ public with sharing class Core_IPS_TestAllRecords {
                     csObj.Core_IPS_Partner_status_ReadOnly__c = false;
                 }
             }
-            Core_IPS_QueryService.updateRecords(new List<SObject>{ csObj });} catch (Exception e) {Core_IPS_ExceptionHandling.logEntryWithException(e, 'Core_IPS_TestAllRecords', 'Case');status = e.getMessage();
+            Core_IPS_QueryService.updateRecords(new List<SObject>{ csObj });
+        } catch (Exception e) {
+            Core_IPS_ExceptionHandling.logEntryWithException(e, 'Core_IPS_TestAllRecords', 'Case');
+            status = e.getMessage();
         }
         return status;
     }
@@ -506,7 +579,8 @@ public with sharing class Core_IPS_TestAllRecords {
             comment = comment.unescapeHTML4();
             comment = comment.trim();
 
-            if (comment == '' || comment == null) {status = 'Blank Comment';
+            if (comment == '' || comment == null) {
+                status = 'Blank Comment';
             } else {
                 Core_IPS_CaseCommentLWCController.initialize(csId);
                 status = Core_IPS_CaseCommentLWCController.saveCaseComment(csId, visibility, comment);
@@ -586,7 +660,8 @@ public with sharing class Core_IPS_TestAllRecords {
             new Map<String, Object>{ 'contactId' => loggedInUserContId }
         );
 
-        for (Core_IPS_Project_Member__c p : projMemList) {projList.add(p.Core_IPS_Project__c);
+        for (Core_IPS_Project_Member__c p : projMemList) {
+            projList.add(p.Core_IPS_Project__c);
         }
 
         wraplist.caselist = (List<Case>) Core_IPS_QueryService.queryRecords(
@@ -640,7 +715,17 @@ public with sharing class Core_IPS_TestAllRecords {
         List<Core_IPS_Response__c> responseList = new List<Core_IPS_Response__c>();
         String profile = getcurrentuserprofile();
 
-        if (csId != null) {if (profile == 'PartnerFAE' || profile == 'Partner') { responseList = (List<Core_IPS_Response__c>) Core_IPS_QueryService.queryRecords('SELECT Core_IPS_Case__c, Core_IPS_Answer__c, Core_IPS_Question__c ' +'FROM Core_IPS_Response__c WHERE Core_IPS_Case__c = :csId AND Core_IPS_Agent_Only__c != true',new Map<String, Object>{ 'csId' => csId });} else {responseList = (List<Core_IPS_Response__c>) Core_IPS_QueryService.queryRecords('SELECT Core_IPS_Case__c, Core_IPS_Answer__c, Core_IPS_Question__c FROM Core_IPS_Response__c WHERE Core_IPS_Case__c = :csId',                    new Map<String, Object>{ 'csId' => csId }
+        if (csId != null) {
+            if (profile == 'PartnerFAE' || profile == 'Partner') {
+                responseList = (List<Core_IPS_Response__c>) Core_IPS_QueryService.queryRecords(
+                    'SELECT Core_IPS_Case__c, Core_IPS_Answer__c, Core_IPS_Question__c ' +
+                    'FROM Core_IPS_Response__c WHERE Core_IPS_Case__c = :csId AND Core_IPS_Agent_Only__c != true',
+                    new Map<String, Object>{ 'csId' => csId }
+                );
+            } else {
+                responseList = (List<Core_IPS_Response__c>) Core_IPS_QueryService.queryRecords(
+                    'SELECT Core_IPS_Case__c, Core_IPS_Answer__c, Core_IPS_Question__c FROM Core_IPS_Response__c WHERE Core_IPS_Case__c = :csId',
+                    new Map<String, Object>{ 'csId' => csId }
                 );
             }
         }
@@ -658,12 +743,14 @@ public with sharing class Core_IPS_TestAllRecords {
         User passUserDetails;
 
         try {
-            if (projList != null && !projList.isEmpty() && projList[0].Core_IPS_Partner_Support_Owner__c != null) {partnerSupportOwner = projList[0].Core_IPS_Partner_Support_Owner__c;
+            if (projList != null && !projList.isEmpty() && projList[0].Core_IPS_Partner_Support_Owner__c != null) {
+                partnerSupportOwner = projList[0].Core_IPS_Partner_Support_Owner__c;
             } else {
                 partnerSupportOwner = UserInfo.getUserId();
             }
 
-            passUserDetails = getUserDetail(partnerSupportOwner); } catch (Exception e) {
+            passUserDetails = getUserDetail(partnerSupportOwner);
+        } catch (Exception e) {
         }
 
         return passUserDetails;
@@ -676,14 +763,18 @@ public with sharing class Core_IPS_TestAllRecords {
             if (userId != null && userId != '') {
                 usDetail = (User) Core_IPS_QueryService.querySingleRecord(
                     'SELECT Id, Name FROM User WHERE Id = :userId',
-                    new Map<String, Object>{ 'userId' => userId });} } catch (Exception e) {
+                    new Map<String, Object>{ 'userId' => userId }
+                );
+            }
+        } catch (Exception e) {
         }
         return usDetail;
     }
 
     @AuraEnabled
     public static Map<Id, String> getSupportedAccount(String selectedProject, String userID) {
-        if (selectedProject == 'NoProj') {   selectedProject = null;
+        if (selectedProject == 'NoProj') {
+            selectedProject = null;
         }
 
         List<Core_IPS_Project_Member__c> projMembersList = new List<Core_IPS_Project_Member__c>();
@@ -708,7 +799,8 @@ public with sharing class Core_IPS_TestAllRecords {
             }
         }
 
-        for (Integer i = 0; i < projMembersList.size(); i++) {projIds.add(projMembersList[i].Core_IPS_Project__c);
+        for (Integer i = 0; i < projMembersList.size(); i++) {
+            projIds.add(projMembersList[i].Core_IPS_Project__c);
         }
 
         if (!String.isBlank(selectedProject) && selectedProject != 'NA') {
@@ -728,7 +820,9 @@ public with sharing class Core_IPS_TestAllRecords {
 
         Map<Id, String> accountMap = new Map<Id, String>();
 
-        if (projMemAccounts != null && !projMemAccounts.isEmpty()) {for (Core_IPS_Account__c ipsacc : projMemAccounts) {accountMap.put(ipsacc.Core_Account__c, ipsacc.Core_IPS_Account_Name__c);
+        if (projMemAccounts != null && !projMemAccounts.isEmpty()) {
+            for (Core_IPS_Account__c ipsacc : projMemAccounts) {
+                accountMap.put(ipsacc.Core_Account__c, ipsacc.Core_IPS_Account_Name__c);
             }
         }
         return accountMap;
@@ -743,7 +837,11 @@ public with sharing class Core_IPS_TestAllRecords {
                 cs = (Case) Core_IPS_QueryService.querySingleRecord(
                     'SELECT Core_IPS_Partner_Sup_Owner__r.Name, Core_IPS_Partner_Sup_Owner__c, Core_Partner_Supported_Account__r.Name, Core_Partner_Supported_Account__c ' +
                     'FROM Case WHERE Id = :caseId',
-                    new Map<String, Object>{ 'caseId' => caseId });} } catch (Exception e) {throw new AuraHandledException(e.getMessage());
+                    new Map<String, Object>{ 'caseId' => caseId }
+                );
+            }
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
         return cs;
     }
@@ -761,7 +859,8 @@ public with sharing class Core_IPS_TestAllRecords {
             if (Schema.sObjectType.case.fields.Core_Sub_Status__c.isUpdateable()) {
                 cs.Core_Sub_Status__c = Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Close_Pending_SubStatus');
             }
-            if (Schema.sObjectType.case.fields.Core_Case_Resolution_Reason__c.isUpdateable()) {cs.Core_Case_Resolution_Reason__c = updateCase.Core_Case_Resolution_Reason__c;
+            if (Schema.sObjectType.case.fields.Core_Case_Resolution_Reason__c.isUpdateable()) {
+                cs.Core_Case_Resolution_Reason__c = updateCase.Core_Case_Resolution_Reason__c;
             }
             if (Schema.sObjectType.case.fields.Core_IPS_Bug_Doc_Fix_ID__c.isUpdateable()) {
                 cs.Core_IPS_Bug_Doc_Fix_ID__c = updateCase.Core_IPS_Bug_Doc_Fix_ID__c;
@@ -770,7 +869,9 @@ public with sharing class Core_IPS_TestAllRecords {
                 cs.Core_IPS_Knowledge_Base_Link__c = updateCase.Core_IPS_Knowledge_Base_Link__c;
             }
 
-            Core_IPS_QueryService.updateRecords(new List<SObject>{ cs });     } catch (Exception e) {throw new AuraHandledException(e.getMessage());
+            Core_IPS_QueryService.updateRecords(new List<SObject>{ cs });
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
 
         return cs;
@@ -789,7 +890,11 @@ public with sharing class Core_IPS_TestAllRecords {
             }
 
             if (projectObj != null && projectObj.size() > 0) {
-                return projectObj[0];}  return null;      } catch (Exception e) {throw new AuraHandledException(e.getMessage());
+                return projectObj[0];
+            }
+            return null;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
     }
 
@@ -806,7 +911,11 @@ public with sharing class Core_IPS_TestAllRecords {
             }
 
             if (assetObj != null && assetObj.size() > 0) {
-                return assetObj[0];}return null;       } catch (Exception e) {throw new AuraHandledException(e.getMessage());
+                return assetObj[0];
+            }
+            return null;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
     }
 }

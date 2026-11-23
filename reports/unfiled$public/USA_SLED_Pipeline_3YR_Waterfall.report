@@ -34,16 +34,23 @@
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
-        <field>ADDRESS1_STATE_CODE</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_Unified_Global_Customer_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Opportunity_Focus__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Focus__c</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
@@ -64,9 +71,6 @@
         <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <field>FULL_NAME</field>
-    </columns>
-    <columns>
         <field>OWNER_MANAGER</field>
     </columns>
     <columns>
@@ -85,9 +89,6 @@
         <field>OpportunityLineItem.Core_Product_Type__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Product_Application__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <columns>
@@ -103,26 +104,22 @@
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Opportunity_Product_Vendor_Prime__c</field>
-    </columns>
-    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+        <field>Opportunity.Core_Commissionable__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 3 OR 5) AND 4</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3) AND 4</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Win,Pending,Lost</value>
+            <value>Win,Pending</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
@@ -145,13 +142,6 @@
             <operator>notEqual</operator>
             <value>APJ</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Rick Lisa,Alastair Duncan,Michael OBrien,Hugues Morin,David Minnaar,Alan Rose,Melanie Fekete,Katherine Heidelman,Robert Udermann</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -162,7 +152,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>ACCOUNT_OWNER</field>
+        <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -170,7 +160,7 @@
         <field>OpportunityLineItem.Core_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>USA SLED Pipeline 4 YR Waterfall</name>
+    <name>USA SLED Pipeline 3YR Waterfall</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -194,7 +184,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2030-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2023-01-01</startDate>
     </timeFrameFilter>

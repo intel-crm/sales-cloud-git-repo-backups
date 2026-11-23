@@ -173,7 +173,6 @@
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <isServiceCloudConsole>true</isServiceCloudConsole>
     <label>Sales Console</label>
-    <logo>SharedDocuments/Intel_Logo_with_asterisk.png</logo>
     <preferences>
         <enableCustomizeMyTabs>false</enableCustomizeMyTabs>
         <enableKeyboardShortcuts>false</enableKeyboardShortcuts>

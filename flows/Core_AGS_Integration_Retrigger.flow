@@ -39,9 +39,6 @@
         <label>Check AGS Valid Flag</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>END_ELEMENT_6</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>AGS Flag Is False</defaultConnectorLabel>
         <rules>
             <name>AGS_Flag_Is_True</name>
@@ -89,9 +86,6 @@
         <label>Record Check</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <defaultConnector>
-            <targetReference>END_ELEMENT_8</targetReference>
-        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Record_present</name>
@@ -103,37 +97,9 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
-            <connector>
-                <targetReference>END_ELEMENT_7</targetReference>
-            </connector>
             <label>Record present</label>
         </rules>
     </decisions>
-    <ends>
-        <name>END_ELEMENT_10</name>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-    </ends>
-    <ends>
-        <name>END_ELEMENT_6</name>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-    </ends>
-    <ends>
-        <name>END_ELEMENT_7</name>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-    </ends>
-    <ends>
-        <name>END_ELEMENT_8</name>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-    </ends>
-    <ends>
-        <name>END_ELEMENT_9</name>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-    </ends>
     <environments>Default</environments>
     <formulas>
         <name>FaultMessage</name>
@@ -143,7 +109,7 @@
     <formulas>
         <name>RetryCountPlusOne</name>
         <dataType>Number</dataType>
-        <expression>IF(ISBLANK({!$Record.Core_AGS_Retry_Count__c}), 0, {!$Record.Core_AGS_Retry_Count__c} + 1)</expression>
+        <expression>{!$Record.Core_AGS_Retry_Count__c} + 1</expression>
         <scale>0</scale>
     </formulas>
     <interviewLabel>Contact_AGS_Integration_Retrigger {!$Flow.CurrentDateTime}</interviewLabel>
@@ -186,9 +152,6 @@
         <label>Create Log Entry record</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <connector>
-            <targetReference>END_ELEMENT_9</targetReference>
-        </connector>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -242,9 +205,6 @@
         <label>Update Triggering Contact Record</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
-        <connector>
-            <targetReference>END_ELEMENT_10</targetReference>
-        </connector>
         <faultConnector>
             <targetReference>Create_Log_Entry_record</targetReference>
         </faultConnector>

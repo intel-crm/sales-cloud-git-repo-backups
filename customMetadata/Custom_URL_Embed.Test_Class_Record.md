@@ -52,7 +52,7 @@
     </values>
     <values>
         <field>Project__c</field>
-        <value xsi:type="xsd:string">Test</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Security_Query_txt__c</field>

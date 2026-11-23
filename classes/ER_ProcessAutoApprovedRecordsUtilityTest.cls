@@ -5,14 +5,14 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
     {
         Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
-                                         /* Core_Account_Type__c='Other',*/RecordTypeId=recordTypeIdAccount, Industry='Others',Core_English_Only_Name__c = 'exception',
+                                          Core_Account_Type__c='Other', Industry='Others',Core_English_Only_Name__c = 'exception',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
-                                          BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
+                                          BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount);
         insert testAccount;
         
         Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
-                                          Core_Enterprise_Id__c='12345',MailingCountry='India',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
+                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                          Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
         
         insert testContact;
         
@@ -32,7 +32,6 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         membership.PRM_Status_Nm__c = 'Approved';
         membership.PRM_Partner_Role__c='Distributor';
         membership.PRM_Channel_Program_Level_Id__c = cpl1.Id;
-        membership.PRM_Status_Reason_Txt__c='Test';
         insert membership;
         
         Core_AGS_Role__c agsrole = new Core_AGS_Role__c();
@@ -44,6 +43,7 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         ee.Core_AGS_Role_Id__c = agsrole.Id;
         ee.Name ='Resource & Design Center for Secure Content';
         ee.Entitlement_B2B_B2C_Indicator__c = 'B2B';
+        ee.ER_Program__c = 'DZP';
         ee.Core_Display_Name__c = 'Developer Zone Premier(CNDA required)';
         insert ee;
         
@@ -84,14 +84,14 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
     {
         Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
-                                          /*Core_Account_Type__c='Other', // BizOrgType code removal*/ Industry='Others',Core_English_Only_Name__c = 'exception',
+                                          Core_Account_Type__c='Other', Industry='Others',Core_English_Only_Name__c = 'exception',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
-                                          BillingCountry='USA', RecordTypeId=recordTypeIdAccount,BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
+                                          BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount );
         insert testAccount;
         
         Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
-                                          Core_Enterprise_Id__c='12345',MailingCountry='India',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
+                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                          Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
         
         insert testContact;
         
@@ -105,6 +105,7 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         ee.Name ='Resource & Design Center for Secure Content';
         ee.Entitlement_B2B_B2C_Indicator__c = 'B2B';
         ee.Core_Display_Name__c = 'Developer Zone Premier(CNDA required)';
+        ee.ER_Program__c = 'DZP';
         insert ee;
         
         Business_Types__c business = new Business_Types__c(Business_Type_Code__c='Developer Zone Premier', Name='DZP', Is_Active__c = true);
@@ -157,16 +158,15 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
     
     static testMethod void UpdateSuccessRegReq()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',RecordTypeId=intelAccRecTypeId,
-                                          /*Core_Account_Type__c='Other', // BizOrgType code removal*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'exception',
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
+                                          Core_Account_Type__c='Other', Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'exception',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
         insert testAccount;
         
         Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
-                                          Core_Enterprise_Id__c='12345',MailingCountry='India',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
+                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                          Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
         
         insert testContact;
         
@@ -186,7 +186,6 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         membership.PRM_Status_Nm__c = 'Approved';
         membership.PRM_Partner_Role__c='Distributor';
         membership.PRM_Channel_Program_Level_Id__c = cpl1.Id;
-        membership.PRM_Status_Reason_Txt__c='Test';
         insert membership;
         
         Core_AGS_Role__c agsrole = new Core_AGS_Role__c();
@@ -199,6 +198,7 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         ee.Name ='Resource & Design Center for Secure Content';
         ee.Entitlement_B2B_B2C_Indicator__c = 'B2B';
         ee.Core_Display_Name__c = 'Developer Zone Premier(CNDA required)';
+        ee.ER_Program__c = 'DZP';
         insert ee;
         
         Business_Types__c business = new Business_Types__c(Business_Type_Code__c='Developer Zone Premier', Name='DZP', Is_Active__c = true);
@@ -254,14 +254,14 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
     {
          Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
-                                         /* Core_Account_Type__c='Other',// BizOrgType code removal*/ Industry='Others',Core_English_Only_Name__c = 'exception',
+                                          Core_Account_Type__c='Other', Industry='Others',Core_English_Only_Name__c = 'exception',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
-                                          BillingCountry='USA',RecordTypeId=recordTypeIdAccount, BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
+                                          BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId =recordTypeIdAccount );
         insert testAccount;
         
         Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
-                                          Core_Enterprise_Id__c='12345',MailingCountry='India',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
+                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                          Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
         
         insert testContact;
         
@@ -281,7 +281,6 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         membership.PRM_Status_Nm__c = 'Approved';
         membership.PRM_Partner_Role__c='Distributor';
         membership.PRM_Channel_Program_Level_Id__c = cpl1.Id;
-        membership.PRM_Status_Reason_Txt__c='Test';
         insert membership;
         
         Core_AGS_Role__c agsrole = new Core_AGS_Role__c();
@@ -294,6 +293,7 @@ public class ER_ProcessAutoApprovedRecordsUtilityTest {
         ee.Name ='Resource & Design Center for Secure Content';
         ee.Entitlement_B2B_B2C_Indicator__c = 'B2B';
         ee.Core_Display_Name__c = 'Developer Zone Premier(CNDA required)';
+        ee.ER_Program__c = 'DZP';
         insert ee;
         
         Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();

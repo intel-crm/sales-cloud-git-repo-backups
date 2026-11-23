@@ -2468,24 +2468,6 @@ Note : If you are pasting images into this field, the size limit is 100KB. --></
         <name>IPS_Mirror_SubStatus__c</name>
     </fields>
     <fields>
-        <label><!-- Notify Partner --></label>
-        <name>ImpartnerPRM__NotifyPartner__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Account --></label>
-        <name>ImpartnerPRM__PartnerAccount__c</name>
-        <relationshipLabel><!-- Cases --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Contact --></label>
-        <name>ImpartnerPRM__PartnerContact__c</name>
-        <relationshipLabel><!-- Cases --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Last Modified Date --></label>
-        <name>ImpartnerPRM__PartnerLastModifiedDate__c</name>
-    </fields>
-    <fields>
         <label><!-- ALG Survey Response Id --></label>
         <name>MaritzCX__ALG_Response_Id__c</name>
     </fields>

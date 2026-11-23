@@ -4,9 +4,9 @@
     <label>ADOBE CDP Connected App</label>
     <oauthConfig>
         <callbackUrl>https://login.salesforce.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6kyAp3wOFXdSwoTVxXTYUXflONMCUgc9KyGRFcij39xYHLFpLHrHNLJ6dLwe</consumerKey>
+        <consumerKey>3MVG9BWMiHkoluZE0qiUtAc6UxdGWwcpoyINFyUeiBj7CjF09pC_2J2aYDTIFgGxli2BRd.i9OJ2PmvlwJ2hO</consumerKey>
         <isAdminApproved>false</isAdminApproved>
-        <isClientCredentialEnabled>true</isClientCredentialEnabled>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
         <isConsumerSecretOptional>false</isConsumerSecretOptional>
@@ -17,12 +17,11 @@
         <isIpBindingEnabled>false</isIpBindingEnabled>
         <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
-        <isPkceRequired>true</isPkceRequired>
+        <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
-        <oauthClientCredentialUser>cdp-connected-app-user@intel.com.crm</oauthClientCredentialUser>
         <scopes>Api</scopes>
     </oauthConfig>
     <oauthPolicy>

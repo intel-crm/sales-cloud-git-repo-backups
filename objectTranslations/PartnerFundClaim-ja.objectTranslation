@@ -282,6 +282,10 @@
         <relationshipLabel><!-- Claims --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Claim Cancellation Reason --></label>
+        <name>Core_MDF_Claim_Cancellation_Reason_txt__c</name>
+    </fields>
+    <fields>
         <help>請求に関するメモ (自由形式)</help>
         <label>請求コメント</label>
         <name>Core_MDF_Claim_Comments__c</name>
@@ -1476,8 +1480,18 @@
     </fields>
     <recordTypes>
         <description><!-- Channel MDF Program Record Type --></description>
+        <label><!-- Channel MDF --></label>
+        <name>Core_MDF_Channel_MDF</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Channel MDF Program Record Type --></description>
         <label>チャネル MDF アカウントベース</label>
         <name>Core_MDF_Channel_MDF_Account_Based</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This record is used for Channel MDF Proposal Based claims --></description>
+        <label>チャネル MDF 提案書ベース</label>
+        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
     </recordTypes>
     <recordTypes>
         <description><!-- CCF Program Record Type --></description>
@@ -1565,11 +1579,11 @@
         <name>Core_MDF_EndDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>成果ベースのキャンペーンの推定日付範囲内の実行終了日を入力してください。</errorMessage>
+        <errorMessage><!-- Please enter an Execution End Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
         <name>Core_MDF_EndDateValidation_OutcomeBased</name>
     </validationRules>
     <validationRules>
-        <errorMessage>成果ベースのキャンペーンのアカウントが無効であるため、この成果ベースのキャンペーンを使用することはできません</errorMessage>
+        <errorMessage><!-- You cannot use this Outcome-Based Campaign as the account over the Outcome-Based Campaign is inactive --></errorMessage>
         <name>Core_MDF_InactiveAccountValidation_Outco</name>
     </validationRules>
     <validationRules>
@@ -1601,7 +1615,7 @@
         <name>Core_MDF_RestrictClaimCreationOnDeclined</name>
     </validationRules>
     <validationRules>
-        <errorMessage>ステータスが「終了済み」/「キャンセル」の成果ベースのキャンペーンでは、請求を作成することはできません。</errorMessage>
+        <errorMessage><!-- Claim cannot be created on an Outcome-Based Campaign in Closed/Cancelled status. --></errorMessage>
         <name>Core_MDF_RestrictClaimforClosed_Outcome</name>
     </validationRules>
     <validationRules>
@@ -1617,7 +1631,7 @@
         <name>Core_MDF_Restrict_Claim_Creation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>「進行中」成果ベースのキャンペーンの承認が必要なため、請求の作成がブロックされています。</errorMessage>
+        <errorMessage><!-- Claim creation is blocked due to the ‘In-Progress’ Outcome-Based Campaign needing approval. --></errorMessage>
         <name>Core_MDF_Restrict_Claim_Creation_Outcome</name>
     </validationRules>
     <validationRules>
@@ -1649,7 +1663,7 @@
         <name>Core_MDF_StartDateValidation</name>
     </validationRules>
     <validationRules>
-        <errorMessage>成果ベースのキャンペーンの推定日付範囲内の実行開始日を入力してください。</errorMessage>
+        <errorMessage><!-- Please enter an Execution Start Date that falls within the Outcome-Based Campaign estimated date range. --></errorMessage>
         <name>Core_MDF_StartDateValidation_Outcome</name>
     </validationRules>
     <validationRules>

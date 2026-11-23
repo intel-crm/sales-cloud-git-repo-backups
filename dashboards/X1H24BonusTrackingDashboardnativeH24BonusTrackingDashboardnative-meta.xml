@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>X1H_BPG</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </folderShares>
+    <name>1H&apos; 24 Bonus Tracking Dashboard (native)</name>
+</DashboardFolder>

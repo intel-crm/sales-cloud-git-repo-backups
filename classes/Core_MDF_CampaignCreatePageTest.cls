@@ -862,7 +862,7 @@ public class Core_MDF_CampaignCreatePageTest {
         Test.stopTest();
     }
 
-     @isTest
+    /*@isTest
     static void testGetDomainsForAccount() {
         Test.startTest();
         
@@ -884,5 +884,5 @@ public class Core_MDF_CampaignCreatePageTest {
         Assert.areEqual(0, Core_MDF_CampaignCreatePage.getDomainsForAccount('').size(), 'Should return empty list');
         
         Test.stopTest();
-    }
+    }*/
 }

@@ -419,36 +419,6 @@
         </displayedFields>
         <label>New Sales Lead</label>
     </fieldSets>
-    <fieldSets>
-        <fullName>ImpartnerPRM__MassAssignToPartner</fullName>
-        <availableFields>
-            <field>ImpartnerPRM__DateAssignedToPartner__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <availableFields>
-            <field>ImpartnerPRM__NotifyPartner__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <availableFields>
-            <field>ImpartnerPRM__PartnerLeadAcceptance__c</field>
-            <isFieldManaged>false</isFieldManaged>
-            <isRequired>false</isRequired>
-        </availableFields>
-        <description>Mass Assign Leads to Partner Page</description>
-        <displayedFields>
-            <field>ImpartnerPRM__PartnerAccount__c</field>
-            <isFieldManaged>true</isFieldManaged>
-            <isRequired>true</isRequired>
-        </displayedFields>
-        <displayedFields>
-            <field>ImpartnerPRM__PartnerContact__c</field>
-            <isFieldManaged>true</isFieldManaged>
-            <isRequired>true</isRequired>
-        </displayedFields>
-        <label>Mass Assign to Partner</label>
-    </fieldSets>
     <fields>
         <fullName>Address</fullName>
         <trackFeedHistory>false</trackFeedHistory>
@@ -5111,11 +5081,6 @@ null)</formula>
                     <label>FPGA Engineering</label>
                 </value>
                 <value>
-                    <fullName>GOVT</fullName>
-                    <default>false</default>
-                    <label>Government</label>
-                </value>
-                <value>
                     <fullName>HDE</fullName>
                     <default>false</default>
                     <label>Hardware Development/Engineering</label>
@@ -5210,11 +5175,6 @@ null)</formula>
                     <fullName>SADE</fullName>
                     <default>false</default>
                     <label>Software/Application Development/Engineering</label>
-                </value>
-                <value>
-                    <fullName>SFTOP</fullName>
-                    <default>false</default>
-                    <label>Software Operations</label>
                 </value>
                 <value>
                     <fullName>SSA</fullName>
@@ -6679,18 +6639,6 @@ DATETIMEVALUE(TEXT(DATEVALUE(Core_Entrance_Date_SAL__c) + CASE(MOD( DATEVALUE(Co
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>CventEvents__ContactStub__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>true</externalId>
-        <label>Cvent Contact Stub</label>
-        <length>36</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Days__c</fullName>
         <formula>IF(AND(NOT(ISNULL(Core_Entrance_Date_MAQL__c)),NOT(OR(WEEKDAY(DATEVALUE(Core_Entrance_Date_MAQL__c))=1,WEEKDAY(DATEVALUE(Core_Entrance_Date_MAQL__c))=7))),true,
 IF(AND(NOT(ISNULL(Core_Entrance_Date_TAL__c)),NOT(OR(WEEKDAY(DATEVALUE(Core_Entrance_Date_TAL__c))=1,WEEKDAY(DATEVALUE(Core_Entrance_Date_TAL__c))=7))),true,
@@ -6747,134 +6695,6 @@ IF(AND(NOT(ISNULL(Core_Entrance_Date_SAL__c)),NOT(OR(WEEKDAY(DATEVALUE(Core_Entr
         <fullName>HasOptedOutOfFax</fullName>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__DateAssignedToPartner__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Date Assigned to Partner</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__DealRegistrationDenied__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Deal Registration Denied</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__DealRegistrationStatus__c</fullName>
-        <deprecated>false</deprecated>
-        <externalId>false</externalId>
-        <formula>IF(ImpartnerPRM__IsDealRegistration__c, IF(IsConverted, &quot;Approved&quot;, IF(ImpartnerPRM__DealRegistrationDenied__c, &quot;Denied&quot;, &quot;Pending&quot;)), null)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Deal Registration Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__IsDealRegistration__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Is Deal Registration</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__NotifyPartner__c</fullName>
-        <defaultValue>false</defaultValue>
-        <deprecated>false</deprecated>
-        <label>Notify Partner</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerAccount__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Account</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Leads</relationshipLabel>
-        <relationshipName>Leads</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerContact__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <deprecated>false</deprecated>
-        <label>Partner Contact</label>
-        <lookupFilter>
-            <active>true</active>
-            <booleanFilter>1 OR 2</booleanFilter>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <valueField>Contact.AccountId</valueField>
-            </filterItems>
-            <filterItems>
-                <field>$Source.ImpartnerPRM__PartnerAccount__c</field>
-                <operation>equals</operation>
-                <value></value>
-            </filterItems>
-            <isOptional>true</isOptional>
-        </lookupFilter>
-        <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Leads</relationshipLabel>
-        <relationshipName>Leads</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerLastModifiedDate__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Partner Last Modified Date</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>ImpartnerPRM__PartnerLeadAcceptance__c</fullName>
-        <deprecated>false</deprecated>
-        <label>Partner Lead Acceptance</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Pending</fullName>
-                    <default>false</default>
-                    <label>Pending</label>
-                </value>
-                <value>
-                    <fullName>Accepted</fullName>
-                    <default>false</default>
-                    <label>Accepted</label>
-                </value>
-                <value>
-                    <fullName>Rejected</fullName>
-                    <default>false</default>
-                    <label>Rejected</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>IndividualId</fullName>
@@ -7709,7 +7529,6 @@ NULL))))</formula>
     </fields>
     <listViews>
         <fullName>All_Leads4</fullName>
-        <columns>Core_Partner_Name__c</columns>
         <columns>FULL_NAME</columns>
         <columns>PMP_Offering_Id__c</columns>
         <columns>LEAD.COMPANY</columns>
@@ -7721,6 +7540,11 @@ NULL))))</formula>
         <columns>LEAD.RECORDTYPE</columns>
         <columns>CORE.USERS.ALIAS</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Partner_Name__c</field>
+            <operation>contains</operation>
+            <value>nutanix</value>
+        </filters>
         <label>All Leads</label>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -8743,9 +8567,9 @@ NULL))))</formula>
         <columns>Core_Reprocess_Lead_Sharing__c</columns>
         <filterScope>Queue</filterScope>
         <filters>
-            <field>Core_Partner_Name__c</field>
-            <operation>contains</operation>
-            <value>silicon</value>
+            <field>LEAD.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Lead.Partner_Lead</value>
         </filters>
         <label>PTNR - Global Partner Queue</label>
         <queue>Core_PTNR_Global_Partner_Queue</queue>
@@ -8872,10 +8696,6 @@ NULL))))</formula>
             <field>Core_Lead_Status__c</field>
             <operation>notEqual</operation>
             <value>Dispositioned for Partner Lead Pilot</value>
-        </filters>
-        <filters>
-            <field>LEAD.LAST_ACTIVITY</field>
-            <operation>equals</operation>
         </filters>
         <label>Leads - From Marketplace</label>
         <sharedTo>
@@ -10957,10 +10777,6 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -11034,10 +10850,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>SCIENTIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SFTOP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -11405,21 +11217,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>PRC Sales Group</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>ImpartnerPRM__PartnerLeadAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -13576,10 +13373,6 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -13653,10 +13446,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>SCIENTIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SFTOP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -13920,21 +13709,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>Unable To Contact</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>ImpartnerPRM__PartnerLeadAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -16251,21 +16025,6 @@ NULL))))</formula>
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>ImpartnerPRM__PartnerLeadAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Industry</picklist>
             <values>
                 <fullName>Agriculture</fullName>
@@ -18422,10 +18181,6 @@ NULL))))</formula>
                 <default>false</default>
             </values>
             <values>
-                <fullName>GOVT</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>HDE</fullName>
                 <default>false</default>
             </values>
@@ -18499,10 +18254,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>SCIENTIST</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SFTOP</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -19030,21 +18781,6 @@ NULL))))</formula>
             </values>
             <values>
                 <fullName>Unable to contact</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>ImpartnerPRM__PartnerLeadAcceptance__c</picklist>
-            <values>
-                <fullName>Accepted</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Rejected</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -21689,78 +21425,6 @@ alert( &quot;An error has occurred while updating lead &quot; + result[0].errors
 }</url>
     </webLinks>
     <webLinks>
-        <fullName>CventEvents__InviteLeadToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Invite</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__LeadInviteExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__ModifyCancelLeadToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Modify/Cancel</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__LeadModifyCancelExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__NominateLeadToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Nominate</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__LeadNominateExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
-        <fullName>CventEvents__RegisterLeadToEvent</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>page</linkType>
-        <masterLabel>Register</masterLabel>
-        <openType>newWindow</openType>
-        <page>CventEvents__LeadRegisterExtension</page>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-    </webLinks>
-    <webLinks>
         <fullName>Eloqua_Profiler</fullName>
         <availability>online</availability>
         <description>Link to Eloqua Profiler</description>
@@ -21855,18 +21519,6 @@ alert( &quot;An error has occurred while updating lead &quot; + result[0].errors
         <showsLocation>true</showsLocation>
         <showsStatus>true</showsStatus>
         <url>http://search.hoovers.com/cgi-bin/hol_search?which=company&amp;query_string={!Lead_Company}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>ImpartnerPRM__MassAssignToPartner</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <height>600</height>
-        <linkType>page</linkType>
-        <masterLabel>Assign to Partner</masterLabel>
-        <openType>sidebar</openType>
-        <page>ImpartnerPRM__MassAssignLeadsToPartner</page>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
     </webLinks>
     <webLinks>
         <fullName>LeadActivityOverview</fullName>

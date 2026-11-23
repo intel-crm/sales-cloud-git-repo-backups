@@ -10,7 +10,7 @@ Apex Class Name:  Core_IPS_CoveoPageController
  * ----------------------------------------------------------------------------
  * Farooq                 06 April 2021              Created
  ****************************************************************************************************/
-public with sharing class Core_IPS_CoveoPageController { //TWC745-6469//-IPS Coveo Named Credentials - Gangadhar
+public with sharing class Core_IPS_CoveoPageController { //0Pk1J000000KywA After changes 16102024 //TWC745-6469//-IPS Coveo Named Credentials - Gangadhar
     
     public String custom_token_groups{get;set;}
     private final Case cs{get;set;}
@@ -45,7 +45,7 @@ public with sharing class Core_IPS_CoveoPageController { //TWC745-6469//-IPS Cov
         //TWC745-6469//request.setBody(paylod);
         //TWC745-6469//Http http = new Http();
         //TWC745-6469//HTTPResponse res = http.send(request);
-        //TWC745-6469
+        //TWC745-6469//System.debug('Named cred test@@@@@@11102024'+paylod);
         //TWC745-6469//if(res.getStatusCode() == 200){
             
             //TWC745-6469//map<string,Object> resultMap = (map<string,Object>)JSON.deserializeUntyped(res.getBody());
@@ -119,7 +119,7 @@ public with sharing class Core_IPS_CoveoPageController { //TWC745-6469//-IPS Cov
     }*/
     public void coveoPagePanel(){
         try{
-            if(this.customGroup == null && this.users.size() > 0 && this.users[0].Core_WWID__c !=null){ //TWC745-9001 End point url change for IAM webservices to microservices migration - Gagan
+            if(this.customGroup == null && this.users.size() > 0 && this.users[0].Core_WWID__c !=null){
                 //== API connected call.
                 //TWC745-6469//HttpRequest request = new HttpRequest();
                 //TWC745-6469//request.setEndpoint(Label.Coveo_Apigee_Authorization);
@@ -155,7 +155,11 @@ public with sharing class Core_IPS_CoveoPageController { //TWC745-6469//-IPS Cov
                                 List<Object> resultList;
                                 resultList = (List<Object>)JSON.deserializeUntyped(response.getBody());
                                 responseMap1 = (Map<String,Object>)resultList[0];
-                                }
+                            } else {
+                                List<Object> resultList;
+                                resultList = (List<Object>)JSON.deserializeUntyped(response.getBody());
+                                responseMap1 = (Map<String,Object>)resultList[0];
+                            }
                             String roles = '';
                             String roles1 = '';
                             List<Object> rolesList = (List<Object>)responseMap1.get('roles');

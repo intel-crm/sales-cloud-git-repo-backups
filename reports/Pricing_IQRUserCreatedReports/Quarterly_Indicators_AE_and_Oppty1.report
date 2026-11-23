@@ -66,8 +66,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>SBQQ__Quote__c.SBQQ__LineItems__r$Pricing_Last_Approved_Date_dt__c</dateColumn>
-        <endDate>2026-06-27</endDate>
+        <endDate>2025-12-27</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-03-29</startDate>
+        <startDate>2025-09-28</startDate>
     </timeFrameFilter>
 </Report>

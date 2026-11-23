@@ -152,7 +152,14 @@
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>ASMO</value>
         </criteriaItems>
@@ -173,7 +180,7 @@
         <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>CoSP Pipeline 2026-Comms Has No Solution</name>
+    <name>CoSP Pipeline 2025-Comms Has No Solution</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -197,8 +204,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-01-01</startDate>
+        <startDate>2025-01-01</startDate>
     </timeFrameFilter>
 </Report>

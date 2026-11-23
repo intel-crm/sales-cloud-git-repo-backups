@@ -68,8 +68,7 @@ public without sharing class ACM_BU_RTForRequestedAccount implements UCD_ACM_Ser
            && account.Core_MDM_Status__c == 'APRV'
            && oldAccounts.get(account.Id).recordTypeId == requestedRecordTypeId
            && processBySource.containsKey(account.Core_Account_Reference_Source_Name__c)) {
-              if(!Test.isRunningTest() && processBySource.get(account.Core_Account_Reference_Source_Name__c).Duplicate_Rejected__c && survivorAccountIdById != null 
-                      && survivorAccountIdById.containsKey(account.Core_Business_Party_Id__c) && survivorAccountCountryById.get(account.Core_Business_Party_Id__c) != account.billingCountryCode){
+               if(!Test.isRunningTest() && processBySource.get(account.Core_Account_Reference_Source_Name__c).Duplicate_Rejected__c && survivorAccountCountryById.get(account.Core_Business_Party_Id__c) != account.billingCountryCode){
                    UCD_ACM_Logger.error('ACM_BU_RTForRequestedAccount','execute','Error while Approving ECD account - Country missmatch - ' +  '==>' + account.Id,null);
                } else {
                    if(processBySource.get(account.Core_Account_Reference_Source_Name__c).Duplicate_Rejected__c
@@ -79,14 +78,14 @@ public without sharing class ACM_BU_RTForRequestedAccount implements UCD_ACM_Ser
                           account.RecordTypeId = rejectedRecordTypeId;
                           account.Core_Survivor_Account_Id__c = survivorAccountIdById.get(account.Core_Business_Party_Id__c);
                           account.Core_Account_Request_Rejection_Reason__c = 'DUP';
-                      } else { 
+                      } else {
                           String recordTypeDeveloperName = processBySource.get(account.Core_Account_Reference_Source_Name__c).RecordType_Developer_Name__c;
                           account.recordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get(recordTypeDeveloperName).getRecordTypeId();
                           
                           if(processBySource.get(account.Core_Account_Reference_Source_Name__c).Duplicate_Rejected__c) {
                               survivorAccountIdById.put(account.Core_Business_Party_Id__c, account.Id);
                           }
-                     }
+                      }
                }
            } else if(account.Core_MDM_Status__c == 'REJ' 
                      && oldAccounts.get(account.Id).recordTypeId == requestedRecordTypeId) {

@@ -13523,7 +13523,6 @@
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>standard-home</tabs>
-    <tabs>standard-WaveHomeLightning</tabs>
     <tabs>Account_Create_Request__c</tabs>
     <tabs>Knowledge__kav</tabs>
     <uiType>Lightning</uiType>
@@ -13546,9 +13545,6 @@
         </mappings>
         <mappings>
             <tab>standard-Dashboard</tab>
-        </mappings>
-        <mappings>
-            <tab>standard-WaveHomeLightning</tab>
         </mappings>
         <mappings>
             <tab>standard-home</tab>

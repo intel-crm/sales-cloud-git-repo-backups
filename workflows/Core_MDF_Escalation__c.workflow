@@ -168,7 +168,7 @@
             <recipient>Core_MDF_CCP_Claim_Case_Reviewer_Mgr_Grp</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_NotifyClaimRwrMgr_on_EscAproval</template>
     </alerts>

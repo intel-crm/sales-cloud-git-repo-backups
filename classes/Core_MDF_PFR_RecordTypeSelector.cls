@@ -9,6 +9,28 @@ public with sharing class Core_MDF_PFR_RecordTypeSelector {
     public static Map<String, Id> newrecordtypemap;
     public static Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     public static List<String> restrictedRecTypesList = Label.Core_MDF_LegacyRestrictedRecordTypes.split(',');
+
+    // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+    // Static cache added at class level — shared across all methods
+    private static Map<String, Schema.DescribeSObjectResult> describeCache = new Map<String, Schema.DescribeSObjectResult>();
+
+    // Private helper replaces getGlobalDescribe() in all methods
+    private static Schema.DescribeSObjectResult getSObjectDescribe(String objectName) {
+        if (String.isBlank(objectName)) { return null; }
+        String key = objectName.toLowerCase();
+        if (!describeCache.containsKey(key)) {
+            try {
+                Schema.DescribeSObjectResult[] results = Schema.describeSObjects(new List<String>{ objectName });
+                if (results != null && !results.isEmpty()) {
+                    describeCache.put(key, results[0]);
+                }
+            } catch (Exception e) {
+                Core_MDF_CCP_UtilityClass.logError(e);
+            }
+        }
+        return describeCache.containsKey(key) ? describeCache.get(key) : null;
+    }
+
 /***************************************************************************************************** 
 Method Name :   fetchRecordTypeValues Map(RecordTypeDeveloperName , RecordTypeLabelName)
 Added By   :    Accenture - SS 
@@ -16,8 +38,12 @@ Modified By:                      Date:10/25/2018                     Changes:No
 ******************************************************************************************************/
     @AuraEnabled
     public static Map<String, String> fetchRecordTypeValues(String objectName){
-        List<Schema.RecordTypeInfo> recordtypes = Schema.getGlobalDescribe().get(objectName).getDescribe().getRecordTypeInfos();
+        // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        Schema.DescribeSObjectResult describeResult = getSObjectDescribe(objectName);
         newrecordtypemapdevname = new Map<String, String>();
+        if(describeResult == null) { return newrecordtypemapdevname; }
+        List<Schema.RecordTypeInfo> recordtypes = describeResult.getRecordTypeInfos();
+        if(recordtypes == null || recordtypes.isEmpty()) { return newrecordtypemapdevname; }
         for(RecordTypeInfo rt : recordtypes){
             if( rt.isMaster() == false && rt.getName().trim() != '' &&  rt.isAvailable() && rt.isActive() && !restrictedRecTypesList.contains(rt.getDeveloperName())){  //&& rt.getDeveloperName() != label.Core_MDF_Intel_MDF_Account_Based && rt.getDeveloperName() != label.Core_MDF_Intel_MDF_Proposal_Based //rt.getName() != label.Core_MDF_Master 
                   newrecordtypemapdevname.put(rt.getDeveloperName(), rt.getName());
@@ -32,8 +58,12 @@ Modified By:                      Date:10/25/2018                     Changes:No
 ******************************************************************************************************/
     @AuraEnabled
     public static Map<String, Id> fetchRecordTypeValues_string_id(String objectName){
-        List<Schema.RecordTypeInfo> recordtypes = Schema.getGlobalDescribe().get(objectName).getDescribe().getRecordTypeInfos();
+        // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        Schema.DescribeSObjectResult describeResult = getSObjectDescribe(objectName);
         newrecordtypemap = new Map<String, Id>();
+        if(describeResult == null) { return newrecordtypemap; }
+        List<Schema.RecordTypeInfo> recordtypes = describeResult.getRecordTypeInfos();
+        if(recordtypes == null || recordtypes.isEmpty()) { return newrecordtypemap; }
         for(RecordTypeInfo rt : recordtypes){
             if( rt.isMaster() == false && rt.getName().trim() != '' &&  rt.isAvailable() && rt.isActive() && !restrictedRecTypesList.contains(rt.getDeveloperName())){ //&& rt.getDeveloperName() != label.Core_MDF_Intel_MDF_Account_Based && rt.getDeveloperName() != label.Core_MDF_Intel_MDF_Proposal_Based //rt.getName() != label.Core_MDF_Master
                   newrecordtypemap.put( rt.getDeveloperName() , rt.getRecordTypeId());
@@ -86,9 +116,10 @@ Modified By:                      Date:                    Changes:None
 *******************************************************************************************************/
     @AuraEnabled
     public static Boolean checkSObjectCreatePermission(String objectName){
-        Map<String,Schema.SObjectType> gd = Schema.getGlobalDescribe();
-        Schema.SObjectType sobjType = gd.get(objectName);
-		Schema.DescribeSObjectResult obj = sobjType.getDescribe();
+        
+        // ATHR Fix: Replace Schema.getGlobalDescribe() with describeSObjects()
+        Schema.DescribeSObjectResult obj = getSObjectDescribe(objectName);
+        if(obj == null) { return false; }
         Boolean checkCreate = obj.createable;
        	return checkCreate;
     }

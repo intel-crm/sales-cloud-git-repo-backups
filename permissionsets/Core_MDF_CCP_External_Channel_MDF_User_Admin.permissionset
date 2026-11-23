@@ -2331,11 +2331,6 @@
         <field>User.Core_WWID__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>User.User_Unique__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP External Channel MDF User Admin</label>
     <license>Partner Community</license>

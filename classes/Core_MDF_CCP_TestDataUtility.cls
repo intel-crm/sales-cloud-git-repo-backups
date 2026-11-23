@@ -356,16 +356,7 @@ public class Core_MDF_CCP_TestDataUtility {
         PartnerFundRequest testPartnerFundRequest = NULL;
 
         if (pfaRec == NULL){
-            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,Core_MDF_Brand_nm__c=brand,/*
-            
-            
-            
-            
-            
-            
-            
-            
-            =productType,*/Core_MDF_ActivityCategory__c=activityCategory,
+            testPartnerFundRequest = new PartnerFundRequest(CampaignId=campaignId,recordtypeid = recTypeId,ChannelPartnerId = channelPartnerId,Core_MDF_Country_nm__c=country,Core_MDF_Brand_nm__c=brand,/*Core_MDF_ProductType__c=productType,*/Core_MDF_ActivityCategory__c=activityCategory,
                                                                            Core_MDF_Activity_Types__c=activityTypes,RequestedAmount=12345,Core_MDF_TargetAudience__c=targetAudience,Core_MDF_Start_Date__c=System.today(),Core_MDF_End_Date__c = system.today(),Status=status,Title ='test',
                                                                            Core_MDF_Activity_Description__c ='test123');
         }

@@ -36,7 +36,7 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
     static Map<id, Id> opidCPLMap  = new Map<Id,Id>();
     Set<Id> opidsToMPIdeactivation = new Set<Id>();
     //TWC729-8027 - RTA changes for MPI activation
-	Set<Id> opidsToMPIactivation = new Set<Id>();
+  Set<Id> opidsToMPIactivation = new Set<Id>();
     static List<Core_Contact_Entitlement__c> entitlementsTOUpsert = new List<Core_Contact_Entitlement__c>();    
     static prm_skip_trigger__c sk;
     public static boolean isPartnerRoleChanged=false;
@@ -85,6 +85,7 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                     isPartnerRoleChanged=true;    
                 }            
                 ipameme.PRM_Status__c=Label.PRM_Label_complete;
+                System.debug(ipameme.PRM_Partner_Tier__r.Rank+' '+ipameme.PRM_Partner_Tier__c);
                 PRM_AccountChannelMembership__c acm  = new PRM_AccountChannelMembership__c();
                 acm.Id = ipameme.PRM_Account_Channel_Membership__c;
                 acm.PRM_Partner_Role__c = ipameme.PRM_Partner_Role__c;
@@ -100,7 +101,7 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                     opidsToMPIdeactivation.add(ipameme.PRM_Account_Id__c);
                     //TWC729-8027 - RTA changes for MPI activation
                 }else{
-					opidsToMPIactivation.add(ipameme.PRM_Account_Id__c);
+          opidsToMPIactivation.add(ipameme.PRM_Account_Id__c);
                 }
                actIdRoleTierMap.put(ipameme.PRM_Account_Id__c, ipameme.PRM_Partner_Role__c+'-'+ipameme.PRM_Partner_Tier__c);
                 actIdCPLMap.put(ipameme.PRM_Account_Id__c+'-'+ipameme.PRM_Old_Partner_Role__c, ipameme.PRM_Partner_Tier__c);
@@ -136,6 +137,7 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                 if(oldAcmIdPartnerRole.containsKey(acmRecord.id) && oldAcmIdPartnerRole.get(acmRecord.id) == acmRecord.PRM_Partner_Role__c){
                     opidOldTierMap.put(acmRecord.PRM_Account_Id__c, acmRecord.PRM_Channel_Program_Level_Id__c);
                 }
+               System.debug('ACM Map'+acmRecMap);
                 String accId = acmRecord.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c;
               if(acmRecord.PRM_Status_Nm__c=='Approved'){
                     if(!memResponseWrapper.containsKey(accId)){memResponseWrapper.put(acmRecord.PRM_Account_Id__c, memResponseWrapper.get(acmRecord.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c));
@@ -168,6 +170,7 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                     
                 }
             }
+            System.debug('Account Role tier Map -->'+actIdRoleTierMap);
               List<String> strList1=new list<string>();
             if(acmRecMap!=null && !acmRecMap.isEmpty()){
                 for(id accId : acmRecMap.keySet()){
@@ -180,24 +183,26 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                             strList1 = str1.split('-');
                             //Location account
                             if(acmRecMap.get(accId).size() > 1){ // for more than 1 ACM? IN CASE OF mutlipla ACM ACCOUNT
-                            if(acmRec.PRM_Account_Id__c != acmRec.PRM_Onepartner_Id__c){
+                           if(acmRec.PRM_Account_Id__c != acmRec.PRM_Onepartner_Id__c){
                                 if(acmRec.PRM_Partner_Role__c==strList1[0] && ((acmRec.PRM_Status_Nm__c=='Inactive' || acmRec.PRM_Status_Nm__c=='Pending'))){ //OLD AND NEW ARE
                                             acmRec.PRM_Status_Nm__c='Approved';
                                             acmRec.PRM_Status_Reason_Txt__c = 'Approved as part of Role tier automation';//TWC729-8089 : Adding reason text : NJ
+                                            System.debug('acmRec.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c'+acmRec.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c);
                                             acmRec.PRM_Channel_Program_Level_Id__c = tier;
                                             acmRec.PRM_Partner_Role__c = strList1[0];
                                             Flag = True;
+                                            
                                            }
                                         
                                
                                   //  CURRENT                     NEW                                                  CURRENT AND OLD
-                                    else if(acmRec.PRM_Partner_Role__c != strList1[0] && actIdCPLMap.containsKey(accIdKey+'-'+acmRec.PRM_Partner_Role__c) && !Flag){ acmRec.PRM_Channel_Program_Level_Id__c = tier;
+                                    else if(acmRec.PRM_Partner_Role__c != strList1[0] && actIdCPLMap.containsKey(accIdKey+'-'+acmRec.PRM_Partner_Role__c) && !Flag){ acmRec.PRM_Channel_Program_Level_Id__c = tier;                                      
                                         acmRec.PRM_Partner_Role__c = strList1[0];
-                                    }else if(!Flag && acmRec.PRM_Partner_Role__c==strList1[0] && acmRec.PRM_Channel_Program_Level_Id__c!=tier && acmRec.PRM_Status_Nm__c=='Approved'){
+                                    }else if(!Flag && acmRec.PRM_Partner_Role__c==strList1[0] && acmRec.PRM_Channel_Program_Level_Id__c!=tier && acmRec.PRM_Status_Nm__c=='Approved'){                                      
                                         acmRec.PRM_Channel_Program_Level_Id__c = tier;
                                        // acmRec.PRM_Partner_Role__c = strList1[0];
                                     }
-                                    else{
+                                    else{                                     
                                         acmRec.PRM_Status_Nm__c= 'Inactive';
                                         acmRec.PRM_Status_Reason_Txt__c = 'Inactivated as part of Role tier automation';//TWC729-8089 : Adding reason text : NJ
                                     }
@@ -211,6 +216,15 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                             }
                             
                             //FOR opid ,If there are multiple ACM
+                            System.debug('acmRec.PRM_Account_Id__c-->'+acmRec.PRM_Account_Id__c);
+                            System.debug('acmRec.PRM_Onepartner_Id__c-->'+acmRec.PRM_Onepartner_Id__c);
+                            System.debug('acmRec.PRM_Partner_Role__c-->'+acmRec.PRM_Partner_Role__c);
+                            System.debug('acmRec.PRM_Status_Nm__c-->'+acmRec.PRM_Status_Nm__c);
+                            System.debug('strList1[0]-->'+strList1[0]);
+                            System.debug('acmRec.id-->'+acmRec.id);
+                            System.debug('opidSourceACMMap-->'+opidSourceACMMap);
+                            System.debug('opidSourceACMMap.get(acmRec.PRM_Account_Id__c).id-->'+opidSourceACMMap.get(acmRec.PRM_Account_Id__c).id);
+                            System.debug('opidSourceACMMap.containsKey(acmRec.PRM_Account_Id__c)-->'+opidSourceACMMap.containsKey(acmRec.PRM_Account_Id__c));
                             if(acmRec.PRM_Account_Id__c != acmRec.PRM_Onepartner_Id__c){
                                 if(opidChildACMMap!=null && !opidChildACMMap.isEmpty() && opidChildACMMap.containsKey(acmRec.PRM_Account_Id__c)){//PRM_Account_Id__c
                                     opidChildACMMap.get(acmRec.PRM_Account_Id__c).add(acmRec);
@@ -223,6 +237,7 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                                 if(acmRec.PRM_Partner_Role__c==strList1[0] && (acmRec.PRM_Status_Nm__c=='Inactive' || acmRec.PRM_Status_Nm__c=='Pending') && opidSourceACMMap.containsKey(acmRec.PRM_Account_Id__c) && opidSourceACMMap.get(acmRec.PRM_Account_Id__c).id != acmRec.id){acmRec.PRM_Status_Nm__c='Approved';
                                         acmRec.PRM_Status_Reason_Txt__c = 'Approved as part of Role tier automation';//TWC729-8089 : Adding reason text : NJ
                                         acmRec.PRM_Channel_Program_Level_Id__c = tier;
+                                        System.debug('acmRec1-->'+acmRec);
                                         PRM_AccountChannelMembership__c sourceACM = opidSourceACMMap.get(acmRec.PRM_Account_Id__c);
                                         sourceACM.PRM_Status_Nm__c='Inactive';
                                         sourceACM.PRM_Channel_Program_Level_Id__c = opidOldTierMap.get(acmRec.PRM_Account_Id__c);
@@ -250,6 +265,7 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
             for(String Id:opidChildACMMap.keySet() ){
                 finalAcmMap.put(id, opidChildACMMap.get(Id));
             }
+            System.debug('finalAcmMap -->'+finalAcmMap);
             //filter duplicates
             List<PRM_AccountChannelMembership__c> acmsTobeUpdated = new List<PRM_AccountChannelMembership__c>();
             for(List<PRM_AccountChannelMembership__c> acmList : finalAcmMap.values()){
@@ -261,6 +277,7 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                 }
             }
            
+            System.debug('acmsTobeUpdated -->'+acmsTobeUpdated);
             //System.debug('newPartnerRoleMap -->'+newPartnerRoleMap);
             
             // get all the ACR record with old partner role matching
@@ -295,6 +312,7 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                                 con.Core_IPA_PartnerRole__c = strList[1];
                                 //con.Core_Republish_OBM_s__c = true;
                                 if(!updateAccountandContact.contains(con)){
+                                    system.debug('added');
                                     updateAccountandContact.add(con);}
                                 if(actIdCtIdMap!=null && !actIdCtIdMap.isEmpty() &&actIdCtIdMap.containsKey(acrRec.PRM_Account_Id__c)){actIdCtIdMap.get(acrRec.PRM_Account_Id__c).add(acrRec.PRM_Contact_Id__c);
                                 }else{
@@ -341,8 +359,10 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                 if(abaRec.PRM_Source__c=='Tier' || abaRec.PRM_Source__c == NULL){
                     if(actIdabaListMap.size()>0 && actIdabaListMap.containsKey(abaRec.PRM_Account_Id__c)){
                         actIdabaListMap.get(abaRec.PRM_Account_Id__c).add(abaRec);
+                        system.debug('actIdabaListMap-->'+actIdabaListMap);
                     }else{
                         actIdabaListMap.put(abaRec.PRM_Account_Id__c, new List<PRM_AccountBenefitAssociation__c>{abaRec});
+                        system.debug('actIdabaListMap-->'+actIdabaListMap);
                     }
                 }
             }
@@ -360,16 +380,17 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                 //Id AccountId = acmIdActId.get(acm.Id);
                 //// update the benefits only for OPID
                 if(acm.PRM_Account_Id__r.RecordType.DeveloperName == Label.PRM_Partner_Account_Group_Record_Type){ Id AccountId = acm.PRM_Account_Id__c;
-                              //-----
+                System.debug(' aba list -->'+actIdabaListMap.get(AccountId));            //-----
               //  String key = acm.PRM_Partner_Role__c+'-'+(tierIdNames.get(acm.PRM_Channel_Program_Level_Id__c));
                 List<String> applicablePartnerRoleTier = PRM_IPA_Utility.getApplicablePartnerRoleTier(acm.PRM_Partner_Role__c,tierIdNames.get(acm.PRM_Channel_Program_Level_Id__c));
+                system.debug('applicable'+applicablePartnerRoleTier);
                 List<String> applicableBenefits = new List<String>();
                if(actIdabaListMap.size()>0 && actIdabaListMap.containsKey(AccountId)){actSpecificABAList = getListOfBenefits(actIdabaListMap.get(AccountId));// get benefits specific to act all inactive 
                     
                     List<String> containsBnft = new List<String>();
                     for( string keyStr : applicablePartnerRoleTier){if(partnerRolVxBftMat.size()>0 && partnerRolVxBftMat.containsKey(keyStr)){ 
-					// role+tier = list of benefits
-					
+          // role+tier = list of benefits
+          
    
                         for(PRM_VXBnftMatrix__c vxBnft : partnerRolVxBftMat.get(keyStr)){ // looping through all benefits applicable to roletier
                             if(!actSpecificABAList.containsKey(vxBnft.PRM_Partner_Benefit_Id__c)) // check if benefits at OPID is not present ,
@@ -382,47 +403,48 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                                 aba.PRM_Source__c ='Tier';
                                 aba.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;actSpecificABAListMp.putAll(getAccountSpecificABA(actSpecificABAListMp, aba, AccountId));
                             }
-							if(actSpecificABAList.containsKey(vxBnft.PRM_Partner_Benefit_Id__c) && actSpecificABAList.get(vxBnft.PRM_Partner_Benefit_Id__c).PRM_Status_Nm__c == 'Inactive'){PRM_AccountBenefitAssociation__c aba  = new PRM_AccountBenefitAssociation__c();
+              if(actSpecificABAList.containsKey(vxBnft.PRM_Partner_Benefit_Id__c) && actSpecificABAList.get(vxBnft.PRM_Partner_Benefit_Id__c).PRM_Status_Nm__c == 'Inactive'){PRM_AccountBenefitAssociation__c aba  = new PRM_AccountBenefitAssociation__c();
                                 aba.Id = actSpecificABAList.get(vxBnft.PRM_Partner_Benefit_Id__c).id;
-								aba.PRM_Status_Nm__c = 'Active';
+                aba.PRM_Status_Nm__c = 'Active';
                                 aba.PRM_Status_Reason_Txt__c = 'Activated as part of Role tier automation';//TWC729-8089 : Adding reason text : NJ
                                 aba.PRM_Source__c ='Tier';
                                 aba.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;
                                 actSpecificABAListMp.putAll(getAccountSpecificABA(actSpecificABAListMp, aba, AccountId));
                             
                         }
-						applicableBenefits.add(vxBnft.PRM_Partner_Benefit_Id__c);
-						}
-					   }
-					 
-					 if(manualPartnerRolVxBftMat.size()>0 && manualPartnerRolVxBftMat.containsKey(keyStr)){for(PRM_VXBnftMatrix__c vxManualBnft :manualPartnerRolVxBftMat.get(keyStr)){applicableBenefits.add(vxManualBnft.PRM_Partner_Benefit_Id__c);
-						  }
-					 }
+            applicableBenefits.add(vxBnft.PRM_Partner_Benefit_Id__c);
+            }
+             }
+           
+           if(manualPartnerRolVxBftMat.size()>0 && manualPartnerRolVxBftMat.containsKey(keyStr)){for(PRM_VXBnftMatrix__c vxManualBnft :manualPartnerRolVxBftMat.get(keyStr)){applicableBenefits.add(vxManualBnft.PRM_Partner_Benefit_Id__c);
+              }
+           }
   }
   //for removal
-					 for(Id benId:actSpecificABAList.keySet()){if(!applicableBenefits.contains(benId)){PRM_AccountBenefitAssociation__c aba  = new PRM_AccountBenefitAssociation__c();
+           for(Id benId:actSpecificABAList.keySet()){if(!applicableBenefits.contains(benId)){PRM_AccountBenefitAssociation__c aba  = new PRM_AccountBenefitAssociation__c();
                                 aba.Id = actSpecificABAList.get(benId).id;
-								aba.PRM_Status_Nm__c = 'Inactive';
+                aba.PRM_Status_Nm__c = 'Inactive';
                                 aba.PRM_Status_Reason_Txt__c = 'Inactivated as part of Role tier automation';//TWC729-8089 : Adding reason text : NJ
                                 aba.PRM_Source__c ='Tier';
                                 aba.PRM_Status_Reason_Txt__c =Label.PRM_ACM_ABA_Automation_Reason;actSpecificABAListMp.putAll(getAccountSpecificABA(actSpecificABAListMp, aba, AccountId));
                             
-						 }
-					 }
-					
+             }
+           }
+          
                 }
              }
             }
            for(List<PRM_AccountBenefitAssociation__c> abaRec : actSpecificABAListMp.values()){for(PRM_AccountBenefitAssociation__c benRec : abaRec){finalABAList.add(benRec);
              }
            } 
+            System.debug('finalABAList -->'+finalABAList);
              if(isPartnerRoleChanged==true){
            pointFlagCheck(newPartnerRoleMap); 
              }  
         PRM_accBenefitAssociationUtility.skipvalidationforMPBenefits = true;
         upsertData(finalABAList);
         proccessEntitlement();
-		List<PMP_OPID_MPI_Rel__c> opidMps = new List<PMP_OPID_MPI_Rel__c>();
+    List<PMP_OPID_MPI_Rel__c> opidMps = new List<PMP_OPID_MPI_Rel__c>();
           if (!opidsToMPIdeactivation.isEmpty()) {
             opidMps = [SELECT Id,Is_Active__c,PMP_RelLastDeactivated__c FROM PMP_OPID_MPI_Rel__c WHERE PMP_One_Partner_ID__c IN:opidsToMPIdeactivation AND Is_Active__c = TRUE ];
 		  //TWC729-8027 - RTA changes for MPI activation
@@ -432,16 +454,17 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                 for (PMP_OPID_MPI_Rel__c opidmp : opidMps) { if(opidmp.Is_Active__c == TRUE ){
                         opidmp.Is_Active__c = FALSE;opidmp.PMP_RelLastDeactivated__c = System.now();}
                 
-					else if(opidmp.Is_Active__c == FALSE )
+          else if(opidmp.Is_Active__c == FALSE )
                     opidmp.Is_Active__c = TRUE;
                 }
                 database.update(opidMps,false); // database.update
             }
-		  
+      
         if(Test.isRunningTest()) {
                 throw new System.DMLException();
             }
         }catch(Exception ex){
+            System.debug('Error -->'+ex.getMessage());
             Core_Log_Entry.logEntryWithDetails(ORIGIN, PROJECT, 'Message', SEVERITY, ex.getMessage(), '', null, null, '');
         }finally{
             sk = prm_skip_trigger__c.getInstance('ABA_Trigger');
@@ -451,6 +474,7 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
     }
     
    public void pointFlagCheck(Map<Id,List<String>> newPartnerRoleMapMp){
+        System.debug('newPartnerRoleMap -->'+newPartnerRoleMap);
          Map<String, boolean> pointFlagCheckMap = new Map<String, boolean>();
         for(Id accountId:newPartnerRoleMap.keySet()){
             for(String oldNewRole : newPartnerRoleMap.get(accountId)){
@@ -491,18 +515,22 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
                         accountId = ct.AccountId;
                         failedRecordId=ct.Id;
                         conQueueFullLst.add(ct.Id);
+                        system.debug('conQueueFullLst-->'+conQueueFullLst);
                     }
                     
                     if(newLst[index] instanceof PRM_AccountBenefitAssociation__c){PRM_AccountBenefitAssociation__c aba =(PRM_AccountBenefitAssociation__c)newLst[index];
                         accountId = aba.PRM_Account_Id__c;
                         failedRecordId=aba.PRM_Partner_Benefit_Id__c;
                     }
+                    System.debug('accountId -->'+accountId);
+                    System.debug('failedRecordId -->'+failedRecordId);
                     
                     Id sId;
                     string sObjectType = '';
                     string tags = '';
                     for(Database.Error err : ur.getErrors()){
                         
+                        System.debug('Error -->'+err.getMessage());
                         if(memResponseWrapper.size()>0 && memResponseWrapper.containsKey(accountId) && !String.valueOf(err.getMessage()).contains('duplicate')){MembershipWrapper m = memResponseWrapper.get(accountId);
                             m.errorMessage = 'Record failed for Account : '+accountId+' with Id : '+failedRecordId;                            
                             memResponseWrapper.put(accountId, m);
@@ -599,13 +627,16 @@ public without sharing class PRM_IPAR_ACMUpdateUtility{//implements Database.Bat
         PRM_EntitlementResponseWrapper entWrap = new PRM_EntitlementResponseWrapper();
         //entWrap.accountIdRecTypemap = accountIdRecTypemap;
         entWrap.actIdCtIdMap = actIdCtIdMap;
+        System.debug('actIdCtIdMap -->'+actIdCtIdMap);
         entWrap.actIdRoleTierMap = actIdRoleTierMap;
+        System.debug('actIdRoleTierMap -->'+actIdRoleTierMap);
         entWrap.contactIdRelName = contactIdRelName;
         entWrap.tierIdNames = tierIdNames;
         entWrap.actToOPIDMap = actToOPIDMap;
         entWrap.newPartnerRoleMap = newPartnerRoleMap;
         PRM_IPAR_ACMUpdateAssignEntitlment assignEnt = new PRM_IPAR_ACMUpdateAssignEntitlment();
         entitlementsTOUpsert  = assignEnt.AssignEntitlements(entWrap);
+        System.debug('entitlementsTOUpsert -->'+entitlementsTOUpsert);
     }
     
 }

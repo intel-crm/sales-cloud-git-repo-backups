@@ -13,7 +13,10 @@ public class Core_MDF_IUPGMReqStaging_TriggerHandler {
     ) {
         for (Core_MDF_IUPGM_Request_Staging__c rec : newList) {
 
-            rec.Core_MDF_Request_Status_nm__c  = 'New';
+            // Copy_Pending rows are internal previews of a Copy User Access and must keep their status.
+            if (rec.Core_MDF_Request_Status_nm__c != 'Copy_Pending') {
+                rec.Core_MDF_Request_Status_nm__c = 'New';
+            }
             rec.Core_MDF_Is_IUPGM_Processed__c = false;
 
             if (String.isNotBlank(rec.Core_MDF_IUPGM_Role_nm__c)) {
@@ -76,8 +79,12 @@ public class Core_MDF_IUPGMReqStaging_TriggerHandler {
     public void afterInsert(
         List<Core_MDF_IUPGM_Request_Staging__c> newList
     ) {
-        Set<Id> ids =
-            new Map<Id, Core_MDF_IUPGM_Request_Staging__c>(newList).keySet();
+        // Copy_Pending previews are not requests yet - they must not enter processing before confirmation.
+        Map<Id, Core_MDF_IUPGM_Request_Staging__c> nonPending = new Map<Id, Core_MDF_IUPGM_Request_Staging__c>();
+        for (Core_MDF_IUPGM_Request_Staging__c rec : newList) {
+            if (rec.Core_MDF_Request_Status_nm__c != 'Copy_Pending') nonPending.put(rec.Id, rec);
+        }
+        Set<Id> ids = nonPending.keySet();
         System.debug('afterInsert: dispatching ' + ids.size() + ' records');
         if (!ids.isEmpty()) {
             System.enqueueJob(new Core_MDF_IUPGMReqStaging_Queueable(
@@ -132,18 +139,37 @@ public class Core_MDF_IUPGMReqStaging_TriggerHandler {
             System.enqueueJob(new Core_MDF_IUPGMReqStaging_Queueable(ops));
         }
 
-        // Email the requested user whenever a request reaches a terminal
+        // Email the requested user whenever a request reaches a terminal status.
+        // COPY requests are routed to a separate, consolidated "operation complete"
         Set<Id> notifyIds = new Set<Id>();
+        Set<String> copyOperationIdsToCheck = new Set<String>();
+        Set<Id> coreAccessCompletedWithPendingRole = new Set<Id>();
         Set<String> terminal = Core_MDF_CCP_ConstantClass.IUPGM_TERMINAL_STATUSES;
         for (Core_MDF_IUPGM_Request_Staging__c rec : newList) {
             String oldStatus = oldMap.get(rec.Id).Core_MDF_Request_Status_nm__c;
             String newStatus = rec.Core_MDF_Request_Status_nm__c;
+            if (newStatus != oldStatus && newStatus == 'Completed'
+                && String.isNotBlank(rec.Core_MDF_Pending_Dependent_Role_txt__c)) {
+                coreAccessCompletedWithPendingRole.add(rec.Id);
+            }
             if (newStatus != oldStatus && terminal.contains(newStatus)) {
-                notifyIds.add(rec.Id);
+                if (rec.Core_MDF_Request_Type_nm__c == 'COPY'
+                    && String.isNotBlank(rec.Core_MDF_Copy_Operation_Id__c)) {
+                    copyOperationIdsToCheck.add(rec.Core_MDF_Copy_Operation_Id__c);
+                } else {
+                    notifyIds.add(rec.Id);
+                }
             }
         }
         if (!notifyIds.isEmpty()) {
             Core_MDF_IUPGMReqStaging_ServiceHandler.notifyRequestedUsers(notifyIds);
+        }
+        if (!copyOperationIdsToCheck.isEmpty()) {
+            Core_MDF_IUPGMReqStaging_ServiceHandler.notifyCopyOperationIfComplete(copyOperationIdsToCheck);
+        }
+        if (!coreAccessCompletedWithPendingRole.isEmpty()) {
+            Core_MDF_IUPGMReqStaging_ServiceHandler.submitPendingDependentRoles(
+                coreAccessCompletedWithPendingRole);
         }
     }
 }

@@ -7,21 +7,6 @@
         <publicGroups>
             <publicGroup>ags_sos_na</publicGroup>
         </publicGroups>
-        <users>
-            <user>11647208@intel.com.crm</user>
-            <user>11644279@intel.com.crm</user>
-            <user>11645000@intel.com.crm</user>
-            <user>11644733@intel.com.crm</user>
-            <user>11646420@intel.com.crm</user>
-            <user>11645403@intel.com.crm</user>
-            <user>11953461@intel.com.crm</user>
-            <user>11646706@intel.com.crm</user>
-            <user>11644783@intel.com.crm</user>
-            <user>11715283@intel.com.crm</user>
-            <user>11646170@intel.com.crm</user>
-            <user>11645147@intel.com.crm</user>
-            <user>xx11645147@intel.com.crm</user>
-        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>SBQQ__Quote__c</sobjectType>

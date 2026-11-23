@@ -5,7 +5,7 @@
     <oauthConfig>
         <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
         <certificate>MIIEijCCA3KgAwIBAgIOAY1liWT7AAAAAGfDcMIwDQYJKoZIhvcNAQELBQAwgYUxHTAbBgNVBAMMFEFkdmFudGVja19QdWJsaWNfS2V5MRgwFgYDVQQLDA8wMEQ0MDAwMDAwME4zN3oxFzAVBgNVBAoMDlNhbGVzZm9yY2UuY29tMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQswCQYDVQQIDAJDQTEMMAoGA1UEBhMDVVNBMB4XDTI0MDIwMTE2MzgzOVoXDTI1MDIwMTEyMDAwMFowgYUxHTAbBgNVBAMMFEFkdmFudGVja19QdWJsaWNfS2V5MRgwFgYDVQQLDA8wMEQ0MDAwMDAwME4zN3oxFzAVBgNVBAoMDlNhbGVzZm9yY2UuY29tMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQswCQYDVQQIDAJDQTEMMAoGA1UEBhMDVVNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAn2D3X0pW6sPVCqEzjiaItLlS9LU3uzi/tLtee2eS55/OmGyZD1BWotfDtNGd6c2+Y9WYwomFKpBRqHLyE4dQ1MrBToODrL6bgVUkcP4HkhQknVhBegy1hKHCj51HdjEbzvKbLDr5uIFSrqyys8UKKJ3O1HIuUgtJw4ofxHQSqdSnPqJTH602gL72YhY8f+CR71C/+K+14VmZ+ReyxzetOtSJPkh2dLFtjc0xirZAK5YOPjC4dsxvIo1D/w64MtkvhlaFSlbV+b3xS630jRU9e/HdDRW4Rp0SsQVAC5DK3WorYrxmFhoKLayvTbf4Jz3MwMceZHChIPjxH9siBWyROwIDAQABo4H1MIHyMB0GA1UdDgQWBBRGjT04DcN24RPPghm7ZgmcRC7knjAPBgNVHRMBAf8EBTADAQH/MIG/BgNVHSMEgbcwgbSAFEaNPTgNw3bhE8+CGbtmCZxELuSeoYGLpIGIMIGFMR0wGwYDVQQDDBRBZHZhbnRlY2tfUHVibGljX0tleTEYMBYGA1UECwwPMDBENDAwMDAwMDBOMzd6MRcwFQYDVQQKDA5TYWxlc2ZvcmNlLmNvbTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzELMAkGA1UECAwCQ0ExDDAKBgNVBAYTA1VTQYIOAY1liWT7AAAAAGfDcMIwDQYJKoZIhvcNAQELBQADggEBAAl04WnAVa0Sgox2eF2Oay4D6cCw5CYA5M6EEmhQEEuNZf9lbTi/2bi7ULk/rERB5NM72iyyBf4eAhDDQDPPAph3iGYkOZaIq3L/uipO3P6PJvLAxJ6zxtPa4/jZCDrpQU8Es/G+tR64P9OZE1Iae2HeKp7g03e+KUuvQm0sP3Fep6TN+qoSLtMcAjGefjFEwDYdNUSFcCkUSgUY8CgdSdRCtQKHYkXcnyhgato/W01QRnjNSlcIyja1+FEi3aLl4b9FErCzlWYrxf8C3vhQfXZq3U2R13nqNxCX+ocG46mv/3bufKjUGzejA7+Iu0Akq85g+OrK4eoTQEHW/Clu0kY=</certificate>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6kz.OCShyCpOYI7XL7rBC5Nbp11.QsS3NK2oh.jrvN0UGDnNNg2OgKHT_W9M</consumerKey>
+        <consumerKey>3MVG9BWMiHkoluZE0qiUtAc6UxfdEC1u0tPu1Qyuckti.2miwaD.Ijb2VwKd1up2.i5J5GA41DZShCx97wDDQ</consumerKey>
         <isAdminApproved>true</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
@@ -20,7 +20,7 @@
         <isPKImTLSEnabled>false</isPKImTLSEnabled>
         <isPkceRequired>false</isPkceRequired>
         <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
-        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
         <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
         <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
         <scopes>Api</scopes>

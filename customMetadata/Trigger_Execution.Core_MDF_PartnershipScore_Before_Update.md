@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Inactive_for_User__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">005o0000002kYtOAAU</value>
     </values>
     <values>
         <field>Object__c</field>

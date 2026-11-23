@@ -25,11 +25,7 @@ public class Core_IPS_Contact_Test{
         Profile prof = [select id from profile where name = 'System Administrator' limit 1];    
         userList = TestUtilities.getListOfUser(1);
         userList[0].profileId=prof.id;
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-           insert userlist;
-        }
-        
+        insert userlist;
         systUserRunAs = new User();
         systUserRunAs = userList[0];
         System.runAs(systUserRunAs){

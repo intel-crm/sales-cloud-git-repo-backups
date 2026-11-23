@@ -158,7 +158,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>CCG ECG,CCG,DCAI</value>
+            <value>CCG ECG</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER_MANAGER</column>

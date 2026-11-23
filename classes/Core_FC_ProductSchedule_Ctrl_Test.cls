@@ -27,8 +27,8 @@ public class Core_FC_ProductSchedule_Ctrl_Test {
         sysAdmin.email ='abc@intel.com';
         Profile p = [SELECT id, Name FROM Profile WHERE Name='IT Admin'];
         itAdmin = [SELECT id, Name, isActive,Manager.IsActive FROM User WHERE ProfileId = :p.Id AND isActive = true LIMIT 1];
-        Profile partnerp = [SELECT id, Name FROM Profile WHERE Name='Partner'];
-        PartnerAdmin = [SELECT id, Name, isActive,Manager.IsActive FROM User WHERE ProfileId = :partnerp.Id AND isActive = true LIMIT 1];
+        //Profile partnerp = [SELECT id, Name FROM Profile WHERE Name='Partner'];
+        //PartnerAdmin = [SELECT id, Name, isActive,Manager.IsActive FROM User WHERE ProfileId = :partnerp.Id AND isActive = true LIMIT 1];
         List<Core_FC_Product_Schedule_Permission__c> customSttingList = new List<Core_FC_Product_Schedule_Permission__c>();
         System.runAs(sysAdmin){
             customSttingList.add(new Core_FC_Product_Schedule_Permission__c(SetupOwnerId=UserInfo.getOrganizationId(), Core_Add_Quarter__c=true, Core_Approve_Scheduled_Quarter__c=true, Core_Edit_All_Scheduled_Quantity__c=true, Core_Recall_Last_Approval__c=true, Core_Reject_Scheduled_Quarter__c=true, Core_Start_Scheduling__c=true, Core_Submit_For_Scheduled_Quarter__c=true));

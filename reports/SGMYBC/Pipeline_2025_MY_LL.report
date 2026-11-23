@@ -16,10 +16,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>AGE</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>PUSH_COUNT</field>
-    </columns>
     <description>Malaysia SMG BC and Partner team pipeline report for current fiscal year. Report consists of pipeline of AEs and PSAM grouped by account owner and includes deal size as well the age of the opportunity.</description>
     <filter>
         <criteriaItems>
@@ -27,7 +23,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Irene Kan,Ida Zulaika,Harris Sani,Jason Kay Siah Ang,Mohd Hafizzuan Ab Wahid</value>
+            <value>Irene Kan,Ida Zulaika,Harris Sani,Jason Kay Siah Ang</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

@@ -4,10 +4,6 @@
         <label><!-- New Sales Lead --></label>
         <name>Groove_New_Sales_Lead</name>
     </fieldSets>
-    <fieldSets>
-        <label><!-- Mass Assign to Partner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
-    </fieldSets>
     <fields>
         <label><!-- 1st Reminder --></label>
         <name>Core_1st_Reminder__c</name>
@@ -2767,10 +2763,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
             <translation><!-- Finance/Procurement --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government</masterLabel>
-            <translation><!-- Government --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hardware Development/Engineering</masterLabel>
             <translation><!-- Hardware Development/Engineering --></translation>
         </picklistValues>
@@ -2837,10 +2829,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <picklistValues>
             <masterLabel>Scientist/Researcher</masterLabel>
             <translation><!-- Scientist/Researcher --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Software Operations</masterLabel>
-            <translation><!-- Software Operations --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Software/Application Development/Engineering</masterLabel>
@@ -3648,66 +3636,12 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_lead_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Cvent Contact Stub --></label>
-        <name>CventEvents__ContactStub__c</name>
-    </fields>
-    <fields>
         <label><!-- Days --></label>
         <name>Days__c</name>
     </fields>
     <fields>
         <label><!-- Convert Lead --></label>
         <name>Groove_Convert_Lead_Lightning__c</name>
-    </fields>
-    <fields>
-        <label><!-- Date Assigned to Partner --></label>
-        <name>ImpartnerPRM__DateAssignedToPartner__c</name>
-    </fields>
-    <fields>
-        <label><!-- Deal Registration Denied --></label>
-        <name>ImpartnerPRM__DealRegistrationDenied__c</name>
-    </fields>
-    <fields>
-        <label><!-- Deal Registration Status --></label>
-        <name>ImpartnerPRM__DealRegistrationStatus__c</name>
-    </fields>
-    <fields>
-        <label><!-- Is Deal Registration --></label>
-        <name>ImpartnerPRM__IsDealRegistration__c</name>
-    </fields>
-    <fields>
-        <label><!-- Notify Partner --></label>
-        <name>ImpartnerPRM__NotifyPartner__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Account --></label>
-        <name>ImpartnerPRM__PartnerAccount__c</name>
-        <relationshipLabel><!-- Leads --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Contact --></label>
-        <name>ImpartnerPRM__PartnerContact__c</name>
-        <relationshipLabel><!-- Leads --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Partner Last Modified Date --></label>
-        <name>ImpartnerPRM__PartnerLastModifiedDate__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Lead Acceptance --></label>
-        <name>ImpartnerPRM__PartnerLeadAcceptance__c</name>
-        <picklistValues>
-            <masterLabel>Accepted</masterLabel>
-            <translation><!-- Accepted --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending</masterLabel>
-            <translation><!-- Pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Rejected</masterLabel>
-            <translation><!-- Rejected --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Please click “Save” to own these Leads. --></label>
@@ -4436,22 +4370,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
         <name>Core_Revive</name>
     </webLinks>
     <webLinks>
-        <label><!-- InviteLeadToEvent --></label>
-        <name>CventEvents__InviteLeadToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelLeadToEvent --></label>
-        <name>CventEvents__ModifyCancelLeadToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateLeadToEvent --></label>
-        <name>CventEvents__NominateLeadToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterLeadToEvent --></label>
-        <name>CventEvents__RegisterLeadToEvent</name>
-    </webLinks>
-    <webLinks>
         <label><!-- Eloqua_Profiler --></label>
         <name>Eloqua_Profiler</name>
     </webLinks>
@@ -4470,10 +4388,6 @@ Terminated (Indicates that this Lead is ‘Dead’ and no longer being pursued) 
     <webLinks>
         <label><!-- HooversProfile --></label>
         <name>HooversProfile</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- MassAssignToPartner --></label>
-        <name>ImpartnerPRM__MassAssignToPartner</name>
     </webLinks>
     <webLinks>
         <label><!-- LeadActivityOverview --></label>

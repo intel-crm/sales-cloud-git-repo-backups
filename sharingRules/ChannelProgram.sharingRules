@@ -193,8 +193,8 @@
         </sharedTo>
         <criteriaItems>
             <field>Core_MDF_Technical_Program_Name__c</field>
-            <operation>notEqual</operation>
-            <value></value>
+            <operation>equals</operation>
+            <value>Client,Co-GTM,Datacenter,Retail Marketing Funds,Intel Partner Alliance</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

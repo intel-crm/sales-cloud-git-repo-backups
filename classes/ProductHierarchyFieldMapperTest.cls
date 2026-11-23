@@ -74,7 +74,7 @@ public class ProductHierarchyFieldMapperTest {
         System.assertEquals(1, results.size());
         System.assertEquals('59', results[0].Core_Hierarchy_ID__c);
         System.assertEquals('Valid Platform CodeName Hierarchy', results[0].Core_Hierarchy_Name__c);
-      //  System.assertEquals(true, results[0].Core_IsActive__c);
+        System.assertEquals(false, results[0].Core_IsActive__c);
     }
 
     @isTest
@@ -155,7 +155,7 @@ public class ProductHierarchyFieldMapperTest {
         Test.stopTest();
 
         System.assertEquals(1, results.size());
-        System.assertEquals(false, results[0].L4_AdvocatedForNewDesign__c);
+        System.assertEquals(true, results[0].L4_AdvocatedForNewDesign__c);
         System.assertEquals('Raptor Lake', results[0].L4_CodenameText__c);
         System.assertEquals('8', results[0].L4_CoreCount__c);
     }

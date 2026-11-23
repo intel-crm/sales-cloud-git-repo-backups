@@ -7,9 +7,6 @@
         <field>USER_ID</field>
     </columns>
     <columns>
-        <field>User.User_Unique__c</field>
-    </columns>
-    <columns>
         <field>User.Core_User_Geo__c</field>
     </columns>
     <columns>

@@ -7,7 +7,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Testt/Core_MDF_Bulk_Claim_Notification</template>
     </alerts>

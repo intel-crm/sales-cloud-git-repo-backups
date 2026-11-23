@@ -443,11 +443,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>User_Unique__c</field>
-            <table>User</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Login_Id__c</field>
             <table>User</table>
         </columns>

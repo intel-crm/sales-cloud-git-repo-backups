@@ -76,10 +76,6 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Territory_Assignment__c.CPT_CR_OEM_Target__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>CPT_Territory_Assignment__c.CPT_CR_DCAI_Target_V2__c</field>
     </columns>
     <columns>
@@ -115,22 +111,6 @@
     </columns>
     <columns>
         <field>CPT_Quota_Setup__c.CPT_Sales_OKR_Objective3__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_CR_Retail_Assigned__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CPT_Quota_Setup__c.CPT_CR_Retail_Quota__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_KPI_Name1__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_KPI_Name2__c</field>
-    </columns>
-    <columns>
-        <field>CPT_Quota_Setup__c.CPT_KPI_Name3__c</field>
     </columns>
     <filter>
         <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
@@ -171,12 +151,7 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>CPT_Quota_Setup__c.CPT_Effective_Month__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>Quota Setup and Territory Assign - EMEA</name>
     <params>
         <name>co</name>

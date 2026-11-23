@@ -1,0 +1,59 @@
+.generated-answer-thread__grid {
+  display: grid;
+  grid-template-columns: 10px 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: var(--slds-g-spacing-2, var(--lwc-spacingXSmall, 8px));
+}
+
+.generated-answer-thread__timeline {
+  grid-row: 1 / -1;
+  align-self: stretch;
+}
+
+.generated-answer-thread__dot-column {
+  width: 10px;
+  height: 1lh;
+  margin-block: var(--slds-g-spacing-1, var(--lwc-spacingXxSmall, 4px));
+}
+
+.generated-answer-thread__dot {
+  height: var(--slds-g-sizing-3, 8px);
+  width: var(--slds-g-sizing-3, 8px);
+  border-radius: 50%;
+  background-color: var(--slds-g-color-neutral-base-90, var(--lwc-colorBorder, #dddbda));
+}
+
+.generated-answer-thread__connector {
+  position: relative;
+  flex: 1;
+  width: 1px;
+  background-color: var(--slds-g-color-neutral-base-90, var(--lwc-colorBorder, #dddbda));
+}
+
+.generated-answer-thread__connector::before,
+.generated-answer-thread__connector::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: var(--slds-g-sizing-3, 8px);
+  background-color: var(--slds-g-color-neutral-base-90, var(--lwc-colorBorder, #dddbda));
+}
+
+.generated-answer-thread__connector::before {
+  top: -8px;
+}
+
+.generated-answer-thread__connector::after {
+  bottom: -8px;
+}
+
+.generated-answer-thread__show-previous-button {
+  width: fit-content;
+  border-radius: var(--slds-g-radius-border-2, 4px);
+  cursor: pointer;
+}
+
+.generated-answer-thread__show-previous-button:hover {
+  background-color: var(--lwc-colorBackgroundRowHover, #f3f2f2);
+}

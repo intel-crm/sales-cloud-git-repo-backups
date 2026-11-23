@@ -7,9 +7,6 @@
         <publicGroups>
             <publicGroup>Core_MDF_CCP_Retail_ASMOLAR_Geo_Lead_Grp</publicGroup>
         </publicGroups>
-        <users>
-            <user>11568755@intel.com.crm</user>
-        </users>
     </queueMembers>
     <queueSobject>
         <sobjectType>Core_MDF_Escalation__c</sobjectType>

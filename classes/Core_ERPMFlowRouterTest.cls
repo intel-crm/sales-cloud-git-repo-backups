@@ -141,16 +141,16 @@ private class Core_ERPMFlowRouterTest {
         List<Core_ACM_Integration_Queue__c> queueRecords = [
             SELECT Id FROM Core_ACM_Integration_Queue__c
         ];
-       // System.assertEquals(1, queueRecords.size(), 'Live flow should create one queue record');
+        System.assertEquals(1, queueRecords.size(), 'Live flow should create one queue record');
 
         Contact updatedContact = [
             SELECT Id, Core_Erpm_Integration_Status__c FROM Contact WHERE Id = :setupContact.Id
         ];
-        /*System.assertNotEquals(
+        System.assertNotEquals(
             Core_ACM_Constants.getStatusValue(Core_ACM_Constants.Status.PENDING_STATUS),
             updatedContact.Core_Erpm_Integration_Status__c,
             'Live flow should move the contact out of Pending'
-        );*/
+        );
     }
 
     @IsTest
